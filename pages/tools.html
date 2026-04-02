@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tools & Calculators — VTI & Chill</title>
+<meta name="description" content="Free compound interest, Coast FIRE, and retirement calculators for passive index investors.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="../base.css">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI & Chill logo"><rect width="36" height="36" rx="8" fill="currentColor" opacity="0.08"/><path d="M6 12 L13 26 L20 12" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="10" y1="12" x2="23" y2="12" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round"/><line x1="16.5" y1="12" x2="16.5" y2="26" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <span>VTI <span style="color: var(--color-primary)">&</span> Chill</span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../index.html">Home</a>
+        <a href="./philosophy.html">Philosophy</a>
+        <a href="./portfolios.html">Portfolios</a>
+        <a href="./tools.html" class="active">Tools</a>
+        <a href="./learn.html">Learn</a>
+        <a href="./blog.html">Blog</a>
+        <a href="./community.html">Community</a>
+        <a href="./about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../index.html">Home</a><a href="./philosophy.html">Philosophy</a><a href="./portfolios.html">Portfolios</a><a href="./tools.html">Tools</a><a href="./learn.html">Learn</a><a href="./blog.html">Blog</a><a href="./community.html">Community</a><a href="./about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <h1>The <span style="color: var(--color-primary);">Toolkit</span></h1>
+    <p>Free calculators to plan your path to financial independence.</p>
+  </div>
+</section>
+
+<main class="section-padding">
+  <div class="container container--default">
+
+    <!-- COMPOUND INTEREST CALCULATOR -->
+    <div class="calculator-card" id="compoundForm">
+      <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2);">
+        <i data-lucide="trending-up" style="width:24px;height:24px;display:inline;vertical-align:-4px;color:var(--color-primary)"></i>
+        Compound Interest Calculator
+      </h2>
+      <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-6);">See the power of consistent investing. Default return rate based on VTI historical performance.</p>
+
+      <div class="calc-grid">
+        <div>
+          <div class="form-group">
+            <label for="calcInitial">Initial Investment</label>
+            <input type="number" id="calcInitial" value="10000" min="0" step="1000">
+          </div>
+          <div class="form-group">
+            <label for="calcMonthly">Monthly Contribution</label>
+            <input type="number" id="calcMonthly" value="500" min="0" step="50">
+          </div>
+          <div class="form-group">
+            <label for="calcRate">Expected Annual Return (%)</label>
+            <input type="number" id="calcRate" value="10" min="1" max="20" step="0.5">
+          </div>
+          <div class="form-group">
+            <label for="calcYears">Investment Period (years): <span id="calcYearsDisplay" style="color:var(--color-primary);font-weight:700;">30</span></label>
+            <input type="range" id="calcYears" value="30" min="1" max="50" oninput="document.getElementById('calcYearsDisplay').textContent=this.value">
+          </div>
+        </div>
+        <div>
+          <div class="calc-result">
+            <div class="result-label">Future Value</div>
+            <div class="result-value" id="compoundResult">$0</div>
+            <div style="display:flex; gap: var(--space-6); justify-content: center; margin-top: var(--space-4);">
+              <div>
+                <div style="font-size: var(--text-sm); font-weight: 600;" id="compoundContributed">$0</div>
+                <div style="font-size: var(--text-xs); color: var(--color-text-faint);">Contributed</div>
+              </div>
+              <div>
+                <div style="font-size: var(--text-sm); font-weight: 600; color: var(--color-primary);" id="compoundGrowth">$0</div>
+                <div style="font-size: var(--text-xs); color: var(--color-text-faint);">Growth</div>
+              </div>
+            </div>
+          </div>
+          <div class="chart-wrapper" style="height: 220px; margin-top: var(--space-4);">
+            <canvas id="compoundChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COAST FIRE CALCULATOR -->
+    <div class="calculator-card" id="coastForm">
+      <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2);">
+        <i data-lucide="palm-tree" style="width:24px;height:24px;display:inline;vertical-align:-4px;color:var(--color-primary)"></i>
+        Coast FIRE Calculator
+      </h2>
+      <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-6);">Find out if you can stop saving and let compounding do the rest.</p>
+
+      <div class="calc-grid">
+        <div>
+          <div class="form-group">
+            <label for="coastAge">Your Current Age</label>
+            <input type="number" id="coastAge" value="30" min="18" max="70">
+          </div>
+          <div class="form-group">
+            <label for="coastSavings">Current Invested Savings</label>
+            <input type="number" id="coastSavings" value="50000" min="0" step="5000">
+          </div>
+          <div class="form-group">
+            <label for="coastRetireAge">Target Retirement Age</label>
+            <input type="number" id="coastRetireAge" value="65" min="30" max="80">
+          </div>
+          <div class="form-group">
+            <label for="coastTarget">FIRE Number (25x Annual Expenses)</label>
+            <input type="number" id="coastTarget" value="1500000" min="100000" step="50000">
+          </div>
+        </div>
+        <div>
+          <div class="calc-result">
+            <div class="result-label">Your Coast FIRE Number</div>
+            <div class="result-value" id="coastResult">$0</div>
+            <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-4); line-height: 1.6;" id="coastStatus"></p>
+          </div>
+          <p style="font-size: var(--text-xs); color: var(--color-text-faint); margin-top: var(--space-4); line-height: 1.5;">Coast FIRE assumes 10% average annual growth. Once your savings reach the Coast number, they will compound to your FIRE number by retirement age without additional contributions.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RETIREMENT CALCULATOR -->
+    <div class="calculator-card" id="retireForm">
+      <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2);">
+        <i data-lucide="calendar-check" style="width:24px;height:24px;display:inline;vertical-align:-4px;color:var(--color-primary)"></i>
+        When Can I Retire?
+      </h2>
+      <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-6);">Calculate your financial independence date using the 4% rule.</p>
+
+      <div class="calc-grid">
+        <div>
+          <div class="form-group">
+            <label for="retireAge">Your Current Age</label>
+            <input type="number" id="retireAge" value="30" min="18" max="70">
+          </div>
+          <div class="form-group">
+            <label for="retireSavings">Current Invested Savings</label>
+            <input type="number" id="retireSavings" value="100000" min="0" step="10000">
+          </div>
+          <div class="form-group">
+            <label for="retireMonthly">Monthly Savings/Investment</label>
+            <input type="number" id="retireMonthly" value="2000" min="0" step="100">
+          </div>
+          <div class="form-group">
+            <label for="retireExpenses">Annual Expenses in Retirement</label>
+            <input type="number" id="retireExpenses" value="50000" min="10000" step="5000">
+          </div>
+        </div>
+        <div>
+          <div class="calc-result">
+            <div class="result-label">Time to Financial Independence</div>
+            <div class="result-value" id="retireResult">0 years</div>
+            <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-4); line-height: 1.6;" id="retireDetail"></p>
+          </div>
+          <p style="font-size: var(--text-xs); color: var(--color-text-faint); margin-top: var(--space-4); line-height: 1.5;">Based on the 4% safe withdrawal rate and 10% historical market returns. Actual results will vary based on market conditions, inflation, and individual circumstances.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>Disclaimer:</strong> These calculators are for educational purposes only. They use simplified assumptions and historical averages. Actual investment results will vary. Consult a qualified financial advisor for personalized advice.
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI & Chill. Financial education, not advice.</span>
+      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../app.js"></script>
+</body>
+</html>

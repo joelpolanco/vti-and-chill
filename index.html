@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VTI & Chill — The Simplest Path to Building Wealth</title>
+<meta name="description" content="Financial education that makes passive index investing accessible, actionable, and engaging. Inspired by JL Collins and Paul Merriman.">
+<meta property="og:title" content="VTI & Chill — The Simplest Path to Building Wealth">
+<meta property="og:description" content="One fund can change your life. A few more can optimize it.">
+<meta property="og:type" content="website">
+
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link rel="stylesheet" href="./base.css">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="./index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI & Chill logo">
+          <rect width="36" height="36" rx="8" fill="currentColor" opacity="0.08"/>
+          <path d="M6 12 L13 26 L20 12" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <line x1="10" y1="12" x2="23" y2="12" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="16.5" y1="12" x2="16.5" y2="26" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M24 18 Q27 14, 30 18 Q33 22, 30 26" stroke="#00d4aa" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.6"/>
+        </svg>
+        <span>VTI <span style="color: var(--color-primary)">&</span> Chill</span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="./index.html" class="active">Home</a>
+        <a href="./pages/philosophy.html">Philosophy</a>
+        <a href="./pages/portfolios.html">Portfolios</a>
+        <a href="./pages/tools.html">Tools</a>
+        <a href="./pages/learn.html">Learn</a>
+        <a href="./pages/blog.html">Blog</a>
+        <a href="./pages/community.html">Community</a>
+        <a href="./pages/about.html">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode">
+          <i data-lucide="moon" style="width:18px;height:18px"></i>
+        </button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')">
+          <i data-lucide="menu" style="width:20px;height:20px"></i>
+        </button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="./index.html">Home</a>
+      <a href="./pages/philosophy.html">Philosophy</a>
+      <a href="./pages/portfolios.html">Portfolios</a>
+      <a href="./pages/tools.html">Tools</a>
+      <a href="./pages/learn.html">Learn</a>
+      <a href="./pages/blog.html">Blog</a>
+      <a href="./pages/community.html">Community</a>
+      <a href="./pages/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="growth-counter">
+        <span class="label">$10K invested in VTI (2001)</span>
+        <span class="value" id="growthValue">$0</span>
+        <span class="sub">today</span>
+      </div>
+      <h1>The Simplest Path to <span class="mint">Building Wealth</span></h1>
+      <p class="subtitle">One fund can change your life. A few more can optimize it. Inspired by JL Collins and Paul Merriman's timeless wisdom.</p>
+      <div style="display:flex; gap: var(--space-4); flex-wrap: wrap;">
+        <a href="./pages/portfolios.html" class="btn btn--primary btn--large">Explore Portfolios</a>
+        <a href="./pages/philosophy.html" class="btn btn--secondary btn--large" style="border-color: rgba(255,255,255,0.2); color: #fff;">Our Philosophy</a>
+      </div>
+      <div class="tagline-row">
+        <span class="tagline-chip">Buy. Hold. Chill.</span>
+        <span class="tagline-chip">Complexity is a tax. Simplicity is a return.</span>
+        <span class="tagline-chip">Your portfolio called. It wants fewer funds.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO TIERS -->
+<section class="section-padding">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: var(--space-10);">
+      <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2);">Choose Your Path</h2>
+      <p style="color: var(--color-text-muted); max-width: 560px; margin-inline: auto;">Three evidence-based portfolio tiers, each building on decades of academic research into factor investing.</p>
+    </div>
+
+    <div class="tiers-grid">
+      <!-- GOOD -->
+      <a href="./pages/portfolios.html" class="tier-card card--hover tier--good" style="text-decoration:none; color:inherit;">
+        <span class="tier-badge">Good</span>
+        <h3>The 2-Fund Strategy</h3>
+        <p class="tier-desc">Simple. Powerful. 50/50 S&P 500 and Small-Cap Value. Ideal for beginners who want simplicity with a factor tilt.</p>
+        <div class="tier-funds">
+          <span class="fund-tag">VOO</span>
+          <span class="fund-tag">AVUV</span>
+        </div>
+        <div class="tier-return">~$6.5M</div>
+        <div class="tier-return-label">$10K over 55 years (backtested)</div>
+      </a>
+
+      <!-- BETTER -->
+      <a href="./pages/portfolios.html" class="tier-card card--hover tier--better" style="text-decoration:none; color:inherit;">
+        <span class="tier-badge">Better</span>
+        <h3>The 4-Fund Strategy</h3>
+        <p class="tier-desc">Balanced diversification. Four asset classes covering US and international equities with value tilts.</p>
+        <div class="tier-funds">
+          <span class="fund-tag">AVUS</span>
+          <span class="fund-tag">AVUV</span>
+          <span class="fund-tag">AVLV</span>
+          <span class="fund-tag">AVSC</span>
+        </div>
+        <div class="tier-return">Near-optimal returns</div>
+        <div class="tier-return-label">Similar to 10-fund with fewer holdings</div>
+      </a>
+
+      <!-- BEST -->
+      <a href="./pages/portfolios.html" class="tier-card card--hover tier--best" style="text-decoration:none; color:inherit;">
+        <span class="tier-badge">Best</span>
+        <h3>The 10-Fund Ultimate</h3>
+        <p class="tier-desc">Maximum diversification. 10 asset classes, ~12,000 companies globally. The Paul Merriman "Ultimate Buy & Hold."</p>
+        <div class="tier-funds">
+          <span class="fund-tag">AVUS</span>
+          <span class="fund-tag">AVUV</span>
+          <span class="fund-tag">AVLV</span>
+          <span class="fund-tag">AVSC</span>
+          <span class="fund-tag">AVDV</span>
+          <span class="fund-tag">AVDS</span>
+          <span class="fund-tag">VNQ</span>
+          <span class="fund-tag">+3</span>
+        </div>
+        <div class="tier-return">Historically superior</div>
+        <div class="tier-return-label">Outperforms S&P 500 with lower volatility</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY INDEX FUNDS -->
+<section class="section-padding" style="background: var(--color-surface-2);">
+  <div class="container">
+    <div class="responsive-two-col" style="display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-10); align-items: center;">
+      <div>
+        <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-4);">Why Index Funds Win</h2>
+        <p style="color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-4);">Index funds are "self-cleansing" — failing companies drop out, winners rise to the top through cap-weighting. You never need to pick stocks.</p>
+        <p style="color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-6);">Wall Street profits from complexity. Your edge is simplicity. Dollar-cost average into low-cost index funds, stay the course through volatility, and let compounding do the heavy lifting.</p>
+        <div style="display: flex; gap: var(--space-6);">
+          <div>
+            <div style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary);">90%</div>
+            <div style="font-size: var(--text-xs); color: var(--color-text-muted);">of active funds underperform<br>their benchmark over 15 years</div>
+          </div>
+          <div>
+            <div style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary);">0.03%</div>
+            <div style="font-size: var(--text-xs); color: var(--color-text-muted);">expense ratio<br>for VTI</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-container" style="margin:0;">
+        <h3>S&P 500: Drawdowns vs. Long-Term Growth</h3>
+        <div class="chart-wrapper" style="height:300px;">
+          <canvas id="miniGrowthChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section-padding">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-value" data-count="10">10K+</div>
+        <div class="stat-label">Newsletter Subscribers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">$0.03</div>
+        <div class="stat-label">Average Expense Ratio</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">12,000+</div>
+        <div class="stat-label">Companies in Best Portfolio</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">55+ yrs</div>
+        <div class="stat-label">Backtested Data</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS PREVIEW -->
+<section class="section-padding" style="background: var(--color-surface-2);">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: var(--space-10);">
+      <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2);">Free Tools to Plan Your Path</h2>
+      <p style="color: var(--color-text-muted); max-width: 500px; margin-inline: auto;">Calculators and planners built around the principles of passive index investing.</p>
+    </div>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6);">
+      <a href="./pages/tools.html" class="card card--hover" style="text-decoration:none; color:inherit; display:flex; gap:var(--space-4); align-items:start;">
+        <div style="width:48px;height:48px;background:rgba(var(--color-primary-rgb),0.1);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--color-primary);">
+          <i data-lucide="trending-up" style="width:24px;height:24px"></i>
+        </div>
+        <div>
+          <h3 style="font-size: var(--text-base); font-weight: 600; margin-bottom: var(--space-1);">Compound Interest Calculator</h3>
+          <p style="font-size: var(--text-sm); color: var(--color-text-muted);">See how $500/month grows over decades at historical VTI returns.</p>
+        </div>
+      </a>
+      <a href="./pages/tools.html" class="card card--hover" style="text-decoration:none; color:inherit; display:flex; gap:var(--space-4); align-items:start;">
+        <div style="width:48px;height:48px;background:rgba(var(--color-primary-rgb),0.1);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--color-primary);">
+          <i data-lucide="palm-tree" style="width:24px;height:24px"></i>
+        </div>
+        <div>
+          <h3 style="font-size: var(--text-base); font-weight: 600; margin-bottom: var(--space-1);">Coast FIRE Calculator</h3>
+          <p style="font-size: var(--text-sm); color: var(--color-text-muted);">Find out when you can stop saving and let compounding finish the job.</p>
+        </div>
+      </a>
+      <a href="./pages/tools.html" class="card card--hover" style="text-decoration:none; color:inherit; display:flex; gap:var(--space-4); align-items:start;">
+        <div style="width:48px;height:48px;background:rgba(var(--color-primary-rgb),0.1);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--color-primary);">
+          <i data-lucide="calendar-check" style="width:24px;height:24px"></i>
+        </div>
+        <div>
+          <h3 style="font-size: var(--text-base); font-weight: 600; margin-bottom: var(--space-1);">When Can I Retire?</h3>
+          <p style="font-size: var(--text-sm); color: var(--color-text-muted);">Input your numbers and see your projected financial independence date.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL CAPTURE -->
+<section class="section-padding">
+  <div class="container">
+    <div class="email-capture">
+      <h2>Join 10,000+ Investors Who Keep It Simple</h2>
+      <p>Get the weekly "VTI & Chill" market digest. No noise, no hype — just evidence-based investing insights.</p>
+      <form class="email-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓'; this.querySelector('input').value='';">
+        <input type="email" placeholder="your@email.com" required>
+        <button type="submit" class="btn btn--primary">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="./index.html" class="logo-link" style="margin-bottom: var(--space-4);">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none" aria-label="VTI & Chill">
+            <rect width="36" height="36" rx="8" fill="rgba(255,255,255,0.08)"/>
+            <path d="M6 12 L13 26 L20 12" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <line x1="10" y1="12" x2="23" y2="12" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="16.5" y1="12" x2="16.5" y2="26" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <span style="color:#fff">VTI <span style="color:#00d4aa">&</span> Chill</span>
+        </a>
+        <p>Financial education that makes passive index investing accessible. Inspired by JL Collins' "The Simple Path to Wealth" and Paul Merriman's evidence-based portfolios.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Invest</h4>
+        <a href="./pages/portfolios.html">Portfolio Builder</a>
+        <a href="./pages/tools.html">Calculators</a>
+        <a href="./pages/learn.html">Learning Center</a>
+        <a href="./pages/blog.html">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <a href="./pages/community.html">Forum</a>
+        <a href="./pages/community.html">Discord</a>
+        <a href="./pages/community.html">Meetups</a>
+        <a href="./pages/about.html">About Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Disclosures</a>
+        <a href="#">Affiliates</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI & Chill. This is financial education, not personalized financial advice. Past performance does not guarantee future results.</span>
+      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+    </div>
+  </div>
+</footer>
+
+<script src="./app.js"></script>
+</body>
+</html>

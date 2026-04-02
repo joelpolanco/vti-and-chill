@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Builder — VTI & Chill</title>
+<meta name="description" content="Good, Better, Best portfolio tiers based on Paul Merriman's evidence-based investing strategies.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="../base.css">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI & Chill logo"><rect width="36" height="36" rx="8" fill="currentColor" opacity="0.08"/><path d="M6 12 L13 26 L20 12" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="10" y1="12" x2="23" y2="12" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round"/><line x1="16.5" y1="12" x2="16.5" y2="26" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <span>VTI <span style="color: var(--color-primary)">&</span> Chill</span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../index.html">Home</a>
+        <a href="./philosophy.html">Philosophy</a>
+        <a href="./portfolios.html" class="active">Portfolios</a>
+        <a href="./tools.html">Tools</a>
+        <a href="./learn.html">Learn</a>
+        <a href="./blog.html">Blog</a>
+        <a href="./community.html">Community</a>
+        <a href="./about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../index.html">Home</a><a href="./philosophy.html">Philosophy</a><a href="./portfolios.html">Portfolios</a><a href="./tools.html">Tools</a><a href="./learn.html">Learn</a><a href="./blog.html">Blog</a><a href="./community.html">Community</a><a href="./about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <h1>Portfolio <span style="color: var(--color-primary);">Builder</span></h1>
+    <p>Three tiers of evidence-based portfolios. Choose your level of diversification.</p>
+  </div>
+</section>
+
+<main class="section-padding">
+  <div class="container">
+    <!-- TABS -->
+    <div class="builder-tabs">
+      <button class="builder-tab active" data-target="tabGood">
+        <i data-lucide="circle-check" style="width:16px;height:16px;display:inline;vertical-align:-3px"></i> Good — 2 Funds
+      </button>
+      <button class="builder-tab" data-target="tabBetter">
+        <i data-lucide="target" style="width:16px;height:16px;display:inline;vertical-align:-3px"></i> Better — 4 Funds
+      </button>
+      <button class="builder-tab" data-target="tabBest">
+        <i data-lucide="trophy" style="width:16px;height:16px;display:inline;vertical-align:-3px"></i> Best — 10 Funds
+      </button>
+    </div>
+
+    <!-- GOOD -->
+    <div class="builder-content active" id="tabGood">
+      <div class="allocation-grid">
+        <div>
+          <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2);">The 2-Fund Strategy</h2>
+          <p style="color: var(--color-text-muted); margin-bottom: var(--space-6); line-height: 1.7;">The simplest factor-tilted portfolio. Split evenly between the broad US market and US small-cap value. Merriman's data shows $10K grew to ~$6.5M over 55 years — vs. ~$3M for S&P 500 alone.</p>
+
+          <table class="allocation-table">
+            <thead>
+              <tr><th>Asset Class</th><th>ETF</th><th>Allocation</th><th>Expense</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>S&P 500</td><td class="ticker">VOO</td><td>50%</td><td>0.03%</td></tr>
+              <tr><td>US Small-Cap Value</td><td class="ticker">AVUV</td><td>50%</td><td>0.25%</td></tr>
+            </tbody>
+          </table>
+
+          <div class="comparison-stats">
+            <div class="comparison-stat">
+              <div class="comp-value" style="color: var(--color-primary);">~12.1%</div>
+              <div class="comp-label">Historical CAGR</div>
+            </div>
+            <div class="comparison-stat">
+              <div class="comp-value">-51%</div>
+              <div class="comp-label">Max Drawdown</div>
+            </div>
+            <div class="comparison-stat">
+              <div class="comp-value">0.14%</div>
+              <div class="comp-label">Blended Expense</div>
+            </div>
+          </div>
+        </div>
+        <div class="pie-chart-container">
+          <canvas id="pieGood"></canvas>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--space-8); padding: var(--space-5); background: rgba(var(--color-primary-rgb),0.06); border-radius: var(--radius-lg); border: 1px solid rgba(var(--color-primary-rgb),0.15);">
+        <p style="font-size: var(--text-sm); color: var(--color-text-muted);"><strong style="color: var(--color-text);">Level up?</strong> The 4-Fund "Better" portfolio adds large-cap value and small-cap blend for smoother returns with nearly identical long-term performance to the full 10-fund portfolio.</p>
+      </div>
+    </div>
+
+    <!-- BETTER -->
+    <div class="builder-content" id="tabBetter">
+      <div class="allocation-grid">
+        <div>
+          <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2);">The 4-Fund Strategy</h2>
+          <p style="color: var(--color-text-muted); margin-bottom: var(--space-4); line-height: 1.7;">Four funds covering the key US equity factors. Delivers returns nearly identical to the 10-fund portfolio with simpler management.</p>
+
+          <div class="toggle-group">
+            <span class="toggle-label active">US Only</span>
+            <div class="toggle-switch" id="betterToggle"></div>
+            <span class="toggle-label">Worldwide</span>
+          </div>
+
+          <table class="allocation-table" id="betterTable">
+            <thead>
+              <tr><th>Asset Class</th><th>ETF</th><th>Allocation</th><th>Expense</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>US Large-Cap Blend</td><td class="ticker">AVUS</td><td>25%</td><td>0.15%</td></tr>
+              <tr><td>US Small-Cap Blend</td><td class="ticker">AVSC</td><td>25%</td><td>0.25%</td></tr>
+              <tr><td>US Large-Cap Value</td><td class="ticker">AVLV</td><td>25%</td><td>0.15%</td></tr>
+              <tr><td>US Small-Cap Value</td><td class="ticker">AVUV</td><td>25%</td><td>0.25%</td></tr>
+            </tbody>
+          </table>
+
+          <div class="comparison-stats">
+            <div class="comparison-stat">
+              <div class="comp-value" style="color: var(--color-primary);">~12.5%</div>
+              <div class="comp-label">Historical CAGR</div>
+            </div>
+            <div class="comparison-stat">
+              <div class="comp-value">-52%</div>
+              <div class="comp-label">Max Drawdown</div>
+            </div>
+            <div class="comparison-stat">
+              <div class="comp-value">0.20%</div>
+              <div class="comp-label">Blended Expense</div>
+            </div>
+          </div>
+        </div>
+        <div class="pie-chart-container">
+          <canvas id="pieBetter"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- BEST -->
+    <div class="builder-content" id="tabBest">
+      <div class="allocation-grid">
+        <div>
+          <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2);">The 10-Fund Ultimate Buy & Hold</h2>
+          <p style="color: var(--color-text-muted); margin-bottom: var(--space-4); line-height: 1.7;">Paul Merriman's flagship portfolio. 10 equity asset classes covering ~12,000 companies globally. Historically outperforms S&P 500 with similar or lower volatility.</p>
+
+          <div class="toggle-group">
+            <span class="toggle-label active">70/30 US/Int'l</span>
+            <div class="toggle-switch" id="bestToggle"></div>
+            <span class="toggle-label">50/50 US/Int'l</span>
+          </div>
+
+          <table class="allocation-table">
+            <thead>
+              <tr><th>Asset Class</th><th>ETF</th><th>Allocation</th><th>Expense</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>US Large-Cap Blend</td><td class="ticker">AVUS</td><td>10%</td><td>0.15%</td></tr>
+              <tr><td>US Large-Cap Value</td><td class="ticker">AVLV</td><td>10%</td><td>0.15%</td></tr>
+              <tr><td>US Small-Cap Blend</td><td class="ticker">AVSC</td><td>10%</td><td>0.25%</td></tr>
+              <tr><td>US Small-Cap Value</td><td class="ticker">AVUV</td><td>10%</td><td>0.25%</td></tr>
+              <tr><td>Int'l Large-Cap Blend</td><td class="ticker">AVDE</td><td>10%</td><td>0.23%</td></tr>
+              <tr><td>Int'l Large-Cap Value</td><td class="ticker">AVDV</td><td>10%</td><td>0.36%</td></tr>
+              <tr><td>Int'l Small-Cap Blend</td><td class="ticker">AVDS</td><td>10%</td><td>0.36%</td></tr>
+              <tr><td>Int'l Small-Cap Value</td><td class="ticker">AVEE</td><td>10%</td><td>0.36%</td></tr>
+              <tr><td>REITs</td><td class="ticker">VNQ</td><td>10%</td><td>0.12%</td></tr>
+              <tr><td>Emerging Markets</td><td class="ticker">AVES</td><td>10%</td><td>0.36%</td></tr>
+            </tbody>
+          </table>
+
+          <div class="comparison-stats">
+            <div class="comparison-stat">
+              <div class="comp-value" style="color: var(--color-primary);">~13.2%</div>
+              <div class="comp-label">Historical CAGR</div>
+            </div>
+            <div class="comparison-stat">
+              <div class="comp-value">-48%</div>
+              <div class="comp-label">Max Drawdown</div>
+            </div>
+            <div class="comparison-stat">
+              <div class="comp-value">0.26%</div>
+              <div class="comp-label">Blended Expense</div>
+            </div>
+            <div class="comparison-stat">
+              <div class="comp-value">~12,000</div>
+              <div class="comp-label">Companies</div>
+            </div>
+          </div>
+        </div>
+        <div class="pie-chart-container">
+          <canvas id="pieBest"></canvas>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--space-8);">
+        <h3 style="font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-4);">The Fine Tuning Table</h3>
+        <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-4);">Each added asset class incrementally improves risk-adjusted returns. Small-cap value is the primary return driver.</p>
+        <div style="overflow-x: auto;">
+          <table class="allocation-table" style="min-width: 600px;">
+            <thead>
+              <tr><th>Portfolio</th><th>Funds</th><th>CAGR</th><th>$10K over 55yr</th><th>Sharpe</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>S&P 500 Only</td><td>1</td><td>10.3%</td><td>$3.0M</td><td>0.52</td></tr>
+              <tr><td style="color: var(--color-primary); font-weight: 600;">+ Small-Cap Value</td><td>2</td><td>12.1%</td><td>$6.5M</td><td>0.58</td></tr>
+              <tr><td style="color: var(--color-primary); font-weight: 600;">+ LC Value, SC Blend</td><td>4</td><td>12.5%</td><td>$7.8M</td><td>0.60</td></tr>
+              <tr><td style="color: var(--color-primary); font-weight: 600;">Full 10-Fund</td><td>10</td><td>13.2%</td><td>$10.4M</td><td>0.63</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>Disclaimer:</strong> This is financial education, not personalized financial advice. All performance figures are backtested using historical data and may not reflect future performance. Past performance does not guarantee future results. Consider consulting a financial advisor for personalized guidance.
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI & Chill. Financial education, not advice.</span>
+      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../app.js"></script>
+</body>
+</html>
