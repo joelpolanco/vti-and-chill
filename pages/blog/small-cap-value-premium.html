@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Small-Cap Value Premium: Real or Dead? — VTI &amp; Chill</title>
+<meta name="description" content="Skeptics say the value premium has been 'arbitraged away.' The data tells a different story — if you have the patience to wait for it.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-hero { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: var(--radius-lg); margin-bottom: var(--space-8); }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { width: 100%; margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; border-collapse: collapse; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .blog-post-content tr:nth-child(even) td { background: var(--color-surface-2); }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h4 { color: var(--color-primary); margin-bottom: var(--space-2); font-weight: 700; font-size: var(--text-base); }
+  .callout-box p { margin-bottom: 0; }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .stat-highlight { display: inline-block; background: rgba(var(--color-primary-rgb), 0.12); color: var(--color-primary); font-weight: 700; padding: 0 var(--space-2); border-radius: var(--radius-sm); font-size: 0.95em; }
+  .verdict-box { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin: var(--space-6) 0; }
+  .verdict-col { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-5); }
+  .verdict-col.bear { border-top: 3px solid #ef4444; }
+  .verdict-col.bull { border-top: 3px solid var(--color-primary); }
+  .verdict-col h4 { font-weight: 700; font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-3); }
+  .verdict-col.bear h4 { color: #ef4444; }
+  .verdict-col.bull h4 { color: var(--color-primary); }
+  .verdict-col ul { padding-left: var(--space-4); margin-bottom: 0; }
+  .verdict-col li { font-size: var(--text-sm); line-height: 1.6; margin-bottom: var(--space-2); }
+  @media (max-width: 600px) {
+    .verdict-box { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="currentColor" opacity="0.08"/><path d="M6 12 L13 26 L20 12" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="10" y1="12" x2="23" y2="12" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round"/><line x1="16.5" y1="12" x2="16.5" y2="26" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <span>VTI <span style="color: var(--color-primary)">&amp;</span> Chill</span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn.html">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn.html">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="blog-post">
+    <a href="../blog.html" class="back-link">← Back to Blog</a>
+
+    <div class="blog-post-header">
+      <div class="blog-post-meta">
+        <span class="blog-post-tag">Strategy</span>
+        <span>Feb 17, 2026</span>
+        <span>9 min read</span>
+      </div>
+      <h1>The Small-Cap Value Premium: Real or Dead?</h1>
+      <p class="blog-post-subtitle">Skeptics say the value premium has been "arbitraged away." The data tells a different story — if you have the patience to wait for it.</p>
+    </div>
+
+    <img src="../../blog-posts/images/small-cap-value-premium.png" alt="Small-cap value stocks represented by rising bar charts against a dark financial background" class="blog-post-hero">
+
+    <div class="blog-post-content">
+
+      <p>Here's the pitch you'll hear from small-cap value skeptics: Eugene Fama and Kenneth French published their famous three-factor model in 1992, identified the small-cap and value premiums, and the moment the paper hit academic journals, every quant hedge fund on Wall Street piled in — <em>arbitraging the premium out of existence before you even had a chance to benefit from it.</em> It's a compelling story. It's also, at best, half true.</p>
+
+      <p>The real story of the small-cap value premium is stranger and more interesting than either the permabull or the skeptic wants to admit. Yes, it has been dead — sometimes for a decade at a stretch. And yes, the long-run historical data shows a premium that is substantial, persistent, and tied to real economic risk. Understanding which of those two realities you're living in right now might be the most important portfolio decision you make this decade.</p>
+
+      <h2>What Fama and French Actually Found</h2>
+
+      <p>In 1992, professors Eugene Fama and Kenneth French turned the investing world upside down with a straightforward observation: the Capital Asset Pricing Model (CAPM) — the reigning theory that said market beta explained all returns — was missing something. A lot of somethings, actually.</p>
+
+      <p>Their research identified two additional factors that predicted long-run equity returns beyond simple market exposure:</p>
+
+      <ul>
+        <li><strong>The Size Premium (SMB — Small Minus Big):</strong> Small-cap stocks have historically outperformed large-cap stocks over long periods.</li>
+        <li><strong>The Value Premium (HML — High Minus Low):</strong> Stocks with high book-to-market ratios ("value" stocks, often cheap or unloved) have outperformed growth stocks over long periods.</li>
+      </ul>
+
+      <p>Their dataset stretched back to 1927, giving them nearly 70 years of evidence. The findings were robust, peer-reviewed, and replicable. The academic community largely accepted them. And the asset management industry — particularly firms like Dimensional Fund Advisors (DFA), co-founded by David Booth with Fama on its board — built entire investment philosophies around them.</p>
+
+      <p>But here's the catch: <em>long-run</em> averages can hide an enormous amount of pain along the way.</p>
+
+      <h2>The Premium by the Numbers (And Why Starting Date Matters Enormously)</h2>
+
+      <p>Let's look at the raw data honestly. The small-cap premium is real in the historical record — but it is brutally sensitive to your starting point.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Starting Period</th>
+            <th>Small-Cap Premium (Annualized)</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Since 1927 (value-weighted)</td>
+            <td><span class="stat-highlight">+2.07%</span></td>
+            <td>Full Fama-French dataset; favorable period includes Great Depression recovery</td>
+          </tr>
+          <tr>
+            <td>Since 1927 (equally weighted)</td>
+            <td><span class="stat-highlight">+6.69%</span></td>
+            <td>Equal-weight boosts micro-caps; not replicable at scale</td>
+          </tr>
+          <tr>
+            <td>Since 1970 (any start date)</td>
+            <td>~0%</td>
+            <td>Damodaran analysis: premium essentially disappears</td>
+          </tr>
+          <tr>
+            <td>Since 1982 (excluding 1975–83 boom)</td>
+            <td>Negative</td>
+            <td>The famous small-cap run of the late 1970s dominates older data</td>
+          </tr>
+          <tr>
+            <td>Since 2000</td>
+            <td>Mixed</td>
+            <td>Early 2000s were excellent for small-cap value; post-2010 was not</td>
+          </tr>
+          <tr>
+            <td>Last 20 years</td>
+            <td><span class="stat-highlight" style="background: rgba(239,68,68,0.12); color: #ef4444;">−4 to −4.5%</span></td>
+            <td>Small caps have badly lagged large caps annually</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>NYU professor Aswath Damodaran, one of the most respected valuation researchers alive, ran a sobering analysis: when you start the clock at 1970 or any later date, the small-cap premium drops to approximately zero. The headline figure of 2%+ is essentially carrying the weight of a single extraordinary period — the post-Depression and post-WWII era — on its back.</p>
+
+      <p>That's the bear case in a sentence. And it's not wrong.</p>
+
+      <div class="callout-box">
+        <h4>The Decade Problem</h4>
+        <p>The small-cap value premium is notorious for arriving in concentrated "spurts" — sudden, violent outperformance following long, grinding underperformance. The premium from 2000–2007 was exceptional. The period from 2010–2021 was a disaster. Most investors bail out precisely when the premium is about to reappear.</p>
+      </div>
+
+      <h2>The Bear Case vs. the Bull Case</h2>
+
+      <p>Let's steelman both sides, because both are held by serious people with serious data.</p>
+
+      <div class="verdict-box">
+        <div class="verdict-col bear">
+          <h4>The Skeptics</h4>
+          <ul>
+            <li>Premium is zero since 1970 (Damodaran)</li>
+            <li>Small caps lagged large caps by 4–4.5% annually over the last 20 years</li>
+            <li>The premium may have been "mined out" after academic publication</li>
+            <li>Structural headwinds: passive flows favor mega-caps, private equity hoovers up the best small companies before they can grow</li>
+            <li>Small caps carry higher transaction costs, lower liquidity, wider bid-ask spreads</li>
+            <li>Karsten Jeske (Big ERN) argues the volatility of the premium makes it unsuitable for sequence-of-returns risk in early retirement</li>
+          </ul>
+        </div>
+        <div class="verdict-col bull">
+          <h4>The Believers</h4>
+          <ul>
+            <li>Premium is compensation for <em>real risk</em>, not just a free lunch — it won't be arbed away</li>
+            <li>Small caps trade at historically wide valuation discounts vs. large caps (forward P/E) — the setup is the best it's been since 2000</li>
+            <li>From 2010–2017, small caps actually traded at <em>higher</em> P/Es than large caps; since 2018 that reversed sharply</li>
+            <li>Paul Merriman: small-cap value tilts have dramatically improved outcomes across every rolling 40-year period in history</li>
+            <li>AVUV posted a 1-year return of +28.72% with a Sharpe ratio of 1.23</li>
+            <li>Catalysts are stacking up: M&amp;A activity, declining rates, reshoring, potential corporate tax cuts</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>The honest answer is that neither camp is entirely right. The premium is real in the data and theoretically grounded in risk compensation — but it comes with multi-year, sometimes multi-decade dry spells that will test any investor's conviction.</p>
+
+      <h2>Why the Current Setup Is Actually Interesting</h2>
+
+      <p>Here's what the skeptics who pull out the "arbitraged away" line tend to gloss over: <em>the valuation gap between small and large caps right now is extreme</em>.</p>
+
+      <p>From 2010 to 2017, small-cap stocks actually commanded a premium valuation over large caps — investors were willing to pay <em>more</em> in P/E terms for small companies than for the S&amp;P 500. That was arguably the worst time to tilt toward small caps, and the subsequent underperformance made sense: you were overpaying for the premium.</p>
+
+      <p>Since 2018, that gap has inverted dramatically. Small caps now trade at historically wide discounts to large caps on a forward price-to-earnings basis. The S&amp;P 500 — driven by the Magnificent Seven — trades at stretched multiples. Meanwhile, the Russell 2000 and small-cap value indexes sit at far more modest valuations. That's not a guarantee of outperformance, but it's the kind of setup that historically precedes it.</p>
+
+      <p>Add to that a set of macro tailwinds that are genuinely favorable for smaller companies:</p>
+
+      <ul>
+        <li><strong>Declining interest rates:</strong> Small caps carry more floating-rate debt and are more sensitive to rate moves. Rate cuts disproportionately benefit them.</li>
+        <li><strong>Reshoring and domestic manufacturing:</strong> Small and mid-cap industrials are the direct beneficiaries of supply chain repatriation.</li>
+        <li><strong>M&amp;A activity:</strong> After years of regulatory gridlock, deal flow is picking back up. Small-cap companies are acquisition targets at a premium.</li>
+        <li><strong>Tax policy:</strong> Domestic-heavy small caps benefit more from corporate tax changes than multinationals.</li>
+      </ul>
+
+      <p>None of this is guaranteed to play out. But the combination of valuation support and macro tailwinds makes this a more interesting moment for small-cap value than any time since the early 2000s.</p>
+
+      <h2>The Case for Avantis: Don't Just Buy "Small"</h2>
+
+      <p>This is where implementation matters as much as theory. Not all small-cap funds are created equal. The original academic small-cap premium was measured using book-to-market ratios and market cap screens — and frankly, a lot of what ends up in traditional small-cap indexes is garbage: zombie companies, money-losers, highly speculative bets.</p>
+
+      <p>The smart way to access the small-cap value premium is through factor-aware funds that go beyond simple index construction. And right now, the two best vehicles on the market are both from Avantis Investors:</p>
+
+      <ul>
+        <li><strong>AVUV — Avantis U.S. Small Cap Value ETF:</strong> Targets profitable U.S. small-cap companies with value characteristics. Not just "cheap" — specifically cheap <em>and</em> profitable. Recent 1-year return: <strong>+28.72%</strong> with a Sharpe ratio of 1.23, meaning that return came with excellent risk-adjusted efficiency.</li>
+        <li><strong>AVSC — Avantis U.S. Small Cap Equity ETF:</strong> A broader small-cap fund with factor tilts toward profitability, for investors who want small-cap exposure without a hard value tilt.</li>
+      </ul>
+
+      <p>What distinguishes Avantis (and DFA, their institutional predecessor) from plain index funds is the profitability screen. Academic research — including the Fama-French five-factor model published in 2015 — identified that <em>profitable</em> small-cap value companies capture a much larger premium than unprofitable ones. AVUV implements this by systematically favoring companies with high book-to-market ratios <em>and</em> high profitability metrics. This doesn't just improve returns — it reduces exposure to the value trap problem where cheap stocks are cheap for good reason.</p>
+
+      <p>Both DFA and Avantis small-cap value funds have roughly doubled in value over the last five years — demonstrating that when the premium shows up, it shows up emphatically.</p>
+
+      <blockquote>
+        "The premium doesn't arrive on a schedule. It arrives all at once, when least expected, after you've had about seven years of quietly wondering if you made a mistake."
+      </blockquote>
+
+      <h2>How This Fits Into a VTI &amp; Chill Portfolio</h2>
+
+      <p>At VTI &amp; Chill, we're not anti-tilt. We're anti-complexity for its own sake. The small-cap value premium is one of the few documented, theoretically grounded, academically supported reasons to deviate from a pure total market fund — so it earns its place in our Better and Best portfolio tiers.</p>
+
+      <p>Here's how the tiers approach it:</p>
+
+      <ul>
+        <li><strong>Good (VTI Only):</strong> Pure total market. Zero factor tilts. Own the whole market at the lowest possible cost. You capture some small-cap exposure naturally — VTI holds about 7% small-cap — but it's market-weighted, not intentionally tilted. This is still an excellent portfolio for most people.</li>
+        <li><strong>Better (VTI + AVUV):</strong> Add a dedicated small-cap value tilt via AVUV at 10–20% of your equity allocation. This intentionally overweights profitable small-cap value companies without abandoning the core total market exposure. Historically, this improves risk-adjusted returns over 30+ year periods — with the understanding that you will experience 5–10 year stretches where AVUV trails VTI.</li>
+        <li><strong>Best (VTI + AVUV + AVSC + International):</strong> Full factor tilt across domestic and international equities. Add AVSC for broader small-cap exposure, and AVDV or AVDS for international small-cap value. This is the Merriman-inspired maximum diversification approach — every documented equity premium, captured efficiently, at low cost. Requires the most conviction and the most patience.</li>
+      </ul>
+
+      <p>The key phrase in all of this: <em>patience</em>. Paul Merriman has spent decades documenting how small-cap value tilts improve outcomes across every rolling 40-year historical period in U.S. data. But even he acknowledges the path is not smooth. His counterpart in the debate, Karsten Jeske (Big ERN), makes a fair point that for investors near retirement, the sequence-of-returns risk from small-cap volatility deserves careful consideration. The tilt makes most sense when you have a long runway — ideally 20+ years — to survive the dry spells.</p>
+
+      <div class="callout-box">
+        <h4>The Patience Tax</h4>
+        <p>Capturing the small-cap value premium requires paying a "patience tax." You will, at some point, underperform the S&amp;P 500 for years at a stretch while every financial news headline celebrates the mega-cap tech stocks you're underweight. The investors who benefit are the ones who set up the tilt, automate their contributions, and don't touch it. The ones who bail during the dry spell — usually right before the premium returns — pay the patience tax without collecting the reward.</p>
+      </div>
+
+      <div class="bottom-line">
+        <h2>The Bottom Line</h2>
+        <p>The small-cap value premium is not dead. But it's not easy, and it's not consistent. The full historical record since 1927 shows a meaningful premium of 2%+ annually (value-weighted) — though starting the clock at 1970 or later shrinks that number toward zero. The last 20 years have been particularly brutal, with small caps lagging large caps by 4–4.5% annually. That underperformance, however, has left small-cap value stocks at historically wide valuation discounts relative to mega-cap growth — the exact setup that preceded the premium's most explosive recoveries. The right approach isn't to bet the farm on it, but to add a deliberate, modest small-cap value tilt through a high-quality vehicle like AVUV, hold it across market cycles, and resist the urge to abandon it during the inevitable dry spells. The premium comes in spurts. Your job is to still be holding when the spurt arrives.</p>
+      </div>
+
+      <div class="disclaimer">
+        <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consult a qualified professional before making investment decisions.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+</body>
+</html>
