@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Class 1: Why Invest at All? — VTI & Chill</title>
+  <meta name="description" content="The sneaky math that makes doing nothing the riskiest thing you can do with money">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a1a2e'/><path d='M6 22 L12 10 L16 16 L20 8 L26 14' stroke='%2300d4aa' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/><circle cx='26' cy='14' r='2' fill='%2300d4aa'/></svg>">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --navy: #1a1a2e;
+      --navy-light: #16213e;
+      --navy-mid: #222244;
+      --mint: #00d4aa;
+      --mint-hover: #00e6b8;
+      --mint-bg: rgba(0, 212, 170, 0.08);
+      --mint-border: rgba(0, 212, 170, 0.25);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --text-faint: #64748b;
+      --surface: #1e1e36;
+      --border: #2d2d4a;
+      --warning-bg: rgba(245, 158, 11, 0.1);
+      --warning-border: rgba(245, 158, 11, 0.3);
+      --warning-text: #fbbf24;
+      --tip-bg: rgba(16, 185, 129, 0.1);
+      --tip-border: rgba(16, 185, 129, 0.3);
+      --tip-text: #34d399;
+      
+      --font-display: 'Cabinet Grotesk', 'Inter', sans-serif;
+      --font-body: 'Satoshi', 'Inter', sans-serif;
+      
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.25rem;
+      --text-xl: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+      --text-2xl: clamp(2rem, 1rem + 3vw, 3.5rem);
+      
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--navy);
+      color: var(--text);
+      overflow: hidden;
+      height: 100dvh;
+      width: 100vw;
+      position: relative;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    
+    /* ===== TOP BAR ===== */
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      gap: 16px;
+      background: rgba(26, 26, 46, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .topbar__logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      flex-shrink: 0;
+    }
+    
+    .topbar__logo em {
+      color: var(--mint);
+      font-style: normal;
+    }
+    
+    .topbar__progress {
+      flex: 1;
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    
+    .topbar__progress-bar {
+      height: 100%;
+      background: var(--mint);
+      border-radius: 2px;
+      transition: width 0.4s var(--ease);
+      width: 0%;
+    }
+    
+    .topbar__counter {
+      font-variant-numeric: tabular-nums;
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      flex-shrink: 0;
+      min-width: 44px;
+      text-align: right;
+    }
+    
+    /* ===== DECK ===== */
+    .deck {
+      position: relative;
+      width: 100%;
+      height: 100dvh;
+      overflow: hidden;
+    }
+    
+    /* ===== SLIDES ===== */
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 24px 80px;
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+      pointer-events: none;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+      z-index: 2;
+    }
+    
+    .slide.prev {
+      opacity: 0;
+      transform: translateX(-60px);
+    }
+    
+    .slide__inner {
+      max-width: 720px;
+      width: 100%;
+    }
+    
+    /* ===== SLIDE TYPES ===== */
+    
+    /* Title */
+    .slide--title { text-align: center; }
+    .slide--title .slide__inner { max-width: 800px; }
+    
+    .slide-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 999px;
+      background: var(--mint-bg);
+      color: var(--mint);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+    
+    .slide-class-label {
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      color: var(--mint);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    
+    .slide-title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    
+    .slide-subtitle {
+      font-size: var(--text-lg);
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .slide-start-hint {
+      margin-top: 40px;
+      font-size: var(--text-sm);
+      color: var(--text-faint);
+    }
+    
+    .slide-start-hint kbd {
+      display: inline-block;
+      padding: 2px 8px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--surface);
+      font-family: inherit;
+      font-size: var(--text-xs);
+    }
+    
+    /* Eyebrow label */
+    .slide-eyebrow {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--mint);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    
+    /* Heading */
+    .slide-heading {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      text-wrap: balance;
+    }
+    
+    .slide-heading--sm {
+      font-size: clamp(1.1rem, 0.8rem + 1.5vw, 1.75rem);
+    }
+    
+    .slide-heading--cont {
+      font-size: clamp(1.1rem, 0.8rem + 1.5vw, 1.6rem);
+      color: var(--text-muted);
+    }
+    
+    /* Objectives */
+    .obj-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .obj-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      font-size: var(--text-base);
+      line-height: 1.5;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .obj-list li:last-child { border-bottom: none; }
+    
+    .obj-arrow {
+      color: var(--mint);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    /* Terms */
+    .terms-grid {
+      display: grid;
+      gap: 12px;
+    }
+    
+    .term-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+    
+    .term-word {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--mint);
+      font-size: var(--text-sm);
+      margin-bottom: 4px;
+    }
+    
+    .term-def {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    
+    /* Recap / Bridge quotes */
+    .recap-quote, .bridge-quote {
+      font-size: var(--text-lg);
+      line-height: 1.6;
+      color: var(--text);
+      border-left: 3px solid var(--mint);
+      padding-left: 20px;
+      font-style: italic;
+    }
+    
+    /* Content body */
+    .slide-body p, .example-body p {
+      font-size: var(--text-base);
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    
+    .slide-body p:last-child, .example-body p:last-child { margin-bottom: 0; }
+    
+    .slide-body strong, .example-body strong {
+      color: #fff;
+      font-weight: 700;
+    }
+    
+    /* Callout */
+    .callout {
+      margin-top: 20px;
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      gap: 12px;
+      font-size: var(--text-sm);
+      line-height: 1.5;
+    }
+    
+    .callout-icon {
+      flex-shrink: 0;
+      font-size: 1.2em;
+      line-height: 1.5;
+    }
+    
+    .callout--warning {
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      color: var(--warning-text);
+    }
+    
+    .callout--insight {
+      background: var(--mint-bg);
+      border: 1px solid var(--mint-border);
+      color: var(--mint);
+    }
+    
+    .callout--tip {
+      background: var(--tip-bg);
+      border: 1px solid var(--tip-border);
+      color: var(--tip-text);
+    }
+    
+    .callout strong { color: inherit; font-weight: 700; }
+    
+    /* Charts */
+    .chart-desc {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    
+    .chart-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      max-height: 360px;
+    }
+    
+    .chart-wrap canvas {
+      max-height: 300px;
+    }
+    
+    /* Actions */
+    .action-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .action-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      font-size: var(--text-base);
+      line-height: 1.6;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .action-list li:last-child { border-bottom: none; }
+    
+    .action-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--mint);
+      color: var(--navy);
+      font-size: var(--text-xs);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    
+    .action-list li strong { color: #fff; }
+    
+    /* Resources */
+    .resource-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .resource-list li {
+      padding: 10px 0;
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      line-height: 1.5;
+    }
+    
+    .resource-list li:last-child { border-bottom: none; }
+    
+    /* End slide */
+    .slide--end { text-align: center; }
+    
+    .end-logo { margin-bottom: 24px; }
+    
+    .end-title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 800;
+      color: var(--mint);
+      margin-bottom: 8px;
+    }
+    
+    .end-subtitle {
+      font-size: var(--text-lg);
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    
+    .end-tagline {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    
+    .end-disclaimer {
+      font-size: var(--text-xs);
+      color: var(--text-faint);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    
+    /* ===== NAV CONTROLS ===== */
+    .nav-controls {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 100;
+    }
+    
+    .nav-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(30, 30, 54, 0.9);
+      backdrop-filter: blur(8px);
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s var(--ease);
+    }
+    
+    .nav-btn:hover {
+      background: var(--mint);
+      color: var(--navy);
+      border-color: var(--mint);
+    }
+    
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+    
+    .nav-btn:disabled:hover {
+      background: rgba(30, 30, 54, 0.9);
+      color: var(--text);
+      border-color: var(--border);
+    }
+    
+    /* Dots */
+    .nav-dots {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 100;
+    }
+    
+    .nav-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: all 0.3s var(--ease);
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+    
+    .nav-dot.active {
+      background: var(--mint);
+      width: 20px;
+      border-radius: 3px;
+    }
+    
+    /* Touch area for swipe */
+    .deck::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .slide { padding: 56px 16px 100px; }
+      .slide__inner { max-width: 100%; }
+      .slide-title { font-size: clamp(1.6rem, 1rem + 4vw, 2.5rem); }
+      .terms-grid { gap: 8px; }
+      .term-card { padding: 12px 14px; }
+      .topbar { padding: 0 12px; }
+      .topbar__logo span { display: none; }
+      .chart-wrap { padding: 10px; }
+      .nav-dots { bottom: 76px; }
+    }
+    
+    @media (min-width: 1024px) {
+      .slide { padding: 64px 48px 80px; }
+      .slide__inner { max-width: 760px; }
+    }
+    
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .slide { transition: opacity 0.2s ease; transform: none !important; }
+      .slide.prev { transform: none !important; }
+    }
+    
+    /* Scrollbar for overflowing slides */
+    .slide::-webkit-scrollbar { width: 4px; }
+    .slide::-webkit-scrollbar-track { background: transparent; }
+    .slide::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    
+  </style>
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="topbar">
+    <a href="#" class="topbar__logo">
+      <svg viewBox="0 0 36 36" fill="none" width="28" height="28">
+        <rect width="36" height="36" rx="8" fill="var(--navy)"/>
+        <path d="M6 26 L13 12 L17 18 L22 8 L30 16" stroke="var(--mint)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="30" cy="16" r="2.5" fill="var(--mint)"/>
+      </svg>
+      <span>VTI & <em>Chill</em></span>
+    </a>
+    <div class="topbar__progress">
+      <div class="topbar__progress-bar" id="progressBar"></div>
+    </div>
+    <div class="topbar__counter">
+      <span id="slideNum">1</span> / 23
+    </div>
+  </header>
+
+  <!-- Slide container -->
+  <div class="deck" id="deck">
+    
+        <div class="slide slide--title" data-slide="0">
+          <div class="slide__inner">
+            <div class="slide-badge">FREE</div>
+            <div class="slide-class-label">💰 Class 1 of 8</div>
+            <h1 class="slide-title">Why Invest at All?</h1>
+            <p class="slide-subtitle">The sneaky math that makes doing nothing the riskiest thing you can do with money</p>
+            <div class="slide-start-hint">
+              <span>Press <kbd>→</kbd> or click to begin</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide--objectives" data-slide="1">
+          <div class="slide__inner">
+            <div class="slide-eyebrow">🎯 Objectives</div>
+            <h2 class="slide-heading">What You&#x27;ll Learn</h2>
+            <ul class="obj-list"><li><span class="obj-arrow">→</span> Understand how inflation erodes the real value of money sitting in savings accounts</li><li><span class="obj-arrow">→</span> Explain compound growth and why time in the market matters more than timing the market</li><li><span class="obj-arrow">→</span> Distinguish between nominal returns and real (inflation-adjusted) returns</li><li><span class="obj-arrow">→</span> Calculate the opportunity cost of not investing using real numbers</li></ul>
+          </div>
+        </div>
+
+        <div class="slide slide--terms" data-slide="2">
+          <div class="slide__inner">
+            <div class="slide-eyebrow">📝 Vocabulary</div>
+            <h2 class="slide-heading">Key Terms</h2>
+            <div class="terms-grid">
+            <div class="term-card">
+              <div class="term-word">Inflation</div>
+              <div class="term-def">The rate at which the general price level of goods and services rises over time, reducing the purchasing power of each dollar. At 3% annual inflation — roughly the long-run U.S. average — something that costs $100 today will cost $134 in 10 years and $243 in 30 years.</div>
+            </div>
+            <div class="term-card">
+              <div class="term-word">Compound Growth</div>
+              <div class="term-def">Earning returns not just on your original principal, but on all the returns you&#x27;ve already accumulated. It&#x27;s growth on top of growth, which creates an exponential curve rather than a straight line. Albert Einstein reportedly called it the eighth wonder of the world — whether or not he actually said that, the math is genuinely magical.</div>
+            </div>
+            <div class="term-card">
+              <div class="term-word">Real vs. Nominal Returns</div>
+              <div class="term-def">Nominal return is the raw percentage gain on your investment (e.g., 10% per year). Real return is what you actually get after subtracting inflation. A savings account paying 0.5% when inflation is 3% has a real return of -2.5% — you&#x27;re losing purchasing power every single year.</div>
+            </div>
+            <div class="term-card">
+              <div class="term-word">Opportunity Cost</div>
+              <div class="term-def">The cost of what you give up by choosing one option over another. Every dollar sitting in a low-yield savings account has an opportunity cost: the growth that dollar could have generated if invested instead. This is not abstract — it&#x27;s a real dollar figure you can calculate.</div>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="3">
+          <div class="slide__inner">
+            <h2 class="slide-heading ">Let&#x27;s Talk About Why Most People Never Build Wealth</h2>
+            <div class="slide-body"><p>Here&#x27;s a belief that&#x27;s so common it feels like common sense: keeping your money in a savings account is the &#x27;safe&#x27; choice. You&#x27;re not gambling on stocks. You&#x27;re not risking anything. Your balance only goes up, never down. It feels responsible, even smart.</p><p>The problem is that this belief is quietly and completely wrong — and the math will prove it to you in a minute.</p></div>
+            
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="4">
+          <div class="slide__inner">
+            <h2 class="slide-heading slide-heading--cont">Let&#x27;s Talk About Why Most People Never Build Wealth (cont.)</h2>
+            <div class="slide-body"><p>The thing nobody teaches you in school (and that the financial industry has very little incentive to advertise) is that money has an enemy, and that enemy is inflation. Inflation doesn&#x27;t show up dramatically. It doesn&#x27;t crash your account or send you an alarming notification. It just slowly, quietly, relentlessly eats away at what your money can actually buy. Year after year. While you&#x27;re sleeping. While you&#x27;re living your life. While your savings balance looks totally fine.</p><p>The average inflation rate in the United States over the last century has been about 3% per year. That doesn&#x27;t sound scary. But here&#x27;s what 3% per year actually does: it cuts the purchasing power of your money roughly in half every 24 years. The $10,000 you&#x27;re sitting on today? In 30 years, in terms of what it can actually buy, it&#x27;s worth less than $4,200 in today&#x27;s dollars. You didn&#x27;t lose a cent in nominal terms. But you lost more than half your purchasing power. That&#x27;s not safety — that&#x27;s a slow-motion disaster.</p></div>
+            
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="5">
+          <div class="slide__inner">
+            <h2 class="slide-heading ">The Math Nobody Shows You</h2>
+            <div class="slide-body"><p>Let&#x27;s make this real with actual numbers, because abstract percentages don&#x27;t hit the same way as dollar figures.</p><p>Imagine you have $10,000 sitting in a high-yield savings account. We&#x27;ll be generous and say it earns 0.5% per year — which is actually pretty good compared to the national average rate of around 0.5-0.6% at most banks (many traditional savings accounts pay even less). After 30 years at 0.5% annual interest, your $10,000 grows to about $11,614. Looks okay on paper, right? You made over $1,600.</p></div>
+            
+            <div class="callout callout--warning">
+              <span class="callout-icon">⚠️</span>
+              <div class="callout-text">The savings account path turns $10,000 into $4,785 of real purchasing power over 30 years. The invested path turns it into $71,889. The gap isn&#x27;t a rounding error — it&#x27;s the difference between building wealth and quietly going broke.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="6">
+          <div class="slide__inner">
+            <h2 class="slide-heading slide-heading--cont">The Math Nobody Shows You (cont.)</h2>
+            <div class="slide-body"><p>Now here&#x27;s the gut punch: after accounting for 3% annual inflation, that $11,614 is only worth about $4,785 in today&#x27;s purchasing power. You started with $10,000 of real buying power. You ended with $4,785. You &#x27;saved&#x27; your money for 30 years and came out with less than half of what you started with, in real terms. You didn&#x27;t break even. You lost — and you lost badly.</p><p>Now look at the other path. That same $10,000 invested in a low-cost S&amp;P 500 index fund, earning the market&#x27;s historical average return of about 10% per year, grows to roughly $174,494 after 30 years, nominally. After adjusting for that same 3% inflation, you&#x27;re sitting on about $71,889 in today&#x27;s purchasing power. That&#x27;s not just a little better than the savings account. It&#x27;s about 15 times better. The difference between these two choices — over 30 years — is roughly $67,000 in real wealth, starting from the same $10,000.</p></div>
+            
+          </div>
+        </div>
+
+        <div class="slide slide--chart" data-slide="7" data-chart-id="chart-1-0" data-chart='{"id": "cash-vs-invested-30yr", "type": "line", "title": "Cash vs. Invested: Real Purchasing Power Over 30 Years (Starting $10,000)", "description": "This chart shows the inflation-adjusted (real) value of $10,000 placed in a savings account at 0.5% annual interest versus invested in the S&P 500 at 10% average annual return, with 3% annual inflation applied to both. The gap between the two lines is the true cost of not investing.", "data": {"labels": ["Year 0", "Year 5", "Year 10", "Year 15", "Year 20", "Year 25", "Year 30"], "datasets": [{"label": "S&P 500 Index Fund (10% nominal, inflation-adjusted)", "data": [10000, 13892, 19300, 26812, 37249, 51747, 71889], "borderColor": "#22c55e", "backgroundColor": "rgba(34, 197, 94, 0.1)", "borderWidth": 3, "fill": true, "tension": 0.4, "pointBackgroundColor": "#22c55e", "pointRadius": 5}, {"label": "Savings Account (0.5% nominal, inflation-adjusted)", "data": [10000, 8844, 7821, 6917, 6118, 5410, 4785], "borderColor": "#ef4444", "backgroundColor": "rgba(239, 68, 68, 0.1)", "borderWidth": 3, "fill": true, "tension": 0.4, "pointBackgroundColor": "#ef4444", "pointRadius": 5}]}}'>
+          <div class="slide__inner">
+            <div class="slide-eyebrow">📊 The Numbers</div>
+            <h2 class="slide-heading slide-heading--sm">Cash vs. Invested: Real Purchasing Power Over 30 Years (Starting $10,000)</h2>
+            <p class="chart-desc">This chart shows the inflation-adjusted (real) value of $10,000 placed in a savings account at 0.5% annual interest versus invested in the S&amp;P 500 at 10% average annual return, with 3% annual inflation applied to both. The gap between the two lines is the true cost of not investing.</p>
+            <div class="chart-wrap">
+              <canvas id="chart-1-0"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="8">
+          <div class="slide__inner">
+            <h2 class="slide-heading ">Why Compound Growth Feels Like a Superpower</h2>
+            <div class="slide-body"><p>The reason investing wins so spectacularly over the long run isn&#x27;t just returns — it&#x27;s the compounding of those returns. Let&#x27;s make sure you really understand this, because &#x27;compounding&#x27; is one of those words that gets thrown around until it loses all meaning.</p><p>Here&#x27;s the simple version: in year one, your $10,000 earns 10%, which is $1,000. Now you have $11,000. In year two, you earn 10% on $11,000, which is $1,100. Not $1,000 — $1,100. You made an extra $100 for doing absolutely nothing, just because last year&#x27;s gains are now earning their own gains. That extra $100 earns returns in year three, and those returns earn returns in year four, and so on. It starts small. It builds slowly. And then it goes absolutely vertical.</p></div>
+            
+            <div class="callout callout--insight">
+              <span class="callout-icon">💡</span>
+              <div class="callout-text">Compound growth is front-loaded with patience and back-loaded with payoff. The first decade looks disappointing. The last decade looks like magic. The trick is not quitting during the disappointing part.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="9">
+          <div class="slide__inner">
+            <h2 class="slide-heading slide-heading--cont">Why Compound Growth Feels Like a Superpower (cont.)</h2>
+            <div class="slide-body"><p>Here&#x27;s a concrete way to see it: your $10,000 in the S&amp;P 500 grows by about $16,105 in the first ten years (to $26,105). In the second ten years, it grows by roughly $41,170 more. In the third ten years, it grows by over $107,000. Same percentage, same fund, same money — but the growth in the last decade dwarfs everything that came before. The math isn&#x27;t linear. It&#x27;s exponential. And exponential curves look boring at the start and miraculous at the end.</p><p>This is why the single most important thing you can do as an investor is start early and stay patient. Time is the secret ingredient that turns an ordinary investment into a life-changing one. A 22-year-old who invests $5,000 and never adds another cent will often end up with more money at 65 than a 32-year-old who invests $500 a month for 30 years straight — just because of the compounding runway. That&#x27;s not a metaphor. That&#x27;s arithmetic.</p></div>
+            
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="10">
+          <div class="slide__inner">
+            <h2 class="slide-heading ">Real Returns Are the Only Returns That Matter</h2>
+            <div class="slide-body"><p>One thing that trips people up is mixing up nominal returns and real returns. Your broker, your bank, your 401(k) statement — they all report nominal returns. That&#x27;s the raw number before accounting for inflation. And nominal returns are basically meaningless on their own.</p><p>Here&#x27;s why: if your savings account earns 0.5% and inflation is 3%, your real return is about -2.5%. You&#x27;re getting poorer, every year, automatically. If the stock market returns 10% and inflation is 3%, your real return is roughly 7%. That 7% is what actually makes your life better. That&#x27;s the growth in real purchasing power — the stuff you can actually spend on things.</p></div>
+            
+            <div class="callout callout--warning">
+              <span class="callout-icon">⚠️</span>
+              <div class="callout-text">A savings account earning 0.5% with 3% inflation has a real return of -2.5%. Your money is guaranteed to lose purchasing power. This isn&#x27;t a risk — it&#x27;s a certainty.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="11">
+          <div class="slide__inner">
+            <h2 class="slide-heading slide-heading--cont">Real Returns Are the Only Returns That Matter (cont.)</h2>
+            <div class="slide-body"><p>This becomes especially important when people say things like &#x27;stocks are too risky, I&#x27;d rather keep my money safe.&#x27; Safe compared to what? If safe means &#x27;my nominal balance won&#x27;t drop,&#x27; sure, the savings account is safer in that narrow sense. But if safe means &#x27;my wealth won&#x27;t erode,&#x27; a savings account is one of the riskiest places you can put money over a 10-30 year horizon. Risk isn&#x27;t just volatility — it&#x27;s the probability of ending up worse off than you started. And a negative-real-return savings account pretty much guarantees that outcome.</p><p>Nobody talks about this risk because it&#x27;s invisible. There&#x27;s no crash. No news headline. No scary chart with a red line going down. It just quietly happens, year after year, until one day you realize that your savings account balance looks the same as it did a decade ago, but somehow everything costs more and you feel poorer. That&#x27;s not bad luck. That&#x27;s the predictable, mathematical outcome of parking money in a sub-inflation account.</p></div>
+            
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="12">
+          <div class="slide__inner">
+            <h2 class="slide-heading ">Opportunity Cost: The Bill You Pay Without Noticing</h2>
+            <div class="slide-body"><p>Every financial choice you make has an opportunity cost — the value of the next-best thing you could have done with that money. And when it comes to investing, the opportunity cost of not investing is enormous, even though it&#x27;s completely invisible.</p><p>Let&#x27;s put it in terms most people can relate to. Say you have $10,000 sitting in a savings account earning next to nothing, and you leave it there for 20 years instead of investing it. The savings account gives you a real (inflation-adjusted) value of about $6,118 at the end. The S&amp;P 500 gives you roughly $37,249. The opportunity cost of that &#x27;safe&#x27; decision — in real dollars, in real purchasing power — is over $31,000. From a single $10,000 decision. Made once. Never revisited.</p></div>
+            
+            <div class="callout callout--tip">
+              <span class="callout-icon">✅</span>
+              <div class="callout-text">The best time to start investing was 20 years ago. The second best time is today. Don&#x27;t let the pursuit of the perfect moment cost you another year of compounding.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="13">
+          <div class="slide__inner">
+            <h2 class="slide-heading slide-heading--cont">Opportunity Cost: The Bill You Pay Without Noticing (cont.)</h2>
+            <div class="slide-body"><p>Now multiply that across years of missed contributions, years of holding cash &#x27;because the market feels scary,&#x27; years of keeping money in a checking account instead of a brokerage account. The opportunity cost of financial inaction is one of the largest wealth transfers most people will ever experience — and it happens silently, invisibly, completely without drama.</p><p>This isn&#x27;t meant to make you feel bad about the past. It&#x27;s meant to reframe what &#x27;doing nothing&#x27; actually costs. Most people think of inaction as risk-neutral — like pressing pause on a game. But in personal finance, inaction has a price tag, and that price tag compounds just like your investments would have. The good news is that this works in reverse too: every day you&#x27;re invested is a day the math is working for you instead of against you.</p></div>
+            
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="14">
+          <div class="slide__inner">
+            <h2 class="slide-heading ">But Wait — Isn&#x27;t the Stock Market Risky?</h2>
+            <div class="slide-body"><p>Yes, and we should talk about it honestly — because the risk is real, just often misunderstood.</p><p>The S&amp;P 500 has dropped 30%, 40%, even 50% at various points in history. In 2008-2009, it fell nearly 57% from peak to trough. In 2020, it dropped 34% in about five weeks. These crashes are real, they&#x27;re painful, and if you panic-sell during one of them, you can lock in catastrophic losses.</p></div>
+            
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="15">
+          <div class="slide__inner">
+            <h2 class="slide-heading slide-heading--cont">But Wait — Isn&#x27;t the Stock Market Risky? (cont.)</h2>
+            <div class="slide-body"><p>But here&#x27;s the thing that puts the risk in perspective: the S&amp;P 500 has recovered from every single crash in its history. Every one. The investors who got annihilated in 2008 were the ones who sold at the bottom. The investors who held on — or better yet, kept buying during the crash — ended up just fine. The market hit a new all-time high in 2013. And again. And again. And again.</p><p>The risk of investing is volatility — your balance goes up and down in ways that can feel terrifying in the short term. The risk of not investing is inflation and opportunity cost — a slower, quieter destruction of wealth that never feels scary but accumulates into a devastating outcome over decades. One of these risks is visible and emotionally uncomfortable. The other is invisible and emotionally easy to ignore. This is exactly why most people make the wrong choice — human brains are wired to avoid visible discomfort even at great long-term cost.</p></div>
+            
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="16">
+          <div class="slide__inner">
+            <h2 class="slide-heading slide-heading--cont">But Wait — Isn&#x27;t the Stock Market Risky? (cont.)</h2>
+            <div class="slide-body"><p>We&#x27;ll spend a lot of time in this course talking about how to invest in a way that&#x27;s emotionally sustainable — diversified, low-cost, automated, and boring in the best possible way. Because boring investing that you actually stick with beats exciting investing that you abandon during every downturn. The goal isn&#x27;t to find the hottest stock or time the market perfectly. The goal is to get rich slowly, reliably, and without losing your mind along the way.</p></div>
+            
+          </div>
+        </div>
+
+        <div class="slide slide--example" data-slide="17">
+          <div class="slide__inner">
+            <div class="slide-eyebrow">🔢 Real Numbers</div>
+            <h2 class="slide-heading">$10,000: Three Paths, 30 Years</h2>
+            <div class="example-body"><p>You have $10,000 today. You choose one of two paths: put it in a savings account earning 0.5% annual interest, or invest it in an S&amp;P 500 index fund earning 10% annually. Inflation runs at 3% per year throughout.
+
+Path 1 — Savings Account (0.5% nominal):
+- Year 0: $10,000 nominal / $10,000 real
+- Year 10: $10,511 nominal / $7,821 real (already lost 22% of purchasing power)
+- Year 20: $11,049 nominal / $6,118 real (lost nearly 40% of purchasing power)
+- Year 30: $11,614 nominal / $4,785 real (lost over half your purchasing power)
+
+Path 2 — S&amp;P 500 Index Fund (10% nominal):
+- Year 0: $10,000 nominal / $10,000 real
+- Year 10: $25,937 nominal / $19,300 real (nearly doubled real wealth)
+- Year 20: $67,275 nominal / $37,249 real (more than tripled real wealth)
+- Year 30: $174,494 nominal / $71,889 real (more than 7x real wealth)
+
+The gap in real wealth after 30 years: $71,889 vs. $4,785 — a difference of $67,104.
+
+Put differently: the savings account path leaves you with less than half the purchasing power you started with. The investing path multiplies your purchasing power by more than 7x. Both paths involved the same $10,000, the same 30 years, and zero additional contributions. The only difference was where the money sat.</p></div>
+          </div>
+        </div>
+
+        <div class="slide slide--example" data-slide="18">
+          <div class="slide__inner">
+            <div class="slide-eyebrow">🔢 Real Numbers</div>
+            <h2 class="slide-heading">The Inflation Theft No One Talks About</h2>
+            <div class="example-body"><p>Let&#x27;s isolate just the inflation effect on $10,000 sitting in cash (under a mattress, or in a 0% checking account), to really drive home what inflation does silently.
+
+$10,000 in cash, zero interest, 3% inflation:
+- After 5 years: worth $8,626 in today&#x27;s dollars
+- After 10 years: worth $7,441 in today&#x27;s dollars
+- After 20 years: worth $5,537 in today&#x27;s dollars
+- After 30 years: worth $4,120 in today&#x27;s dollars
+
+You never touched it. Your balance never dropped. And yet you lost $5,880 in real purchasing power — more than half — just by holding cash. This is why &#x27;I&#x27;ll keep it safe in cash until things settle down&#x27; is never actually a safe strategy when the time horizon stretches into years. Inflation doesn&#x27;t settle down. It just keeps going, one quiet percentage point at a time.</p></div>
+          </div>
+        </div>
+
+        <div class="slide slide--actions" data-slide="19">
+          <div class="slide__inner">
+            <div class="slide-eyebrow">🚀 Take Action</div>
+            <h2 class="slide-heading">Action Items</h2>
+            <ul class="action-list"><li><span class="action-num">1</span><span>Use a compound interest calculator (bankrate.com has a great free one) and plug in your current savings balance, your savings account interest rate, and 30 years. Then plug in that same balance with a 10% return. Write down the difference — that&#x27;s your personal &#x27;do nothing&#x27; cost in real dollars.</span></li><li><span class="action-num">2</span><span>Open a spreadsheet (Google Sheets is free) and track every dollar you spend for the next 30 days. Categorize each expense as &#x27;fixed&#x27; (rent, insurance), &#x27;variable necessary&#x27; (groceries, gas), or &#x27;discretionary&#x27; (subscriptions, dining, entertainment). At the end of the month, identify at least $100-$200 per month that could become investable income — that&#x27;s $1,200-$2,400 per year working for you instead of going to Netflix and DoorDash.</span></li><li><span class="action-num">3</span><span>Look up your current savings account&#x27;s Annual Percentage Yield (APY) — you can find it in your account settings or on your bank&#x27;s website. Then look up the current inflation rate (Google &#x27;US CPI rate&#x27;). Subtract your APY from the inflation rate. That negative number is the guaranteed annual return you&#x27;re getting right now. Sit with that number for a second.</span></li></ul>
+          </div>
+        </div>
+
+        <div class="slide slide--resources" data-slide="20">
+          <div class="slide__inner">
+            <div class="slide-eyebrow">📚 Go Deeper</div>
+            <h2 class="slide-heading">Tools &amp; Resources</h2>
+            <ul class="resource-list"><li>📌 Bankrate Compound Interest Calculator — bankrate.com/banking/savings/compound-savings-calculator/</li><li>📌 Google Sheets — sheets.google.com (free, great for tracking expenses)</li><li>📌 U.S. Inflation Calculator — usinflationcalculator.com</li><li>📌 Bureau of Labor Statistics CPI Data — bls.gov/cpi/</li><li>📌 &#x27;The Little Book of Common Sense Investing&#x27; by John C. Bogle — the index fund gospel, written by the person who invented them</li><li>📌 &#x27;I Will Teach You To Be Rich&#x27; by Ramit Sethi — conversational, practical, not preachy</li><li>📌 JL Collins&#x27; Stock Series — jlcollinsnh.com/stock-series/ — free, brilliant, written like a letter to his daughter</li><li>📌 Khan Academy Personal Finance — khanacademy.org — free explainers on inflation, compound interest, and more</li></ul>
+          </div>
+        </div>
+
+        <div class="slide slide--bridge" data-slide="21">
+          <div class="slide__inner">
+            <div class="slide-eyebrow">🔮 Coming Up</div>
+            <h2 class="slide-heading">What&#x27;s Next</h2>
+            <blockquote class="bridge-quote">So we&#x27;ve established that you need to invest. Great. But invest in what? If you Google &#x27;best investments,&#x27; you&#x27;ll find about 47 conflicting opinions from people who all sound very confident. Hedge funds, individual stocks, options, crypto, REITs, annuities — the financial industry has engineered an overwhelming number of products, most of which exist to generate fees for someone else. In Class 2, we&#x27;re going to cut through all of that noise and talk about the single investment vehicle that has outperformed roughly 90% of professional money managers over 15+ years: the humble index fund. We&#x27;ll look at exactly how much fees eat into your wealth (the answer will make you angry), why passive beats active almost every time, and how to actually start building your portfolio with these tools. See you there.</blockquote>
+          </div>
+        </div>
+
+        <div class="slide slide--end" data-slide="22">
+          <div class="slide__inner">
+            <div class="end-logo">
+              <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="56" height="56">
+                <rect width="36" height="36" rx="8" fill="#1a1a2e"/>
+                <path d="M6 26 L13 12 L17 18 L22 8 L30 16" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="30" cy="16" r="2.5" fill="#00d4aa"/>
+              </svg>
+            </div>
+            <h2 class="end-title">Class 1 Complete</h2>
+            <p class="end-subtitle">Why Invest at All?</p>
+            <p class="end-tagline">Buy. Hold. Chill.</p>
+            <p class="end-disclaimer">VTI & Chill provides financial education, not personalized financial advice. Past performance does not guarantee future results.</p>
+          </div>
+        </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav-controls">
+    <button class="nav-btn nav-btn--prev" id="prevBtn" aria-label="Previous slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="nav-btn nav-btn--next" id="nextBtn" aria-label="Next slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </nav>
+
+  <!-- Slide dots (mobile) -->
+  <div class="nav-dots" id="navDots"></div>
+
+  <script>
+
+    (function() {
+      const deck = document.getElementById('deck');
+      const slides = deck.querySelectorAll('.slide');
+      const total = 23;
+      let current = 0;
+      let transitioning = false;
+      
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const progressBar = document.getElementById('progressBar');
+      const slideNum = document.getElementById('slideNum');
+      const dotsContainer = document.getElementById('navDots');
+      
+      // Build dots
+      for (let i = 0; i < total; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      }
+      
+      const dots = dotsContainer.querySelectorAll('.nav-dot');
+      
+      function updateUI() {
+        slides.forEach((s, i) => {
+          s.classList.remove('active', 'prev');
+          if (i === current) s.classList.add('active');
+          else if (i < current) s.classList.add('prev');
+        });
+        
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === total - 1;
+        progressBar.style.width = ((current / (total - 1)) * 100) + '%';
+        slideNum.textContent = current + 1;
+        
+        // Render chart if this slide has one
+        const activeSlide = slides[current];
+        if (activeSlide.dataset.chart && !activeSlide.dataset.chartRendered) {
+          activeSlide.dataset.chartRendered = 'true';
+          renderChart(activeSlide);
+        }
+      }
+      
+      function goTo(idx) {
+        if (transitioning || idx === current || idx < 0 || idx >= total) return;
+        transitioning = true;
+        current = idx;
+        updateUI();
+        setTimeout(() => transitioning = false, 500);
+      }
+      
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+      
+      // Keyboard
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+        if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+        if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+      });
+      
+      // Button clicks
+      prevBtn.addEventListener('click', prev);
+      nextBtn.addEventListener('click', next);
+      
+      // Touch swipe
+      let touchStartX = 0;
+      let touchStartY = 0;
+      deck.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      
+      deck.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+          if (dx < 0) next();
+          else prev();
+        }
+      }, { passive: true });
+      
+      // Click to advance (only on non-interactive areas)
+      deck.addEventListener('click', (e) => {
+        if (e.target.closest('a, button, canvas, .callout, .nav-btn')) return;
+        const x = e.clientX / window.innerWidth;
+        if (x > 0.5) next();
+        else prev();
+      });
+      
+      // Chart rendering
+      const brandColors = ['#00d4aa', '#818cf8', '#fbbf24', '#f87171', '#5eead4', '#a78bfa'];
+      
+      function renderChart(slideEl) {
+        const data = JSON.parse(slideEl.dataset.chart);
+        const canvasId = slideEl.dataset.chartId;
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+        
+        const textColor = '#94a3b8';
+        const gridColor = 'rgba(255,255,255,0.06)';
+        
+        // Apply brand colors
+        if (data.data && data.data.datasets) {
+          data.data.datasets.forEach((ds, i) => {
+            if (data.type === 'doughnut' || data.type === 'pie') {
+              if (!ds.backgroundColor || typeof ds.backgroundColor === 'string') {
+                ds.backgroundColor = brandColors;
+                ds.borderColor = '#1a1a2e';
+                ds.borderWidth = 2;
+              }
+            } else {
+              if (!ds.borderColor) ds.borderColor = brandColors[i % brandColors.length];
+              if (data.type === 'bar' && !ds.backgroundColor) {
+                ds.backgroundColor = brandColors[i % brandColors.length] + '99';
+              }
+              if (data.type === 'line') {
+                ds.tension = 0.3;
+                ds.pointRadius = 4;
+                ds.pointHoverRadius = 6;
+                if (!ds.backgroundColor) {
+                  ds.backgroundColor = brandColors[i % brandColors.length] + '15';
+                  ds.fill = i === 0;
+                }
+              }
+            }
+          });
+        }
+        
+        new Chart(canvas, {
+          type: data.type,
+          data: data.data,
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            animation: { duration: 800, easing: 'easeOutQuart' },
+            plugins: {
+              legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                  color: textColor,
+                  font: { family: "'Satoshi', sans-serif", size: 11 },
+                  padding: 14,
+                  usePointStyle: true,
+                  pointStyle: 'circle',
+                }
+              },
+              tooltip: {
+                backgroundColor: '#1a1a2e',
+                titleColor: '#e2e8f0',
+                bodyColor: '#94a3b8',
+                borderColor: '#2d2d4a',
+                borderWidth: 1,
+                cornerRadius: 8,
+                padding: 10,
+                titleFont: { family: "'Satoshi', sans-serif", weight: '700' },
+                bodyFont: { family: "'Satoshi', sans-serif" },
+                callbacks: {
+                  label: function(ctx) {
+                    let label = ctx.dataset.label || '';
+                    if (label) label += ': ';
+                    if (ctx.parsed.y !== null && ctx.parsed.y !== undefined) {
+                      label += '$' + ctx.parsed.y.toLocaleString();
+                    } else if (ctx.parsed !== null) {
+                      label += ctx.parsed + '%';
+                    }
+                    return label;
+                  }
+                }
+              }
+            },
+            scales: (data.type !== 'doughnut' && data.type !== 'pie') ? {
+              x: {
+                grid: { color: gridColor },
+                ticks: { color: textColor, font: { family: "'Satoshi', sans-serif", size: 11 } }
+              },
+              y: {
+                grid: { color: gridColor },
+                ticks: {
+                  color: textColor,
+                  font: { family: "'Satoshi', sans-serif", size: 11 },
+                  callback: function(val) {
+                    if (Math.abs(val) >= 1000000) return '$' + (val/1000000).toFixed(1) + 'M';
+                    if (Math.abs(val) >= 1000) return '$' + (val/1000).toFixed(0) + 'K';
+                    return '$' + val.toLocaleString();
+                  }
+                }
+              }
+            } : undefined
+          }
+        });
+      }
+      
+      // Init
+      updateUI();
+    })();
+    
+  </script>
+<script data-pplx-inline-edit>
+(function(){
+  if(window===window.top)return;
+  function inlineAll(orig,clone){
+    if(orig.nodeType!==1)return;
+    try{
+      var cs=getComputedStyle(orig);
+      var t='';
+      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
+      clone.style.cssText=t;
+    }catch(e){}
+    var oc=orig.children,cc=clone.children;
+    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
+  }
+  function stripExternal(clone){
+    var imgs=clone.querySelectorAll('img');
+    for(var i=0;i<imgs.length;i++){
+      var s=imgs[i].getAttribute('src');
+      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
+    }
+    var all=clone.querySelectorAll('*');
+    for(var i=0;i<all.length;i++){
+      var st=all[i].style.cssText;
+      if(st&&st.indexOf('url(')>=0){
+        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
+      }
+    }
+  }
+  window.addEventListener('message',function(e){
+    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
+    var scrollX=window.scrollX||window.pageXOffset||0;
+    var scrollY=window.scrollY||window.pageYOffset||0;
+    var w=window.innerWidth,h=window.innerHeight;
+    try{
+      var clone=document.documentElement.cloneNode(true);
+      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
+      for(var i=0;i<rm.length;i++){rm[i].remove();}
+      inlineAll(document.documentElement,clone);
+      stripExternal(clone);
+      var html=new XMLSerializer().serializeToString(clone);
+      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
+        +'<foreignObject width="100%" height="100%">'
+        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
+        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
+        +html+'</div></div></foreignObject></svg>';
+      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+      var img=new Image();
+      img.onload=function(){
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        c.getContext('2d').drawImage(img,0,0);
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.onerror=function(){
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.src=svgUrl;
+    }catch(err){
+      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+    }
+  });
+})();
+</script></body>
+</html>
