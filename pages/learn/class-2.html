@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Class 2: Index Funds 101 — VTI & Chill</title>
+  <meta name="description" content="Why the boring investment beats the brilliant ones — and how fees are silently stealing your retirement">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a1a2e'/><path d='M6 22 L12 10 L16 16 L20 8 L26 14' stroke='%2300d4aa' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/><circle cx='26' cy='14' r='2' fill='%2300d4aa'/></svg>">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --navy: #1a1a2e;
+      --navy-light: #16213e;
+      --navy-mid: #222244;
+      --mint: #00d4aa;
+      --mint-hover: #00e6b8;
+      --mint-bg: rgba(0, 212, 170, 0.08);
+      --mint-border: rgba(0, 212, 170, 0.25);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --text-faint: #64748b;
+      --surface: #1e1e36;
+      --border: #2d2d4a;
+      --warning-bg: rgba(245, 158, 11, 0.1);
+      --warning-border: rgba(245, 158, 11, 0.3);
+      --warning-text: #fbbf24;
+      --tip-bg: rgba(16, 185, 129, 0.1);
+      --tip-border: rgba(16, 185, 129, 0.3);
+      --tip-text: #34d399;
+      
+      --font-display: 'Cabinet Grotesk', 'Inter', sans-serif;
+      --font-body: 'Satoshi', 'Inter', sans-serif;
+      
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.25rem;
+      --text-xl: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+      --text-2xl: clamp(2rem, 1rem + 3vw, 3.5rem);
+      
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--navy);
+      color: var(--text);
+      overflow: hidden;
+      height: 100dvh;
+      width: 100vw;
+      position: relative;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    
+    /* ===== TOP BAR ===== */
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      gap: 16px;
+      background: rgba(26, 26, 46, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .topbar__logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      flex-shrink: 0;
+    }
+    
+    .topbar__logo em {
+      color: var(--mint);
+      font-style: normal;
+    }
+    
+    .topbar__progress {
+      flex: 1;
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    
+    .topbar__progress-bar {
+      height: 100%;
+      background: var(--mint);
+      border-radius: 2px;
+      transition: width 0.4s var(--ease);
+      width: 0%;
+    }
+    
+    .topbar__counter {
+      font-variant-numeric: tabular-nums;
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      flex-shrink: 0;
+      min-width: 44px;
+      text-align: right;
+    }
+    
+    /* ===== DECK ===== */
+    .deck {
+      position: relative;
+      width: 100%;
+      height: 100dvh;
+      overflow: hidden;
+    }
+    
+    /* ===== SLIDES ===== */
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 24px 80px;
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+      pointer-events: none;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+      z-index: 2;
+    }
+    
+    .slide.prev {
+      opacity: 0;
+      transform: translateX(-60px);
+    }
+    
+    .slide__inner {
+      max-width: 720px;
+      width: 100%;
+    }
+    
+    /* ===== SLIDE TYPES ===== */
+    
+    /* Title */
+    .slide--title { text-align: center; }
+    .slide--title .slide__inner { max-width: 800px; }
+    
+    .slide-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 999px;
+      background: var(--mint-bg);
+      color: var(--mint);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+    
+    .slide-class-label {
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      color: var(--mint);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    
+    .slide-title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    
+    .slide-subtitle {
+      font-size: var(--text-lg);
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .slide-start-hint {
+      margin-top: 40px;
+      font-size: var(--text-sm);
+      color: var(--text-faint);
+    }
+    
+    .slide-start-hint kbd {
+      display: inline-block;
+      padding: 2px 8px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--surface);
+      font-family: inherit;
+      font-size: var(--text-xs);
+    }
+    
+    /* Eyebrow label */
+    .slide-eyebrow {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--mint);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    
+    /* Heading */
+    .slide-heading {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      text-wrap: balance;
+    }
+    
+    .slide-heading--sm {
+      font-size: clamp(1.1rem, 0.8rem + 1.5vw, 1.75rem);
+    }
+    
+    .slide-heading--cont {
+      font-size: clamp(1.1rem, 0.8rem + 1.5vw, 1.6rem);
+      color: var(--text-muted);
+    }
+    
+    /* Objectives */
+    .obj-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .obj-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      font-size: var(--text-base);
+      line-height: 1.5;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .obj-list li:last-child { border-bottom: none; }
+    
+    .obj-arrow {
+      color: var(--mint);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    /* Terms */
+    .terms-grid {
+      display: grid;
+      gap: 12px;
+    }
+    
+    .term-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+    
+    .term-word {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--mint);
+      font-size: var(--text-sm);
+      margin-bottom: 4px;
+    }
+    
+    .term-def {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    
+    /* Recap / Bridge quotes */
+    .recap-quote, .bridge-quote {
+      font-size: var(--text-lg);
+      line-height: 1.6;
+      color: var(--text);
+      border-left: 3px solid var(--mint);
+      padding-left: 20px;
+      font-style: italic;
+    }
+    
+    /* Content body */
+    .slide-body p, .example-body p {
+      font-size: var(--text-base);
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    
+    .slide-body p:last-child, .example-body p:last-child { margin-bottom: 0; }
+    
+    .slide-body strong, .example-body strong {
+      color: #fff;
+      font-weight: 700;
+    }
+    
+    /* Callout */
+    .callout {
+      margin-top: 20px;
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      gap: 12px;
+      font-size: var(--text-sm);
+      line-height: 1.5;
+    }
+    
+    .callout-icon {
+      flex-shrink: 0;
+      font-size: 1.2em;
+      line-height: 1.5;
+    }
+    
+    .callout--warning {
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      color: var(--warning-text);
+    }
+    
+    .callout--insight {
+      background: var(--mint-bg);
+      border: 1px solid var(--mint-border);
+      color: var(--mint);
+    }
+    
+    .callout--tip {
+      background: var(--tip-bg);
+      border: 1px solid var(--tip-border);
+      color: var(--tip-text);
+    }
+    
+    .callout strong { color: inherit; font-weight: 700; }
+    
+    /* Charts */
+    .chart-desc {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    
+    .chart-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      max-height: 360px;
+    }
+    
+    .chart-wrap canvas {
+      max-height: 300px;
+    }
+    
+    /* Actions */
+    .action-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .action-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      font-size: var(--text-base);
+      line-height: 1.6;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .action-list li:last-child { border-bottom: none; }
+    
+    .action-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--mint);
+      color: var(--navy);
+      font-size: var(--text-xs);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    
+    .action-list li strong { color: #fff; }
+    
+    /* Resources */
+    .resource-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .resource-list li {
+      padding: 10px 0;
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      line-height: 1.5;
+    }
+    
+    .resource-list li:last-child { border-bottom: none; }
+    
+    /* End slide */
+    .slide--end { text-align: center; }
+    
+    .end-logo { margin-bottom: 24px; }
+    
+    .end-title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 800;
+      color: var(--mint);
+      margin-bottom: 8px;
+    }
+    
+    .end-subtitle {
+      font-size: var(--text-lg);
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    
+    .end-tagline {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    
+    .end-disclaimer {
+      font-size: var(--text-xs);
+      color: var(--text-faint);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    
+    /* ===== NAV CONTROLS ===== */
+    .nav-controls {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 100;
+    }
+    
+    .nav-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(30, 30, 54, 0.9);
+      backdrop-filter: blur(8px);
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s var(--ease);
+    }
+    
+    .nav-btn:hover {
+      background: var(--mint);
+      color: var(--navy);
+      border-color: var(--mint);
+    }
+    
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+    
+    .nav-btn:disabled:hover {
+      background: rgba(30, 30, 54, 0.9);
+      color: var(--text);
+      border-color: var(--border);
+    }
+    
+    /* Dots */
+    .nav-dots {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 100;
+    }
+    
+    .nav-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: all 0.3s var(--ease);
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+    
+    .nav-dot.active {
+      background: var(--mint);
+      width: 20px;
+      border-radius: 3px;
+    }
+    
+    /* Touch area for swipe */
+    .deck::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .slide { padding: 56px 16px 100px; }
+      .slide__inner { max-width: 100%; }
+      .slide-title { font-size: clamp(1.6rem, 1rem + 4vw, 2.5rem); }
+      .terms-grid { gap: 8px; }
+      .term-card { padding: 12px 14px; }
+      .topbar { padding: 0 12px; }
+      .topbar__logo span { display: none; }
+      .chart-wrap { padding: 10px; }
+      .nav-dots { bottom: 76px; }
+    }
+    
+    @media (min-width: 1024px) {
+      .slide { padding: 64px 48px 80px; }
+      .slide__inner { max-width: 760px; }
+    }
+    
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .slide { transition: opacity 0.2s ease; transform: none !important; }
+      .slide.prev { transform: none !important; }
+    }
+    
+    /* Scrollbar for overflowing slides */
+    .slide::-webkit-scrollbar { width: 4px; }
+    .slide::-webkit-scrollbar-track { background: transparent; }
+    .slide::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    
+  </style>
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="topbar">
+    <a href="#" class="topbar__logo">
+      <svg viewBox="0 0 36 36" fill="none" width="28" height="28">
+        <rect width="36" height="36" rx="8" fill="var(--navy)"/>
+        <path d="M6 26 L13 12 L17 18 L22 8 L30 16" stroke="var(--mint)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="30" cy="16" r="2.5" fill="var(--mint)"/>
+      </svg>
+      <span>VTI & <em>Chill</em></span>
+    </a>
+    <div class="topbar__progress">
+      <div class="topbar__progress-bar" id="progressBar"></div>
+    </div>
+    <div class="topbar__counter">
+      <span id="slideNum">1</span> / 26
+    </div>
+  </header>
+
+  <!-- Slide container -->
+  <div class="deck" id="deck">
+    
+        <div class="slide slide--title" data-slide="0">
+          <div class="slide__inner">
+            <div class="slide-badge">FREE</div>
+            <div class="slide-class-label">📊 Class 2 of 8</div>
+            <h1 class="slide-title">Index Funds 101</h1>
+            <p class="slide-subtitle">Why the boring investment beats the brilliant ones — and how fees are silently stealing your retirement</p>
+            <div class="slide-start-hint">
+              <span>Press <kbd>→</kbd> or click to begin</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide--objectives" data-slide="1">
+          <div class="slide__inner">
+            <div class="slide-eyebrow">🎯 Objectives</div>
+            <h2 class="slide-heading">What You&#x27;ll Learn</h2>
+            <ul class="obj-list"><li><span class="obj-arrow">→</span> Explain what an index fund is and how it differs from an actively managed fund</li><li><span class="obj-arrow">→</span> Understand cap-weighting and what &#x27;owning the market&#x27; actually means in practice</li><li><span class="obj-arrow">→</span> Calculate how expense ratios compound into massive dollar losses over a 30-year horizon</li><li><span class="obj-arrow">→</span> Identify specific low-cost index funds (VTI, FZROX) and understand their basic structure</li></ul>
+          </div>
+        </div>
+
+        <div class="slide slide--terms" data-slide="2">
+          <div class="slide__inner">
+            <div class="slide-eyebrow">📝 Vocabulary</div>
+            <h2 class="slide-heading">Key Terms</h2>
+            <div class="terms-grid">
+            <div class="term-card">
+              <div class="term-word">Index Fund</div>
+              <div class="term-def">A fund that tracks a market index (like the S&amp;P 500 or the total U.S. stock market) by holding all — or a representative sample — of the stocks in that index. Instead of a manager picking stocks, the fund just owns the market mechanically. No guesswork, no trading, no ego. Because of this simplicity, the costs are dramatically lower than actively managed funds.</div>
+            </div>
+            <div class="term-card">
+              <div class="term-word">Expense Ratio</div>
+              <div class="term-def">The annual fee a fund charges to manage your money, expressed as a percentage of your invested balance. A 1% expense ratio means the fund takes $10 per year on every $1,000 you have invested. This fee is charged every year, on your entire balance, regardless of performance — and because it reduces the balance that compounds, even tiny differences in expense ratios create massive differences in outcomes over decades.</div>
+            </div>
+            <div class="term-card">
+              <div class="term-word">Cap-Weighting</div>
+              <div class="term-def">The way most index funds decide how much of each stock to hold. &#x27;Cap&#x27; refers to market capitalization — the total value of a company&#x27;s outstanding shares. In a cap-weighted index, bigger companies get a bigger slice of the fund. Apple has a roughly 6.5% weighting in a total U.S. market fund not because anyone decided Apple deserves that much, but because the market has collectively valued Apple as one of the largest companies in existence.</div>
+            </div>
+            <div class="term-card">
+              <div class="term-word">Active vs. Passive Management</div>
+              <div class="term-def">Active management means a fund manager (a human being or team of humans) analyzes stocks and makes decisions about what to buy, sell, and hold, trying to beat the market. Passive management means the fund simply tracks an index — no decisions, no stock-picking, just automated replication of the market. After fees, the data is overwhelmingly clear: passive wins almost every time over long time horizons.</div>
+            </div>
+            <div class="term-card">
+              <div class="term-word">Benchmark</div>
+              <div class="term-def">The market index that an actively managed fund is trying to beat. If an S&amp;P 500 index fund returns 10% and an active fund also returns 10% but charges 1% in fees, the active fund has underperformed its benchmark by 1%. A fund &#x27;beating the benchmark&#x27; means it returned more than the index after fees. Most don&#x27;t.</div>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="slide slide--recap" data-slide="3">
+          <div class="slide__inner">
+            <div class="slide-eyebrow">↩️ Recap</div>
+            <h2 class="slide-heading">Previously...</h2>
+            <blockquote class="recap-quote">Index funds are the most powerful, most boring, and most consistently winning investment tool available to regular people. They work by owning the entire market mechanically, with no stock-picking and almost no cost. The data across 15+ year periods shows that roughly 88-92% of actively managed funds underperform the index after fees. The primary reason is fees: a 1% expense ratio on $500/month of contributions over 30 years costs you $210,130 compared to a 0.03% index fund earning the same gross return. That&#x27;s not a small detail — it&#x27;s the difference between a comfortable retirement and a great one. Specific funds to know: VTI (Vanguard, 0.03%) and FZROX (Fidelity, 0%) are both excellent total market index funds. The financial industry benefits from keeping this information confusing. Your job is to ignore the noise, choose the low-cost index fund, and stay invested.</blockquote>
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="4">
+          <div class="slide__inner">
+            <h2 class="slide-heading ">The Mutual Fund Industrial Complex</h2>
+            <div class="slide-body"><p>Let&#x27;s set the scene. It&#x27;s the 1970s. If you wanted to invest in the stock market, your only real option was to buy shares through a broker (who charged fat commissions) or put money into an actively managed mutual fund. These funds employed analysts, researchers, traders, and portfolio managers — all very smart, highly credentialed people — whose job was to figure out which stocks were going to do better than average, and buy more of those.</p><p>The pitch made perfect sense. These were professionals. They had access to research, to corporate earnings calls, to economic models. Surely a smart, dedicated team of Wall Street experts could pick better stocks than the average person — or better than just buying everything and holding it. Investors poured money in by the trillions. The fund management industry became an empire.</p></div>
+            
+            <div class="callout callout--insight">
+              <span class="callout-icon">💡</span>
+              <div class="callout-text">John Bogle&#x27;s invention of the index fund is estimated to have saved individual investors hundreds of billions of dollars in fees. The financial industry spent decades trying to discredit him. That alone tells you something.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="5">
+          <div class="slide__inner">
+            <h2 class="slide-heading slide-heading--cont">The Mutual Fund Industrial Complex (cont.)</h2>
+            <div class="slide-body"><p>There was just one problem. The data, when anyone bothered to look at it rigorously, told a very different story. In 1974, an economist named John Bogle looked at the evidence and had a radical idea: what if instead of paying people to try to beat the market, you just bought the entire market and held it? No stock-picking. No trading. Just own everything. The fund that resulted was the Vanguard 500 Index Fund, launched in 1976 — the first index fund available to regular investors. Wall Street mocked it. Fund managers called it &#x27;Bogle&#x27;s Folly.&#x27; They said nobody would want an average return when they could aim for a great one.</p><p>Fifty years later, index funds hold over $13 trillion in assets and have made John Bogle one of the most consequential figures in financial history. The fund managers who mocked him have mostly been quietly humiliated by the data.</p></div>
+            
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="6">
+          <div class="slide__inner">
+            <h2 class="slide-heading ">What an Index Fund Actually Is</h2>
+            <div class="slide-body"><p>The concept is beautifully simple, which is part of why Wall Street hates it. An index is just a list — a predefined list of stocks with predefined rules for inclusion. The S&amp;P 500 is a list of 500 large U.S. companies selected by a committee at S&amp;P Global. The total U.S. stock market index (tracked by funds like VTI) is basically every publicly traded company in America, weighted by size. The rules don&#x27;t change based on market conditions or someone&#x27;s opinion about tech stocks.</p><p>An index fund holds all (or nearly all) of the stocks on that list, in proportion to their size. When Apple is worth more, the fund holds a little more Apple. When a company gets too small to be in the S&amp;P 500, the fund sells it and buys whatever replaces it — automatically, mechanically, without drama. There are no fund managers agonizing over whether to sell Meta before earnings. There are no analysts flying to company headquarters for meetings. There&#x27;s a computer, a spreadsheet, and some very boring rebalancing software.</p><p>Because of this mechanical simplicity, index funds cost almost nothing to run. Vanguard&#x27;s VTI (Total Stock Market ETF) charges an expense ratio of 0.03% per year. That means for every $10,000 you have invested, you pay $3. Per year. Not per month — per year. Fidelity has gone even further with FZROX, their Zero Total Market Index Fund, which charges literally 0% — no expense ratio at all. Meanwhile, the average actively managed U.S. equity fund charges around 0.68% annually, and many charge 1% or more. That difference sounds small. We&#x27;re about to show you why it isn&#x27;t.</p></div>
+            
+            <div class="callout callout--insight">
+              <span class="callout-icon">💡</span>
+              <div class="callout-text">VTI charges $3/year on a $10,000 investment. The average actively managed fund charges $68-100/year on the same balance. And that difference compounds, year after year, on a balance that&#x27;s growing.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide--chart" data-slide="7" data-chart-id="chart-2-0" data-chart='{"id": "fee-comparison-bar", "type": "bar", "title": "$500/Month: Index Fund vs. Active Fund After Fees (10% Gross Return)", "description": "This bar chart compares the ending balance of $500/month invested in a 1% expense ratio active fund (9% net return) versus a 0.03% index fund (9.97% net return), shown at years 10, 20, and 30. The widening gap illustrates how fee drag compounds over time.", "data": {"labels": ["Year 10", "Year 20", "Year 30"], "datasets": [{"label": "Index Fund (0.03% fee, 9.97% net)", "data": [103096, 381353, 1132367], "backgroundColor": "rgba(34, 197, 94, 0.85)", "borderColor": "#16a34a", "borderWidth": 2, "borderRadius": 6}, {"label": "Active Fund (1% fee, 9% net)", "data": [97483, 336448, 922237], "backgroundColor": "rgba(239, 68, 68, 0.85)", "borderColor": "#dc2626", "borderWidth": 2, "borderRadius": 6}]}}'>
+          <div class="slide__inner">
+            <div class="slide-eyebrow">📊 The Numbers</div>
+            <h2 class="slide-heading slide-heading--sm">$500/Month: Index Fund vs. Active Fund After Fees (10% Gross Return)</h2>
+            <p class="chart-desc">This bar chart compares the ending balance of $500/month invested in a 1% expense ratio active fund (9% net return) versus a 0.03% index fund (9.97% net return), shown at years 10, 20, and 30. The widening gap illustrates how fee drag compounds over time.</p>
+            <div class="chart-wrap">
+              <canvas id="chart-2-0"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="8">
+          <div class="slide__inner">
+            <h2 class="slide-heading ">Fees Are Termites in Your Wealth</h2>
+            <div class="slide-body"><p>Here&#x27;s the part that makes most people genuinely upset when they really understand it. Expense ratios don&#x27;t just reduce your returns — they reduce the balance that&#x27;s compounding. When your fund charges 1% and your balance is $100,000, you don&#x27;t just lose $1,000 in fees that year. You also lose all the future compound growth that $1,000 would have generated over the remaining years of your investment horizon. The fees compound against you.</p><p>Let&#x27;s run the actual math with a scenario that&#x27;s completely realistic for an ordinary person.</p></div>
+            
+            <div class="callout callout--warning">
+              <span class="callout-icon">⚠️</span>
+              <div class="callout-text">The $210,130 difference between a 1% fund and a 0.03% fund over 30 years represents years of contributions you already made — just working for the fund company instead of you. That money didn&#x27;t vanish. It was transferred. From your pocket to theirs.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="9">
+          <div class="slide__inner">
+            <h2 class="slide-heading slide-heading--cont">Fees Are Termites in Your Wealth (cont.)</h2>
+            <div class="slide-body"><p>You invest $500 a month for 30 years. Both funds earn 10% gross return per year before fees. Fund A is an actively managed fund with a 1% expense ratio — your net return is 9%. Fund B is an index fund with a 0.03% expense ratio — your net return is 9.97%.</p><p>After 10 years: Fund A has grown to $97,483. Fund B has grown to $103,096. The fee difference so far: $5,613. Annoying, but not catastrophic.</p></div>
+            
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="10">
+          <div class="slide__inner">
+            <h2 class="slide-heading slide-heading--cont">Fees Are Termites in Your Wealth (cont.)</h2>
+            <div class="slide-body"><p>After 20 years: Fund A is worth $336,448. Fund B is worth $381,353. The fee difference: $44,905. Now it&#x27;s getting serious.</p><p>After 30 years: Fund A is worth $922,237. Fund B is worth $1,132,367. The fee difference: $210,130.</p></div>
+            
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="11">
+          <div class="slide__inner">
+            <h2 class="slide-heading slide-heading--cont">Fees Are Termites in Your Wealth (cont.)</h2>
+            <div class="slide-body"><p>Two hundred and ten thousand dollars. That&#x27;s the cost of choosing the 1% fund over the 0.03% fund. You made the same $500/month contributions. You got the same gross market returns. The only difference was a single decimal on a fee that sounds trivial. The fund industry is brilliant at disguising this cost because they never show it to you this way. They show you net returns (which already have the fee baked in), not what you would have had without the fee.</p></div>
+            
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="12">
+          <div class="slide__inner">
+            <h2 class="slide-heading ">But Don&#x27;t Active Managers Beat the Market?</h2>
+            <div class="slide-body"><p>This is the question that the fund management industry desperately wants you to answer with &#x27;yes.&#x27; And on any given year, some of them do. That&#x27;s the hook — you can always find a fund that beat the S&amp;P 500 last year, and the year before, and maybe the year before that. The human mind sees that track record and concludes: this manager is good at this. I should put my money with them.</p><p>The problem is persistence. Does beating the market last year predict beating the market next year? S&amp;P Global tracks this rigorously in their annual SPIVA report (S&amp;P Index Versus Active), and the data is brutal. Over any 15-year period, roughly 88-92% of actively managed U.S. large-cap funds have underperformed the S&amp;P 500 index. Not a slim majority — almost all of them. And the few that outperform in one period are not reliably the same ones that outperform in the next period. A fund that&#x27;s in the top quartile for performance in one five-year period has roughly the same odds of being in the bottom quartile in the next five-year period as it does of staying at the top.</p></div>
+            
+            <div class="callout callout--warning">
+              <span class="callout-icon">⚠️</span>
+              <div class="callout-text">Over 15-year periods, approximately 88-92% of actively managed large-cap U.S. funds have underperformed the S&amp;P 500 index after fees. This is not a fringe argument or financial conspiracy theory — it&#x27;s the conclusion of dozens of peer-reviewed academic studies and S&amp;P Global&#x27;s own SPIVA data going back decades.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="13">
+          <div class="slide__inner">
+            <h2 class="slide-heading slide-heading--cont">But Don&#x27;t Active Managers Beat the Market? (cont.)</h2>
+            <div class="slide-body"><p>Here&#x27;s a useful mental model: imagine a room full of 1,000 people flipping coins. After 10 flips, a handful will have gotten heads every single time. Are they better coin flippers? No. They&#x27;re lucky. You cannot tell the difference between skill and luck with a short track record in a domain that has significant randomness. Fund management is that domain. The market has information efficiency that makes it almost impossible to consistently identify mispriced stocks before other smart, well-resourced people do.</p><p>The uncomfortable truth is this: the average active fund manager is smart, hardworking, well-educated, and well-informed. They underperform anyway, after fees, because they&#x27;re competing against thousands of other smart, hardworking, well-educated, well-informed people who are all trying to do the same thing. In that environment, fees become the deciding factor — and low-fee index funds win almost by default.</p></div>
+            
+          </div>
+        </div>
+
+        <div class="slide slide--chart" data-slide="14" data-chart-id="chart-2-1" data-chart='{"id": "vti-holdings-doughnut", "type": "doughnut", "title": "VTI Approximate Cap-Weighted Top Holdings", "description": "This chart shows the approximate market-cap weighting of the top holdings in VTI (Vanguard Total Stock Market ETF) as of early 2026. The &#39;Other&#39; slice represents thousands of companies across all sectors and market caps. The top five holdings reflect the market&#39;s collective valuation of America&#39;s largest companies.", "data": {"labels": ["Apple (~6.5%)", "Microsoft (~6%)", "NVIDIA (~5%)", "Amazon (~3.5%)", "Meta (~2.5%)", "Other (~76.5%)"], "datasets": [{"data": [6.5, 6.0, 5.0, 3.5, 2.5, 76.5], "backgroundColor": ["#6366f1", "#0ea5e9", "#22c55e", "#f59e0b", "#ec4899", "#e5e7eb"], "borderColor": ["#4f46e5", "#0284c7", "#16a34a", "#d97706", "#db2777", "#d1d5db"], "borderWidth": 2, "hoverOffset": 8}]}}'>
+          <div class="slide__inner">
+            <div class="slide-eyebrow">📊 The Numbers</div>
+            <h2 class="slide-heading slide-heading--sm">VTI Approximate Cap-Weighted Top Holdings</h2>
+            <p class="chart-desc">This chart shows the approximate market-cap weighting of the top holdings in VTI (Vanguard Total Stock Market ETF) as of early 2026. The &#x27;Other&#x27; slice represents thousands of companies across all sectors and market caps. The top five holdings reflect the market&#x27;s collective valuation of America&#x27;s largest companies.</p>
+            <div class="chart-wrap">
+              <canvas id="chart-2-1"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="15">
+          <div class="slide__inner">
+            <h2 class="slide-heading ">Inside VTI: What Owning &#x27;the Market&#x27; Actually Looks Like</h2>
+            <div class="slide-body"><p>Let&#x27;s make index funds concrete by looking at VTI — Vanguard&#x27;s Total Stock Market ETF — which is one of the most widely held index funds in the world and a genuinely excellent choice for most long-term investors.</p><p>VTI tracks the CRSP US Total Market Index, which includes virtually every publicly traded company in the United States — roughly 3,600-4,000 stocks as of 2026. Large companies, mid-size companies, small companies. Tech, healthcare, energy, consumer goods, financials, utilities, real estate. When you buy one share of VTI, you own a tiny slice of the entire American economy. Not a bet on any one company or sector. Not a prediction about what&#x27;s going to do well. The whole thing.</p></div>
+            
+            <div class="callout callout--tip">
+              <span class="callout-icon">✅</span>
+              <div class="callout-text">If you own VTI, you own Apple, Microsoft, Walmart, JPMorgan, Johnson &amp; Johnson, and thousands of others — automatically, proportionally, at virtually no cost. You&#x27;re not betting on any of them individually. You&#x27;re betting that American businesses, collectively, will be worth more in 30 years than they are today. That&#x27;s a pretty reasonable bet.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="16">
+          <div class="slide__inner">
+            <h2 class="slide-heading slide-heading--cont">Inside VTI: What Owning &#x27;the Market&#x27; Actually Looks Like (cont.)</h2>
+            <div class="slide-body"><p>Because VTI is cap-weighted, the largest companies make up the largest portions of the fund. As of early 2026, the approximate top holdings look like this: Apple around 6.5%, Microsoft around 6%, NVIDIA around 5%, Amazon around 3.5%, Meta around 2.5%, and everything else — thousands of companies — making up the remaining 76.5%. That top-heavy concentration in mega-cap tech is a feature, not a bug: it reflects the market&#x27;s collective judgment that these companies are worth the most. If Apple&#x27;s valuation drops, its weighting in the fund drops automatically. No human has to make that call.</p><p>The expense ratio is 0.03% per year. The fund was launched in 2001 and has tracked the market faithfully ever since. It pays dividends quarterly (because some of the companies it holds pay dividends). It&#x27;s available through any major brokerage. There&#x27;s nothing complicated about it — which, again, is the whole point.</p></div>
+            
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="17">
+          <div class="slide__inner">
+            <h2 class="slide-heading ">FZROX and the Zero-Fee Revolution</h2>
+            <div class="slide-body"><p>If 0.03% sounds cheap, Fidelity decided to go further. In 2018, they launched FZROX — the Fidelity ZERO Total Market Index Fund — with a 0% expense ratio. Zero. No annual fee whatsoever. It was a genuinely historic moment in the evolution of investing for regular people.</p><p>FZROX tracks the Fidelity U.S. Total Investable Market Index and holds about 2,700+ U.S. stocks, similar in construction to VTI. It&#x27;s available through Fidelity accounts only (you can&#x27;t buy it through Schwab or Vanguard), but if you have or open a Fidelity account, it&#x27;s an extraordinary option. The catch, such as it is, is minimal: Fidelity makes money through other means (like keeping uninvested cash in their own money market accounts, lending shares, etc.) and uses FZROX partly as a customer acquisition tool. None of that affects you negatively as an investor — you&#x27;re still getting zero-expense total market exposure.</p><p>The practical difference between FZROX at 0% and VTI at 0.03% is genuinely tiny — we&#x27;re talking a few hundred dollars over a 30-year investing career. Either fund is an excellent choice. What matters far more than picking between them is: are you actually investing, at a low cost, and staying invested through the inevitable market downturns? A person who invests consistently in FZROX or VTI for 30 years and never panics will almost certainly end up far wealthier than someone who agonizes over fund selection and never actually pulls the trigger.</p></div>
+            
+            <div class="callout callout--tip">
+              <span class="callout-icon">✅</span>
+              <div class="callout-text">Don&#x27;t let perfect be the enemy of good. VTI and FZROX are both excellent. Schwab&#x27;s SCHB is also excellent. The best index fund is the one you actually buy and hold. Pick one, set up automatic contributions, and move on with your life.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="18">
+          <div class="slide__inner">
+            <h2 class="slide-heading ">Why Wall Street Doesn&#x27;t Want You to Know This</h2>
+            <div class="slide-body"><p>We should be honest about something: the financial services industry is a $4 trillion-per-year business. A meaningful chunk of that revenue comes from expense ratios, trading commissions, sales loads (fees you pay when you buy or sell a fund), and advisory fees. Every dollar you put into a low-cost index fund is a dollar that doesn&#x27;t generate fee revenue for a fund company, a financial advisor, or a broker.</p><p>This is why the financial media is flooded with stock picks, market predictions, and arguments for why you need a professional to manage your money. It&#x27;s why your 401(k) might have a menu of high-fee funds and make it hard to find the low-cost options. It&#x27;s why some financial advisors recommend products that pay them commissions (called &#x27;commissioned advisors&#x27;) rather than products that are simply best for you. None of this is illegal, most of it isn&#x27;t even unethical by the industry&#x27;s own standards — it&#x27;s just a system that&#x27;s organized around extracting money from investors rather than helping them keep it.</p></div>
+            
+            <div class="callout callout--warning">
+              <span class="callout-icon">⚠️</span>
+              <div class="callout-text">Check if your 401(k) offers low-cost index fund options. Many plans are stacked with high-fee products by default. Look for funds with &#x27;Index&#x27; in the name and the lowest expense ratio available. Switching from a 1% fund to a 0.1% fund inside your 401(k) could be worth tens of thousands of dollars over your career.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide--content" data-slide="19">
+          <div class="slide__inner">
+            <h2 class="slide-heading slide-heading--cont">Why Wall Street Doesn&#x27;t Want You to Know This (cont.)</h2>
+            <div class="slide-body"><p>The index fund revolution that Bogle started is genuinely anti-establishment in the financial world. It says: you don&#x27;t need us. You don&#x27;t need our research, our fund managers, their salaries, their bonuses, their offices in lower Manhattan. You need a computer to track a list and an investor who doesn&#x27;t panic. That&#x27;s it. The fact that this simple, cheap, enormously effective approach is still not the default option in most workplace retirement plans — still not what most people are automatically enrolled in — tells you everything about who the system was designed to serve.</p><p>You now know better. Use it.</p></div>
+            
+          </div>
+        </div>
+
+        <div class="slide slide--example" data-slide="20">
+          <div class="slide__inner">
+            <div class="slide-eyebrow">🔢 Real Numbers</div>
+            <h2 class="slide-heading">$500/Month: The $210,000 Cost of a 1% Expense Ratio</h2>
+            <div class="example-body"><p>You invest $500 per month for 30 years. Both funds earn exactly 10% gross annual return before fees. Fund A (actively managed) charges a 1% expense ratio, giving you a net return of 9%. Fund B (index fund) charges 0.03%, giving you a net return of 9.97%.
+
+Year 10 results:
+- Active fund (9% net): $97,483
+- Index fund (9.97% net): $103,096
+- Difference: $5,613
+- Total contributions to this point: $60,000
+
+Year 20 results:
+- Active fund (9% net): $336,448
+- Index fund (9.97% net): $381,353
+- Difference: $44,905
+- Total contributions to this point: $120,000
+
+Year 30 results:
+- Active fund (9% net): $922,237
+- Index fund (9.97% net): $1,132,367
+- Difference: $210,130
+- Total contributions to this point: $180,000
+
+The $210,130 fee gap at year 30 represents more than the total contributions made in the first 35 years of contributions ($180,000). In other words, the fees cost you more than you put in. And this analysis assumes the active fund matches the index fund&#x27;s gross return — which, as we saw above, approximately 90% of active funds fail to do over 15+ years. If the active fund also underperforms the index by even 1-2% per year in gross returns, the gap grows dramatically.</p></div>
+          </div>
+        </div>
+
+        <div class="slide slide--example" data-slide="21">
+          <div class="slide__inner">
+            <div class="slide-eyebrow">🔢 Real Numbers</div>
+            <h2 class="slide-heading">VTI vs. A &#x27;Hot&#x27; Actively Managed Fund: A 15-Year Snapshot</h2>
+            <div class="example-body"><p>A common scenario: an investor in 2010 chooses between VTI (0.03% expense ratio) and a popular actively managed large-cap growth fund charging 0.85%. Assume both start with $25,000 and no additional contributions.
+
+From 2010-2025, the S&amp;P 500 returned approximately 13.6% annually (gross, before fees). The average active large-cap fund returned roughly 11.8% net (below the benchmark after fees and suboptimal trades).
+
+VTI result after 15 years (13.57% net, ~13.6% - 0.03%):
+- $25,000 grows to approximately $163,000
+
+Active fund result after 15 years (11.8% net):
+- $25,000 grows to approximately $132,000
+
+Difference: ~$31,000 from the same $25,000 initial investment.
+
+Note: This period included two massive crashes (2020 COVID, 2022 rate hike bear market) and two massive recoveries — exactly the conditions active managers claim they can navigate better than an index. The data doesn&#x27;t support the claim.</p></div>
+          </div>
+        </div>
+
+        <div class="slide slide--actions" data-slide="22">
+          <div class="slide__inner">
+            <div class="slide-eyebrow">🚀 Take Action</div>
+            <h2 class="slide-heading">Action Items</h2>
+            <ul class="action-list"><li><span class="action-num">1</span><span>Look up the expense ratio of every fund you currently own. Go to your brokerage account, find your holdings, and search &#x27;[fund ticker] expense ratio&#x27; on Google or on the fund company&#x27;s website. If you find anything above 0.20%, you have a fee problem worth solving. Write down the expense ratios and estimated annual dollar cost (expense ratio × your balance).</span></li><li><span class="action-num">2</span><span>Research Vanguard&#x27;s VTI at vanguard.com and Fidelity&#x27;s FZROX at fidelity.com. Read the fund summary pages — specifically the expense ratio, the index tracked, the number of holdings, and the 10-year return history. If you already have a Fidelity account, FZROX requires zero minimum investment. If you have a brokerage elsewhere, VTI or Schwab&#x27;s SCHB are excellent alternatives.</span></li><li><span class="action-num">3</span><span>If you have a 401(k) through work, log in and look at the full fund menu. Find every fund with &#x27;index&#x27; in the name. Compare the expense ratios. Switch your current and future contributions to the lowest-cost index fund option available — even if it&#x27;s a basic S&amp;P 500 index fund. This one change, in a 401(k), is often worth tens of thousands of dollars over a career.</span></li></ul>
+          </div>
+        </div>
+
+        <div class="slide slide--resources" data-slide="23">
+          <div class="slide__inner">
+            <div class="slide-eyebrow">📚 Go Deeper</div>
+            <h2 class="slide-heading">Tools &amp; Resources</h2>
+            <ul class="resource-list"><li>📌 Vanguard VTI fund page — investor.vanguard.com/investment-products/etfs/profile/vti</li><li>📌 Fidelity FZROX fund page — fidelity.com/fund-screener/evaluator.shtml (search FZROX)</li><li>📌 S&amp;P SPIVA Report (annual active vs. passive data) — spglobal.com/spdji/en/research-insights/spiva/</li><li>📌 Personal Capital / Empower fee analyzer — empower.com (free tool that calculates your current fee drag)</li><li>📌 SPIVA U.S. Scorecard — spglobal.com — free annual report showing active vs. passive performance data by category</li><li>📌 &#x27;The Little Book of Common Sense Investing&#x27; by John C. Bogle — the definitive argument for index fund investing, written by their inventor</li><li>📌 Vanguard&#x27;s research paper &#x27;The Case for Index-Fund Investing&#x27; — free on vanguard.com — highly readable and full of data</li><li>📌 JL Collins &#x27;Why I don&#x27;t like individual stocks&#x27; — jlcollinsnh.com — a brilliant, readable essay on why simple beats clever in investing</li></ul>
+          </div>
+        </div>
+
+        <div class="slide slide--bridge" data-slide="24">
+          <div class="slide__inner">
+            <div class="slide-eyebrow">🔮 Coming Up</div>
+            <h2 class="slide-heading">What&#x27;s Next</h2>
+            <blockquote class="bridge-quote">Now you understand why index funds are the right vehicle. But here&#x27;s the question people immediately ask next: okay, so I put money into an index fund — but what kind of account does it go into? Because it turns out the account type matters enormously. A 401(k), a Roth IRA, a traditional IRA, and a regular taxable brokerage account all have very different tax treatment — and putting money in the wrong account can cost you almost as much as choosing the wrong fund. In Class 3, we&#x27;re going to map out the full landscape of investment accounts: what each one does, the contribution limits, the tax advantages, and the specific order you should fund them in to maximize what you keep. The account strategy is boring, but it might be the most valuable hour you spend in this entire course.</blockquote>
+          </div>
+        </div>
+
+        <div class="slide slide--end" data-slide="25">
+          <div class="slide__inner">
+            <div class="end-logo">
+              <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="56" height="56">
+                <rect width="36" height="36" rx="8" fill="#1a1a2e"/>
+                <path d="M6 26 L13 12 L17 18 L22 8 L30 16" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="30" cy="16" r="2.5" fill="#00d4aa"/>
+              </svg>
+            </div>
+            <h2 class="end-title">Class 2 Complete</h2>
+            <p class="end-subtitle">Index Funds 101</p>
+            <p class="end-tagline">Buy. Hold. Chill.</p>
+            <p class="end-disclaimer">VTI & Chill provides financial education, not personalized financial advice. Past performance does not guarantee future results.</p>
+          </div>
+        </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav-controls">
+    <button class="nav-btn nav-btn--prev" id="prevBtn" aria-label="Previous slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="nav-btn nav-btn--next" id="nextBtn" aria-label="Next slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </nav>
+
+  <!-- Slide dots (mobile) -->
+  <div class="nav-dots" id="navDots"></div>
+
+  <script>
+
+    (function() {
+      const deck = document.getElementById('deck');
+      const slides = deck.querySelectorAll('.slide');
+      const total = 26;
+      let current = 0;
+      let transitioning = false;
+      
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const progressBar = document.getElementById('progressBar');
+      const slideNum = document.getElementById('slideNum');
+      const dotsContainer = document.getElementById('navDots');
+      
+      // Build dots
+      for (let i = 0; i < total; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      }
+      
+      const dots = dotsContainer.querySelectorAll('.nav-dot');
+      
+      function updateUI() {
+        slides.forEach((s, i) => {
+          s.classList.remove('active', 'prev');
+          if (i === current) s.classList.add('active');
+          else if (i < current) s.classList.add('prev');
+        });
+        
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === total - 1;
+        progressBar.style.width = ((current / (total - 1)) * 100) + '%';
+        slideNum.textContent = current + 1;
+        
+        // Render chart if this slide has one
+        const activeSlide = slides[current];
+        if (activeSlide.dataset.chart && !activeSlide.dataset.chartRendered) {
+          activeSlide.dataset.chartRendered = 'true';
+          renderChart(activeSlide);
+        }
+      }
+      
+      function goTo(idx) {
+        if (transitioning || idx === current || idx < 0 || idx >= total) return;
+        transitioning = true;
+        current = idx;
+        updateUI();
+        setTimeout(() => transitioning = false, 500);
+      }
+      
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+      
+      // Keyboard
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+        if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+        if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+      });
+      
+      // Button clicks
+      prevBtn.addEventListener('click', prev);
+      nextBtn.addEventListener('click', next);
+      
+      // Touch swipe
+      let touchStartX = 0;
+      let touchStartY = 0;
+      deck.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      
+      deck.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+          if (dx < 0) next();
+          else prev();
+        }
+      }, { passive: true });
+      
+      // Click to advance (only on non-interactive areas)
+      deck.addEventListener('click', (e) => {
+        if (e.target.closest('a, button, canvas, .callout, .nav-btn')) return;
+        const x = e.clientX / window.innerWidth;
+        if (x > 0.5) next();
+        else prev();
+      });
+      
+      // Chart rendering
+      const brandColors = ['#00d4aa', '#818cf8', '#fbbf24', '#f87171', '#5eead4', '#a78bfa'];
+      
+      function renderChart(slideEl) {
+        const data = JSON.parse(slideEl.dataset.chart);
+        const canvasId = slideEl.dataset.chartId;
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+        
+        const textColor = '#94a3b8';
+        const gridColor = 'rgba(255,255,255,0.06)';
+        
+        // Apply brand colors
+        if (data.data && data.data.datasets) {
+          data.data.datasets.forEach((ds, i) => {
+            if (data.type === 'doughnut' || data.type === 'pie') {
+              if (!ds.backgroundColor || typeof ds.backgroundColor === 'string') {
+                ds.backgroundColor = brandColors;
+                ds.borderColor = '#1a1a2e';
+                ds.borderWidth = 2;
+              }
+            } else {
+              if (!ds.borderColor) ds.borderColor = brandColors[i % brandColors.length];
+              if (data.type === 'bar' && !ds.backgroundColor) {
+                ds.backgroundColor = brandColors[i % brandColors.length] + '99';
+              }
+              if (data.type === 'line') {
+                ds.tension = 0.3;
+                ds.pointRadius = 4;
+                ds.pointHoverRadius = 6;
+                if (!ds.backgroundColor) {
+                  ds.backgroundColor = brandColors[i % brandColors.length] + '15';
+                  ds.fill = i === 0;
+                }
+              }
+            }
+          });
+        }
+        
+        new Chart(canvas, {
+          type: data.type,
+          data: data.data,
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            animation: { duration: 800, easing: 'easeOutQuart' },
+            plugins: {
+              legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                  color: textColor,
+                  font: { family: "'Satoshi', sans-serif", size: 11 },
+                  padding: 14,
+                  usePointStyle: true,
+                  pointStyle: 'circle',
+                }
+              },
+              tooltip: {
+                backgroundColor: '#1a1a2e',
+                titleColor: '#e2e8f0',
+                bodyColor: '#94a3b8',
+                borderColor: '#2d2d4a',
+                borderWidth: 1,
+                cornerRadius: 8,
+                padding: 10,
+                titleFont: { family: "'Satoshi', sans-serif", weight: '700' },
+                bodyFont: { family: "'Satoshi', sans-serif" },
+                callbacks: {
+                  label: function(ctx) {
+                    let label = ctx.dataset.label || '';
+                    if (label) label += ': ';
+                    if (ctx.parsed.y !== null && ctx.parsed.y !== undefined) {
+                      label += '$' + ctx.parsed.y.toLocaleString();
+                    } else if (ctx.parsed !== null) {
+                      label += ctx.parsed + '%';
+                    }
+                    return label;
+                  }
+                }
+              }
+            },
+            scales: (data.type !== 'doughnut' && data.type !== 'pie') ? {
+              x: {
+                grid: { color: gridColor },
+                ticks: { color: textColor, font: { family: "'Satoshi', sans-serif", size: 11 } }
+              },
+              y: {
+                grid: { color: gridColor },
+                ticks: {
+                  color: textColor,
+                  font: { family: "'Satoshi', sans-serif", size: 11 },
+                  callback: function(val) {
+                    if (Math.abs(val) >= 1000000) return '$' + (val/1000000).toFixed(1) + 'M';
+                    if (Math.abs(val) >= 1000) return '$' + (val/1000).toFixed(0) + 'K';
+                    return '$' + val.toLocaleString();
+                  }
+                }
+              }
+            } : undefined
+          }
+        });
+      }
+      
+      // Init
+      updateUI();
+    })();
+    
+  </script>
+<script data-pplx-inline-edit>
+(function(){
+  if(window===window.top)return;
+  function inlineAll(orig,clone){
+    if(orig.nodeType!==1)return;
+    try{
+      var cs=getComputedStyle(orig);
+      var t='';
+      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
+      clone.style.cssText=t;
+    }catch(e){}
+    var oc=orig.children,cc=clone.children;
+    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
+  }
+  function stripExternal(clone){
+    var imgs=clone.querySelectorAll('img');
+    for(var i=0;i<imgs.length;i++){
+      var s=imgs[i].getAttribute('src');
+      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
+    }
+    var all=clone.querySelectorAll('*');
+    for(var i=0;i<all.length;i++){
+      var st=all[i].style.cssText;
+      if(st&&st.indexOf('url(')>=0){
+        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
+      }
+    }
+  }
+  window.addEventListener('message',function(e){
+    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
+    var scrollX=window.scrollX||window.pageXOffset||0;
+    var scrollY=window.scrollY||window.pageYOffset||0;
+    var w=window.innerWidth,h=window.innerHeight;
+    try{
+      var clone=document.documentElement.cloneNode(true);
+      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
+      for(var i=0;i<rm.length;i++){rm[i].remove();}
+      inlineAll(document.documentElement,clone);
+      stripExternal(clone);
+      var html=new XMLSerializer().serializeToString(clone);
+      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
+        +'<foreignObject width="100%" height="100%">'
+        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
+        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
+        +html+'</div></div></foreignObject></svg>';
+      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+      var img=new Image();
+      img.onload=function(){
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        c.getContext('2d').drawImage(img,0,0);
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.onerror=function(){
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.src=svgUrl;
+    }catch(err){
+      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+    }
+  });
+})();
+</script></body>
+</html>
