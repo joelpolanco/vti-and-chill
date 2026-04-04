@@ -262,9 +262,18 @@
     <div class="email-capture">
       <h2>Join 10,000+ Investors Who Keep It Simple</h2>
       <p>Get the weekly "VTI & Chill" market digest. No noise, no hype — just evidence-based investing insights.</p>
-      <form class="email-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓'; this.querySelector('input').value='';">
-        <input type="email" placeholder="your@email.com" required>
-        <button type="submit" class="btn btn--primary">Subscribe</button>
+      <style>
+        #gumroad-follow-form-embed { display:flex; gap:var(--space-3); max-width:480px; margin:0 auto; }
+        #gumroad-follow-form-embed-input { display:block; width:100%; flex:1 1 0%; border-radius:var(--radius-md); border:1px solid var(--color-border); background:var(--color-surface-2); color:var(--color-text); font-family:var(--font-body); font-size:var(--text-base); padding:var(--space-3) var(--space-4); outline:none; }
+        #gumroad-follow-form-embed-input:focus { border-color:var(--color-primary); box-shadow:0 0 0 2px rgba(var(--color-primary-rgb),0.25); }
+        #gumroad-follow-form-embed-input::placeholder { color:var(--color-text-faint); }
+        #gumroad-follow-form-embed-button { display:inline-flex; cursor:pointer; align-items:center; justify-content:center; gap:var(--space-2); border-radius:var(--radius-md); border:none; background:var(--color-primary); color:var(--color-navy); font-family:var(--font-body); font-weight:600; font-size:var(--text-base); padding:var(--space-3) var(--space-6); transition:background 0.2s; }
+        #gumroad-follow-form-embed-button:hover { background:var(--color-primary-hover); }
+      </style>
+      <form action="https://gumroad.com/follow_from_embed_form" method="post" id="gumroad-follow-form-embed">
+        <input type="hidden" name="seller_id" value="1252580072725"/>
+        <input id="gumroad-follow-form-embed-input" type="email" placeholder="Your email address" name="email" value=""/>
+        <button type="submit" id="gumroad-follow-form-embed-button">Subscribe</button>
       </form>
     </div>
   </div>
