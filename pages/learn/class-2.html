@@ -439,7 +439,11 @@
     .resource-list li:last-child { border-bottom: none; }
     
     /* End slide */
-    .slide--end { text-align: center; }
+    .slide--end {
+      text-align: center;
+      align-items: flex-start;
+      padding-top: 80px;
+    }
     
     .end-logo { margin-bottom: 24px; }
     
@@ -472,7 +476,136 @@
       margin: 0 auto;
       line-height: 1.5;
     }
-    
+
+    /* Persuasion hook */
+    .hook {
+      max-width: 560px;
+      margin: 0 auto 32px;
+      text-align: left;
+    }
+
+    .hook__headline {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 800;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+
+    .hook__headline em {
+      color: var(--mint);
+      font-style: normal;
+    }
+
+    .hook__point {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .hook__icon {
+      flex-shrink: 0;
+      font-size: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .hook__text {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .hook__text strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .hook__divider {
+      width: 48px;
+      height: 2px;
+      background: var(--mint);
+      opacity: 0.4;
+      margin: 28px auto;
+      border-radius: 1px;
+    }
+
+    .hook__closing {
+      text-align: center;
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .hook__closing strong {
+      color: var(--mint);
+      font-weight: 700;
+    }
+
+    .hook__price {
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .hook__price-note {
+      text-align: center;
+      font-size: var(--text-xs);
+      color: var(--text-faint);
+      margin-bottom: 32px;
+    }
+
+    .end-nav {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 8px;
+      margin-bottom: 24px;
+    }
+
+    .end-nav__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: var(--text-base);
+      text-decoration: none;
+      transition: all 0.2s var(--ease);
+      cursor: pointer;
+    }
+
+    .end-nav__link--primary {
+      background: var(--mint);
+      color: var(--navy);
+    }
+
+    .end-nav__link--primary:hover {
+      background: var(--mint-hover);
+      transform: translateY(-1px);
+    }
+
+    .end-nav__link--secondary {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .end-nav__link--secondary:hover {
+      border-color: var(--mint-border);
+      color: var(--mint);
+      transform: translateY(-1px);
+    }
+
     /* ===== NAV CONTROLS ===== */
     .nav-controls {
       position: fixed;
@@ -907,7 +1040,43 @@ Note: This period included two massive crashes (2020 COVID, 2022 rate hike bear 
             </div>
             <h2 class="end-title">Class 2 Complete</h2>
             <p class="end-subtitle">Index Funds 101</p>
-            <p class="end-tagline">Buy. Hold. Chill.</p>
+
+            <div class="hook">
+              <h3 class="hook__headline">You now know more than <em>most people will ever learn</em> about investing.</h3>
+
+              <div class="hook__point">
+                <span class="hook__icon">🧠</span>
+                <p class="hook__text">In just two classes, you&#x27;ve learned why inflation makes sitting in cash the riskiest move, and why index funds beat 90% of professionals. <strong>You&#x27;ve already built a real foundation</strong> — that puts you ahead of most people who never start at all.</p>
+              </div>
+
+              <div class="hook__point">
+                <span class="hook__icon">⚠️</span>
+                <p class="hook__text">But here&#x27;s what the free classes can&#x27;t cover: <strong>which accounts to use, how to tilt toward factors that have historically doubled returns, when to add bonds, how to save six figures in taxes, and how to keep your own psychology from wrecking your portfolio.</strong> That&#x27;s Classes 3 through 8 — and skipping them means leaving serious money on the table.</p>
+              </div>
+
+              <div class="hook__point">
+                <span class="hook__icon">📊</span>
+                <p class="hook__text">The math is straightforward: a single wrong account choice or a panic-sell during one downturn can cost you <strong>tens of thousands of dollars</strong> over a lifetime. The full Blueprint exists to make sure that doesn&#x27;t happen to you.</p>
+              </div>
+
+              <div class="hook__point">
+                <span class="hook__icon">🔒</span>
+                <p class="hook__text">The Chill Investor&#x27;s Blueprint is <strong>$79, once, forever</strong> — no subscriptions, no upsells. That&#x27;s less than one session with a financial advisor, and you keep the knowledge for life. Every class includes interactive charts, real math, and action items you can execute immediately.</p>
+              </div>
+
+              <div class="hook__divider"></div>
+
+              <p class="hook__closing">You&#x27;ve already proven you&#x27;re serious about your financial future. <strong>Don&#x27;t stop at the starting line.</strong></p>
+
+              <div class="hook__price">$79</div>
+              <p class="hook__price-note">One-time payment · Lifetime access · All 8 classes</p>
+            </div>
+
+            <div class="end-nav">
+              <a href="./index.html#pricing" class="end-nav__link end-nav__link--primary">Unlock the Full Blueprint →</a>
+              <a href="./index.html" class="end-nav__link end-nav__link--secondary">← Back to Course</a>
+            </div>
+
             <p class="end-disclaimer">VTI & Chill provides financial education, not personalized financial advice. Past performance does not guarantee future results.</p>
           </div>
         </div>
@@ -963,6 +1132,13 @@ Note: This period included two massive crashes (2020 COVID, 2022 rate hike bear 
         prevBtn.disabled = current === 0;
         nextBtn.disabled = current === total - 1;
         progressBar.style.width = ((current / (total - 1)) * 100) + '%';
+        
+        // Hide nav controls and dots on end slide
+        const navControls = document.querySelector('.nav-controls');
+        const navDots = document.getElementById('navDots');
+        const isEnd = current === total - 1;
+        if (navControls) navControls.style.display = isEnd ? 'none' : '';
+        if (navDots) navDots.style.display = isEnd ? 'none' : '';
         slideNum.textContent = current + 1;
         
         // Render chart if this slide has one
