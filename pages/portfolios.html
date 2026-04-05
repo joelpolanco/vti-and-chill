@@ -67,7 +67,7 @@
     <!-- TABS -->
     <div class="builder-tabs">
       <button class="builder-tab active" data-target="tabGood">
-        <i data-lucide="circle-check" style="width:16px;height:16px;display:inline;vertical-align:-3px"></i> Good — 2 Funds
+        <i data-lucide="circle-check" style="width:16px;height:16px;display:inline;vertical-align:-3px"></i> Good — 1 Fund
       </button>
       <button class="builder-tab" data-target="tabBetter">
         <i data-lucide="target" style="width:16px;height:16px;display:inline;vertical-align:-3px"></i> Better — 4 Funds
@@ -81,41 +81,50 @@
     <div class="builder-content active" id="tabGood">
       <div class="allocation-grid">
         <div>
-          <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2);">The 2-Fund Strategy</h2>
-          <p style="color: var(--color-text-muted); margin-bottom: var(--space-6); line-height: 1.7;">The simplest factor-tilted portfolio. Split evenly between the broad US market and US small-cap value. Merriman's data shows $10K grew to ~$6.5M over 55 years — vs. ~$3M for S&P 500 alone.</p>
+          <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2);">The 1-Fund Strategy</h2>
+          <p id="oneFundDesc" style="color: var(--color-text-muted); margin-bottom: var(--space-4); line-height: 1.7;">The heart of VTI &amp; Chill. One fund, the entire US stock market, zero complexity. Buy it, hold it, live your life. JL Collins built an entire investing philosophy around this single idea — and the data backs him up. Over the last two decades, owning the total market has beaten the vast majority of actively managed funds.</p>
 
-          <table class="allocation-table">
+          <div class="toggle-group">
+            <span class="toggle-label active" id="oneFundLabelUS">US Market</span>
+            <div class="toggle-switch" id="oneFundToggle"></div>
+            <span class="toggle-label" id="oneFundLabelIntl">Global Market</span>
+          </div>
+
+          <table class="allocation-table" id="oneFundTable">
             <thead>
               <tr><th>Asset Class</th><th>ETF</th><th>Allocation</th><th>Expense</th></tr>
             </thead>
             <tbody>
-              <tr><td>S&P 500</td><td class="ticker">VOO</td><td>50%</td><td>0.03%</td></tr>
-              <tr><td>US Small-Cap Value</td><td class="ticker">AVUV</td><td>50%</td><td>0.25%</td></tr>
+              <tr><td id="oneFundClass">US Total Stock Market</td><td class="ticker" id="oneFundTicker">VTI</td><td>100%</td><td id="oneFundExpense">0.03%</td></tr>
             </tbody>
           </table>
 
-          <div class="comparison-stats">
+          <div class="comparison-stats" id="oneFundStats">
             <div class="comparison-stat">
-              <div class="comp-value" style="color: var(--color-primary);">~12.1%</div>
+              <div class="comp-value" style="color: var(--color-primary);" id="oneFundCAGR">~10.0%</div>
               <div class="comp-label">Historical CAGR</div>
             </div>
             <div class="comparison-stat">
-              <div class="comp-value">-51%</div>
+              <div class="comp-value" id="oneFundDrawdown">-55%</div>
               <div class="comp-label">Max Drawdown</div>
             </div>
             <div class="comparison-stat">
-              <div class="comp-value">0.14%</div>
-              <div class="comp-label">Blended Expense</div>
+              <div class="comp-value" id="oneFundExpenseRatio">0.03%</div>
+              <div class="comp-label">Expense Ratio</div>
+            </div>
+            <div class="comparison-stat">
+              <div class="comp-value" id="oneFundHoldings">~3,500</div>
+              <div class="comp-label">Holdings</div>
             </div>
           </div>
         </div>
-        <div class="pie-chart-container">
+        <div class="pie-chart-container" style="display:flex;align-items:center;justify-content:center;">
           <canvas id="pieGood"></canvas>
         </div>
       </div>
 
       <div style="margin-top: var(--space-8); padding: var(--space-5); background: rgba(var(--color-primary-rgb),0.06); border-radius: var(--radius-lg); border: 1px solid rgba(var(--color-primary-rgb),0.15);">
-        <p style="font-size: var(--text-sm); color: var(--color-text-muted);"><strong style="color: var(--color-text);">Level up?</strong> The 4-Fund "Better" portfolio adds large-cap value and small-cap blend for smoother returns with nearly identical long-term performance to the full 10-fund portfolio.</p>
+        <p style="font-size: var(--text-sm); color: var(--color-text-muted);"><strong style="color: var(--color-text);">This is where everyone starts.</strong> The 1-fund approach is the foundation of everything we teach. Once you're comfortable here, the "Better" and "Best" tiers add factor tilts for potentially higher returns — but this portfolio alone puts you ahead of most investors.</p>
       </div>
     </div>
 
@@ -229,8 +238,7 @@
               <tr><th>Portfolio</th><th>Funds</th><th>CAGR</th><th>$10K over 55yr</th><th>Sharpe</th></tr>
             </thead>
             <tbody>
-              <tr><td>S&P 500 Only</td><td>1</td><td>10.3%</td><td>$3.0M</td><td>0.52</td></tr>
-              <tr><td style="color: var(--color-primary); font-weight: 600;">+ Small-Cap Value</td><td>2</td><td>12.1%</td><td>$6.5M</td><td>0.58</td></tr>
+              <tr><td style="color: var(--color-primary); font-weight: 600;">VTI (Total Market)</td><td>1</td><td>10.0%</td><td>$3.0M</td><td>0.52</td></tr>
               <tr><td style="color: var(--color-primary); font-weight: 600;">+ LC Value, SC Blend</td><td>4</td><td>12.5%</td><td>$7.8M</td><td>0.60</td></tr>
               <tr><td style="color: var(--color-primary); font-weight: 600;">Full 10-Fund</td><td>10</td><td>13.2%</td><td>$10.4M</td><td>0.63</td></tr>
             </tbody>

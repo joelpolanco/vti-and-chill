@@ -159,10 +159,18 @@ function initPortfolioBuilder() {
 
 function renderPieCharts() {
   // Good tier pie
-  renderPie('pieGood', [
-    { label: 'S&P 500 (VOO)', value: 50, color: '#00d4aa' },
-    { label: 'US SC Value (AVUV)', value: 50, color: '#0f3460' },
-  ]);
+  // 1-Fund tier pie — check toggle state
+  const oneFundToggle = document.getElementById('oneFundToggle');
+  const isGlobal = oneFundToggle && oneFundToggle.classList.contains('active');
+  if (isGlobal) {
+    renderPie('pieGood', [
+      { label: 'Total World (VT)', value: 100, color: '#00d4aa' },
+    ]);
+  } else {
+    renderPie('pieGood', [
+      { label: 'US Total Market (VTI)', value: 100, color: '#00d4aa' },
+    ]);
+  }
 
   // Better tier pie (US-only 4-fund)
   renderPie('pieBetter', [
@@ -461,6 +469,22 @@ document.addEventListener('DOMContentLoaded', () => {
       toggle.classList.toggle('active');
       const labels = toggle.parentElement.querySelectorAll('.toggle-label');
       labels.forEach(l => l.classList.toggle('active'));
+
+      // Handle 1-Fund toggle
+      if (toggle.id === 'oneFundToggle') {
+        const isGlobal = toggle.classList.contains('active');
+        document.getElementById('oneFundClass').textContent = isGlobal ? 'Total World Stock Market' : 'US Total Stock Market';
+        document.getElementById('oneFundTicker').textContent = isGlobal ? 'VT' : 'VTI';
+        document.getElementById('oneFundExpense').textContent = isGlobal ? '0.07%' : '0.03%';
+        document.getElementById('oneFundCAGR').textContent = isGlobal ? '~8.2%' : '~10.0%';
+        document.getElementById('oneFundDrawdown').textContent = isGlobal ? '-50%' : '-55%';
+        document.getElementById('oneFundExpenseRatio').textContent = isGlobal ? '0.07%' : '0.03%';
+        document.getElementById('oneFundHoldings').textContent = isGlobal ? '~9,700' : '~3,500';
+        document.getElementById('oneFundDesc').textContent = isGlobal
+          ? 'One fund, the entire world. VT holds nearly 10,000 stocks across the US, developed markets, and emerging economies. If you want true global diversification in a single ticker, this is it. You own a piece of every publicly traded company on the planet \u2014 for less than a cup of coffee per year in fees.'
+          : 'The heart of VTI & Chill. One fund, the entire US stock market, zero complexity. Buy it, hold it, live your life. JL Collins built an entire investing philosophy around this single idea \u2014 and the data backs him up. Over the last two decades, owning the total market has beaten the vast majority of actively managed funds.';
+        renderPieCharts();
+      }
     });
   });
 });
