@@ -212,8 +212,10 @@ function renderHome() {
   
   let classCardsHtml = COURSE_DATA.map((cls, i) => {
     const isLocked = !cls.isFree;
+    const tag = isLocked ? 'div' : 'a';
+    const hrefAttr = isLocked ? '' : `href="./class-${cls.classNumber}.html"`;
     return `
-      <a href="${cls.classNumber <= 2 ? './class-' + cls.classNumber + '.html' : '#class-' + cls.classNumber}" class="class-card ${isLocked ? 'class-card--locked' : ''}" ${isLocked ? '' : ''}>
+      <${tag} ${hrefAttr} class="class-card ${isLocked ? 'class-card--locked' : ''}">
         ${isLocked ? '<div class="class-card__lock"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>' : ''}
         <div class="class-card__number">${CLASS_ICONS[i]} Class ${cls.classNumber}</div>
         <div class="class-card__title">${cls.title}</div>
@@ -223,7 +225,7 @@ function renderHome() {
             ${cls.isFree ? '✓ Free' : '🔒 Premium'}
           </span>
         </div>
-      </a>
+      </${tag}>
     `;
   }).join('');
   
@@ -635,6 +637,13 @@ function renderPaywallPreview(cls, classNum) {
 function render() {
   const route = getRoute();
   if (route.page === 'class') {
+    // Block access to premium classes (3-8)
+    const cls = COURSE_DATA.find(c => c.classNumber === route.classNum);
+    if (cls && !cls.isFree) {
+      window.location.hash = '';
+      renderHome();
+      return;
+    }
     renderClass(route.classNum);
   } else {
     renderHome();

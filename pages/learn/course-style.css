@@ -334,6 +334,7 @@
 
 .class-card--locked {
   opacity: 0.7;
+  cursor: default;
 }
 
 .class-card--locked:hover {
