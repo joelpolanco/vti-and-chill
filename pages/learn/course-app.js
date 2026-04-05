@@ -213,7 +213,7 @@ function renderHome() {
   let classCardsHtml = COURSE_DATA.map((cls, i) => {
     const isLocked = !cls.isFree;
     return `
-      <a href="#class-${cls.classNumber}" class="class-card ${isLocked ? 'class-card--locked' : ''}" ${isLocked ? '' : ''}>
+      <a href="${cls.classNumber <= 2 ? './class-' + cls.classNumber + '.html' : '#class-' + cls.classNumber}" class="class-card ${isLocked ? 'class-card--locked' : ''}" ${isLocked ? '' : ''}>
         ${isLocked ? '<div class="class-card__lock"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>' : ''}
         <div class="class-card__number">${CLASS_ICONS[i]} Class ${cls.classNumber}</div>
         <div class="class-card__title">${cls.title}</div>
@@ -235,7 +235,7 @@ function renderHome() {
         <h1 class="hero__title fade-up">Stop Overthinking.<br><span>Start Building Wealth.</span></h1>
         <p class="hero__subtitle fade-up">An 8-class course that teaches you everything Wall Street doesn't want you to know — how to build lasting wealth with index funds, zero stress, and about 15 minutes a year.</p>
         <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;" class="fade-up">
-          <a href="#class-1" class="btn btn--primary btn--lg">Start Class 1 — Free</a>
+          <a href="./class-1.html" class="btn btn--primary btn--lg">Start Class 1 — Free</a>
           <a href="#pricing" class="btn btn--secondary btn--lg" onclick="event.preventDefault(); document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">View Pricing</a>
         </div>
       </div>
@@ -293,7 +293,7 @@ function renderHome() {
               <li>Interactive charts & calculators</li>
               <li>Enough to start investing today</li>
             </ul>
-            <a href="#class-1" class="btn btn--secondary btn--full">Start Free</a>
+            <a href="./class-1.html" class="btn btn--secondary btn--full">Start Free</a>
           </div>
           
           <div class="pricing-card pricing-card--featured">

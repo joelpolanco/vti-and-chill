@@ -229,7 +229,7 @@
 .header__nav {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-4);
 }
 
 .header__nav a {
