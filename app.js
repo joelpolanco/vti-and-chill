@@ -172,27 +172,55 @@ function renderPieCharts() {
     ]);
   }
 
-  // Better tier pie (US-only 4-fund)
-  renderPie('pieBetter', [
-    { label: 'US LC Blend (AVUS)', value: 25, color: '#00d4aa' },
-    { label: 'US SC Blend (AVSC)', value: 25, color: '#0f3460' },
-    { label: 'US LC Value (AVLV)', value: 25, color: '#e8af34' },
-    { label: 'US SC Value (AVUV)', value: 25, color: '#00b894' },
-  ]);
+  // Better tier pie — check toggle state
+  const betterToggle = document.getElementById('betterToggle');
+  const isWorldwide = betterToggle && betterToggle.classList.contains('active');
+  if (isWorldwide) {
+    renderPie('pieBetter', [
+      { label: 'US LC Blend (AVLC)', value: 25, color: '#00d4aa' },
+      { label: 'US SC Value (AVSC)', value: 25, color: '#0f3460' },
+      { label: "Int'l LC Blend (AVDE)", value: 25, color: '#e8af34' },
+      { label: "Int'l SC Value (AVDV)", value: 25, color: '#00b894' },
+    ]);
+  } else {
+    renderPie('pieBetter', [
+      { label: 'US LC Blend (AVUS)', value: 25, color: '#00d4aa' },
+      { label: 'US SC Blend (AVSC)', value: 25, color: '#0f3460' },
+      { label: 'US LC Value (AVLV)', value: 25, color: '#e8af34' },
+      { label: 'US SC Value (AVUV)', value: 25, color: '#00b894' },
+    ]);
+  }
 
-  // Best tier pie (10-fund)
-  renderPie('pieBest', [
-    { label: 'US LC Blend (AVUS)', value: 10, color: '#00d4aa' },
-    { label: 'US LC Value (AVLV)', value: 10, color: '#0f3460' },
-    { label: 'US SC Blend (AVSC)', value: 10, color: '#e8af34' },
-    { label: 'US SC Value (AVUV)', value: 10, color: '#00b894' },
-    { label: "Int'l LC Blend", value: 10, color: '#4f98a3' },
-    { label: "Int'l LC Value (AVDV)", value: 10, color: '#a84b2f' },
-    { label: "Int'l SC Blend (AVDS)", value: 10, color: '#944454' },
-    { label: "Int'l SC Value", value: 10, color: '#6e522b' },
-    { label: 'REITs (VNQ)', value: 10, color: '#848456' },
-    { label: 'EM (AVES)', value: 10, color: '#1b474d' },
-  ]);
+  // Best tier pie — check toggle state
+  const bestToggle = document.getElementById('bestToggle');
+  const is5050 = bestToggle && bestToggle.classList.contains('active');
+  if (is5050) {
+    renderPie('pieBest', [
+      { label: 'US LC Blend (AVUS)', value: 10, color: '#00d4aa' },
+      { label: 'US LC Value (AVLV)', value: 10, color: '#0f3460' },
+      { label: 'US SC Blend (AVSC)', value: 10, color: '#e8af34' },
+      { label: 'US SC Value (AVUV)', value: 10, color: '#00b894' },
+      { label: "Int'l LC Blend (AVDE)", value: 10, color: '#4f98a3' },
+      { label: "Int'l LC Value (DFIV)", value: 10, color: '#a84b2f' },
+      { label: "Int'l SC Blend (AVDS)", value: 10, color: '#944454' },
+      { label: "Int'l SC Value (AVDV)", value: 10, color: '#6e522b' },
+      { label: 'REITs (VNQ)', value: 10, color: '#848456' },
+      { label: 'EM (AVEM)', value: 10, color: '#1b474d' },
+    ]);
+  } else {
+    renderPie('pieBest', [
+      { label: 'US LC Blend (AVUS)', value: 14, color: '#00d4aa' },
+      { label: 'US LC Value (AVLV)', value: 14, color: '#0f3460' },
+      { label: 'US SC Blend (AVSC)', value: 14, color: '#e8af34' },
+      { label: 'US SC Value (AVUV)', value: 14, color: '#00b894' },
+      { label: 'US REITs (VNQ)', value: 14, color: '#848456' },
+      { label: "Int'l LC Blend (AVDE)", value: 6, color: '#4f98a3' },
+      { label: "Int'l LC Value (DFIV)", value: 6, color: '#a84b2f' },
+      { label: "Int'l SC Blend (AVDS)", value: 6, color: '#944454' },
+      { label: "Int'l SC Value (AVDV)", value: 6, color: '#6e522b' },
+      { label: 'EM (AVEM)', value: 6, color: '#1b474d' },
+    ]);
+  }
 }
 
 function renderPie(canvasId, data) {
@@ -483,6 +511,101 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('oneFundDesc').textContent = isGlobal
           ? 'One fund, the entire world. VT holds nearly 10,000 stocks across the US, developed markets, and emerging economies. If you want true global diversification in a single ticker, this is it. You own a piece of every publicly traded company on the planet \u2014 for less than a cup of coffee per year in fees.'
           : 'The heart of VTI & Chill. One fund, the entire US stock market, zero complexity. Buy it, hold it, live your life. JL Collins built an entire investing philosophy around this single idea \u2014 and the data backs him up. Over the last two decades, owning the total market has beaten the vast majority of actively managed funds.';
+        renderPieCharts();
+      }
+
+      // Handle 4-Fund toggle (US Only ↔ Worldwide)
+      if (toggle.id === 'betterToggle') {
+        const isWW = toggle.classList.contains('active');
+        const table = document.getElementById('betterTable');
+        if (table) {
+          const tbody = table.querySelector('tbody');
+          if (isWW) {
+            tbody.innerHTML =
+              '<tr><td>US Large-Cap Blend</td><td class="ticker">AVLC</td><td>25%</td><td>0.15%</td></tr>' +
+              '<tr><td>US Small-Cap Value</td><td class="ticker">AVSC</td><td>25%</td><td>0.25%</td></tr>' +
+              '<tr><td>Int\'l Large-Cap Blend</td><td class="ticker">AVDE</td><td>25%</td><td>0.23%</td></tr>' +
+              '<tr><td>Int\'l Small-Cap Value</td><td class="ticker">AVDV</td><td>25%</td><td>0.36%</td></tr>';
+          } else {
+            tbody.innerHTML =
+              '<tr><td>US Large-Cap Blend</td><td class="ticker">AVUS</td><td>25%</td><td>0.15%</td></tr>' +
+              '<tr><td>US Small-Cap Blend</td><td class="ticker">AVSC</td><td>25%</td><td>0.25%</td></tr>' +
+              '<tr><td>US Large-Cap Value</td><td class="ticker">AVLV</td><td>25%</td><td>0.15%</td></tr>' +
+              '<tr><td>US Small-Cap Value</td><td class="ticker">AVUV</td><td>25%</td><td>0.25%</td></tr>';
+          }
+        }
+        // Update description
+        const betterDesc = document.getElementById('betterDesc');
+        if (betterDesc) {
+          betterDesc.textContent = isWW
+            ? 'Four funds spanning US and international markets. A simple way to get worldwide equity exposure with a small-cap value tilt on both sides of the globe.'
+            : 'Four funds covering the key US equity factors. Delivers returns nearly identical to the 10-fund portfolio with simpler management.';
+        }
+        // Update stats
+        const statsContainer = toggle.closest('.builder-content')?.querySelector('.comparison-stats');
+        if (statsContainer) {
+          const values = statsContainer.querySelectorAll('.comp-value');
+          if (isWW) {
+            if (values[0]) values[0].textContent = '~10.8%';
+            if (values[1]) values[1].textContent = '-54%';
+            if (values[2]) values[2].textContent = '0.25%';
+          } else {
+            if (values[0]) values[0].textContent = '~12.5%';
+            if (values[1]) values[1].textContent = '-52%';
+            if (values[2]) values[2].textContent = '0.20%';
+          }
+        }
+        renderPieCharts();
+      }
+
+      // Handle 10-Fund toggle (70/30 ↔ 50/50 US/Int'l)
+      if (toggle.id === 'bestToggle') {
+        const is5050 = toggle.classList.contains('active');
+        const table = document.getElementById('bestTable');
+        if (table) {
+          const tbody = table.querySelector('tbody');
+          if (is5050) {
+            tbody.innerHTML =
+              '<tr><td>US Large-Cap Blend</td><td class="ticker">AVUS</td><td>10%</td><td>0.15%</td></tr>' +
+              '<tr><td>US Large-Cap Value</td><td class="ticker">AVLV</td><td>10%</td><td>0.15%</td></tr>' +
+              '<tr><td>US Small-Cap Blend</td><td class="ticker">AVSC</td><td>10%</td><td>0.25%</td></tr>' +
+              '<tr><td>US Small-Cap Value</td><td class="ticker">AVUV</td><td>10%</td><td>0.25%</td></tr>' +
+              '<tr><td>US REITs</td><td class="ticker">VNQ</td><td>10%</td><td>0.12%</td></tr>' +
+              '<tr><td>Int\'l Large-Cap Blend</td><td class="ticker">AVDE</td><td>10%</td><td>0.23%</td></tr>' +
+              '<tr><td>Int\'l Large-Cap Value</td><td class="ticker">DFIV</td><td>10%</td><td>0.27%</td></tr>' +
+              '<tr><td>Int\'l Small-Cap Blend</td><td class="ticker">AVDS</td><td>10%</td><td>0.36%</td></tr>' +
+              '<tr><td>Int\'l Small-Cap Value</td><td class="ticker">AVDV</td><td>10%</td><td>0.36%</td></tr>' +
+              '<tr><td>Emerging Markets</td><td class="ticker">AVEM</td><td>10%</td><td>0.33%</td></tr>';
+          } else {
+            tbody.innerHTML =
+              '<tr><td>US Large-Cap Blend</td><td class="ticker">AVUS</td><td>14%</td><td>0.15%</td></tr>' +
+              '<tr><td>US Large-Cap Value</td><td class="ticker">AVLV</td><td>14%</td><td>0.15%</td></tr>' +
+              '<tr><td>US Small-Cap Blend</td><td class="ticker">AVSC</td><td>14%</td><td>0.25%</td></tr>' +
+              '<tr><td>US Small-Cap Value</td><td class="ticker">AVUV</td><td>14%</td><td>0.25%</td></tr>' +
+              '<tr><td>US REITs</td><td class="ticker">VNQ</td><td>14%</td><td>0.12%</td></tr>' +
+              '<tr><td>Int\'l Large-Cap Blend</td><td class="ticker">AVDE</td><td>6%</td><td>0.23%</td></tr>' +
+              '<tr><td>Int\'l Large-Cap Value</td><td class="ticker">DFIV</td><td>6%</td><td>0.27%</td></tr>' +
+              '<tr><td>Int\'l Small-Cap Blend</td><td class="ticker">AVDS</td><td>6%</td><td>0.36%</td></tr>' +
+              '<tr><td>Int\'l Small-Cap Value</td><td class="ticker">AVDV</td><td>6%</td><td>0.36%</td></tr>' +
+              '<tr><td>Emerging Markets</td><td class="ticker">AVEM</td><td>6%</td><td>0.33%</td></tr>';
+          }
+        }
+        // Update stats
+        const statsContainer = toggle.closest('.builder-content')?.querySelector('.comparison-stats');
+        if (statsContainer) {
+          const values = statsContainer.querySelectorAll('.comp-value');
+          if (is5050) {
+            if (values[0]) values[0].textContent = '~12.0%';
+            if (values[1]) values[1].textContent = '-50%';
+            if (values[2]) values[2].textContent = '0.27%';
+            if (values[3]) values[3].textContent = '~12,000';
+          } else {
+            if (values[0]) values[0].textContent = '~13.2%';
+            if (values[1]) values[1].textContent = '-48%';
+            if (values[2]) values[2].textContent = '0.26%';
+            if (values[3]) values[3].textContent = '~12,000';
+          }
+        }
         renderPieCharts();
       }
     });
