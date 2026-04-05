@@ -310,7 +310,7 @@ function renderHome() {
               <li>Capstone portfolio builder</li>
               <li>Lifetime access & updates</li>
             </ul>
-            <a href="#class-4" class="btn btn--primary btn--full">Unlock Full Course</a>
+            <a href="https://vtiandchill.gumroad.com/l/blueprint" target="_blank" rel="noopener" class="btn btn--primary btn--full">Unlock Full Course</a>
           </div>
         </div>
       </div>
@@ -625,7 +625,7 @@ function renderPaywallPreview(cls, classNum) {
       <div class="paywall__icon">🔒</div>
       <h3 class="paywall__title">Unlock the Full Blueprint</h3>
       <p class="paywall__text">You just saw a preview. The full Class ${classNum} includes ${cls.sections.length} in-depth sections, ${cls.charts.length} interactive charts, and step-by-step action items.</p>
-      <a href="#pricing" class="btn btn--primary btn--lg" onclick="event.preventDefault(); window.location.hash=''; setTimeout(() => document.getElementById('pricing').scrollIntoView({behavior:'smooth'}), 100);">Get Full Access — $79</a>
+      <a href="https://vtiandchill.gumroad.com/l/blueprint" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Get Full Access — $79</a>
       <p style="font-size: var(--text-xs); color: var(--color-text-faint); margin-top: var(--space-4);">One-time payment. Lifetime access. No subscriptions.</p>
     </div>
   `;
