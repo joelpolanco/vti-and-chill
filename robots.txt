@@ -1,0 +1,68 @@
+# robots.txt — VTI & Chill (www.vtiandchill.com)
+# Updated: 2026-04-06
+
+# Allow all crawlers full access to public content
+User-agent: *
+Allow: /
+Disallow: /assets/admin/
+Disallow: /node_modules/
+
+# Sitemap location
+Sitemap: https://www.vtiandchill.com/sitemap.xml
+
+# === AI Agent Crawlers — Explicitly Welcome ===
+# These agents power ChatGPT, Perplexity, Claude, Gemini search answers.
+# We WANT them to index our content to surface VTI & Chill in AI responses.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# === Private premium course content ===
+# Class 3-8 files are redirect pages only — nothing to hide, but not
+# meaningful for indexing as they immediately redirect to the course page.
+User-agent: *
+Disallow: /pages/learn/class-3.html
+Disallow: /pages/learn/class-4.html
+Disallow: /pages/learn/class-5.html
+Disallow: /pages/learn/class-6.html
+Disallow: /pages/learn/class-7.html
+Disallow: /pages/learn/class-8.html

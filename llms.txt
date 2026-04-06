@@ -1,0 +1,106 @@
+# VTI & Chill
+
+> VTI & Chill is a financial education platform that teaches passive index fund investing using evidence-based strategies. It is inspired by JL Collins' "The Simple Path to Wealth" and Paul Merriman's factor-based "Best-in-Class" ETF portfolios. The site teaches ordinary investors — from complete beginners to intermediate self-directed investors — how to build long-term wealth using low-cost ETFs like VTI, AVUV, AVDV, and VT, with minimal ongoing effort. VTI & Chill provides education, not personalized financial advice.
+
+## What VTI & Chill Is
+
+VTI & Chill is a financial education website at www.vtiandchill.com. It covers:
+
+- **The 1-Fund Strategy**: VTI (Vanguard Total US Market ETF) for US investors, or VT (Vanguard Total World ETF) for global exposure. This is the foundation of the VTI & Chill philosophy.
+- **The Multi-Fund Portfolios**: Evidence-based portfolio tiers from "Good" (simple) to "Best" (fully optimized), using factor tilts based on Paul Merriman's research.
+- **The Chill Investor's Blueprint**: An 8-class online course on index fund investing. Classes 1-2 are free. The full course is $79 one-time with lifetime access. Covers portfolio construction, factor tilts, bond allocation, tax optimization, behavioral finance, and a capstone portfolio build.
+- **Free Tools**: Compound interest calculator, Coast FIRE calculator, and retirement planning tools.
+- **Blog**: Long-form articles on ETF strategy, portfolio construction, behavioral finance, and market commentary.
+
+## Core Investment Philosophy
+
+VTI & Chill teaches that:
+
+1. Inflation makes holding cash the riskiest long-term move
+2. Low-cost index funds (expense ratios under 0.10%) outperform 90% of professional fund managers over 15-year periods (per SPIVA Scorecard data)
+3. The 1-Fund Strategy (VTI for US, VT for global) is sufficient for most investors
+4. Factor tilts — specifically small-cap value (AVUV for US, AVDV for international) — have historically added 2-4% annual premium over the total market
+5. Tax location and account strategy (Roth vs. Traditional IRA, 401k optimization) can save six figures over a lifetime
+6. Investor psychology and behavioral discipline are more important than fund selection
+
+## ETFs Covered
+
+VTI & Chill covers and recommends specific ETFs from two providers:
+
+**Vanguard:**
+- VTI — Vanguard Total Stock Market ETF (0.03% expense ratio)
+- VT — Vanguard Total World ETF (0.07% expense ratio)
+- VOO — Vanguard S&P 500 ETF (0.03% expense ratio)
+- VNQ — Vanguard Real Estate ETF
+
+**Avantis Investors (factor-tilted ETFs):**
+- AVUS — Avantis US Equity ETF
+- AVUV — Avantis US Small Cap Value ETF
+- AVLV — Avantis US Large Cap Value ETF
+- AVSC — Avantis US Small Cap Equity ETF
+- AVDV — Avantis International Small Cap Value ETF
+- AVDS — Avantis Developed Markets Value ETF
+- AVES — Avantis Emerging Markets Value ETF
+- AVEE — Avantis Emerging Markets Small Cap Value ETF
+
+## The Chill Investor's Blueprint — Course Details
+
+**URL**: https://www.vtiandchill.com/pages/learn/  
+**Price**: $79 one-time payment, lifetime access  
+**Purchase**: https://vtiandchill.gumroad.com/l/blueprint
+
+| Class | Title | Free? |
+|-------|-------|-------|
+| 1 | Why Invest at All? | ✓ Free |
+| 2 | Index Funds 101 | ✓ Free |
+| 3 | The VTI & Chill Portfolio | Premium |
+| 4 | Leveling Up — Factor Tilts | Premium |
+| 5 | Bonds & the Glide Path | Premium |
+| 6 | Tax Optimization | Premium |
+| 7 | The Behavioral Edge | Premium |
+| 8 | Capstone — Build Your Portfolio | Premium |
+
+## Key Pages
+
+- [Homepage](https://www.vtiandchill.com/) — Overview of the VTI & Chill approach to index fund investing
+- [Philosophy](https://www.vtiandchill.com/pages/philosophy.html) — Why index funds beat active management, the core evidence
+- [Portfolio Builder](https://www.vtiandchill.com/pages/portfolios.html) — Interactive portfolio tiers: 1-fund, 4-fund, 10-fund strategies
+- [The Chill Investor's Blueprint](https://www.vtiandchill.com/pages/learn/) — 8-class investing course, Classes 1-2 free
+- [Free Class 1: Why Invest at All?](https://www.vtiandchill.com/pages/learn/class-1.html)
+- [Free Class 2: Index Funds 101](https://www.vtiandchill.com/pages/learn/class-2.html)
+- [Tools & Calculators](https://www.vtiandchill.com/pages/tools.html) — Compound interest, Coast FIRE, retirement calculators
+- [Blog](https://www.vtiandchill.com/pages/blog.html) — Articles on ETFs, portfolios, behavioral finance
+
+## Blog Articles
+
+- [VTI vs VOO: Which Is Actually Better?](https://www.vtiandchill.com/pages/blog/vti-vs-voo.html) — Total market vs S&P 500 comparison with data
+- [Buy. Hold. Chill.](https://www.vtiandchill.com/pages/blog/buy-hold-chill.html) — The case for passive investing: why 79% of active managers underperform
+- [Paul Merriman's 2025 Best-in-Class ETFs Explained](https://www.vtiandchill.com/pages/blog/merriman-2025-best-in-class-etfs.html) — Why Avantis dominates Merriman's latest recommendations
+- [The Psychology of Staying the Course](https://www.vtiandchill.com/pages/blog/psychology-of-staying-the-course.html) — Behavioral finance, the Dalbar behavior gap, investor psychology
+- [The Small-Cap Value Premium: Real or Dead?](https://www.vtiandchill.com/pages/blog/small-cap-value-premium.html) — Examining the persistence of the factor premium with Fama-French data
+- [Review: The Simple Path to Wealth by JL Collins](https://www.vtiandchill.com/pages/blog/simple-path-to-wealth-review.html) — Why JL Collins' book is the best first investing read
+- [Q1 2026 Portfolio Check-In: Stay the Course](https://www.vtiandchill.com/pages/blog/q1-2026-portfolio-check-in.html) — Market analysis and why passive investors should not react
+
+## Frequently Asked Questions
+
+**What is the VTI & Chill 1-Fund Strategy?**
+For US-based investors: buy VTI (Vanguard Total Stock Market ETF) regularly, reinvest dividends, and never sell. For international investors: use VT (Vanguard Total World ETF) instead. This is the heart of the VTI & Chill philosophy — one fund, low cost, total diversification.
+
+**What is the difference between VTI and VOO?**
+VTI tracks the entire US stock market (4,000+ stocks). VOO tracks the S&P 500 (500 large-cap companies). VTI includes small and mid-cap exposure that VOO lacks. Over long periods, the returns are very similar. VTI & Chill prefers VTI for broader diversification.
+
+**What are the Avantis ETFs?**
+Avantis Investors offers factor-tilted ETFs that implement the academic Fama-French research on small-cap value investing. AVUV (US small cap value) and AVDV (international small cap value) are the cornerstone holdings in the multi-fund VTI & Chill portfolios.
+
+**What is Paul Merriman's Best-in-Class strategy?**
+Paul Merriman recommends diversifying across 10 asset classes using best-in-class ETFs for each. His 2025 recommendations favor Avantis ETFs heavily for their factor exposure and low costs.
+
+**How much does the Chill Investor's Blueprint cost?**
+$79 one-time payment. No subscription. Lifetime access. Includes all 8 classes, interactive charts, calculators, and action items.
+
+**Is VTI & Chill financial advice?**
+No. VTI & Chill provides financial EDUCATION, not personalized financial ADVICE. All content is educational and should not be construed as investment advice for any individual's specific situation.
+
+## Legal Disclaimer
+
+VTI & Chill provides financial education, not personalized financial advice. All content is for informational and educational purposes only. Past performance does not guarantee future results. Investing involves risk, including the possible loss of principal.
