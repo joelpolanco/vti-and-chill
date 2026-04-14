@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Market Always Goes Up — 100 Years of Proof | VTI & Chill</title>
+<meta name="description" content="Since 1926, the S&P 500 has returned ~10% per year. Over every 20-year rolling period, stocks have been positive 100% of the time. Here's what the data actually says about long-term investing.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h4 { color: var(--color-primary); margin-bottom: var(--space-2); font-weight: 700; }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+
+  /* Chart styles */
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+
+  /* Stat cards */
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+</style>
+
+  <!-- SEO: Canonical & Keywords -->
+  <link rel="canonical" href="https://www.vtiandchill.com/pages/blog/the-market-always-goes-up.html">
+  <meta name="keywords" content="does the stock market always go up, S&P 500 historical returns, long-term investing data, market crash recovery time, rolling returns stock market, buy and hold investing">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="VTI & Chill">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Market Always Goes Up — 100 Years of Proof">
+  <meta property="og:description" content="Since 1926, the S&P 500 has returned ~10% per year. Over every 20-year rolling period, stocks have been positive 100% of the time.">
+  <meta property="og:url" content="https://www.vtiandchill.com/pages/blog/the-market-always-goes-up.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="VTI & Chill">
+  <meta property="article:published_time" content="2026-04-14T00:00:00Z">
+  <meta property="article:author" content="VTI & Chill">
+  <meta property="article:section" content="Investing">
+  <meta property="article:tag" content="stock market history">
+  <meta property="article:tag" content="long-term investing">
+  <meta property="article:tag" content="index funds">
+  <meta property="article:tag" content="buy and hold">
+  <meta property="article:tag" content="S&amp;P 500 returns">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VTIandChill">
+  <meta name="twitter:title" content="The Market Always Goes Up — 100 Years of Proof">
+  <meta name="twitter:description" content="Since 1926, the S&P 500 has returned ~10% per year. Over every 20-year rolling period, stocks have been positive 100% of the time.">
+  <meta name="twitter:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Market Always Goes Up — 100 Years of Proof",
+  "description": "Since 1926, the S&P 500 has returned approximately 10% per year. Over every 20-year rolling period in history, stocks have been positive 100% of the time. Here is the data behind the most important truth in long-term investing.",
+  "url": "https://www.vtiandchill.com/pages/blog/the-market-always-goes-up.html",
+  "datePublished": "2026-04-14",
+  "dateModified": "2026-04-14",
+  "author": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/the-market-always-goes-up.html"
+  },
+  "keywords": ["stock market history", "S&P 500 returns", "long-term investing", "buy and hold", "index fund investing", "rolling returns", "market crash recovery"],
+  "articleSection": "Investing",
+  "wordCount": 1800
+}
+  </script>
+
+  <!-- Structured Data: FAQ (JSON-LD) — GEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does the stock market always go up?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Over long time horizons, yes. The S&P 500 has delivered positive returns in 100% of all rolling 20-year periods since 1926. The average annual return since inception is approximately 10.3%. While individual years can be sharply negative (2008 lost 37%), the market has recovered from every crash in history and gone on to set new all-time highs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take the stock market to recover from a crash?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Recovery times vary by crash severity. The 2020 COVID crash recovered in just 4 months. The 2008 financial crisis took about 4 years (S&P 500 returned to its previous high by early 2013). The dot-com crash of 2000-2002 took about 7 years. The worst-case scenario in modern history (including the dot-com and 2008 crashes back-to-back) took approximately 12 years. On average since 1950, bear market recoveries have taken about 2 years and 3 months."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the average annual return of the S&P 500?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The S&P 500 has averaged approximately 10% per year since its inception in 1926 (10.34% including dividends). Adjusted for inflation, the real return is approximately 7.2% per year. Over the most recent 30-year period (1996-2025), the average annual return has been 10.4%, remarkably close to the long-term historical average."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What would $10,000 invested in the S&P 500 20 years ago be worth today?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A $10,000 investment in the S&P 500 in 2006 would be worth approximately $78,000 in 2026, assuming dividend reinvestment and no additional contributions. That is a 680% total return over 20 years, despite living through the 2008 financial crisis, the 2020 COVID crash, and the 2022 bear market."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vtiandchill.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.vtiandchill.com/pages/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "The Market Always Goes Up", "item": "https://www.vtiandchill.com/pages/blog/the-market-always-goes-up.html" }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI & <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn.html">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn.html">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Market History</span>
+          <span>April 14, 2026</span>
+          <span>7 min read</span>
+        </div>
+        <h1>The Market Always Goes Up</h1>
+        <p class="blog-post-subtitle">100 years of data, every crash, every recovery. The most important chart in investing isn't complicated. It just goes up and to the right.</p>
+      </div>
+
+      <div class="blog-post-content">
+
+        <p>Here's a statement that sounds reckless until you look at the data: <strong>the stock market always goes up.</strong></p>
+
+        <p>Not every day. Not every year. Not in a straight line. But over every 20-year period in recorded market history, stocks have delivered positive returns. One hundred percent of the time. No exceptions. That's not optimism. That's a century of evidence.</p>
+
+        <p>This post is the data behind that claim. Every crash, every recovery, every rolling return. If you're going to build wealth the boring way with index funds, this is the foundational truth you need to understand — and believe — before anything else matters.</p>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-value">~10%</div>
+            <div class="stat-label">Avg. annual return since 1926</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">100%</div>
+            <div class="stat-label">Positive 20-yr rolling periods</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">74%</div>
+            <div class="stat-label">Individual years are positive</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">$1.93M</div>
+            <div class="stat-label">$100 invested in 1926 today</div>
+          </div>
+        </div>
+
+        <h2>The 100-Year Track Record</h2>
+
+        <p>Since 1926, the S&P 500 has returned an average of <strong>10.34% per year</strong> with dividends reinvested. Adjusted for inflation, the real return is approximately 7.2% per year. That includes the Great Depression, World War II, the stagflation of the 1970s, Black Monday, the dot-com collapse, the 2008 financial crisis, a global pandemic, and every geopolitical shock in between.</p>
+
+        <p>One hundred dollars invested in the S&P 500 at the beginning of 1926 would be worth approximately <strong>$1.93 million</strong> today. That's not a typo. Nearly two million dollars from a single hundred-dollar bill, powered by nothing more than compound returns and the patience to leave it alone.</p>
+
+        <p>Here's what the annual returns actually look like, decade by decade:</p>
+
+        <!-- SVG Bar Chart: S&P 500 Returns by Decade -->
+        <div class="chart-container">
+          <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="S&P 500 annualized returns by decade chart">
+            <text x="350" y="22" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="13" font-weight="600" fill="currentColor">S&P 500 Annualized Returns by Decade</text>
+            <!-- Grid lines -->
+            <line x1="70" y1="45" x2="680" y2="45" stroke="currentColor" stroke-opacity="0.1"/>
+            <line x1="70" y1="90" x2="680" y2="90" stroke="currentColor" stroke-opacity="0.1"/>
+            <line x1="70" y1="135" x2="680" y2="135" stroke="currentColor" stroke-opacity="0.1"/>
+            <line x1="70" y1="180" x2="680" y2="180" stroke="currentColor" stroke-opacity="0.1"/>
+            <line x1="70" y1="225" x2="680" y2="225" stroke="currentColor" stroke-opacity="0.1"/>
+            <!-- Y-axis labels -->
+            <text x="60" y="49" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">20%</text>
+            <text x="60" y="94" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">15%</text>
+            <text x="60" y="139" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">10%</text>
+            <text x="60" y="184" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">5%</text>
+            <text x="60" y="229" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">0%</text>
+            <!-- Bars: 1930s=1.4%, 1940s=9.2%, 1950s=19.4%, 1960s=7.8%, 1970s=5.9%, 1980s=17.5%, 1990s=18.2%, 2000s=-0.9%, 2010s=13.6%, 2020s=14.5% -->
+            <!-- Bar positions: x starts at 85, width=50, gap=12 -->
+            <!-- Scale: 0% = y225, 20% = y45, so 1% = 9px -->
+            <rect x="85" y="212" width="50" height="13" rx="3" fill="#00d4aa" opacity="0.7"/>
+            <text x="110" y="208" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-weight="600" fill="#00d4aa">1.4%</text>
+            <text x="110" y="255" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">1930s</text>
+
+            <rect x="147" y="142" width="50" height="83" rx="3" fill="#00d4aa" opacity="0.7"/>
+            <text x="172" y="138" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-weight="600" fill="#00d4aa">9.2%</text>
+            <text x="172" y="255" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">1940s</text>
+
+            <rect x="209" y="50" width="50" height="175" rx="3" fill="#00d4aa"/>
+            <text x="234" y="46" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-weight="600" fill="#00d4aa">19.4%</text>
+            <text x="234" y="255" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">1950s</text>
+
+            <rect x="271" y="155" width="50" height="70" rx="3" fill="#00d4aa" opacity="0.7"/>
+            <text x="296" y="151" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-weight="600" fill="#00d4aa">7.8%</text>
+            <text x="296" y="255" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">1960s</text>
+
+            <rect x="333" y="172" width="50" height="53" rx="3" fill="#00d4aa" opacity="0.5"/>
+            <text x="358" y="168" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-weight="600" fill="#00d4aa">5.9%</text>
+            <text x="358" y="255" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">1970s</text>
+
+            <rect x="395" y="68" width="50" height="157" rx="3" fill="#00d4aa"/>
+            <text x="420" y="64" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-weight="600" fill="#00d4aa">17.5%</text>
+            <text x="420" y="255" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">1980s</text>
+
+            <rect x="457" y="61" width="50" height="164" rx="3" fill="#00d4aa"/>
+            <text x="482" y="57" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-weight="600" fill="#00d4aa">18.2%</text>
+            <text x="482" y="255" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">1990s</text>
+
+            <rect x="519" y="225" width="50" height="8" rx="3" fill="#e74c3c" opacity="0.7"/>
+            <text x="544" y="221" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-weight="600" fill="#e74c3c">-0.9%</text>
+            <text x="544" y="255" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">2000s</text>
+
+            <rect x="581" y="103" width="50" height="122" rx="3" fill="#00d4aa"/>
+            <text x="606" y="99" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-weight="600" fill="#00d4aa">13.6%</text>
+            <text x="606" y="255" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">2010s</text>
+
+            <!-- Average line at 10.3% -->
+            <line x1="70" y1="132" x2="680" y2="132" stroke="#f0a500" stroke-dasharray="6,4" stroke-width="1.5"/>
+            <text x="682" y="130" font-family="'Satoshi', sans-serif" font-size="9" fill="#f0a500" font-weight="500">Avg: 10.3%</text>
+          </svg>
+          <p class="chart-caption">S&P 500 annualized total returns by decade (dividends reinvested). Source: Slickcharts, S&P Global. Even the "lost decade" of the 2000s was followed by a 13.6% surge in the 2010s.</p>
+        </div>
+
+        <p>Nine of the ten decades were positive. The only exception — the 2000s — contained both the dot-com crash and the worst financial crisis since the Great Depression, back-to-back. And even then, an investor who held through both disasters and into 2013 recovered everything and then some.</p>
+
+        <h2>Every Crash Recovers</h2>
+
+        <p>"The market always goes up" doesn't mean it never goes down. It goes down regularly, sometimes violently. The real claim is that <strong>every downturn in US stock market history has been temporary.</strong> Here's the proof:</p>
+
+        <table>
+          <thead>
+            <tr><th>Crash</th><th>Peak Decline</th><th>Duration (Peak to Trough)</th><th>Recovery Time</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Great Depression (1929)</td><td>-86%</td><td>34 months</td><td>~15 years</td></tr>
+            <tr><td>1973-74 Bear Market</td><td>-50%</td><td>21 months</td><td>~6 years</td></tr>
+            <tr><td>Black Monday (1987)</td><td>-36%</td><td>2 months</td><td>~2 years</td></tr>
+            <tr><td>Dot-Com Bust (2000-02)</td><td>-51%</td><td>31 months</td><td>~7 years</td></tr>
+            <tr><td>Financial Crisis (2007-09)</td><td>-58%</td><td>17 months</td><td>~4 years</td></tr>
+            <tr><td>COVID Crash (2020)</td><td>-34%</td><td>1 month</td><td>4 months</td></tr>
+            <tr><td>2022 Bear Market</td><td>-25%</td><td>10 months</td><td>~18 months</td></tr>
+          </tbody>
+        </table>
+
+        <p>Every single one recovered. The Great Depression — the absolute worst-case scenario in the history of American capitalism — recovered. If someone tells you "this time is different," the historical record has a one-word rebuttal: <em>when?</em></p>
+
+        <p>The average bear market since 1950 has seen the S&P 500 decline about 35.7%, last roughly 342 days from peak to trough, and recover in approximately <strong>2 years and 3 months</strong>. That sounds terrible in the moment. But in the context of a 30-year investing horizon? It's a blip. A footnote. A story you tell at dinner parties about the time you didn't panic.</p>
+
+        <h2>The Rolling Returns Chart That Should Be on Every Investor's Wall</h2>
+
+        <p>The most powerful reframing of market risk isn't about individual years — it's about holding periods. The data from the <a href="https://rationalwalk.com/wp-content/uploads/2022/05/Historical_Frequency_of_Positive_Stock_Returns_K03171V.pdf">S&P 500 rolling return analysis</a> shows a simple pattern:</p>
+
+        <!-- SVG Chart: Probability of Positive Returns by Holding Period -->
+        <div class="chart-container">
+          <svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Probability of positive stock returns by holding period">
+            <text x="350" y="22" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="13" font-weight="600" fill="currentColor">Probability of Positive Returns by Holding Period</text>
+            <text x="350" y="38" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">S&P 500, 1926 - 2025</text>
+            <!-- Grid lines at 60%, 70%, 80%, 90%, 100% -->
+            <line x1="90" y1="60" x2="650" y2="60" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="90" y1="100" x2="650" y2="100" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="90" y1="140" x2="650" y2="140" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="90" y1="180" x2="650" y2="180" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="90" y1="220" x2="650" y2="220" stroke="currentColor" stroke-opacity="0.08"/>
+            <!-- Y labels -->
+            <text x="80" y="64" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">100%</text>
+            <text x="80" y="104" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">90%</text>
+            <text x="80" y="144" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">80%</text>
+            <text x="80" y="184" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">70%</text>
+            <text x="80" y="224" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">60%</text>
+            <!-- Bars -->
+            <!-- 1 Day: 53.1% => too low for chart, skip -->
+            <!-- 1 Year: 74.7% => height mapped: (74.7-55)*4 = 78.8, y=220-78.8=141.2 -->
+            <rect x="120" y="147" width="70" height="73" rx="4" fill="#00d4aa" opacity="0.5"/>
+            <text x="155" y="142" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="600" fill="#00d4aa">74.7%</text>
+            <text x="155" y="240" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">1 Year</text>
+
+            <!-- 5 Years: 87.5% => (87.5-55)*4 = 130, y=220-130=90 -->
+            <rect x="220" y="90" width="70" height="130" rx="4" fill="#00d4aa" opacity="0.65"/>
+            <text x="255" y="85" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="600" fill="#00d4aa">87.5%</text>
+            <text x="255" y="240" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">5 Years</text>
+
+            <!-- 10 Years: 94.1% => (94.1-55)*4 = 156.4, y=220-156.4=63.6 -->
+            <rect x="320" y="64" width="70" height="156" rx="4" fill="#00d4aa" opacity="0.8"/>
+            <text x="355" y="59" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="600" fill="#00d4aa">94.1%</text>
+            <text x="355" y="240" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">10 Years</text>
+
+            <!-- 15 Years: ~96% => approximate -->
+            <rect x="420" y="56" width="70" height="164" rx="4" fill="#00d4aa" opacity="0.9"/>
+            <text x="455" y="51" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="600" fill="#00d4aa">~96%</text>
+            <text x="455" y="240" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">15 Years</text>
+
+            <!-- 20 Years: 100% -->
+            <rect x="520" y="60" width="70" height="160" rx="4" fill="#00d4aa"/>
+            <text x="555" y="55" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="700" fill="#00d4aa">100%</text>
+            <text x="555" y="240" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">20 Years</text>
+          </svg>
+          <p class="chart-caption">S&P 500 rolling return periods, 1926-2025. Data: S&P Global, Global Financial Data. Over any 20-year window, stocks have never lost money.</p>
+        </div>
+
+        <p>Read those numbers slowly:</p>
+        <ul>
+          <li><strong>Any single year:</strong> 74.7% chance of positive returns. Good odds — but one in four years is negative.</li>
+          <li><strong>Any 5-year period:</strong> 87.5% positive. Now we're getting somewhere.</li>
+          <li><strong>Any 10-year period:</strong> 94.1% positive. Only 3 periods in history were negative over a full decade.</li>
+          <li><strong>Any 20-year period:</strong> 100% positive. <em>Zero</em> exceptions in nearly a century of data.</li>
+        </ul>
+
+        <p>This is the entire argument for long-term index fund investing in a single chart. Time is not just your friend — it's your cheat code. The longer you hold, the more the volatility averages out, and the closer your returns converge toward that historical ~10% average.</p>
+
+        <h2>What About $10,000 in Real Life?</h2>
+
+        <p>Abstract percentages are hard to feel. Let's make it concrete. A <strong>$10,000 lump-sum investment</strong> in the S&P 500 at various starting points, with dividends reinvested and no additional contributions:</p>
+
+        <table>
+          <thead>
+            <tr><th>Year Invested</th><th>Value in 2026</th><th>Total Return</th><th>What Happened Along the Way</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>2006 (20 yrs ago)</td><td>~$78,000</td><td>+680%</td><td>Survived the 2008 crisis, COVID, 2022 bear market</td></tr>
+            <tr><td>2001 (25 yrs ago)</td><td>~$80,800</td><td>+708%</td><td>Dot-com, 2008, COVID — all three major crashes</td></tr>
+            <tr><td>1996 (30 yrs ago)</td><td>~$193,000</td><td>+1,830%</td><td>Four bear markets, still nearly 20x return</td></tr>
+          </tbody>
+        </table>
+
+        <p>That 2006 investor watched their $10,000 drop to roughly $5,300 during the 2008 crisis. They saw it plunge again in March 2020. And again in 2022. Each time, the rational move was to do absolutely nothing — and each time, the market proved them right.</p>
+
+        <div class="callout-box">
+          <h4>The Real Risk Isn't Investing — It's Not Investing</h4>
+          <p>Inflation averaged 3.2% per year since 1926. Cash sitting in a savings account doesn't "stay safe" — it loses purchasing power every single year. Over 30 years at 3% inflation, $10,000 shrinks to the equivalent of $4,120 in real purchasing power. The stock market's ~10% annual return is the antidote. Staying out of the market isn't the conservative choice. It's the expensive one.</p>
+        </div>
+
+        <h2>The Asterisks (Because Honesty Matters)</h2>
+
+        <p>"The market always goes up" is true with important context:</p>
+
+        <p><strong>It applies to the broad US stock market, not individual stocks.</strong> Enron always goes to zero. Blockbuster always goes to zero. The S&P 500 — an index that constantly replaces failing companies with growing ones — always recovers. This is why we own VTI (the total market) and not a handful of stock picks.</p>
+
+        <p><strong>Past performance doesn't guarantee future results.</strong> That disclaimer exists for a reason. But 100 years of data across two world wars, a dozen recessions, pandemics, technological revolutions, and every conceivable crisis is a remarkably robust dataset. It doesn't prove the future. But it does establish a base rate that's hard to argue with.</p>
+
+        <p><strong>Timing matters if your horizon is short.</strong> Someone who needed their money in 2009 after investing in 2007 had a legitimately bad experience. The "always goes up" thesis requires a holding period of 10+ years to approach certainty, and 20+ years for a perfect historical record. Money you need in the next five years doesn't belong in stocks.</p>
+
+        <p><strong>This applies to US equities specifically.</strong> Japan's Nikkei 225 peaked in 1989 and didn't recover for 34 years. International diversification (hello, VT) mitigates single-country risk. The US market's track record is extraordinary, but putting all your eggs in any one country's basket is a form of concentration risk.</p>
+
+        <h2>What This Means for You</h2>
+
+        <p>If you're investing in VTI, VOO, or VT with a 15+ year horizon, the data says three things:</p>
+
+        <ol>
+          <li><strong>Keep buying.</strong> During crashes, during rallies, during boring sideways years. Automate your contributions and let dollar-cost averaging do its job.</li>
+          <li><strong>Stop checking.</strong> Daily portfolio monitoring turns statistical certainty into emotional uncertainty. Your 20-year outcome is overwhelmingly positive. Your Tuesday-to-Wednesday outcome is a coin flip. Focus on the one that actually matters.</li>
+          <li><strong>Don't sell during crashes.</strong> This is the entire game. Every dollar you pull out during a downturn is a dollar that misses the recovery. The people who lose money in the stock market are overwhelmingly the people who panic-sell at the bottom.</li>
+        </ol>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>The stock market has returned roughly 10% per year for a century. Over any rolling 20-year period, it has never lost money. Every crash — from the Great Depression to COVID — has been followed by a full recovery and new all-time highs. A $100 investment in 1926 is worth nearly $2 million today.</p>
+          <p>You don't need to time the market. You don't need to pick stocks. You don't need a financial advisor charging 1% to underperform an index fund. You need to buy VTI (or VT), hold it for decades, and resist the urge to touch it when things get scary.</p>
+          <p>The market always goes up. Your only job is to stay in it long enough to prove that true.</p>
+        </div>
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. The historical data cited in this article is based on S&P 500 total returns with dividends reinvested. Always do your own research and consult a qualified professional before making investment decisions.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+</body>
+</html>

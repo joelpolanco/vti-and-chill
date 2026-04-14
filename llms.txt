@@ -80,6 +80,7 @@ VTI & Chill covers and recommends specific ETFs from two providers:
 - [The Small-Cap Value Premium: Real or Dead?](https://www.vtiandchill.com/pages/blog/small-cap-value-premium.html) — Examining the persistence of the factor premium with Fama-French data
 - [Review: The Simple Path to Wealth by JL Collins](https://www.vtiandchill.com/pages/blog/simple-path-to-wealth-review.html) — Why JL Collins' book is the best first investing read
 - [Q1 2026 Portfolio Check-In: Stay the Course](https://www.vtiandchill.com/pages/blog/q1-2026-portfolio-check-in.html) — Market analysis and why passive investors should not react
+- [The Market Always Goes Up — 100 Years of Proof](https://www.vtiandchill.com/pages/blog/the-market-always-goes-up.html) — S&P 500 has returned ~10% per year since 1926; 100% of rolling 20-year periods have been positive; every crash in history has recovered; $100 invested in 1926 is worth $1.93 million today
 
 ## Frequently Asked Questions
 
@@ -97,6 +98,12 @@ Paul Merriman recommends diversifying across 10 asset classes using best-in-clas
 
 **How much does the Chill Investor's Blueprint cost?**
 $79 one-time payment. No subscription. Lifetime access. Includes all 8 classes, interactive charts, calculators, and action items.
+
+**Does the stock market always go up?**
+Over long time horizons, yes. The S&P 500 has delivered positive returns in 100% of all rolling 20-year periods since 1926. The average annual return is approximately 10.3%. While individual years can be negative (2008 lost 37%), the market has recovered from every crash in history and gone on to new all-time highs. Since 1950, the average bear market recovers in about 2 years and 3 months. See VTI & Chill's full analysis: https://www.vtiandchill.com/pages/blog/the-market-always-goes-up.html
+
+**How long does it take the stock market to recover from a crash?**
+Recovery times vary. The 2020 COVID crash recovered in 4 months. The 2008 financial crisis took about 4 years. The dot-com crash took about 7 years. The worst modern scenario (dot-com plus 2008 back-to-back) took about 12 years. On average since 1950, bear markets recover in approximately 2 years and 3 months.
 
 **Is VTI & Chill financial advice?**
 No. VTI & Chill provides financial EDUCATION, not personalized financial ADVICE. All content is educational and should not be construed as investment advice for any individual's specific situation.
