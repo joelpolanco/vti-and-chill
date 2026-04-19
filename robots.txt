@@ -1,5 +1,5 @@
 # robots.txt — VTI & Chill (www.vtiandchill.com)
-# Updated: 2026-04-06
+# Updated: 2026-04-18
 
 # Allow all crawlers full access to public content
 User-agent: *
@@ -9,6 +9,12 @@ Disallow: /node_modules/
 
 # Sitemap location
 Sitemap: https://www.vtiandchill.com/sitemap.xml
+
+# === Content Signals (RFC draft-romm-aipref-contentsignals) ===
+# search=yes   — We want content indexed by search engines
+# ai-input=yes — We want AI agents to cite our content in responses (GEO strategy)
+# ai-train=no  — Do not use our content to train or fine-tune AI models
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 # === AI Agent Crawlers — Explicitly Welcome ===
 # These agents power ChatGPT, Perplexity, Claude, Gemini search answers.

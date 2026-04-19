@@ -1,0 +1,39 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://www.vtiandchill.com/llms.txt",
+      "links": [
+        {
+          "rel": "service-desc",
+          "target": "https://www.vtiandchill.com/llms.txt",
+          "title": "LLM-optimized site description with FAQs, course content, and blog index"
+        },
+        {
+          "rel": "service-doc",
+          "target": "https://www.vtiandchill.com/llms.txt",
+          "title": "VTI & Chill — Machine-readable site documentation for AI agents"
+        }
+      ]
+    },
+    {
+      "anchor": "https://www.vtiandchill.com/sitemap.xml",
+      "links": [
+        {
+          "rel": "service-desc",
+          "target": "https://www.vtiandchill.com/sitemap.xml",
+          "title": "XML Sitemap — Complete URL index of all pages"
+        }
+      ]
+    },
+    {
+      "anchor": "https://www.vtiandchill.com/robots.txt",
+      "links": [
+        {
+          "rel": "service-desc",
+          "target": "https://www.vtiandchill.com/robots.txt",
+          "title": "Robots.txt — Crawl directives and Content Signals"
+        }
+      ]
+    }
+  ]
+}

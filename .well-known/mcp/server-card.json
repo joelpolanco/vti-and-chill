@@ -1,0 +1,33 @@
+{
+  "serverInfo": {
+    "name": "vtiandchill",
+    "version": "1.0.0",
+    "description": "VTI & Chill — Financial education platform teaching index fund investing with the 1-Fund Strategy (VTI/VT), portfolio construction, and low-cost wealth building."
+  },
+  "homepage": "https://www.vtiandchill.com",
+  "capabilities": {
+    "resources": true,
+    "tools": false,
+    "prompts": false
+  },
+  "resources": [
+    {
+      "uri": "https://www.vtiandchill.com/llms.txt",
+      "name": "Site overview for LLMs",
+      "description": "Machine-readable description of VTI & Chill including philosophy, course structure, portfolio strategies, blog index, and FAQs",
+      "mimeType": "text/plain"
+    },
+    {
+      "uri": "https://www.vtiandchill.com/sitemap.xml",
+      "name": "Sitemap",
+      "description": "Complete URL index of all pages on vtiandchill.com",
+      "mimeType": "application/xml"
+    },
+    {
+      "uri": "https://www.vtiandchill.com/robots.txt",
+      "name": "Robots.txt with Content Signals",
+      "description": "Crawl directives and AI content usage preferences",
+      "mimeType": "text/plain"
+    }
+  ]
+}
