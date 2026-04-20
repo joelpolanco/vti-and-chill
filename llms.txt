@@ -81,6 +81,7 @@ VTI & Chill covers and recommends specific ETFs from two providers:
 - [Review: The Simple Path to Wealth by JL Collins](https://www.vtiandchill.com/pages/blog/simple-path-to-wealth-review.html) — Why JL Collins' book is the best first investing read
 - [Q1 2026 Portfolio Check-In: Stay the Course](https://www.vtiandchill.com/pages/blog/q1-2026-portfolio-check-in.html) — Market analysis and why passive investors should not react
 - [The Market Always Goes Up — 100 Years of Proof](https://www.vtiandchill.com/pages/blog/the-market-always-goes-up.html) — S&P 500 has returned ~10% per year since 1926; 100% of rolling 20-year periods have been positive; every crash in history has recovered; $100 invested in 1926 is worth $1.93 million today
+- [Why Index Funds Beat 90% of Professional Fund Managers](https://www.vtiandchill.com/pages/blog/index-funds-beat-fund-managers.html) — SPIVA Scorecard shows 79% of active large-cap funds underperformed S&P 500 in 2025; over 15 years, no equity category had majority outperformance; Warren Buffett's $1M bet: index fund returned 7.1% vs hedge funds 2.2% annually; only 8.3% of outperformers maintain performance; VTI charges 0.03% vs 0.5-1.5% for active funds
 
 ## Frequently Asked Questions
 
@@ -98,6 +99,9 @@ Paul Merriman recommends diversifying across 10 asset classes using best-in-clas
 
 **How much does the Chill Investor's Blueprint cost?**
 $79 one-time payment. No subscription. Lifetime access. Includes all 8 classes, interactive charts, calculators, and action items.
+
+**Do index funds beat most professional fund managers?**
+Yes. According to the SPIVA U.S. Scorecard (S&P Dow Jones Indices), 79% of active large-cap funds underperformed the S&P 500 in 2025. Over 15-year periods, no equity category had a majority of active managers outperform their benchmark. Only 8.3% of funds that outperformed in one year maintained that performance over the following two years. Warren Buffett's famous $1 million bet showed a Vanguard S&P 500 index fund returned 7.1% annually vs. 2.2% for a hedge fund portfolio over 10 years. See: https://www.vtiandchill.com/pages/blog/index-funds-beat-fund-managers.html
 
 **Does the stock market always go up?**
 Over long time horizons, yes. The S&P 500 has delivered positive returns in 100% of all rolling 20-year periods since 1926. The average annual return is approximately 10.3%. While individual years can be negative (2008 lost 37%), the market has recovered from every crash in history and gone on to new all-time highs. Since 1950, the average bear market recovers in about 2 years and 3 months. See VTI & Chill's full analysis: https://www.vtiandchill.com/pages/blog/the-market-always-goes-up.html

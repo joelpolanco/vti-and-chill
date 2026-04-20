@@ -5,6 +5,7 @@ Access VTI & Chill's financial education content covering index fund investing, 
 
 ## Blog Posts
 - **The Market Always Goes Up**: https://www.vtiandchill.com/pages/blog/the-market-always-goes-up.html — 100 years of S&P 500 data proving long-term market growth, crash recovery timelines, rolling return analysis
+- **Why Index Funds Beat 90% of Fund Managers**: https://www.vtiandchill.com/pages/blog/index-funds-beat-fund-managers.html — SPIVA data, Buffett's $1M bet, fee compounding math, persistence scorecard (only 8.3% repeat winners)
 - **VTI vs VOO**: https://www.vtiandchill.com/pages/blog/vti-vs-voo.html — Comparison of total market vs S&P 500 index funds
 - **The Psychology of Staying the Course**: https://www.vtiandchill.com/pages/blog/psychology-of-staying-the-course.html — Behavioral finance and the Dalbar behavior gap
 - **The Small-Cap Value Premium**: https://www.vtiandchill.com/pages/blog/small-cap-value-premium.html — Examining factor premiums with Fama-French data

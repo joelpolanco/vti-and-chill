@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Index Funds Beat 90% of Professional Fund Managers | VTI & Chill</title>
+<meta name="description" content="79% of active large-cap funds underperformed the S&P 500 in 2025. Warren Buffett's $1M bet proved it. The SPIVA data confirms it year after year. Here's why index funds win.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h4 { color: var(--color-primary); margin-bottom: var(--space-2); font-weight: 700; }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+  .stat-card.negative .stat-value { color: #e74c3c; }
+</style>
+
+  <!-- SEO: Canonical & Keywords -->
+  <link rel="canonical" href="https://www.vtiandchill.com/pages/blog/index-funds-beat-fund-managers.html">
+  <meta name="keywords" content="index funds vs active management, SPIVA scorecard results, why index funds beat fund managers, Warren Buffett bet against hedge funds, active vs passive investing, expense ratio impact">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="VTI & Chill">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Why Index Funds Beat 90% of Professional Fund Managers">
+  <meta property="og:description" content="79% of active large-cap funds underperformed the S&P 500 in 2025. The SPIVA data, Buffett's $1M bet, and the math of fees all say the same thing.">
+  <meta property="og:url" content="https://www.vtiandchill.com/pages/blog/index-funds-beat-fund-managers.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="VTI & Chill">
+  <meta property="article:published_time" content="2026-04-20T00:00:00Z">
+  <meta property="article:author" content="VTI & Chill">
+  <meta property="article:section" content="Investing">
+  <meta property="article:tag" content="index funds">
+  <meta property="article:tag" content="active management">
+  <meta property="article:tag" content="SPIVA">
+  <meta property="article:tag" content="expense ratios">
+  <meta property="article:tag" content="Warren Buffett">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VTIandChill">
+  <meta name="twitter:title" content="Why Index Funds Beat 90% of Professional Fund Managers">
+  <meta name="twitter:description" content="79% of active large-cap funds underperformed the S&P 500 in 2025. The SPIVA data, Buffett's $1M bet, and the math of fees prove it.">
+  <meta name="twitter:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Why Index Funds Beat 90% of Professional Fund Managers",
+  "description": "The SPIVA Scorecard shows 79% of active large-cap funds underperformed the S&P 500 in 2025. Warren Buffett's million-dollar bet proved it over a decade. Here is the data behind why index funds consistently win.",
+  "url": "https://www.vtiandchill.com/pages/blog/index-funds-beat-fund-managers.html",
+  "datePublished": "2026-04-20",
+  "dateModified": "2026-04-20",
+  "author": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/index-funds-beat-fund-managers.html"
+  },
+  "keywords": ["index funds", "active management", "SPIVA scorecard", "Warren Buffett bet", "expense ratios", "passive investing"],
+  "articleSection": "Investing",
+  "wordCount": 1300
+}
+  </script>
+
+  <!-- Structured Data: FAQ (JSON-LD) — GEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do index funds really beat most fund managers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. According to the SPIVA U.S. Scorecard for year-end 2025, 79% of all active large-cap U.S. equity funds underperformed the S&P 500 over a one-year period. Over 15-year periods, no equity category had a majority of active managers outperform their benchmark. The data is published semi-annually by S&P Dow Jones Indices and accounts for survivorship bias."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What was Warren Buffett's bet against hedge funds?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In 2007, Warren Buffett bet $1 million that a simple Vanguard S&P 500 index fund would outperform a portfolio of hedge funds over 10 years. Hedge fund manager Ted Seides of Protege Partners accepted. The index fund compounded at 7.1% annually while the hedge funds averaged just 2.2%. A $1 million investment in the index became $2.26 million versus $1.22 million in the hedge funds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why can't professional fund managers beat the market consistently?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Markets are dominated by sophisticated institutional investors all analyzing the same information with similar tools, making it extremely difficult to find persistent mispricings. SPIVA persistence data shows only about 8.3% of funds that outperformed in a given year maintained that outperformance over the following two years, suggesting most outperformance is luck rather than skill. As Jack Bogle noted: all investors collectively own the market, so before costs they earn market returns, and after costs active investors must underperform."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much do index fund fees save compared to active funds?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The average actively managed fund charges 0.5% to 1.5% annually while a total market index fund like VTI charges just 0.03%. Over 30 years on a $500,000 portfolio, a 1% annual fee difference can cost 25-30% of your final portfolio value due to compounding. You are paying more for statistically worse performance."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vtiandchill.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.vtiandchill.com/pages/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why Index Funds Beat 90% of Fund Managers", "item": "https://www.vtiandchill.com/pages/blog/index-funds-beat-fund-managers.html" }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI & <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn.html">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn.html">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Active vs Passive</span>
+          <span>April 20, 2026</span>
+          <span>6 min read</span>
+        </div>
+        <h1>Why Index Funds Beat 90% of Professional Fund Managers</h1>
+        <p class="blog-post-subtitle">The SPIVA data. Buffett's million-dollar bet. The compounding math of fees. Three separate lines of evidence, one conclusion: stop paying for underperformance.</p>
+      </div>
+
+      <div class="blog-post-content">
+
+        <p>Let's say you're about to have major surgery. Your doctor offers you two options. Option A: a skilled surgeon with 20 years of experience who, statistically, has a worse patient outcome rate than the hospital's automated procedure robot. Option B: the robot, which costs 80% less and consistently outperforms the surgeon over every five-year period measured.</p>
+
+        <p>You'd probably choose the robot.</p>
+
+        <p>That's roughly the situation with active fund managers versus index funds — except the data on the fund managers is even more damning.</p>
+
+        <div class="stat-row">
+          <div class="stat-card negative">
+            <div class="stat-value">79%</div>
+            <div class="stat-label">Active funds that underperformed S&P 500 in 2025</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">0.03%</div>
+            <div class="stat-label">VTI expense ratio</div>
+          </div>
+          <div class="stat-card negative">
+            <div class="stat-value">8.3%</div>
+            <div class="stat-label">Outperformers who kept winning</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">$2.26M</div>
+            <div class="stat-label">Buffett's index fund after 10 yrs ($1M start)</div>
+          </div>
+        </div>
+
+        <h2>The Numbers Don't Lie</h2>
+
+        <p>The SPIVA Scorecard (S&P Indices Versus Active) is published semi-annually by S&P Dow Jones Indices and is the most comprehensive measure of active fund manager performance against their benchmark indexes. It is not flattering reading if you work on Wall Street.</p>
+
+        <p><a href="https://www.spglobal.com/spdji/en/spiva/article/spiva-us/">According to the SPIVA U.S. Scorecard for year-end 2025</a>, <strong>79% of all active large-cap U.S. equity funds underperformed the S&P 500</strong> over the one-year period — making it the fourth-worst year for active managers in the 25-year history of the scorecard. And importantly, this wasn't a fluke year: the long-term data is just as grim. Over the 15-year period ending December 2024, there was not a single equity category in which a majority of active managers managed to outperform. Not one.</p>
+
+        <p>Let that sink in. You could throw a dart at a list of active fund managers and have roughly an 80%+ chance of picking one who will lose to the index over the long run. And you'd be paying them extra for the privilege.</p>
+
+        <!-- SVG Chart: SPIVA Underperformance by Time Period -->
+        <div class="chart-container">
+          <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Percentage of active large-cap funds that underperformed the S&P 500 by time period">
+            <text x="350" y="22" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="13" font-weight="600" fill="currentColor">% of Active Large-Cap Funds That Underperformed the S&P 500</text>
+            <text x="350" y="38" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">SPIVA U.S. Scorecard, periods ending December 2025</text>
+            <!-- Grid lines -->
+            <line x1="100" y1="65" x2="650" y2="65" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="100" y1="105" x2="650" y2="105" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="100" y1="145" x2="650" y2="145" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="100" y1="185" x2="650" y2="185" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="100" y1="225" x2="650" y2="225" stroke="currentColor" stroke-opacity="0.08"/>
+            <!-- Y-axis: 100% at y=65, 0% at y=265, so 1% = 2px -->
+            <text x="90" y="69" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">100%</text>
+            <text x="90" y="109" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">80%</text>
+            <text x="90" y="149" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">60%</text>
+            <text x="90" y="189" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">40%</text>
+            <text x="90" y="229" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">20%</text>
+            <!-- Bars: 1yr=79%, 3yr=73%, 5yr=77%, 10yr=87%, 15yr=92%, 20yr=94% -->
+            <!-- Each bar: y = 265 - (pct * 2) -->
+            <!-- 1 Year: 79% => y=265-158=107, h=158 -->
+            <rect x="125" y="107" width="70" height="158" rx="4" fill="#e74c3c" opacity="0.75"/>
+            <text x="160" y="100" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="12" font-weight="700" fill="#e74c3c">79%</text>
+            <text x="160" y="280" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">1 Year</text>
+            <!-- 3 Year: 73% => y=265-146=119 -->
+            <rect x="215" y="119" width="70" height="146" rx="4" fill="#e74c3c" opacity="0.7"/>
+            <text x="250" y="112" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="12" font-weight="700" fill="#e74c3c">73%</text>
+            <text x="250" y="280" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">3 Years</text>
+            <!-- 5 Year: 77% => y=265-154=111 -->
+            <rect x="305" y="111" width="70" height="154" rx="4" fill="#e74c3c" opacity="0.75"/>
+            <text x="340" y="104" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="12" font-weight="700" fill="#e74c3c">77%</text>
+            <text x="340" y="280" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">5 Years</text>
+            <!-- 10 Year: 87% => y=265-174=91 -->
+            <rect x="395" y="91" width="70" height="174" rx="4" fill="#e74c3c" opacity="0.85"/>
+            <text x="430" y="84" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="12" font-weight="700" fill="#e74c3c">87%</text>
+            <text x="430" y="280" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">10 Years</text>
+            <!-- 15 Year: 92% => y=265-184=81 -->
+            <rect x="485" y="81" width="70" height="184" rx="4" fill="#e74c3c" opacity="0.9"/>
+            <text x="520" y="74" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="12" font-weight="700" fill="#e74c3c">92%</text>
+            <text x="520" y="280" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">15 Years</text>
+            <!-- 20 Year: 94% => y=265-188=77 -->
+            <rect x="575" y="77" width="70" height="188" rx="4" fill="#e74c3c"/>
+            <text x="610" y="70" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="12" font-weight="700" fill="#e74c3c">94%</text>
+            <text x="610" y="280" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">20 Years</text>
+          </svg>
+          <p class="chart-caption">Source: <a href="https://www.spglobal.com/spdji/en/spiva/article/spiva-us/">SPIVA U.S. Scorecard</a>, S&P Dow Jones Indices. The longer the time horizon, the worse active managers perform. Over 20 years, 94% fail to beat the index.</p>
+        </div>
+
+        <p>The picture looks even worse when you account for survivorship bias. The SPIVA data includes funds that closed or merged during the measurement period — meaning the graveyard of failed funds counts against the active management record. Many studies that only look at currently existing funds make active management look better than it actually is, because the worst performers quietly disappeared.</p>
+
+        <p>Now add fees. The average actively managed fund charges somewhere between 0.5% and 1.5% annually. A total market index fund like VTI charges 0.03%. That difference might seem trivial, but over 30 years on a large portfolio, it compounds into an enormous gap.</p>
+
+        <div class="callout-box">
+          <h4>The Compounding Cost of Fees</h4>
+          <p>A 1% fee drag over 30 years on a $500,000 portfolio doesn't cost you $150,000. Due to compounding, it costs you <strong>25-30% of your final portfolio value</strong>. You're paying for underperformance and you're paying it in dollars that could have been compounding for you. At a 0.03% expense ratio, VTI charges roughly $15 per year on a $50,000 investment. The average active fund charges $500-$750 for the same amount.</p>
+        </div>
+
+        <h2>Buffett's $1 Million Bet Against the Hedge Fund Industry</h2>
+
+        <p>If the SPIVA data represents the academic case against active management, Warren Buffett's famous bet represents the cinematic version.</p>
+
+        <p>In 2007, Buffett made a public wager: he would put $500,000 (later valued closer to $1 million through a zero-coupon bond structure) on the proposition that a simple S&P 500 index fund would outperform a portfolio of hedge funds — selected by professional hedge fund managers — over a ten-year period, net of all fees, costs, and expenses.</p>
+
+        <p>Hedge fund manager Ted Seides of Protege Partners accepted. He picked five funds-of-funds, each containing dozens of hedge funds managed by some of the sharpest financial minds in the world. The bet ran from January 1, 2008, through December 31, 2017.</p>
+
+        <p><a href="https://www.aei.org/carpe-diem/warren-buffett-wins-1m-bet-made-a-decade-ago-that-the-sp-500-stock-index-would-outperform-hedge-funds-and-it-wasnt-even-close/">Buffett won. It wasn't close.</a></p>
+
+        <!-- SVG Chart: Buffett Bet Comparison -->
+        <div class="chart-container">
+          <svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Buffett's bet: S&P 500 index fund vs hedge funds over 10 years">
+            <text x="350" y="22" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="13" font-weight="600" fill="currentColor">Buffett's Bet: Index Fund vs. Hedge Funds (2008-2017)</text>
+            <!-- Two side-by-side comparison bars -->
+            <!-- Index Fund -->
+            <rect x="100" y="60" width="220" height="100" rx="12" fill="#00d4aa" opacity="0.15" stroke="#00d4aa" stroke-width="1.5"/>
+            <text x="210" y="90" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="11" font-weight="600" fill="#00d4aa">Vanguard S&P 500 Index Fund</text>
+            <text x="210" y="120" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="28" font-weight="700" fill="#00d4aa">7.1%</text>
+            <text x="210" y="142" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" fill="currentColor" opacity="0.6">annual return | Fee: 0.04%</text>
+            <!-- Hedge Funds -->
+            <rect x="380" y="60" width="220" height="100" rx="12" fill="#e74c3c" opacity="0.1" stroke="#e74c3c" stroke-width="1.5"/>
+            <text x="490" y="90" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="11" font-weight="600" fill="#e74c3c">Protege Hedge Fund Portfolio</text>
+            <text x="490" y="120" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="28" font-weight="700" fill="#e74c3c">2.2%</text>
+            <text x="490" y="142" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" fill="currentColor" opacity="0.6">annual return | Fee: 2% + 20%</text>
+            <!-- Results -->
+            <text x="210" y="195" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="13" fill="currentColor" opacity="0.5">$1M became</text>
+            <text x="210" y="220" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="22" font-weight="700" fill="#00d4aa">$2.26 Million</text>
+            <text x="490" y="195" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="13" fill="currentColor" opacity="0.5">$1M became</text>
+            <text x="490" y="220" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="22" font-weight="700" fill="#e74c3c">$1.22 Million</text>
+            <!-- Difference arrow -->
+            <text x="350" y="255" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="600" fill="currentColor" opacity="0.7">Index fund returned $1.04M MORE over the same decade</text>
+          </svg>
+          <p class="chart-caption">Source: Berkshire Hathaway 2017 Annual Letter. The bet ran during one of the worst starting periods possible for equities (2008 crisis) — yet the index still won handily.</p>
+        </div>
+
+        <p>It bears repeating that 2008 was about as favorable a starting point as possible for hedge funds — a volatile, crisis year when careful stock selection should theoretically help most. Instead, the hedge funds managed a loss of about 24% while the index lost 37% — one of the few moments in the bet when the hedge funds actually "won." And then Buffett proceeded to beat them in eight of the next nine years.</p>
+
+        <blockquote>
+          "There's been far, far, far more money made by people in Wall Street through salesmanship abilities than through investment abilities." — Warren Buffett
+        </blockquote>
+
+        <h2>Why Can't Smart People Beat the Market?</h2>
+
+        <p>This is the question that bothers everyone at first. The market is made up of stocks selected and priced by millions of buyers and sellers. Surely, brilliant analysts studying companies full-time should be able to find mispriced securities and exploit them?</p>
+
+        <p>The problem is that they're all doing the same thing. Modern markets are not full of unsophisticated retail investors making emotional decisions. They're dominated by hedge funds, pension funds, mutual funds, and proprietary trading desks — all staffed by PhDs, CFA charterholders, and people who eat financial statements for breakfast. When everybody has the same information and the same analytical tools, it becomes extraordinarily difficult to consistently find an edge.</p>
+
+        <p>This is the efficient market hypothesis in practice — not as a perfect theory, but as a useful description of the competitive reality. Prices already reflect most available information, because too many smart people are looking for the same inefficiencies. The occasional manager who does outperform the index over a decade faces a persistent follow-up question: was it skill, or was it luck?</p>
+
+        <p>The <a href="https://www.spglobal.com/spdji/en/spiva/article/us-persistence-scorecard/">SPIVA persistence data</a> answers that question. <strong>Only about 8.3% of active equity funds that outperformed their benchmark in a given year were able to maintain that outperformance consistently over the following two years.</strong> If outperformance were driven by skill rather than luck, you'd expect a much higher persistence rate. Instead, last year's star fund is almost statistically indistinguishable from a random picker over the following years.</p>
+
+        <p>Jack Bogle's arithmetic — all investors collectively own the market, so before costs they earn market returns, and after costs active investors must underperform — isn't a theory. It's an equation.</p>
+
+        <h2>What to Do With This Information</h2>
+
+        <p>Once you understand why index funds win, the practical implication is simple: stop paying for underperformance.</p>
+
+        <p>This doesn't mean every financial advisor is useless or that there is zero role for professional guidance. A good fee-only financial planner (one who charges a flat hourly or annual fee, not a percentage of assets) can provide genuine value in areas like tax planning, estate planning, insurance analysis, and behavioral coaching. The problem isn't advisors per se — it's the active management product wrapper they often sell alongside the advice.</p>
+
+        <p>For the investment portfolio itself, the prescription is direct: choose a total stock market index fund with the lowest possible expense ratio. VTI from Vanguard charges 0.03%. FSKAX from Fidelity charges 0.015%. These are not meaningfully different. Either one will capture the full return of the U.S. stock market, whatever it turns out to be, minus essentially nothing in fees.</p>
+
+        <table>
+          <thead>
+            <tr><th>Fund</th><th>Type</th><th>Expense Ratio</th><th>Annual Cost on $100K</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>VTI (Vanguard Total Market)</td><td>Index</td><td>0.03%</td><td>$30</td></tr>
+            <tr><td>FSKAX (Fidelity Total Market)</td><td>Index</td><td>0.015%</td><td>$15</td></tr>
+            <tr><td>Average Active Fund</td><td>Active</td><td>0.50% - 1.50%</td><td>$500 - $1,500</td></tr>
+            <tr><td>Hedge Fund ("2 and 20")</td><td>Active</td><td>2% + 20% of profits</td><td>$2,000+</td></tr>
+          </tbody>
+        </table>
+
+        <p>This isn't settling for average. The average, once you account for the fact that active management systematically underperforms, is well above what most investors actually get. Owning an index fund and earning market returns puts you ahead of the majority of professional investors with much better tools and far more time spent analyzing markets. That's not average. That's beating most of the competition by deciding not to compete.</p>
+
+        <blockquote>
+          "If a statue is ever erected to honor the person who has done the most for American investors, the hands-down choice should be Jack Bogle... he helped millions of investors realize far better returns on their savings than they otherwise would have earned." — Warren Buffett, 2016 Letter to Berkshire Shareholders
+        </blockquote>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>Over virtually every meaningful time horizon, a plain vanilla index fund beats the overwhelming majority of actively managed funds — including the ones run by the best-paid, best-educated portfolio managers on the planet. The SPIVA data proves it year after year. Warren Buffett's million-dollar bet proved it cinematically. The math of fees and compounding proves it abstractly.</p>
+          <p>You don't need to be smarter than Wall Street. You need to stop paying Wall Street to underperform the market on your behalf. Owning the whole market through a low-cost index fund isn't settling for mediocrity. It's capturing a result that 80%+ of professionals can't match.</p>
+          <p>The math works. The evidence is overwhelming. Own the market, pay nothing, chill.</p>
+        </div>
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>
