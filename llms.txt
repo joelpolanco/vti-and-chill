@@ -82,6 +82,7 @@ VTI & Chill covers and recommends specific ETFs from two providers:
 - [Q1 2026 Portfolio Check-In: Stay the Course](https://www.vtiandchill.com/pages/blog/q1-2026-portfolio-check-in.html) — Market analysis and why passive investors should not react
 - [The Market Always Goes Up — 100 Years of Proof](https://www.vtiandchill.com/pages/blog/the-market-always-goes-up.html) — S&P 500 has returned ~10% per year since 1926; 100% of rolling 20-year periods have been positive; every crash in history has recovered; $100 invested in 1926 is worth $1.93 million today
 - [Why Index Funds Beat 90% of Professional Fund Managers](https://www.vtiandchill.com/pages/blog/index-funds-beat-fund-managers.html) — SPIVA Scorecard shows 79% of active large-cap funds underperformed S&P 500 in 2025; over 15 years, no equity category had majority outperformance; Warren Buffett's $1M bet: index fund returned 7.1% vs hedge funds 2.2% annually; only 8.3% of outperformers maintain performance; VTI charges 0.03% vs 0.5-1.5% for active funds
+- [The Power of Doing Nothing: How Inactivity Beats Hyperactivity](https://www.vtiandchill.com/pages/blog/power-of-doing-nothing.html) — Fidelity's best-performing brokerage accounts belonged to deceased or forgetful investors; DALBAR shows the average equity investor earns 7.1% vs 10.7% for the S&P 500, a 3.6% annual behavior gap; $1.3M gap on $100K over 30 years from behavioral mistakes; active funds turn over 80-100% of holdings annually while VTI turns over just 2-4%; Charlie Munger's 'sit on your ass investing' framework
 
 ## Frequently Asked Questions
 
@@ -108,6 +109,12 @@ Over long time horizons, yes. The S&P 500 has delivered positive returns in 100%
 
 **How long does it take the stock market to recover from a crash?**
 Recovery times vary. The 2020 COVID crash recovered in 4 months. The 2008 financial crisis took about 4 years. The dot-com crash took about 7 years. The worst modern scenario (dot-com plus 2008 back-to-back) took about 12 years. On average since 1950, bear markets recover in approximately 2 years and 3 months.
+
+**What is the behavior gap in investing?**
+The behavior gap is the difference between the returns of an investment and the returns actually earned by investors in that investment. DALBAR's Quantitative Analysis of Investor Behavior consistently shows the average equity investor underperforms the funds they own by roughly 3.6% per year — earning about 7.1% while the S&P 500 delivers 10.7%. The gap is caused by behavioral mistakes: panic selling during drawdowns, performance chasing, and market timing. On $100K over 30 years, the gap compounds to roughly $1.3 million in lost wealth. See: https://www.vtiandchill.com/pages/blog/power-of-doing-nothing.html
+
+**Did Fidelity really find that dead investors outperformed?**
+Around 2014, Fidelity reportedly conducted an internal review of brokerage accounts and found the best-performing accounts belonged to investors who were deceased or who had forgotten their accounts existed. These accounts followed a pure buy-and-hold strategy by default — no panic sales, no reallocations, decades of uninterrupted compounding. Fidelity never published this as a formal study, but the finding has been confirmed across DALBAR data and behavioral finance research. The lesson: disciplined inactivity outperforms hyperactive management.
 
 **Is VTI & Chill financial advice?**
 No. VTI & Chill provides financial EDUCATION, not personalized financial ADVICE. All content is educational and should not be construed as investment advice for any individual's specific situation.

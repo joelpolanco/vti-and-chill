@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Power of Doing Nothing: How Inactivity Beats Hyperactivity | VTI & Chill</title>
+<meta name="description" content="Fidelity's best-performing accounts belonged to dead or forgetful investors. DALBAR data shows active investors earn 3.6% less annually than their own funds. The case for disciplined inactivity.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h4 { color: var(--color-primary); margin-bottom: var(--space-2); font-weight: 700; }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+  .stat-card.negative .stat-value { color: #e74c3c; }
+</style>
+
+  <!-- SEO: Canonical & Keywords -->
+  <link rel="canonical" href="https://www.vtiandchill.com/pages/blog/power-of-doing-nothing.html">
+  <meta name="keywords" content="buy and hold investing, do nothing investing, Fidelity dead investor study, DALBAR behavior gap, investor underperformance, passive investing discipline, index fund patience">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="VTI & Chill">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Power of Doing Nothing: How Inactivity Beats Hyperactivity">
+  <meta property="og:description" content="Fidelity's best-performing accounts belonged to dead or forgetful investors. DALBAR's behavior gap costs active investors 3.6% per year. The case for disciplined inactivity.">
+  <meta property="og:url" content="https://www.vtiandchill.com/pages/blog/power-of-doing-nothing.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="VTI & Chill">
+  <meta property="article:published_time" content="2026-04-22T00:00:00Z">
+  <meta property="article:author" content="VTI & Chill">
+  <meta property="article:section" content="Investing">
+  <meta property="article:tag" content="buy and hold">
+  <meta property="article:tag" content="behavioral finance">
+  <meta property="article:tag" content="DALBAR">
+  <meta property="article:tag" content="investor psychology">
+  <meta property="article:tag" content="passive investing">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VTIandChill">
+  <meta name="twitter:title" content="The Power of Doing Nothing: How Inactivity Beats Hyperactivity">
+  <meta name="twitter:description" content="Fidelity's best-performing accounts belonged to dead or forgetful investors. DALBAR data shows active investors earn 3.6% less annually than their own funds.">
+  <meta name="twitter:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Power of Doing Nothing: How Inactivity Beats Hyperactivity",
+  "description": "Fidelity's review of brokerage accounts found the best-performing portfolios belonged to deceased investors or those who had forgotten their accounts. DALBAR research confirms the average equity investor underperforms their own funds by 3.6% annually due to behavioral mistakes. Here is why disciplined inactivity is the most profitable strategy.",
+  "url": "https://www.vtiandchill.com/pages/blog/power-of-doing-nothing.html",
+  "datePublished": "2026-04-22",
+  "dateModified": "2026-04-22",
+  "author": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/power-of-doing-nothing.html"
+  },
+  "keywords": ["buy and hold", "Fidelity dead investor study", "DALBAR behavior gap", "investor underperformance", "passive investing", "sit on your ass investing"],
+  "articleSection": "Investing",
+  "wordCount": 1250
+}
+  </script>
+
+  <!-- Structured Data: FAQ (JSON-LD) — GEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What was the Fidelity dead investor study?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Around 2014, Fidelity Investments reviewed its brokerage accounts to identify which investors had the best performance. They reportedly found that the best-performing accounts belonged to investors who were deceased or who had forgotten their accounts existed. These accounts followed the purest possible buy-and-hold strategy by default, with no panic sales or reallocations. Fidelity never published this as a formal study, but the underlying finding has been confirmed by DALBAR and other behavioral finance research."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does investor behavior cost the average investor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DALBAR's Quantitative Analysis of Investor Behavior has shown that the average equity investor earns roughly 3.6% less per year than the funds they are invested in, due to poorly timed buying and selling. Over a 30-year period on a $100,000 investment, that gap translates to roughly $1.3 million in lost wealth — the difference between $2.1 million and $770,000. The gap is driven almost entirely by behavioral mistakes like panic selling during downturns and chasing performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do fewer transactions lead to better investment results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every transaction carries a cost: potential taxes, bid-ask spreads, transaction fees, and the risk of being out of the market during the best recovery days. Missing just the 10 best days over a 20-year period can cut your returns roughly in half. Actively managed funds that turn over 80-100% of holdings annually suffer these costs institutionally, while index funds like VTI have turnover of only 2-4%. Charlie Munger called this 'sit on your ass investing' — the longer you hold without interference, the more uninterrupted compounding works for you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you build discipline to do nothing with investments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Structure your financial life to make inactivity the path of least resistance. Automate contributions so money is invested before it reaches your checking account. Use tax-advantaged accounts like 401(k)s and IRAs where early withdrawal penalties discourage panic selling. Set a quarterly or annual review schedule instead of checking daily. Stop reading financial news that is optimized for engagement rather than your long-term success. The goal is to replicate the detachment of the Fidelity dead accounts on purpose."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vtiandchill.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.vtiandchill.com/pages/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "The Power of Doing Nothing", "item": "https://www.vtiandchill.com/pages/blog/power-of-doing-nothing.html" }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI & <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn.html">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn.html">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Behavioral Finance</span>
+          <span>April 22, 2026</span>
+          <span>6 min read</span>
+        </div>
+        <h1>The Power of Doing Nothing: How Inactivity Beats Hyperactivity</h1>
+        <p class="blog-post-subtitle">Fidelity's best investors were dead. DALBAR says active investors lose 3.6% per year to their own behavior. The most profitable move in your portfolio is usually the one you don't make.</p>
+      </div>
+
+      <div class="blog-post-content">
+
+        <p>There's a financial strategy so simple, so counterintuitive, so deeply offensive to the entire financial services industry that it's practically subversive.</p>
+
+        <p>It is: <strong>do nothing</strong>.</p>
+
+        <p>Not "do nothing after extensive research." Not "do nothing while monitoring the situation." Just — do nothing. Buy your index fund. Leave. Come back in 30 years.</p>
+
+        <p>This isn't a punchline. The data on investor inactivity is so compelling that Fidelity Investments — one of the largest financial services companies in the world — essentially proved it on their own customers. And the results were, depending on your perspective, either hilarious or deeply instructive.</p>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-value">10.7%</div>
+            <div class="stat-label">S&P 500 30-yr annual return</div>
+          </div>
+          <div class="stat-card negative">
+            <div class="stat-value">7.1%</div>
+            <div class="stat-label">Average equity investor return (DALBAR)</div>
+          </div>
+          <div class="stat-card negative">
+            <div class="stat-value">-3.6%</div>
+            <div class="stat-label">Annual "behavior gap"</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">2-4%</div>
+            <div class="stat-label">VTI's annual turnover rate</div>
+          </div>
+        </div>
+
+        <h2>The Fidelity Study: Dead Investors Win</h2>
+
+        <p>Around 2014, Fidelity conducted an internal review of their brokerage accounts to identify which investors had the best performance. The goal was presumably to understand what the winners were doing right — what sophisticated strategies, what rebalancing methods, what research habits, what stock picks.</p>
+
+        <p>What they found instead became one of the most repeated anecdotes in all of personal finance.</p>
+
+        <p><a href="https://www.businessinsider.com/forgetful-investors-performed-best-2014-9">The best-performing accounts belonged to investors who were either deceased or who had simply forgotten their accounts existed.</a> Not the most active traders. Not the customers paying for premium research. Not the people who adjusted their allocations quarterly. The dead ones and the amnesiacs.</p>
+
+        <p>These accounts followed the purest possible buy-and-hold strategy — not by discipline, but by default. There were no panic sales in 2008 because the account holder was no longer alive to panic. There were no reallocations in 2011 because the account holder had completely forgotten the account existed. The market went up, the market went down, dividends reinvested automatically, and decade after decade of compounding happened without interference.</p>
+
+        <p>The implication is uncomfortable if you've been actively managing your investments: you would have been better off going on a very long vacation. Or, you know, dying.</p>
+
+        <p>To be precise — Fidelity never published this as a formal academic study, and the specific data has been more legend than documented white paper. But the underlying finding has been confirmed in multiple ways across financial research. DALBAR's annual Quantitative Analysis of Investor Behavior has consistently shown that the average equity investor dramatically underperforms the funds they're invested in, purely because of poorly timed buying and selling. In a 30-year study period, the S&P 500 averaged returns of around 10.7% annually, while the average equity fund investor earned just 7.1% — a 3.6% annual gap driven almost entirely by behavioral mistakes.</p>
+
+        <!-- SVG Chart: Behavior Gap $100K over 30 years -->
+        <div class="chart-container">
+          <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Growth of $100,000 over 30 years: S&P 500 vs average equity investor">
+            <text x="350" y="22" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="13" font-weight="600" fill="currentColor">Growth of $100,000 Over 30 Years: The Behavior Gap</text>
+            <text x="350" y="38" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">S&amp;P 500 @ 10.7% vs. Average Investor @ 7.1% (DALBAR)</text>
+
+            <!-- Grid lines -->
+            <line x1="80" y1="70" x2="670" y2="70" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="80" y1="120" x2="670" y2="120" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="80" y1="170" x2="670" y2="170" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="80" y1="220" x2="670" y2="220" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="80" y1="270" x2="670" y2="270" stroke="currentColor" stroke-opacity="0.08"/>
+
+            <!-- Y-axis labels: $2.5M top at 70, $0 at 270; so 500px/2.5M means not quite -->
+            <!-- Actually: $2.1M peak. Use y=270 for $0, y=70 for $2.5M. Scale: 200px / $2.5M = 80px/$M -->
+            <text x="72" y="74" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">$2.5M</text>
+            <text x="72" y="124" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">$2.0M</text>
+            <text x="72" y="174" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">$1.5M</text>
+            <text x="72" y="224" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">$1.0M</text>
+            <text x="72" y="274" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">$0</text>
+
+            <!-- X-axis: 0 yrs at x=80, 30 yrs at x=670, span = 590, so 1yr = 19.67px -->
+            <!-- S&P path: 100K * 1.107^y. At y=30: 2.1M -> y=270-(2.1/2.5*200)=270-168=102. Starting: 270-(0.1/2.5*200)=270-8=262 -->
+            <!-- Compute key points for smooth curve -->
+            <!-- y=0: $100K (0.1M) => y=262; y=10: $277K => 270-22=248; y=20: $766K => 270-61=209; y=30: $2.1M => 102 -->
+            <path d="M 80 262 Q 180 258, 276 248 Q 375 235, 473 209 Q 571 165, 670 102" stroke="#00d4aa" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+            <!-- Investor path: 100K * 1.071^y. y=0: 100K=>262; y=10: 198K=>254; y=20: 393K=>239; y=30: 770K=>208 -->
+            <path d="M 80 262 Q 180 260, 276 254 Q 375 248, 473 239 Q 571 225, 670 208" stroke="#e74c3c" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+            <!-- X axis labels -->
+            <text x="80" y="290" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">Year 0</text>
+            <text x="276" y="290" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">Year 10</text>
+            <text x="473" y="290" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">Year 20</text>
+            <text x="670" y="290" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">Year 30</text>
+
+            <!-- End-point labels -->
+            <circle cx="670" cy="102" r="4" fill="#00d4aa"/>
+            <text x="660" y="94" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="11" font-weight="700" fill="#00d4aa">$2.1M</text>
+            <circle cx="670" cy="208" r="4" fill="#e74c3c"/>
+            <text x="660" y="200" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="11" font-weight="700" fill="#e74c3c">$770K</text>
+
+            <!-- Legend -->
+            <rect x="100" y="50" width="12" height="3" fill="#00d4aa"/>
+            <text x="118" y="54" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.75">S&amp;P 500 (buy &amp; hold)</text>
+            <rect x="260" y="50" width="12" height="3" fill="#e74c3c"/>
+            <text x="278" y="54" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.75">Avg equity investor (DALBAR)</text>
+
+            <!-- Gap annotation -->
+            <text x="350" y="310" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="600" fill="currentColor" opacity="0.7">~$1.3M gap created by behavior alone</text>
+          </svg>
+          <p class="chart-caption">Source: DALBAR Quantitative Analysis of Investor Behavior. Both investors owned similar funds. The only difference was behavior — panic selling, performance chasing, and market timing.</p>
+        </div>
+
+        <p>Over a 30-year period, the difference between 10.7% and 7.1% on a $100,000 investment is the difference between roughly $2.1 million and $770,000. That gap — more than <strong>$1.3 million</strong> — was not created by bad fund selection or high fees. It was created by people buying high, selling low, and trying to time the market. In other words: <em>by doing things</em>.</p>
+
+        <h2>The Cost of Being Busy</h2>
+
+        <p>The financial services industry has a word for excessive trading: "churning." Brokers who churn client accounts — generating commissions by making unnecessary trades — are violating fiduciary duty. The word exists because the behavior is common enough to require regulation.</p>
+
+        <p>But most investors don't need a bad broker to churn their accounts. <strong>They do it to themselves.</strong></p>
+
+        <p>Here's the math. Every time you sell and rebuy, you potentially trigger a taxable event. You pay the spread between the bid and ask price. You pay any transaction costs. And most importantly, you risk being out of the market during the periods of fastest recovery. <a href="../blog/the-market-always-goes-up.html">As we've covered elsewhere</a>, missing just ten of the market's best days over a 20-year period can cut your returns roughly in half — and those best days cluster around the worst days, when the temptation to be out of the market is highest.</p>
+
+        <p>The actively managed fund world suffers from the same problem institutionally. A typical actively managed mutual fund turns over 80-100% of its holdings each year — meaning it essentially replaces its entire portfolio annually. Each of those trades has a cost: commissions, market impact, bid-ask spreads, and taxes in non-sheltered accounts. Index funds, by contrast, have turnover rates in the low single digits. VTI's annual turnover is typically around <strong>2-4%</strong>. The stocks in the index change rarely. The fund mostly just sits there, which is the whole point.</p>
+
+        <!-- SVG Chart: Portfolio Turnover Comparison -->
+        <div class="chart-container">
+          <svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Annual portfolio turnover: VTI vs average active mutual fund">
+            <text x="350" y="22" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="13" font-weight="600" fill="currentColor">Annual Portfolio Turnover: Activity = Cost</text>
+            <text x="350" y="38" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">Percent of holdings replaced each year</text>
+
+            <!-- VTI bar: 3% of 600px max width = 18px. Very thin -->
+            <rect x="180" y="70" width="18" height="36" rx="4" fill="#00d4aa"/>
+            <text x="210" y="92" font-family="'General Sans', sans-serif" font-size="12" font-weight="700" fill="#00d4aa">VTI: ~3%</text>
+            <text x="210" y="108" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">Sits there. Collects dividends. Chills.</text>
+
+            <!-- Active fund bar: 90% of 600px = 540px -->
+            <rect x="180" y="130" width="540" height="36" rx="4" fill="#e74c3c" opacity="0.8"/>
+            <text x="180" y="122" font-family="'General Sans', sans-serif" font-size="12" font-weight="700" fill="#e74c3c">Avg Active Fund: ~90%</text>
+            <text x="180" y="188" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">Replaces nearly its entire portfolio every year.</text>
+
+            <!-- Munger quote -->
+            <rect x="120" y="210" width="460" height="32" rx="6" fill="rgba(0, 212, 170, 0.08)" stroke="#00d4aa" stroke-opacity="0.25"/>
+            <text x="350" y="230" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-style="italic" fill="currentColor" opacity="0.8">"Sit on your ass investing" — Charlie Munger</text>
+          </svg>
+          <p class="chart-caption">Every trade is a cost. Low turnover is a feature, not a defect. Patient compounding requires getting out of its own way.</p>
+        </div>
+
+        <p>Charlie Munger had a phrase for the kind of effortless compounding that patient investors enjoy: "sit on your ass" investing. His point was that the longer you can hold a quality asset without interference, the more you let compounding work without friction. Every transaction is a potential mistake and a guaranteed cost. Fewer transactions means fewer mistakes and fewer costs.</p>
+
+        <h2>Discipline Is the Asset Nobody Sells You</h2>
+
+        <p>Here's the uncomfortable paradox: the most valuable thing you can do for your portfolio is develop the discipline to do nothing, but <strong>no financial product can give you that</strong>. No app can install it. No advisor can sell it to you. You have to develop it yourself — by understanding why inactivity works, internalizing the long-run data, and building systems that make intervention harder.</p>
+
+        <p>Practical tools help. Automating your contributions means you're regularly investing without a decision point that could trigger second-guessing. Using tax-advantaged accounts like 401(k)s and IRAs creates friction (penalties) that discourages panic selling. Avoiding daily portfolio check-ins removes the emotional stimulus that prompts overreaction.</p>
+
+        <p>If you can build a life where you rarely think about your investments, not out of negligence but out of confidence in your strategy, you've essentially replicated what those deceased Fidelity account holders achieved accidentally. You've become the best investor you can be, which turns out to look a lot like no investor at all.</p>
+
+        <blockquote>
+          "Our favorite holding period is forever." — Warren Buffett
+        </blockquote>
+
+        <p>Every time you consider selling, the question isn't "has the price moved?" The question is "has the long-run case changed?" For a total market index fund, the answer is almost never yes.</p>
+
+        <h2>Building a Life That Enables Inactivity</h2>
+
+        <p>The paradox of disciplined inactivity is that it requires active design. You have to build a financial life that makes not checking your portfolio the path of least resistance.</p>
+
+        <p>A few practical structures that help:</p>
+
+        <div class="callout-box">
+          <h4>Automate everything</h4>
+          <p>If contributions happen automatically on payday before the money reaches your checking account, there's no decision point. You never had the money; it went directly to work. This eliminates the weekly question of "should I invest this month or wait?" There's nothing to decide.</p>
+        </div>
+
+        <div class="callout-box">
+          <h4>Use accounts with friction</h4>
+          <p>Money in a 401(k) or IRA carries penalties for early withdrawal, which discourages panic selling during downturns. This isn't a bug; it's a feature. The friction costs you nothing if you don't panic, and it may save you from catastrophic decisions if you do.</p>
+        </div>
+
+        <div class="callout-box">
+          <h4>Set a review schedule and stick to it</h4>
+          <p>Rather than checking your portfolio daily — which studies show increases anxiety and trading frequency — schedule a quarterly or annual review. Look at your allocation, confirm you're still on track, and close the laptop. Knowing that a review is scheduled in 90 days makes it easier to ignore the urge to check today.</p>
+        </div>
+
+        <div class="callout-box">
+          <h4>Stop reading financial news</h4>
+          <p>Nothing in financial media is optimized for your long-term investment success. All of it is optimized for engagement, which means drama, predictions, and urgency. Every article about what the market did today is irrelevant to a 30-year investor. Every prediction about what it will do tomorrow is almost certainly wrong. Unsubscribe. Go outside. The account will be fine.</p>
+        </div>
+
+        <p>The Fidelity dead accounts were onto something. They didn't have notifications turned on. They didn't get the app. They didn't read the quarterly statements with existential dread. They bought, they left, and they let time handle it. The goal is to replicate that detachment on purpose, with full knowledge of why it works.</p>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>Doing nothing isn't passive — it's a deliberate strategy that outperforms almost everything else you could try. The Fidelity data, the DALBAR research, the math of transaction costs and behavioral mistakes all point to the same conclusion: <strong>the investor who interferes the least wins the most</strong>.</p>
+          <p>Your job after setting up your index fund isn't to manage it — it's to leave it alone. The most expensive thing you can do with your portfolio is stay up at night monitoring it. Go to sleep. Let the market do its thing. Your future self will thank you.</p>
+          <p>Buy. Hold. Chill.</p>
+        </div>
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>
