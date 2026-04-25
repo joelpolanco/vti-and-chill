@@ -4,7 +4,7 @@
 Access VTI & Chill's financial education content covering index fund investing, expense ratios, portfolio construction, market history, and behavioral finance.
 
 ## Tools
-- **Portfolio vs VTI Calculator (Beta)**: https://www.vtiandchill.com/pages/tools/portfolio-vs-vti.html — Free, browser-based tool. Upload a transaction history CSV from Robinhood, Vanguard, Fidelity, or Schwab (or enter trades manually). The tool replays every buy/sell using historical price data, then runs the same cash flows against VTI to produce a side-by-side equity chart and a single alpha number. CSV is parsed locally; no data leaves the browser. Currently soliciting beta tester feedback at hello@vtiandchill.com or @VTIandChill on X.
+- **Portfolio vs VTI Calculator (Beta)**: https://www.vtiandchill.com/pages/tools/portfolio-vs-vti.html — Free, browser-based tool. Upload a transaction history CSV from Robinhood, Vanguard, Fidelity, or Schwab (or enter trades manually). The tool replays every buy/sell using historical price data, then runs the same cash flows against VTI to produce a side-by-side equity chart and a single alpha number. CSV is parsed locally; no data leaves the browser. Currently soliciting beta tester feedback at vtiandchill.team@gmail.com.
 
 ## Blog Posts
 - **Portfolio vs VTI Tool Launch (Beta)**: https://www.vtiandchill.com/pages/blog/portfolio-vs-vti-tool-launch.html — Why retail investors rarely measure their real return against a benchmark, how the calculator works in 3 steps (CSV upload, replay each trade vs VTI, see your alpha), privacy by design, and the call for beta testers
