@@ -3,7 +3,11 @@
 ## Description
 Access VTI & Chill's financial education content covering index fund investing, expense ratios, portfolio construction, market history, and behavioral finance.
 
+## Tools
+- **Portfolio vs VTI Calculator (Beta)**: https://www.vtiandchill.com/pages/tools/portfolio-vs-vti.html — Free, browser-based tool. Upload a transaction history CSV from Robinhood, Vanguard, Fidelity, or Schwab (or enter trades manually). The tool replays every buy/sell using historical price data, then runs the same cash flows against VTI to produce a side-by-side equity chart and a single alpha number. CSV is parsed locally; no data leaves the browser. Currently soliciting beta tester feedback at hello@vtiandchill.com or @VTIandChill on X.
+
 ## Blog Posts
+- **Portfolio vs VTI Tool Launch (Beta)**: https://www.vtiandchill.com/pages/blog/portfolio-vs-vti-tool-launch.html — Why retail investors rarely measure their real return against a benchmark, how the calculator works in 3 steps (CSV upload, replay each trade vs VTI, see your alpha), privacy by design, and the call for beta testers
 - **The Market Always Goes Up**: https://www.vtiandchill.com/pages/blog/the-market-always-goes-up.html — 100 years of S&P 500 data proving long-term market growth, crash recovery timelines, rolling return analysis
 - **Why Index Funds Beat 90% of Fund Managers**: https://www.vtiandchill.com/pages/blog/index-funds-beat-fund-managers.html — SPIVA data, Buffett's $1M bet, fee compounding math, persistence scorecard (only 8.3% repeat winners)
 - **The Power of Doing Nothing**: https://www.vtiandchill.com/pages/blog/power-of-doing-nothing.html — Fidelity dead investor study, DALBAR 3.6% behavior gap ($1.3M lost on $100K over 30 years), active fund turnover (80-100%) vs VTI (2-4%), Charlie Munger's 'sit on your ass investing'

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFFQRYJTQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4PFFQRYJTQ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio vs. VTI Calculator — How Did Your Stock Picks Really Perform? | VTI &amp; Chill</title>
+<meta name="description" content="Free tool: upload your brokerage CSV or enter trades manually, and see how your stock picks really compare to buying VTI on the same days. Find your alpha (or lack of it).">
+
+<link rel="canonical" href="https://www.vtiandchill.com/pages/tools/portfolio-vs-vti.html">
+<meta name="keywords" content="portfolio vs index fund calculator, VTI comparison tool, alpha calculator, how did my stocks perform vs the market, brokerage CSV import, Robinhood Vanguard Fidelity Schwab CSV">
+<meta name="robots" content="index, follow">
+<meta name="author" content="VTI &amp; Chill">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Portfolio vs. VTI Calculator — Did Your Picks Beat the Market?">
+<meta property="og:description" content="Upload your trades. See exactly how your stock picks performed vs. buying VTI on the same days. Free, runs entirely in your browser.">
+<meta property="og:url" content="https://www.vtiandchill.com/pages/tools/portfolio-vs-vti.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.vtiandchill.com/assets/og/og-tools.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="VTI &amp; Chill">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@VTIandChill">
+<meta name="twitter:title" content="Portfolio vs. VTI Calculator — Did Your Picks Beat the Market?">
+<meta name="twitter:description" content="Upload your trades. See exactly how your stock picks performed vs. buying VTI on the same days.">
+<meta name="twitter:image" content="https://www.vtiandchill.com/assets/og/og-tools.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Portfolio vs. VTI Calculator",
+  "description": "Free browser-based tool that compares a user's actual stock trades to a hypothetical portfolio that bought VTI on the same days with the same dollars.",
+  "url": "https://www.vtiandchill.com/pages/tools/portfolio-vs-vti.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any (browser-based)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "VTI & Chill", "url": "https://www.vtiandchill.com" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vtiandchill.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.vtiandchill.com/pages/tools.html" },
+    { "@type": "ListItem", "position": 3, "name": "Portfolio vs. VTI Calculator", "item": "https://www.vtiandchill.com/pages/tools/portfolio-vs-vti.html" }
+  ]
+}
+</script>
+
+<!-- Site fonts (Cabinet Grotesk + General Sans + Satoshi for parity with rest of site) -->
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<!-- Site shell styles -->
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+
+<!-- Tool-specific styles (scoped via #portfolio-tool wrapper to avoid clobbering nav/footer) -->
+<link rel="stylesheet" href="./portfolio-vs-vti.css">
+
+<!-- Tool dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+<style>
+  /* Re-anchor the tool's "site-header" / "site-footer" rules so they don't
+     conflict with the global site chrome above. The tool's own header is
+     hidden — we use the site nav. */
+  #portfolio-tool .tool-only { }
+  /* Pull tool main spacing closer to the site header */
+  #portfolio-tool main { padding-top: var(--space-8); }
+  /* Beta banner */
+  .beta-banner {
+    background: linear-gradient(135deg, rgba(0, 212, 170, 0.12), rgba(0, 212, 170, 0.04));
+    border: 1px solid rgba(0, 212, 170, 0.25);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4) var(--space-5);
+    margin: var(--space-6) auto var(--space-4);
+    max-width: 1080px;
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    font-size: var(--text-sm);
+  }
+  .beta-banner .beta-tag {
+    background: var(--color-primary);
+    color: #0d1117;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .beta-banner p { margin: 0; max-width: none; }
+  .beta-banner a { color: var(--color-primary); font-weight: 600; }
+
+  /* Disclaimer at the very end */
+  .tool-disclaimer {
+    max-width: 1080px;
+    margin: var(--space-12) auto var(--space-8);
+    padding: var(--space-5) var(--space-6);
+    background: var(--color-surface-2, #1c2333);
+    border: 1px solid var(--color-border, #30363d);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .tool-disclaimer strong { font-style: normal; color: var(--color-text); }
+</style>
+</head>
+<body>
+
+<!-- ============= SITE HEADER (shared) ============= -->
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI &amp; <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a>
+        <a href="../philosophy.html">Philosophy</a>
+        <a href="../portfolios.html">Portfolios</a>
+        <a href="../tools.html" class="active">Tools</a>
+        <a href="../learn.html">Learn</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../community.html">Community</a>
+        <a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch theme"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn.html">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Beta banner — feedback CTA -->
+<div class="beta-banner" role="status">
+  <span class="beta-tag">Beta</span>
+  <p>This tool is brand new. We're looking for beta testers — try it with your real (or sample) trades, then <a href="mailto:hello@vtiandchill.com?subject=VTI%20Comparison%20Tool%20Feedback">email feedback</a> or DM <a href="https://x.com/VTIandChill" target="_blank" rel="noopener">@VTIandChill</a> on X. Read about the launch on the <a href="../blog/portfolio-vs-vti-tool-launch.html">blog</a>.</p>
+</div>
+
+<!-- ============= TOOL CONTENT ============= -->
+<div id="portfolio-tool">
+<main id="top">
+  <section class="hero">
+    <div class="eyebrow">Buy. Hold. Chill.</div>
+    <h1 class="hero-title">How did I perform <em>vs. the market</em>?</h1>
+    <p class="hero-sub">
+      Upload your brokerage transactions or enter them manually. We replay every buy and sell as if the same dollars had gone into <strong>VTI</strong> on the same days &mdash; then show you the gap.
+    </p>
+  </section>
+
+  <section class="step" id="step-1">
+    <header class="step-head">
+      <span class="step-num">01</span>
+      <h2>Add your transactions</h2>
+    </header>
+
+    <div class="tabs" role="tablist" aria-label="Input method">
+      <button class="tab active" role="tab" aria-selected="true" data-tab="upload">Upload CSV</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="manual">Enter manually</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="sample">Try a sample</button>
+    </div>
+
+    <div class="tab-panel active" data-panel="upload">
+      <div class="dropzone" id="dropzone">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+        <p class="dz-title">Drop a CSV file, or click to browse</p>
+        <p class="dz-sub">Robinhood, Vanguard, Fidelity, Schwab &mdash; or any CSV with date, symbol, action, quantity, and price columns. Files are processed in your browser; nothing is uploaded to our servers.</p>
+        <input type="file" id="file-input" accept=".csv,text/csv" hidden>
+      </div>
+      <div id="csv-mapper" class="csv-mapper" hidden>
+        <h3>Map your columns</h3>
+        <p class="muted">We couldn't auto-detect every field. Pick the matching column for each.</p>
+        <div class="mapper-grid" id="mapper-grid"></div>
+        <button class="btn btn-primary" id="apply-mapping">Apply mapping</button>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="manual">
+      <form id="manual-form" class="manual-form">
+        <div class="row">
+          <label>
+            <span>Action</span>
+            <select name="action" required>
+              <option value="buy">Buy</option>
+              <option value="sell">Sell</option>
+            </select>
+          </label>
+          <label>
+            <span>Symbol</span>
+            <input name="symbol" type="text" required placeholder="AAPL" autocomplete="off">
+          </label>
+          <label>
+            <span>Date</span>
+            <input name="date" type="date" required>
+          </label>
+          <label>
+            <span>Quantity</span>
+            <input name="quantity" type="number" step="any" min="0" required placeholder="10">
+          </label>
+          <label>
+            <span>Price / share</span>
+            <input name="price" type="number" step="any" min="0" required placeholder="170.50">
+          </label>
+          <button class="btn btn-secondary" type="submit">Add row</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="tab-panel" data-panel="sample">
+      <p class="muted sample-intro">Pick a pre-built portfolio to see how the comparison works.</p>
+      <div class="sample-grid">
+        <article class="sample-card">
+          <header><h3>Big Tech 2022&ndash;2024</h3><span class="sample-tag">8 trades</span></header>
+          <p class="muted">AAPL, MSFT, NVDA, TSLA, AMZN, GOOGL &mdash; six buys plus two trims of the Tesla and Nvidia positions.</p>
+          <button class="btn btn-secondary" data-sample="bigtech">Load Big Tech</button>
+        </article>
+        <article class="sample-card">
+          <header><h3>Diversified Blue-Chips</h3><span class="sample-tag">7 trades &middot; 2016&ndash;2023</span></header>
+          <p class="muted">One buy per year across JNJ, KO, DIS, JPM, HD, COST, and CAT &mdash; seven sectors, seven entry points.</p>
+          <button class="btn btn-secondary" data-sample="diversified">Load Blue-Chips</button>
+        </article>
+        <article class="sample-card">
+          <header><h3>Meme Stocks</h3><span class="sample-tag">5 trades &middot; 2020&ndash;2021</span></header>
+          <p class="muted">PLTR, GME, BB, AMC, HOOD &mdash; bought on or near their viral moments. How did diamond hands stack up to VTI?</p>
+          <button class="btn btn-secondary" data-sample="memes">Load Memes</button>
+        </article>
+      </div>
+    </div>
+
+    <div class="txn-list-wrap" id="txn-list-wrap" hidden>
+      <div class="txn-list-head">
+        <h3>Your transactions <span class="count" id="txn-count">0</span></h3>
+        <button class="btn-text" id="clear-all">Clear all</button>
+      </div>
+      <div class="txn-table-wrap">
+        <table class="txn-table">
+          <thead>
+            <tr>
+              <th>Date</th><th>Action</th><th>Symbol</th>
+              <th class="num">Quantity</th><th class="num">Price</th><th class="num">Amount</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="txn-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="step-2">
+    <header class="step-head">
+      <span class="step-num">02</span>
+      <h2>Run the comparison</h2>
+    </header>
+    <p class="muted">We'll fetch historical prices for each symbol and for VTI, then replay every transaction as if the same dollars had gone into VTI on that day.</p>
+    <button class="btn btn-primary btn-large" id="run-analysis" disabled>Compare to VTI</button>
+    <div class="run-status" id="run-status" aria-live="polite"></div>
+  </section>
+
+  <section class="step results" id="results" hidden>
+    <header class="step-head">
+      <span class="step-num">03</span>
+      <h2>Results</h2>
+    </header>
+
+    <div class="kpis">
+      <div class="kpi">
+        <div class="kpi-label">Your portfolio value</div>
+        <div class="kpi-value" id="kpi-portfolio">&mdash;</div>
+        <div class="kpi-sub" id="kpi-portfolio-sub">net invested &mdash;</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">If you'd bought VTI</div>
+        <div class="kpi-value" id="kpi-vti">&mdash;</div>
+        <div class="kpi-sub" id="kpi-vti-sub">same dollars, same days</div>
+      </div>
+      <div class="kpi kpi-headline">
+        <div class="kpi-label">Alpha vs. VTI</div>
+        <div class="kpi-value" id="kpi-alpha">&mdash;</div>
+        <div class="kpi-sub" id="kpi-alpha-sub">total return gap</div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <header class="chart-head">
+        <h3>Portfolio value over time</h3>
+        <p class="muted">Mark-to-market value of every share you held, day by day. The dashed line is the same dollars deployed into VTI instead.</p>
+      </header>
+      <div class="chart-wrap"><canvas id="chart"></canvas></div>
+    </div>
+
+    <div class="breakdown-card">
+      <header class="chart-head">
+        <h3>Per-symbol breakdown</h3>
+        <p class="muted">For each symbol, we compare the realized + unrealized return of your actual trades to a hypothetical VTI portfolio funded by the same buy/sell dollars on the same days.</p>
+      </header>
+      <div class="txn-table-wrap">
+        <table class="txn-table">
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th class="num">Net invested</th>
+              <th class="num">Position value</th>
+              <th class="num">Your return</th>
+              <th class="num">VTI return</th>
+              <th class="num">Alpha</th>
+            </tr>
+          </thead>
+          <tbody id="breakdown-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="export-bar">
+      <button class="btn btn-secondary" id="download-results">Download results CSV</button>
+      <button class="btn btn-text" id="reset-all">Start over</button>
+    </div>
+  </section>
+
+  <section class="step" id="how">
+    <header class="step-head">
+      <span class="step-num">&middot;</span>
+      <h2>How it works</h2>
+    </header>
+    <ol class="howlist">
+      <li><strong>Parse</strong> &mdash; your CSV is read in your browser. We auto-detect Robinhood, Vanguard, Fidelity, and Schwab column layouts, and fall back to a manual mapper for anything else.</li>
+      <li><strong>Fetch prices</strong> &mdash; for each unique symbol (and VTI), we pull historical daily closes through a price API. Prices are split-adjusted.</li>
+      <li><strong>Replay</strong> &mdash; for every buy of $X on day D, we credit you with X / VTI_close(D) shares of VTI. Sells release shares proportionally. Your VTI sleeve is then valued at today's close.</li>
+      <li><strong>Compare</strong> &mdash; we compute current portfolio value, what VTI would be worth, and the dollar and percentage alpha.</li>
+    </ol>
+  </section>
+
+  <section class="step" id="disclaimer">
+    <header class="step-head">
+      <span class="step-num">&middot;</span>
+      <h2>Notes &amp; caveats</h2>
+    </header>
+    <ul class="howlist">
+      <li>This tool uses <strong>split-adjusted closing prices</strong>. Your actual fills may differ by intraday timing.</li>
+      <li><strong>Dividends</strong> are reflected via adjusted close, so reinvested dividends are already baked into both your symbols and VTI.</li>
+      <li>For a buy on a non-trading day (weekend / holiday), we use the next available trading day's close.</li>
+      <li>Options, crypto, mutual funds without ticker symbols, and non-USD-listed securities aren't supported in this version.</li>
+      <li><strong>Your data stays in your browser.</strong> CSVs are parsed locally. The only thing sent to our server is the list of symbol names so we can fetch their price history.</li>
+    </ul>
+  </section>
+</main>
+</div>
+
+<!-- ============= LEGAL DISCLAIMER ============= -->
+<div class="container">
+  <div class="tool-disclaimer">
+    <strong>Disclaimer:</strong> VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. This tool is for informational and educational purposes only. It compares historical performance using publicly available price data and is not a recommendation to buy, hold, or sell any security. Past performance does not guarantee future results. The calculations make simplifying assumptions (closing-price fills, no transaction costs, no taxes) that will differ from your real-world results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.
+  </div>
+</div>
+
+<!-- ============= SITE FOOTER ============= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- App JS -->
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+<script src="./portfolio-vs-vti.js" type="module"></script>
+</body>
+</html>

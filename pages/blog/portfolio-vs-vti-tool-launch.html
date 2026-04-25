@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFFQRYJTQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PFFQRYJTQ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Tool: See If Your Stock Picks Actually Beat VTI (Beta) | VTI & Chill</title>
+<meta name="description" content="A free, browser-based tool that replays every trade in your brokerage history as if those dollars went to VTI on the same day — so you can see your real alpha (or lack of it). Beta testers wanted.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h4 { color: var(--color-primary); margin-bottom: var(--space-2); font-weight: 700; }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+  .stat-card.negative .stat-value { color: #e74c3c; }
+  .cta-box { background: linear-gradient(135deg, rgba(0, 212, 170, 0.12), rgba(26, 26, 46, 0.6)); border: 1px solid rgba(0, 212, 170, 0.3); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; text-align: center; }
+  .cta-box h3 { margin-top: 0 !important; }
+  .cta-box .btn-primary { display: inline-flex; align-items: center; gap: var(--space-2); background: var(--color-primary); color: var(--color-navy); padding: var(--space-3) var(--space-6); border-radius: var(--radius-full); font-weight: 700; text-decoration: none; margin-top: var(--space-3); }
+  .cta-box .btn-primary:hover { background: var(--color-primary-hover); }
+</style>
+
+  <!-- SEO: Canonical & Keywords -->
+  <link rel="canonical" href="https://www.vtiandchill.com/pages/blog/portfolio-vs-vti-tool-launch.html">
+  <meta name="keywords" content="portfolio vs VTI calculator, alpha calculator, beat the market, stock picking performance, brokerage CSV import, Robinhood Vanguard Fidelity Schwab transaction history, real returns benchmark, retail investor underperformance, behavior gap measurement">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="VTI & Chill">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="New Tool: See If Your Stock Picks Actually Beat VTI (Beta)">
+  <meta property="og:description" content="A free, browser-based tool that replays every trade in your brokerage history as if those dollars went to VTI on the same day — so you can see your real alpha. Beta testers wanted.">
+  <meta property="og:url" content="https://www.vtiandchill.com/pages/blog/portfolio-vs-vti-tool-launch.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="VTI & Chill">
+  <meta property="article:published_time" content="2026-04-25T00:00:00Z">
+  <meta property="article:author" content="VTI & Chill">
+  <meta property="article:section" content="Tools">
+  <meta property="article:tag" content="portfolio comparison">
+  <meta property="article:tag" content="alpha calculator">
+  <meta property="article:tag" content="benchmark">
+  <meta property="article:tag" content="VTI">
+  <meta property="article:tag" content="beta launch">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VTIandChill">
+  <meta name="twitter:title" content="New Tool: See If Your Stock Picks Actually Beat VTI (Beta)">
+  <meta name="twitter:description" content="Upload your brokerage CSV. We replay every trade as if those dollars went to VTI on the same day. Now you know your real alpha.">
+  <meta name="twitter:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "New Tool: See If Your Stock Picks Actually Beat VTI (Beta)",
+  "description": "Most retail investors never measure their real performance against a benchmark. Today we are launching a free browser-based tool that replays your brokerage history against VTI to show you your real alpha. Beta testers wanted.",
+  "url": "https://www.vtiandchill.com/pages/blog/portfolio-vs-vti-tool-launch.html",
+  "datePublished": "2026-04-25",
+  "dateModified": "2026-04-25",
+  "author": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/portfolio-vs-vti-tool-launch.html"
+  },
+  "keywords": ["portfolio vs VTI", "alpha calculator", "benchmark comparison", "CSV import", "beta launch", "stock picking"],
+  "articleSection": "Tools",
+  "wordCount": 1450
+}
+  </script>
+
+  <!-- Structured Data: FAQ (JSON-LD) — GEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the Portfolio vs VTI calculator work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You upload a transaction history CSV from Robinhood, Vanguard, Fidelity, or Schwab — or enter trades manually. The tool replays every buy and sell using historical price data, then runs the same dollar amounts on the same dates against VTI (the Vanguard Total Stock Market ETF). The output is a side-by-side chart and a single number — your real alpha, the difference between what your picks did and what VTI would have done with the same cash flows."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my brokerage data private when I use the calculator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The CSV file you upload is parsed entirely in your browser — it never leaves your device, and we never see it. The only network calls the tool makes are to fetch historical price data for the tickers in your file. We do not store, log, or transmit your transaction history."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why compare your portfolio to VTI specifically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "VTI (Vanguard Total Stock Market ETF) holds essentially every publicly traded U.S. company, weighted by market cap. It is the cheapest, most diversified version of the U.S. equity market available to retail investors, with an expense ratio of 0.03%. If you cannot beat VTI net of taxes and your time, you are paying a fee to underperform an index that requires zero work to own."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is a free benchmark tool needed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Brokerage apps like Robinhood and Fidelity show you total return, but they almost never show you what the same dollars would have done in a passive benchmark. Most retail investors therefore never see their real alpha — the only number that matters when deciding whether stock picking is worth the effort. SPIVA's annual reports show that roughly 80–90% of professional active managers underperform their benchmark over 10+ years. Retail investors are statistically not the exception."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I become a beta tester?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Just use the tool and tell us what broke or felt confusing. Email feedback to hello@vtiandchill.com or send a DM to @VTIandChill on X. We are especially interested in CSV format edge cases — if your broker's export does not parse cleanly, send us the (anonymized) file and we will add support."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vtiandchill.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.vtiandchill.com/pages/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Portfolio vs VTI Tool Launch", "item": "https://www.vtiandchill.com/pages/blog/portfolio-vs-vti-tool-launch.html" }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI & <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn.html">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn.html">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">New Tool · Beta</span>
+          <span>April 25, 2026</span>
+          <span>6 min read</span>
+        </div>
+        <h1>New Tool: See If Your Stock Picks Actually Beat VTI</h1>
+        <p class="blog-post-subtitle">We built a free, browser-based calculator that replays every trade in your brokerage history as if those dollars went to VTI on the same day. Now you can stop guessing whether you're outperforming the market — and find out for sure. Beta testers wanted.</p>
+      </div>
+
+      <div class="blog-post-content">
+
+        <p>Here's a question almost every retail investor will dodge: <strong>how do you actually know your stock picking is working?</strong></p>
+
+        <p>Not "is my account up." Up isn't the bar. The bar is: "am I doing better than I would have done if I had bought a single index fund and gone surfing."</p>
+
+        <p>That number — the difference between what you actually earned and what a passive benchmark would have earned with the same dollars on the same days — is the only number that decides whether all the stock picking, the watchlists, the earnings calls, and the screen time were worth it.</p>
+
+        <p>It's also a number almost nobody calculates. So we built a tool that does it for you.</p>
+
+        <div class="cta-box">
+          <h3 style="margin-top:0">Try it now (Beta)</h3>
+          <p style="margin-bottom:0">Upload a CSV from Robinhood, Vanguard, Fidelity, or Schwab — or type in your trades manually. Runs entirely in your browser. Free, no signup.</p>
+          <a href="../tools/portfolio-vs-vti.html" class="btn-primary"><i data-lucide="line-chart" style="width:18px;height:18px"></i> Open the Portfolio vs VTI tool</a>
+        </div>
+
+        <h2>Why we built it: the truth retail investors avoid</h2>
+
+        <p>Open Robinhood. Open Fidelity. Open the broker app of your choice. Almost every one of them shows you the same thing: <strong>your account balance, your total return, and a green or red percentage</strong>.</p>
+
+        <p>What none of them show you, by default, is the only comparison that matters: <em>what would those exact same deposits and trades have done in a passive index fund?</em></p>
+
+        <p>This is not an accident. Every brokerage that offers individual stocks has a structural incentive to keep you picking individual stocks. Order flow gets sold. Active accounts generate engagement metrics. The platform's interests are not perfectly aligned with showing you a number that, for most people, will say "you are losing to a fund that costs 0.03% per year."</p>
+
+        <p>Because the comparison is hidden, most retail investors operate on a comforting assumption: <em>my picks are working.</em> The account is up. The line goes from bottom-left to top-right. Things are good.</p>
+
+        <p>But "the account is up" during a decade where the broad U.S. market roughly tripled is not a feat. It's table stakes. The market is a tide. Almost everybody's boat went up. The real question is whether your boat went up <strong>more than the boat that required no skill, no time, and no anxiety</strong>.</p>
+
+        <div class="stat-row">
+          <div class="stat-card negative">
+            <div class="stat-value">~85%</div>
+            <div class="stat-label">of large-cap active funds underperform S&P 500 over 10 yrs (SPIVA)</div>
+          </div>
+          <div class="stat-card negative">
+            <div class="stat-value">3.6%</div>
+            <div class="stat-label">average annual behavior gap (DALBAR)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">0.03%</div>
+            <div class="stat-label">VTI expense ratio</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">$0</div>
+            <div class="stat-label">cost to use this tool</div>
+          </div>
+        </div>
+
+        <p>The data on this is brutal. <a href="https://www.spglobal.com/spdji/en/research-insights/spiva/">S&P's SPIVA scorecard</a> has shown for two decades that <strong>roughly 80–90% of actively managed U.S. large-cap funds underperform the S&P 500 over 10+ year periods</strong> — and these are professionals with Bloomberg terminals, full-time research staff, and structural advantages no retail investor has. <a href="../blog/power-of-doing-nothing.html">DALBAR's research</a> shows the average individual investor underperforms their own funds by about 3.6% per year, almost entirely from buying high and selling low.</p>
+
+        <p>So statistically, the bet you are making by stock picking is: "I am better than 85% of professional fund managers." Maybe you are. But you owe yourself the proof.</p>
+
+        <h2>How the tool works</h2>
+
+        <p>The mechanics are deliberately boring, because that's the whole value proposition.</p>
+
+        <ol>
+          <li><strong>You give it your trades.</strong> Either drop in a transaction history CSV from Robinhood, Vanguard, Fidelity, or Schwab — or punch in trades manually if you want to model a hypothetical portfolio.</li>
+          <li><strong>It pulls historical prices.</strong> For every ticker you traded and for VTI, the tool fetches daily close prices going back as far as needed.</li>
+          <li><strong>It replays everything twice.</strong> Once as it actually happened — every buy, every sell, every dividend reinvest. Then a parallel simulation where the same cash flows on the same dates went into VTI instead.</li>
+          <li><strong>You see two equity curves and one number.</strong> A side-by-side growth chart, plus your alpha — the dollar and percentage difference between what you did and what VTI would have done with the same money.</li>
+        </ol>
+
+        <p>It's the comparison your broker should already be showing you, but doesn't.</p>
+
+        <!-- SVG Illustration: How the tool works -->
+        <div class="chart-container">
+          <svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="How the Portfolio vs VTI tool works in three steps">
+            <text x="350" y="22" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="13" font-weight="600" fill="currentColor">How it works in 3 steps</text>
+
+            <!-- Step 1 -->
+            <rect x="40" y="60" width="180" height="160" rx="12" fill="rgba(0, 212, 170, 0.08)" stroke="#00d4aa" stroke-opacity="0.3"/>
+            <circle cx="130" cy="95" r="18" fill="#00d4aa"/>
+            <text x="130" y="100" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="14" font-weight="700" fill="#1a1a2e">1</text>
+            <text x="130" y="135" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="12" font-weight="700" fill="currentColor">Upload your CSV</text>
+            <text x="130" y="155" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.65">Robinhood, Vanguard,</text>
+            <text x="130" y="170" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.65">Fidelity, Schwab — or</text>
+            <text x="130" y="185" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.65">enter trades manually</text>
+            <text x="130" y="208" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-style="italic" fill="#00d4aa" opacity="0.85">parsed in your browser</text>
+
+            <!-- Arrow 1 -->
+            <path d="M 230 140 L 250 140 L 250 135 L 260 142 L 250 149 L 250 144 L 230 144 Z" fill="currentColor" opacity="0.4"/>
+
+            <!-- Step 2 -->
+            <rect x="270" y="60" width="180" height="160" rx="12" fill="rgba(0, 212, 170, 0.08)" stroke="#00d4aa" stroke-opacity="0.3"/>
+            <circle cx="360" cy="95" r="18" fill="#00d4aa"/>
+            <text x="360" y="100" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="14" font-weight="700" fill="#1a1a2e">2</text>
+            <text x="360" y="135" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="12" font-weight="700" fill="currentColor">Replay each trade</text>
+            <text x="360" y="155" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.65">Your actual portfolio</text>
+            <text x="360" y="170" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.65">vs. same dollars in VTI</text>
+            <text x="360" y="185" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.65">on the same dates</text>
+            <text x="360" y="208" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-style="italic" fill="#00d4aa" opacity="0.85">apples-to-apples</text>
+
+            <!-- Arrow 2 -->
+            <path d="M 460 140 L 480 140 L 480 135 L 490 142 L 480 149 L 480 144 L 460 144 Z" fill="currentColor" opacity="0.4"/>
+
+            <!-- Step 3 -->
+            <rect x="500" y="60" width="180" height="160" rx="12" fill="rgba(0, 212, 170, 0.08)" stroke="#00d4aa" stroke-opacity="0.3"/>
+            <circle cx="590" cy="95" r="18" fill="#00d4aa"/>
+            <text x="590" y="100" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="14" font-weight="700" fill="#1a1a2e">3</text>
+            <text x="590" y="135" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="12" font-weight="700" fill="currentColor">See your alpha</text>
+            <text x="590" y="155" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.65">Two equity curves and</text>
+            <text x="590" y="170" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.65">one number — the gap</text>
+            <text x="590" y="185" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.65">between you and VTI</text>
+            <text x="590" y="208" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-style="italic" fill="#00d4aa" opacity="0.85">truth, in dollars</text>
+
+            <text x="350" y="255" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" fill="currentColor" opacity="0.6">No signup. No accounts. No data leaves your browser.</text>
+          </svg>
+          <p class="chart-caption">A simple, privacy-first benchmark calculator. Your CSV is parsed locally; only public price data is fetched.</p>
+        </div>
+
+        <h3>Privacy by design</h3>
+
+        <p>This matters, so let's be specific. The CSV file you upload is parsed entirely in your browser using PapaParse — it never leaves your device, and we never see it. The only network calls the tool makes are to fetch historical close prices for the tickers in your file (so we can run the simulation). We do not store, log, or transmit your transactions. We don't even know you used it unless you tell us.</p>
+
+        <h2>What you might find (and why that's the point)</h2>
+
+        <p>Three outcomes are possible, and each one is genuinely useful.</p>
+
+        <div class="callout-box">
+          <h4>You're beating VTI</h4>
+          <p>Congratulations — you are statistically rare. Now stress-test it: run the tool over different time windows, exclude your single best trade, and see if the alpha holds. If it does after that scrub, keep doing what you're doing. If it disappears, you got lucky once and called it skill.</p>
+        </div>
+
+        <div class="callout-box">
+          <h4>You're roughly tied with VTI</h4>
+          <p>You are spending hours per week, paying capital gains taxes you didn't have to pay, and absorbing real anxiety, in exchange for the same return you'd have gotten by buying one ETF and never logging in. The math here usually favors switching.</p>
+        </div>
+
+        <div class="callout-box">
+          <h4>You're behind VTI</h4>
+          <p>Welcome to the 80–90% club. There is no shame in this — it is the statistical baseline for retail investors and most professionals. The question is what to do next: continue paying a fee in time, taxes, and missed compounding to underperform an index, or stop. <a href="../portfolios.html">Our portfolio templates</a> are a reasonable next step.</p>
+        </div>
+
+        <p>Whichever bucket you land in, you are now operating on data instead of vibes. That alone is worth the 60 seconds it takes to upload a CSV.</p>
+
+        <h2>Beta testers wanted</h2>
+
+        <p>This is a beta. We've tested it ourselves with the four big retail brokerage exports, but real-world CSVs are messy — different account types, fractional shares, dividend reinvestment lines, corporate actions, joint accounts, employer plans, weird older formats. We can't anticipate every edge case, so we need help from real users.</p>
+
+        <p>If you try it, we want to hear:</p>
+
+        <ul>
+          <li>Did your CSV parse correctly? If not, which broker, and (if you're comfortable) can you send us an anonymized sample?</li>
+          <li>Did the resulting alpha number match your gut? If not, what looked off?</li>
+          <li>What's the one feature that would make this dramatically more useful for you? (Custom benchmark? After-tax view? Multi-account merge?)</li>
+          <li>Was anything confusing in the UI?</li>
+        </ul>
+
+        <div class="cta-box">
+          <h3 style="margin-top:0">Send feedback</h3>
+          <p>Email <a href="mailto:hello@vtiandchill.com" style="color: var(--color-primary)">hello@vtiandchill.com</a> or DM <a href="https://x.com/VTIandChill" style="color: var(--color-primary)">@VTIandChill</a> on X. Every reply gets read.</p>
+          <a href="../tools/portfolio-vs-vti.html" class="btn-primary"><i data-lucide="line-chart" style="width:18px;height:18px"></i> Open the tool</a>
+        </div>
+
+        <h2>Why we're giving this away</h2>
+
+        <p>Tools like this exist as $20/month subscriptions inside premium broker tiers and finance apps. We think this particular calculation — am I beating the market? — is a question every investor deserves to answer for free. Charging for it would be like charging someone to see the price tag on the thing they already bought.</p>
+
+        <p>If the tool changes how you think about your portfolio, the best thanks you can give us is sharing it with one other person who's stock picking without a benchmark. That's how a behavior gap gets closed, one honest equity curve at a time.</p>
+
+        <blockquote>
+          "If you can't measure it, you can't improve it." — often misattributed to Peter Drucker, frequently true anyway.
+        </blockquote>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>Most retail investors never compare their real performance to a passive benchmark, which is exactly how the financial services industry prefers it. You can't fix a problem you can't see, and you can't decide whether stock picking is worth your time without knowing what passive would have done with the same dollars.</p>
+          <p>The Portfolio vs VTI tool is our small attempt to make that comparison free, fast, and private. Upload your CSV. Look at the chart. Make an honest decision.</p>
+          <p>Then, ideally — buy, hold, and chill.</p>
+        </div>
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. The Portfolio vs VTI tool is a backtesting and benchmarking utility for informational and educational purposes only. Historical price comparisons are not predictions of future performance, and the tool does not account for taxes, dividends paid in cash and not reinvested, brokerage fees, slippage, or other real-world frictions unless explicitly modeled. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>
