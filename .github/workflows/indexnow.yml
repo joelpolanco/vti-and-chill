@@ -3,6 +3,25 @@ name: IndexNow ping
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "What to submit"
+        required: true
+        default: "sitemap"
+        type: choice
+        options:
+          - sitemap          # Submit every URL in sitemap.xml (full resubmission)
+          - changed-since    # Submit URLs changed since a given Git ref
+          - custom           # Submit a hand-typed list of URLs
+      since_ref:
+        description: "(changed-since only) Git ref to diff against, e.g. HEAD~5 or a commit SHA"
+        required: false
+        default: "HEAD~1"
+      custom_urls:
+        description: "(custom only) One URL per line"
+        required: false
+        default: ""
 
 # Allow only one ping at a time so concurrent pushes don't spam IndexNow
 concurrency:
@@ -11,62 +30,102 @@ concurrency:
 
 jobs:
   ping:
-    name: Submit changed URLs to IndexNow
+    name: Submit URLs to IndexNow
     runs-on: ubuntu-latest
-    # Vercel takes ~30-60s to deploy. Wait first so IndexNow doesn't fetch stale content.
     steps:
       - name: Checkout repo (with history)
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Wait for Vercel deploy
+      # Skip the deploy wait when the user manually re-runs against
+      # already-deployed content. Push events still need it.
+      - name: Wait for Vercel deploy (push events only)
+        if: github.event_name == 'push'
         run: sleep 75
 
-      - name: Build URL list from changed files
+      - name: Build URL list
         id: build
         env:
-          BEFORE: ${{ github.event.before }}
-          AFTER:  ${{ github.event.after }}
-          SITE: "https://www.vtiandchill.com"
+          EVENT:    ${{ github.event_name }}
+          BEFORE:   ${{ github.event.before }}
+          AFTER:    ${{ github.event.after }}
+          MODE:     ${{ github.event.inputs.mode }}
+          SINCE:    ${{ github.event.inputs.since_ref }}
+          CUSTOM:   ${{ github.event.inputs.custom_urls }}
+          SITE:     "https://www.vtiandchill.com"
         run: |
           set -euo pipefail
 
-          # On the very first push to a new branch, BEFORE may be all zeros.
-          if [[ "$BEFORE" == "0000000000000000000000000000000000000000" ]]; then
-            CHANGED=$(git ls-files)
+          # path -> public URL helper. Only HTML pages + sitemap/llms/robots
+          # qualify as IndexNow-eligible. Everything else is dropped.
+          to_urls() {
+            awk -v site="$SITE" '
+              /\.html$/ {
+                if ($0 == "index.html") { print site "/"; next }
+                print site "/" $0; next
+              }
+              $0 == "sitemap.xml" { print site "/" $0; next }
+              $0 == "llms.txt"    { print site "/" $0; next }
+              $0 == "robots.txt"  { print site "/" $0; next }
+            '
+          }
+
+          if [[ "$EVENT" == "workflow_dispatch" ]]; then
+            echo "Manual run. Mode = $MODE"
+
+            case "$MODE" in
+              sitemap)
+                echo "Extracting URLs from sitemap.xml..."
+                # Pull all <loc>...</loc> entries (case-insensitive, multi-line safe)
+                mapfile -t URLS < <(grep -oE '<loc>[^<]+</loc>' sitemap.xml \
+                  | sed -E 's#</?loc>##g' | sort -u)
+                ;;
+
+              changed-since)
+                echo "Diffing changes since: $SINCE"
+                CHANGED=$(git diff --name-only --diff-filter=ACMRT "$SINCE" HEAD || true)
+                echo "Changed files:"
+                echo "$CHANGED" | sed 's/^/  /'
+                mapfile -t URLS < <(printf '%s\n' "$CHANGED" | to_urls | sort -u)
+                ;;
+
+              custom)
+                echo "Using user-supplied URL list."
+                # Trim whitespace, drop blank lines, accept only same-host URLs.
+                mapfile -t URLS < <(printf '%s\n' "$CUSTOM" \
+                  | sed 's/[[:space:]]*$//' \
+                  | grep -E '^https://www\.vtiandchill\.com/' \
+                  | sort -u)
+                ;;
+
+              *)
+                echo "::error::Unknown mode: $MODE"
+                exit 1
+                ;;
+            esac
           else
-            CHANGED=$(git diff --name-only --diff-filter=ACMRT "$BEFORE" "$AFTER" || true)
+            # push event
+            if [[ "$BEFORE" == "0000000000000000000000000000000000000000" ]]; then
+              CHANGED=$(git ls-files)
+            else
+              CHANGED=$(git diff --name-only --diff-filter=ACMRT "$BEFORE" "$AFTER" || true)
+            fi
+            echo "Changed files in this push:"
+            echo "$CHANGED" | sed 's/^/  /'
+            mapfile -t URLS < <(printf '%s\n' "$CHANGED" | to_urls | sort -u)
           fi
 
-          echo "Changed files in this push:"
-          echo "$CHANGED" | sed 's/^/  /'
-
-          # Convert repo paths to public URLs.
-          # - index.html at repo root  -> /
-          # - any other *.html         -> /<path>
-          # - sitemap.xml / llms.txt   -> /<path>
-          # Anything else is ignored.
-          mapfile -t URLS < <(printf '%s\n' "$CHANGED" | awk -v site="$SITE" '
-            /\.html$/ {
-              if ($0 == "index.html") { print site "/"; next }
-              print site "/" $0; next
-            }
-            $0 == "sitemap.xml"   { print site "/" $0; next }
-            $0 == "llms.txt"      { print site "/" $0; next }
-            $0 == "robots.txt"    { print site "/" $0; next }
-          ' | sort -u)
-
           if [[ ${#URLS[@]} -eq 0 ]]; then
-            echo "No public URLs changed in this push. Skipping IndexNow."
+            echo "No URLs to submit. Skipping IndexNow."
             echo "count=0" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
+          # IndexNow accepts up to 10,000 URLs per call; far more than we'll ever have.
           echo "URLs to submit (${#URLS[@]}):"
           printf '  %s\n' "${URLS[@]}"
 
-          # Build IndexNow JSON payload.
           jq -n \
             --arg host "www.vtiandchill.com" \
             --arg key  "d520aa54ae9340048550b8f2cb83c707" \
@@ -74,9 +133,6 @@ jobs:
             --argjson urls "$(printf '%s\n' "${URLS[@]}" | jq -R . | jq -s .)" \
             '{host: $host, key: $key, keyLocation: $keyLoc, urlList: $urls}' \
             > /tmp/indexnow.json
-
-          echo "Payload:"
-          cat /tmp/indexnow.json
 
           echo "count=${#URLS[@]}" >> "$GITHUB_OUTPUT"
 
@@ -98,3 +154,4 @@ jobs:
             echo "::error::IndexNow returned $HTTP"
             exit 1
           fi
+          echo "::notice::Successfully submitted ${{ steps.build.outputs.count }} URL(s) to IndexNow."
