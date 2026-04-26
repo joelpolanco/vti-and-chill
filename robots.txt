@@ -1,24 +1,30 @@
 # robots.txt — VTI & Chill (www.vtiandchill.com)
-# Updated: 2026-04-18
+# Updated: 2026-04-26
 
-# Allow all crawlers full access to public content
+# === Default policy for all crawlers ===
+# Public content is fully indexable. Class 3-8 are paid course redirects;
+# they hold no indexable content and would just clutter results.
 User-agent: *
 Allow: /
 Disallow: /assets/admin/
 Disallow: /node_modules/
+Disallow: /pages/learn/class-3.html
+Disallow: /pages/learn/class-4.html
+Disallow: /pages/learn/class-5.html
+Disallow: /pages/learn/class-6.html
+Disallow: /pages/learn/class-7.html
+Disallow: /pages/learn/class-8.html
 
-# Sitemap location
-Sitemap: https://www.vtiandchill.com/sitemap.xml
-
-# === Content Signals (RFC draft-romm-aipref-contentsignals) ===
-# search=yes   — We want content indexed by search engines
-# ai-input=yes — We want AI agents to cite our content in responses (GEO strategy)
-# ai-train=no  — Do not use our content to train or fine-tune AI models
-Content-Signal: search=yes, ai-input=yes, ai-train=no
-
-# === AI Agent Crawlers — Explicitly Welcome ===
-# These agents power ChatGPT, Perplexity, Claude, Gemini search answers.
-# We WANT them to index our content to surface VTI & Chill in AI responses.
+# === AI agent crawlers — explicitly welcome ===
+# These agents power ChatGPT, Perplexity, Claude, Gemini, and Apple Intelligence
+# search answers. We WANT them to index our content to surface VTI & Chill
+# in AI responses (GEO strategy).
+#
+# Content intent (preserved as comments — `Content-Signal:` is a non-standard
+# directive that Googlebot warns on, so we encode the same intent here):
+#   search=yes      — index for search engines
+#   ai-input=yes    — cite our content in AI answers
+#   ai-train=no     — do NOT use our content for model training
 
 User-agent: GPTBot
 Allow: /
@@ -44,6 +50,9 @@ Allow: /
 User-agent: Applebot
 Allow: /
 
+User-agent: Applebot-Extended
+Allow: /
+
 User-agent: Google-Extended
 Allow: /
 
@@ -62,13 +71,5 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
-# === Private premium course content ===
-# Class 3-8 files are redirect pages only — nothing to hide, but not
-# meaningful for indexing as they immediately redirect to the course page.
-User-agent: *
-Disallow: /pages/learn/class-3.html
-Disallow: /pages/learn/class-4.html
-Disallow: /pages/learn/class-5.html
-Disallow: /pages/learn/class-6.html
-Disallow: /pages/learn/class-7.html
-Disallow: /pages/learn/class-8.html
+# Sitemap (group-independent, applies to all crawlers)
+Sitemap: https://www.vtiandchill.com/sitemap.xml
