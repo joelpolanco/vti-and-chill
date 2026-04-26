@@ -35,7 +35,7 @@
           philosophy: BASE + '/pages/philosophy.html',
           portfolios: BASE + '/pages/portfolios.html',
           tools: BASE + '/pages/tools.html',
-          learn: BASE + '/pages/learn.html',
+          learn: BASE + '/pages/learn/',
           blog: BASE + '/pages/blog.html',
           community: BASE + '/pages/community.html',
           about: BASE + '/pages/about.html'
@@ -117,7 +117,7 @@
         subscription: false,
         access: 'Lifetime',
         purchaseUrl: 'https://vtiandchill.gumroad.com/l/blueprint',
-        courseUrl: BASE + '/pages/learn.html',
+        courseUrl: BASE + '/pages/learn/',
         freeClasses: ['Class 1', 'Class 2'],
         paidClasses: ['Class 3', 'Class 4', 'Class 5', 'Class 6', 'Class 7', 'Class 8'],
         modules: [

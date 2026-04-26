@@ -58,5 +58,12 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/pages/learn.html",
+      "destination": "/pages/learn/",
+      "permanent": true
+    }
   ]
 }
