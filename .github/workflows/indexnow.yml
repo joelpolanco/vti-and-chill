@@ -1,0 +1,100 @@
+name: IndexNow ping
+
+on:
+  push:
+    branches: [main]
+
+# Allow only one ping at a time so concurrent pushes don't spam IndexNow
+concurrency:
+  group: indexnow-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    name: Submit changed URLs to IndexNow
+    runs-on: ubuntu-latest
+    # Vercel takes ~30-60s to deploy. Wait first so IndexNow doesn't fetch stale content.
+    steps:
+      - name: Checkout repo (with history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Wait for Vercel deploy
+        run: sleep 75
+
+      - name: Build URL list from changed files
+        id: build
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER:  ${{ github.event.after }}
+          SITE: "https://www.vtiandchill.com"
+        run: |
+          set -euo pipefail
+
+          # On the very first push to a new branch, BEFORE may be all zeros.
+          if [[ "$BEFORE" == "0000000000000000000000000000000000000000" ]]; then
+            CHANGED=$(git ls-files)
+          else
+            CHANGED=$(git diff --name-only --diff-filter=ACMRT "$BEFORE" "$AFTER" || true)
+          fi
+
+          echo "Changed files in this push:"
+          echo "$CHANGED" | sed 's/^/  /'
+
+          # Convert repo paths to public URLs.
+          # - index.html at repo root  -> /
+          # - any other *.html         -> /<path>
+          # - sitemap.xml / llms.txt   -> /<path>
+          # Anything else is ignored.
+          mapfile -t URLS < <(printf '%s\n' "$CHANGED" | awk -v site="$SITE" '
+            /\.html$/ {
+              if ($0 == "index.html") { print site "/"; next }
+              print site "/" $0; next
+            }
+            $0 == "sitemap.xml"   { print site "/" $0; next }
+            $0 == "llms.txt"      { print site "/" $0; next }
+            $0 == "robots.txt"    { print site "/" $0; next }
+          ' | sort -u)
+
+          if [[ ${#URLS[@]} -eq 0 ]]; then
+            echo "No public URLs changed in this push. Skipping IndexNow."
+            echo "count=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "URLs to submit (${#URLS[@]}):"
+          printf '  %s\n' "${URLS[@]}"
+
+          # Build IndexNow JSON payload.
+          jq -n \
+            --arg host "www.vtiandchill.com" \
+            --arg key  "d520aa54ae9340048550b8f2cb83c707" \
+            --arg keyLoc "$SITE/d520aa54ae9340048550b8f2cb83c707.txt" \
+            --argjson urls "$(printf '%s\n' "${URLS[@]}" | jq -R . | jq -s .)" \
+            '{host: $host, key: $key, keyLocation: $keyLoc, urlList: $urls}' \
+            > /tmp/indexnow.json
+
+          echo "Payload:"
+          cat /tmp/indexnow.json
+
+          echo "count=${#URLS[@]}" >> "$GITHUB_OUTPUT"
+
+      - name: POST to IndexNow
+        if: steps.build.outputs.count != '0'
+        run: |
+          set -euo pipefail
+          HTTP=$(curl -sS -o /tmp/indexnow_resp.txt -w "%{http_code}" \
+            -X POST "https://api.indexnow.org/IndexNow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            --data-binary @/tmp/indexnow.json)
+          echo "IndexNow HTTP $HTTP"
+          echo "Response body:"
+          cat /tmp/indexnow_resp.txt || true
+          echo
+
+          # 200 = OK, 202 = accepted (still success). Anything else = fail.
+          if [[ "$HTTP" != "200" && "$HTTP" != "202" ]]; then
+            echo "::error::IndexNow returned $HTTP"
+            exit 1
+          fi
