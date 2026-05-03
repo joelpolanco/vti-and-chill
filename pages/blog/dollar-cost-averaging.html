@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFFQRYJTQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PFFQRYJTQ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dollar-Cost Averaging: Your Secret Weapon Against Volatility | VTI & Chill</title>
+<meta name="description" content="Dollar-cost averaging explained: invest fixed amounts at regular intervals to buy more shares when prices are low, fewer when high. Reduces average cost, removes timing anxiety, and turns market crashes into accumulation opportunities.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h3 { color: var(--color-primary); margin-bottom: var(--space-2); margin-top: 0; font-weight: 700; font-size: var(--text-lg); }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+  .stat-card.negative .stat-value { color: #e74c3c; }
+  .related-posts { margin: var(--space-10) 0 var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
+  .related-posts h2 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-4); color: var(--color-text); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4); }
+  .related-card { display: block; padding: var(--space-4) var(--space-5); background: var(--color-surface-2, #1c2333); border: 1px solid var(--color-border); border-radius: var(--radius-lg); text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+  .related-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-card .related-eyebrow { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-2); display: block; }
+  .related-card .related-title { font-family: var(--font-display); font-weight: 600; font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-1); line-height: 1.35; }
+  .related-card .related-blurb { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+</style>
+
+  <!-- SEO: Canonical & Keywords -->
+  <link rel="canonical" href="https://www.vtiandchill.com/pages/blog/dollar-cost-averaging.html">
+  <meta name="keywords" content="dollar-cost averaging, DCA, automatic investing, market timing, lump sum vs DCA, Vanguard DCA study, index fund investing, VTI automatic contributions, investor psychology">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="VTI & Chill">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dollar-Cost Averaging: Your Secret Weapon Against Volatility">
+  <meta property="og:description" content="The evidence-backed, boring system that removes market timing from investing. Why automatic monthly contributions beat trying to guess the top.">
+  <meta property="og:url" content="https://www.vtiandchill.com/pages/blog/dollar-cost-averaging.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="VTI & Chill">
+  <meta property="article:published_time" content="2026-04-25T00:00:00Z">
+  <meta property="article:author" content="VTI & Chill">
+  <meta property="article:section" content="Investing">
+  <meta property="article:tag" content="dollar-cost averaging">
+  <meta property="article:tag" content="DCA">
+  <meta property="article:tag" content="automatic investing">
+  <meta property="article:tag" content="market timing">
+  <meta property="article:tag" content="lump sum vs DCA">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VTIandChill">
+  <meta name="twitter:title" content="Dollar-Cost Averaging: Your Secret Weapon Against Volatility">
+  <meta name="twitter:description" content="The evidence-backed, boring system that removes market timing from investing. Why automatic monthly contributions beat trying to guess the top.">
+  <meta name="twitter:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Dollar-Cost Averaging: Your Secret Weapon Against Volatility",
+  "description": "Dollar-cost averaging explained: invest fixed amounts at regular intervals to buy more shares when prices are low, fewer when high. Reduces average cost, removes timing anxiety, and turns market crashes into accumulation opportunities.",
+  "url": "https://www.vtiandchill.com/pages/blog/dollar-cost-averaging.html",
+  "datePublished": "2026-04-25",
+  "dateModified": "2026-04-25",
+  "author": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/dollar-cost-averaging.html"
+  },
+  "keywords": [
+    "dollar-cost averaging",
+    "DCA",
+    "automatic investing",
+    "market timing",
+    "lump sum vs DCA",
+    "Vanguard DCA study",
+    "index fund investing",
+    "VTI automatic contributions",
+    "investor psychology"
+  ],
+  "articleSection": "Investing",
+  "wordCount": 1300
+}
+  </script>
+
+  <!-- Structured Data: FAQ (JSON-LD) — GEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is dollar-cost averaging in simple terms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dollar-cost averaging (DCA) is investing a fixed dollar amount at regular intervals \u2014 typically monthly \u2014 regardless of what the market is doing. When prices are high, your fixed dollar amount buys fewer shares; when prices are low, it buys more shares. Over time, this produces a lower average cost per share than most market-timing attempts and removes the agonizing 'when should I buy?' decision entirely."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does dollar-cost averaging beat lump-sum investing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On a pure math basis, no \u2014 Vanguard's research shows that investing a lump sum all at once beats DCA in roughly two-thirds of historical periods, because markets trend up and every day in cash is a day not compounding. However, DCA is superior when you're investing from ongoing income (a paycheck), and it dramatically reduces the psychological cost of investing during volatile markets. The best strategy is the one you can actually stick with."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I start dollar-cost averaging?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open a brokerage account (Vanguard, Fidelity, or Schwab), pick a total market index fund like VTI, FSKAX, or SWTSX, and set up an automatic monthly transfer from your checking account on payday. Enable automatic dividend reinvestment. Then don't touch it. The whole system takes about 20 minutes to configure and runs indefinitely without further decisions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I stop DCA during a market crash?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No \u2014 a crash is when DCA works hardest in your favor. Your fixed monthly investment buys more shares when prices are lower, accumulating the asset at a discount. Investors who kept dollar-cost averaging through the 2008-2009 financial crisis and 2020 COVID crash saw their purchases at the bottom massively boost long-term returns. Stopping DCA during a crash is the worst possible move mathematically and psychologically."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.vtiandchill.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.vtiandchill.com/pages/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Dollar-Cost Averaging: Your Secret Weapon Against Volatility",
+      "item": "https://www.vtiandchill.com/pages/blog/dollar-cost-averaging.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI & <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Investing Strategy</span>
+          <span>April 25, 2026</span>
+          <span>6 min read</span>
+        </div>
+        <h1>Dollar-Cost Averaging: Your Secret Weapon Against Volatility</h1>
+        <p class="blog-post-subtitle">Stop trying to time the market. Invest a fixed amount on a fixed schedule and let volatility work for you instead of against you.</p>
+      </div>
+
+      <div class="blog-post-content">
+
+        <p>Imagine you've just inherited $50,000. You want to invest it in the stock market. The market has been volatile lately — some analysts say it's overvalued, others say it's about to rip higher, a guy on Twitter says it's going to zero. You're paralyzed. What if you invest today and the market drops 20% tomorrow?</p>
+
+        <p>This is one of the most common and most psychologically agonizing situations in personal investing. And there's a clean, evidence-backed solution that removes the timing decision entirely.</p>
+
+        <p>It's called <strong>dollar-cost averaging</strong>. And if you've ever had automatic contributions taken from your paycheck into a 401(k), you've already been doing it without knowing it.</p>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-value">$13.33</div>
+            <div class="stat-label">Avg cost per share when DCA-ing a volatile $10/$20 stock</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">$15.00</div>
+            <div class="stat-label">Simple average of share prices</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">~2/3</div>
+            <div class="stat-label">Historical periods where lump-sum beats DCA (Vanguard)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">1</div>
+            <div class="stat-label">Decisions required after setup</div>
+          </div>
+        </div>
+
+        <h2>What Dollar-Cost Averaging Actually Is</h2>
+
+        <p>Dollar-cost averaging (DCA) is simple: instead of investing a lump sum all at once, you invest a fixed dollar amount at regular intervals — monthly, biweekly, weekly — regardless of what the market is doing.</p>
+
+        <p>Say you have $1,200 to invest and you decide to invest $100 every month for a year. Here's what happens:</p>
+
+        <ul>
+          <li>When the market is up, your $100 buys fewer shares (they're more expensive)</li>
+          <li>When the market is down, your $100 buys more shares (they're on sale)</li>
+        </ul>
+
+        <p>Over time, this mechanical consistency means you naturally accumulate more shares when prices are low and fewer when prices are high. Your average cost per share ends up lower than if you'd bought all at once at an arbitrary moment — especially in volatile markets.</p>
+
+        <p>The math behind this is real. Consider a simple example: a stock alternates between $10 and $20. If you invest $100/month, at $10 you buy 10 shares, at $20 you buy 5 shares. Your average purchase price is $13.33 per share (total cost $200, total shares 15). But the average price of the stock was $15. You bought at a meaningful discount to the average — purely by being consistent.</p>
+
+                <!-- SVG Chart: DCA average cost advantage -->
+        <div class="chart-container">
+          <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dollar-cost averaging vs simple price average">
+            <text x="350" y="22" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="13" font-weight="600" fill="currentColor">DCA Lowers Your Average Cost</text>
+            <text x="350" y="38" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">$100/mo buys more shares at low prices, fewer at high prices</text>
+
+            <!-- Y axis (price $0 to $25). Scale: y(price) = 260 - price*6  -->
+            <line x1="80" y1="80" x2="670" y2="80" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="80" y1="140" x2="670" y2="140" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="80" y1="200" x2="670" y2="200" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="80" y1="260" x2="670" y2="260" stroke="currentColor" stroke-opacity="0.08"/>
+
+            <text x="72" y="84" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">$30</text>
+            <text x="72" y="144" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">$20</text>
+            <text x="72" y="204" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">$10</text>
+            <text x="72" y="264" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">$0</text>
+
+            <!-- Zigzag $10 (y=200) and $20 (y=140), 12 months, x step 49.17 -->
+            <polyline points="80,200 129,140 178,200 228,140 277,200 326,140 375,200 425,140 474,200 523,140 572,200 621,140 670,200" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <!-- Simple avg $15 (y=170) -->
+            <line x1="80" y1="170" x2="670" y2="170" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="5,4"/>
+            <text x="88" y="165" font-family="'Satoshi', sans-serif" font-size="10" font-weight="600" fill="#e74c3c">Simple avg price: $15.00</text>
+
+            <!-- DCA avg $13.33 (y=180) -->
+            <line x1="80" y1="180" x2="670" y2="180" stroke="#00d4aa" stroke-width="1.5" stroke-dasharray="5,4"/>
+            <text x="88" y="194" font-family="'Satoshi', sans-serif" font-size="10" font-weight="600" fill="#00d4aa">DCA avg cost: $13.33</text>
+
+            <!-- Annotate buys -->
+            <text x="129" y="132" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.55">5 shares @ $20</text>
+            <text x="178" y="215" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.55">10 shares @ $10</text>
+
+            <!-- X axis labels -->
+            <text x="80" y="283" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">Mo 1</text>
+            <text x="375" y="283" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">Mo 7</text>
+            <text x="670" y="283" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">Mo 13</text>
+          </svg>
+          <p class="chart-caption">Price alternates $10 / $20 each month. A $100 monthly contribution buys 10 shares when cheap and 5 when expensive — yielding an average cost of $13.33 while the simple price average is $15.</p>
+        </div>
+
+        <p>This doesn't mean DCA always beats lump sum investing. Research (including Vanguard's own analysis) has consistently shown that if you have a lump sum available, investing it all at once outperforms DCA in about two-thirds of historical periods — simply because markets go up more often than they go down, and every day in cash is a day not compounding. But "lump sum beats DCA on average" assumes you actually <em>have</em> a lump sum and the psychological fortitude to deploy it all at once at any market level.</p>
+
+        <p>Most people aren't in that situation. Most people invest from income — a paycheck, a bonus, a side hustle. DCA is the natural, practical structure for that reality.</p>
+
+        <h2>Why DCA Is a Crash Survival Superpower</h2>
+
+        <p>Here's where dollar-cost averaging truly earns its reputation: during market downturns.</p>
+
+        <p>Psychologically, crashes feel catastrophic. Everything you've read and every instinct you have says to stop, wait, maybe sell. But for the disciplined DCA investor, a crash is mechanically good news. When prices drop, your fixed monthly investment buys more shares than it did when prices were higher. You're accumulating more of the asset at reduced prices.</p>
+
+        <p>Think of it as a grocery store analogy. If chicken breast goes on sale for half price, you don't leave the store horrified. You buy more of it. Stocks on sale should feel the same way — and DCA enforces that behavior automatically, whether you feel like it or not.</p>
+
+        <p>Let's run the numbers concretely. Imagine you invest $500 a month in a total market index fund. The market crashes 40% and stays depressed for a year. During that year, your monthly $500 is buying 40% more shares than it would have at the peak. When the market recovers to its previous level (and <a href="./the-market-always-goes-up.html">historically, it always has</a>), you're not just back to even — you're ahead, because you accumulated more shares at the sale price.</p>
+
+        <p>This is not theoretical. Investors who kept buying during the 2008-2009 financial crisis, through the COVID crash of 2020, and through every other major downturn have this dynamic working massively in their favor in their portfolio histories. The crash was expensive for people who panicked and sold. It was a gift for people who stayed the course on their regular contribution schedule.</p>
+
+        <blockquote>"Far more money has been lost by investors preparing for corrections, or trying to anticipate corrections, than has been lost in corrections themselves." — Peter Lynch</blockquote>
+
+        <p>DCA short-circuits the preparation anxiety. You've already decided what to do: buy on schedule.</p>
+
+        <h2>The Psychology Is the Real Advantage</h2>
+
+        <p>Let's be honest about something. The primary benefit of dollar-cost averaging isn't purely mathematical — it's psychological.</p>
+
+        <p>Investing a large sum requires a level of courage that many people, understandably, don't have. The fear of buying at the top is real and powerful. If you invest $50,000 today and the market drops 30% tomorrow, you've "lost" $15,000 almost immediately. Rationally, that's temporary — the market recovers. Emotionally, it's devastating and it makes you question the whole strategy.</p>
+
+        <p>DCA removes the decision point. Instead of asking "is now a good time to invest?", you simply invest on the 15th of every month, because that's what you do. The question of timing becomes irrelevant. You don't need to predict anything. You don't need to watch the news. You don't need a view on Federal Reserve policy or earnings season or geopolitical risk.</p>
+
+        <p>This is the real gift: <strong>DCA is a system that protects you from yourself</strong>.</p>
+
+        <p>It's also worth addressing a related concept: lump sum investing when you have a windfall. If you receive an inheritance, a bonus, or the proceeds from selling a house, research generally suggests investing it all at once into your target allocation rather than spreading it over months. The math slightly favors lump sum. But if investing all at once would cause you enough anxiety that you'd <a href="./psychology-of-staying-the-course.html">potentially sell at the first correction</a>, then DCA that windfall over 6-12 months. The psychological cost of panic selling is far higher than the mathematical cost of DCA.</p>
+
+        <p>The best investment strategy is always the one you can actually stick to. And for most people, steady, automated, regular investing — the VTI &amp; Chill approach — is both mathematically sound and psychologically achievable.</p>
+
+        <h2>DCA in Practice: What This Actually Looks Like</h2>
+
+        <p>Setting up a dollar-cost averaging system takes about 20 minutes and then essentially runs itself forever. Here's the process:</p>
+
+        <div class="callout-box">
+          <h3>Step 1 — Open an account</h3>
+          <p>A Roth IRA (if you're income-eligible) or a traditional brokerage account at Vanguard, Fidelity, or Schwab works perfectly.</p>
+        </div>
+
+        <div class="callout-box">
+          <h3>Step 2 — Choose your fund</h3>
+          <p>VTI (Vanguard Total Stock Market ETF), FSKAX (Fidelity Total Market), or SWTSX (Schwab Total Market) are all excellent choices. They track essentially the same thing at near-zero cost.</p>
+        </div>
+
+        <div class="callout-box">
+          <h3>Step 3 — Set up automatic contributions</h3>
+          <p>Link your checking account and schedule automatic purchases on the same day every month — ideally payday, so the money is invested before you can spend it.</p>
+        </div>
+
+        <div class="callout-box">
+          <h3>Step 4 — Reinvest dividends automatically</h3>
+          <p>Enable automatic dividend reinvestment. This is compound growth in action: dividends buy more shares, which generate more dividends, which buy more shares.</p>
+        </div>
+
+        <div class="callout-box">
+          <h3>Step 5 — Do nothing else</h3>
+          <p>Seriously. Don't check the account every day. Don't adjust the contribution amount based on market conditions. Don't pause contributions during downturns. <a href="./power-of-doing-nothing.html">The whole system is designed to run without you</a>, and it works best that way.</p>
+        </div>
+
+        <p>The boring beauty of DCA is that it converts a complex, emotionally loaded decision — "when should I invest?" — into a non-decision. You invest on the 15th. That's it. The market can do whatever it wants. You'll be fine.</p>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>Dollar-cost averaging turns market volatility from an enemy into a mechanism that works in your favor. By investing fixed amounts on a regular schedule, you automatically buy more when prices are low and less when they're high, reducing your average cost per share over time.</p>
+          <p>More importantly, it removes the agonizing question of "is now a good time?" from the equation entirely. You invest on schedule regardless of conditions. Crashes become buying opportunities rather than catastrophes.</p>
+          <p>The simplest implementation: set up automatic contributions to your index fund every payday, and never think about it again. That's it. That's the system.</p>
+        </div>
+
+        <!-- related-posts:start -->
+        <section class="related-posts" aria-label="Related posts">
+          <h2>Keep reading</h2>
+          <div class="related-grid">
+      <a href="./power-of-doing-nothing.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">The Power of Doing Nothing</div>
+        <p class="related-blurb">DALBAR's 3.6% behavior gap — and how inactivity wins.</p>
+      </a>
+      <a href="./psychology-of-staying-the-course.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">The Psychology of Staying the Course</div>
+        <p class="related-blurb">Why your portfolio's worst enemy lives between your ears.</p>
+      </a>
+      <a href="./buy-hold-chill.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">Buy. Hold. Chill.</div>
+        <p class="related-blurb">Why three boring habits beat almost every active strategy ever invented.</p>
+      </a>
+          </div>
+        </section>
+        <!-- related-posts:end -->
+
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>

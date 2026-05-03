@@ -13,7 +13,7 @@
       "type": "skill-md",
       "description": "Access VTI & Chill's financial education content including blog posts on index fund investing, market history, portfolio construction, and the Chill Investor's Blueprint course",
       "url": "https://www.vtiandchill.com/.well-known/agent-skills/financial-education/SKILL.md",
-      "digest": "sha256:abcd5b2e85859cc508c34796788a03e9daf8ef44e76a4cae8875b3c68b1b66c0"
+      "digest": "sha256:ca7544377f7c7d236f4ff7a89974669dac0e7c732aff6dbd21befcaf70386c0d"
     }
   ]
 }

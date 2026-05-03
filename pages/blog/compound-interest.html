@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFFQRYJTQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PFFQRYJTQ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compound Interest: The Eighth Wonder of the World | VTI & Chill</title>
+<meta name="description" content="Compound interest explained: how $10K at 10% grows to $452K over 40 years, why Early Emma beats Late Larry with 1/3 the contributions, the Rule of 72, and how 1% fees quietly destroy 24% of your ending wealth.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h3 { color: var(--color-primary); margin-bottom: var(--space-2); margin-top: 0; font-weight: 700; font-size: var(--text-lg); }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+  .stat-card.negative .stat-value { color: #e74c3c; }
+  .related-posts { margin: var(--space-10) 0 var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
+  .related-posts h2 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-4); color: var(--color-text); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4); }
+  .related-card { display: block; padding: var(--space-4) var(--space-5); background: var(--color-surface-2, #1c2333); border: 1px solid var(--color-border); border-radius: var(--radius-lg); text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+  .related-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-card .related-eyebrow { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-2); display: block; }
+  .related-card .related-title { font-family: var(--font-display); font-weight: 600; font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-1); line-height: 1.35; }
+  .related-card .related-blurb { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+</style>
+
+  <!-- SEO: Canonical & Keywords -->
+  <link rel="canonical" href="https://www.vtiandchill.com/pages/blog/compound-interest.html">
+  <meta name="keywords" content="compound interest, compound growth, Rule of 72, time in market, starting early investing, exponential growth, Warren Buffett compounding, Jack Bogle fees, investment fees impact, Early Emma Late Larry">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="VTI & Chill">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Compound Interest: The Eighth Wonder of the World">
+  <meta property="og:description" content="Returns earn returns, which earn more returns. Over 40 years that math transforms ordinary savings into extraordinary wealth. Here's why starting early matters more than investing well.">
+  <meta property="og:url" content="https://www.vtiandchill.com/pages/blog/compound-interest.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="VTI & Chill">
+  <meta property="article:published_time" content="2026-04-27T00:00:00Z">
+  <meta property="article:author" content="VTI & Chill">
+  <meta property="article:section" content="Investing">
+  <meta property="article:tag" content="compound interest">
+  <meta property="article:tag" content="compound growth">
+  <meta property="article:tag" content="Rule of 72">
+  <meta property="article:tag" content="time in market">
+  <meta property="article:tag" content="starting early investing">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VTIandChill">
+  <meta name="twitter:title" content="Compound Interest: The Eighth Wonder of the World">
+  <meta name="twitter:description" content="Returns earn returns, which earn more returns. Over 40 years that math transforms ordinary savings into extraordinary wealth. Here's why starting early matters more than investing well.">
+  <meta name="twitter:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Compound Interest: The Eighth Wonder of the World",
+  "description": "Compound interest explained: how $10K at 10% grows to $452K over 40 years, why Early Emma beats Late Larry with 1/3 the contributions, the Rule of 72, and how 1% fees quietly destroy 24% of your ending wealth.",
+  "url": "https://www.vtiandchill.com/pages/blog/compound-interest.html",
+  "datePublished": "2026-04-27",
+  "dateModified": "2026-04-27",
+  "author": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/compound-interest.html"
+  },
+  "keywords": [
+    "compound interest",
+    "compound growth",
+    "Rule of 72",
+    "time in market",
+    "starting early investing",
+    "exponential growth",
+    "Warren Buffett compounding",
+    "Jack Bogle fees",
+    "investment fees impact",
+    "Early Emma Late Larry"
+  ],
+  "articleSection": "Investing",
+  "wordCount": 1290
+}
+  </script>
+
+  <!-- Structured Data: FAQ (JSON-LD) — GEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is compound interest and how does it work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Compound interest is when your investment returns earn their own returns. Instead of earning a flat amount each year (simple interest), your gains are reinvested and themselves start generating gains. Over long periods this produces exponential growth \u2014 $10,000 invested at 10% annually becomes $25,937 after 10 years, $67,275 after 20, $174,494 after 30, and $452,593 after 40. The final decade alone produces more wealth than the first three combined."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Rule of 72?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Rule of 72 is a quick mental shortcut for estimating how long it takes an investment to double. Divide 72 by your expected annual return rate. At 10% returns, your money doubles roughly every 7.2 years. At 7%, it doubles every ~10.3 years. At 5%, every 14.4 years. This rule makes the power of compounding intuitively obvious: an extra 3% of return isn't a small difference \u2014 it's an extra doubling per decade."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does starting early matter more than investing more?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because of exponential growth, the earliest dollars you invest have the longest time to compound and therefore produce the most wealth. Classic example: Early Emma invests $200/month from age 22 to 32 ($24,000 total, then stops) while Late Larry invests $200/month from 32 to 65 ($79,200 total). At 10% annual returns, Emma ends up with roughly $700,000 and Larry with ~$450,000. Emma contributed one-third as much and ended up with more money \u2014 because she gave her dollars a 10-year head start."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much do investment fees cost over 30 years?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A 1% annual fee doesn't cost 1% of your final portfolio \u2014 it costs roughly 24-28% of it. Example: $10,000 invested at 10% for 30 years grows to ~$174,000. The same $10,000 at 9% (after a 1% fee) grows to ~$132,000 \u2014 a $42,000 loss on a portfolio that started at $10,000. Fees are anti-compounding: every dollar paid in fees is a dollar no longer compounding on your behalf. This is why low-cost index funds (0.03% expense ratios like VTI) dramatically outperform funds charging 1%+ over long horizons."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.vtiandchill.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.vtiandchill.com/pages/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Compound Interest: The Eighth Wonder of the World",
+      "item": "https://www.vtiandchill.com/pages/blog/compound-interest.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI & <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">The Math of Wealth</span>
+          <span>April 27, 2026</span>
+          <span>7 min read</span>
+        </div>
+        <h1>Compound Interest: The Eighth Wonder of the World</h1>
+        <p class="blog-post-subtitle">Starting early matters more than investing well. Time compounds harder than money — and here's the math that proves it.</p>
+      </div>
+
+      <div class="blog-post-content">
+
+        <p>The quote is often attributed to Albert Einstein, though historians can't actually confirm he ever said it: <em>"Compound interest is the eighth wonder of the world. He who understands it, earns it. He who doesn't, pays it."</em></p>
+
+        <p>Einstein may or may not have said it. But whoever did understood something fundamental about how wealth actually works.</p>
+
+        <p>Compound interest — or more precisely, <strong>compound growth</strong> — is the mechanism by which patient investors transform ordinary savings into extraordinary wealth. It's not magic. It's math. And once you truly understand how it works, you'll never look at time the same way again.</p>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-value">$10K</div>
+            <div class="stat-label">Year 0 investment @ 10% annual</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">$25.9K</div>
+            <div class="stat-label">Year 10</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">$67.3K</div>
+            <div class="stat-label">Year 20</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">$452K</div>
+            <div class="stat-label">Year 40</div>
+          </div>
+        </div>
+
+        <h2>The Math That Breaks Your Brain</h2>
+
+        <p>Most of us understand interest in a simple way. You put $1,000 in an account earning 5% interest. You earn $50 a year. After 10 years, you have $1,500. Easy.</p>
+
+        <p>That's <em>simple</em> interest. Compound interest is categorically different.</p>
+
+        <p>With compound interest, you earn returns not just on your original investment, but on every dollar of growth along the way. The interest earns interest. The growth grows. And over long periods, this creates an exponential curve that is genuinely hard for the human brain to intuit.</p>
+
+        <p>Let's use real numbers. If you invest $10,000 in a total stock market index fund earning approximately 10% annually (the historical average for the S&amp;P 500), here's what happens:</p>
+
+        <!-- SVG Chart: Exponential growth of $10K over 40 years -->
+        <div class="chart-container">
+          <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="$10,000 invested at 10% for 40 years">
+            <text x="350" y="22" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="13" font-weight="600" fill="currentColor">$10,000 Invested at 10% for 40 Years</text>
+            <text x="350" y="38" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">The last decade produces more than the first three combined</text>
+
+            <!-- Grid: y 70 (top) to 270 (bottom) = 200px range. 0 to $500K -->
+            <line x1="80" y1="70" x2="670" y2="70" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="80" y1="120" x2="670" y2="120" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="80" y1="170" x2="670" y2="170" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="80" y1="220" x2="670" y2="220" stroke="currentColor" stroke-opacity="0.08"/>
+            <line x1="80" y1="270" x2="670" y2="270" stroke="currentColor" stroke-opacity="0.08"/>
+
+            <text x="72" y="74" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">$500K</text>
+            <text x="72" y="124" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">$375K</text>
+            <text x="72" y="174" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">$250K</text>
+            <text x="72" y="224" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">$125K</text>
+            <text x="72" y="274" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">$0</text>
+
+            <!-- x scale: year 0 -> x=80, year 40 -> x=670, so 14.75px per year
+                 y scale: value v -> y = 270 - (v/500000)*200 = 270 - v/2500
+                 Year 0 $10K -> y=266; Year 10 $25.9K -> y=260; Year 20 $67.3K -> y=243; Year 30 $174.5K -> y=200; Year 40 $452.6K -> y=89 -->
+            <path d="M 80 266 Q 210 264, 228 260 Q 375 255, 375 243 Q 523 225, 523 200 Q 600 160, 670 89" stroke="#00d4aa" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+            <!-- Data points -->
+            <circle cx="80" cy="266" r="3" fill="#00d4aa"/>
+            <circle cx="228" cy="260" r="3" fill="#00d4aa"/>
+            <circle cx="375" cy="243" r="3" fill="#00d4aa"/>
+            <circle cx="523" cy="200" r="3" fill="#00d4aa"/>
+            <circle cx="670" cy="89" r="4" fill="#00d4aa"/>
+
+            <text x="80" y="256" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.6">$10K</text>
+            <text x="228" y="250" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.6">$25.9K</text>
+            <text x="375" y="233" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.6">$67.3K</text>
+            <text x="523" y="190" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.6">$174K</text>
+            <text x="670" y="79" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="700" fill="#00d4aa">$452K</text>
+
+            <!-- X labels -->
+            <text x="80" y="290" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">Year 0</text>
+            <text x="228" y="290" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">Year 10</text>
+            <text x="375" y="290" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">Year 20</text>
+            <text x="523" y="290" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">Year 30</text>
+            <text x="670" y="290" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.6">Year 40</text>
+
+            <text x="350" y="310" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="600" fill="currentColor" opacity="0.7">Most of the wealth is built in the final decade — if you let it ride</text>
+          </svg>
+          <p class="chart-caption">The hockey-stick is the exponent talking. The fourth decade alone produces more wealth than the first three combined.</p>
+        </div>
+
+        <p>Notice what's happening. In the first decade, you gained about $15,900. In the fourth decade, you gained about $278,000. Same investment. Same return rate. But the later years produce many multiples more wealth than the early years — because in the later years, you're earning 10% on a much larger base.</p>
+
+        <p>The last 10 years produce more than the first 30 years combined. <strong>This is why starting early is not just good advice — it is the single most powerful lever available to any investor.</strong></p>
+
+        <p>The doubling rule, known as the <em>Rule of 72</em>, makes this concrete. Divide 72 by your annual return rate to estimate how many years it takes to double your money. At 10%, your money doubles roughly every 7.2 years. That means $10,000 invested at 25 becomes $20,000 by 32, $40,000 by 39, $80,000 by 46, $160,000 by 53, and $320,000 by 60 — without adding another penny.</p>
+
+        <p>Now imagine what happens when you're <em>also</em> adding contributions every year.</p>
+
+        <h2>Time Is Worth More Than Money</h2>
+
+        <p>Here's the insight that hits like a freight train once it clicks: in compound growth, <em>time</em> is the scarce resource, not money.</p>
+
+        <p>Let's compare two investors.</p>
+
+        <div class="callout-box">
+          <h3>Early Emma — starts at 22</h3>
+          <p>Invests $200 per month for 10 years, then stops completely. Never adds another dollar. Total contribution: <strong>$24,000</strong>.</p>
+        </div>
+
+        <div class="callout-box">
+          <h3>Late Larry — starts at 32</h3>
+          <p>Begins exactly when Emma stops. Invests $200 per month for 33 years until retirement at 65. Total contribution: <strong>$79,200</strong> — more than three times Emma's.</p>
+        </div>
+
+        <p>Assuming the same 10% annual return, who has more money at 65?</p>
+
+        <!-- SVG Chart: Emma vs Larry -->
+        <div class="chart-container">
+          <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Early Emma vs Late Larry — who wins at 65">
+            <text x="350" y="22" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="13" font-weight="600" fill="currentColor">Early Emma vs Late Larry — Who Wins at 65?</text>
+            <text x="350" y="38" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">$200/month each. 10% annual return. Only the starting age differs.</text>
+
+            <!-- Bar chart. Baseline at y=260. Scale $0 to $750K -> 200px range -->
+            <!-- Emma bar: $700K -> height = 700/750 * 200 = 186.7 px, so y = 260-187 = 73 -->
+            <rect x="180" y="73" width="120" height="187" rx="6" fill="#00d4aa"/>
+            <text x="240" y="60" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="14" font-weight="700" fill="#00d4aa">~$700K</text>
+            <text x="240" y="280" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" fill="currentColor" opacity="0.8">Early Emma</text>
+            <text x="240" y="295" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.6">$24K contributed</text>
+
+            <!-- Larry bar: $450K -> height = 450/750 * 200 = 120 px, y = 260-120 = 140 -->
+            <rect x="400" y="140" width="120" height="120" rx="6" fill="#e74c3c" opacity="0.85"/>
+            <text x="460" y="127" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="14" font-weight="700" fill="#e74c3c">~$450K</text>
+            <text x="460" y="280" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" fill="currentColor" opacity="0.8">Late Larry</text>
+            <text x="460" y="295" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.6">$79.2K contributed</text>
+
+            <!-- Gap label -->
+            <text x="350" y="315" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="600" fill="currentColor" opacity="0.75">Emma wins by ~$250K — while contributing $55K less</text>
+          </svg>
+          <p class="chart-caption">Starting 10 years earlier was worth more than 33 extra years of catching up. Time compounds harder than money.</p>
+        </div>
+
+        <p>Emma wins, decisively. Her $24,000 invested in her 20s grows to roughly <strong>$700,000</strong>. Larry's $79,200 grows to roughly <strong>$450,000</strong>. Emma contributed less, stopped earlier, and ends up with more money — by a margin of a quarter million dollars — because she started 10 years earlier.</p>
+
+        <p>Those 10 years at the beginning, when the dollars had the longest time to compound, were worth more than 33 years of catching up.</p>
+
+        <p>This is the single most important financial fact you can share with a young person. Nothing else comes close. Not stock picking ability, not market timing, not getting lucky on a single investment. The investor who starts at 22 and invests average amounts will almost certainly retire wealthier than the investor who starts at 35 and invests aggressively, chasing returns to make up for lost time.</p>
+
+        <p>Warren Buffett understood this viscerally. He bought his first stock at age 11, and he has said that he regrets not starting even earlier. Despite being one of the greatest investors in history, the majority of his wealth was built after his 60th birthday — not because he got better, but because the compounding had been running for decades and the exponential curve was finally hitting its steep portion. <strong>More than 97% of Warren Buffett's net worth was accumulated after his 52nd birthday.</strong></p>
+
+        <h2>How to Put Compounding to Work</h2>
+
+        <p>The beautiful thing about compound growth in the context of index investing is that you don't have to do anything clever. You just have to start and not stop.</p>
+
+        <p>Three things matter:</p>
+
+        <ol>
+          <li><strong>Start as early as possible.</strong> Every year you delay is a year of compounding you give up permanently. There's no making it back. A dollar invested at 22 is worth about $85 at 65 at 10% returns. A dollar invested at 32 is worth about $33 at 65. You can't buy that decade back.</li>
+          <li><strong>Keep adding money consistently.</strong> The examples above used $200/month. Larger contributions mean a larger base for the compounding to work on. <a href="./dollar-cost-averaging.html">Automate contributions from every paycheck</a> so that saving happens before spending.</li>
+          <li><strong>Don't interrupt the compounding.</strong> This is the critical one. Every time you sell investments, move to cash, or otherwise step out of the market, you're taking money off the exponential curve. Getting back in later puts you on a shorter runway with a smaller base. The math is punishing.</li>
+        </ol>
+
+        <blockquote>"Time is your friend, impulse is your enemy." — Jack Bogle</blockquote>
+
+        <p>The simplest implementation of this principle: open a tax-advantaged account (Roth IRA, 401k), buy a total market index fund, set up automatic contributions, and look at your balance as infrequently as possible. <a href="./power-of-doing-nothing.html">The compounding happens in the background</a>, whether you watch it or not.</p>
+
+        <p>Actually, it happens better when you don't watch it — because watching tends to prompt tinkering, and tinkering costs compounding.</p>
+
+        <h2>Compounding's Silent Killer: Fees</h2>
+
+        <p>There is one thing that can quietly destroy compounding's magic without you ever noticing, and it's worth naming explicitly: <strong>fees</strong>.</p>
+
+        <p>Compound growth works the same way whether the returns are working <em>for</em> you or against you. A 1% annual fee compounding against your portfolio over 30 years doesn't cost you 30% of your final balance. Due to the same exponential math, it costs you closer to 25-30% of your ending wealth, because every dollar paid in fees is a dollar that stops compounding on your behalf.</p>
+
+        <p>Here's the concrete version: $10,000 invested at 10% annual return for 30 years grows to approximately $174,000. The same $10,000 at 9% (after a 1% advisory fee) grows to approximately $132,000. The fee cost wasn't $42,000 out of pocket. You paid a 1% annual fee and ended up with $42,000 less — a compounding penalty of roughly <strong>24% of your final balance</strong>.</p>
+
+        <p>Now do that math on a $500,000 portfolio. A 1% fee versus 0.03% index fund fees represents tens of thousands of dollars of compounding lost per year in the later stages of wealth accumulation. Over a 30-year career, the difference between a 1% expense ratio and a 0.03% expense ratio can represent hundreds of thousands of dollars.</p>
+
+        <p>This is <a href="./index-funds-beat-fund-managers.html">why Jack Bogle was so obsessed with cost</a>. He didn't just believe it was annoying to pay high fees. He understood that fees are <em>anti-compounding</em> — they eat the machine from the inside. Low-cost index funds don't just outperform because of better stock selection (they make no stock selections). They outperform because they stop charging you to cannibalize your own compounding.</p>
+
+        <p>The takeaway is simple: every basis point you save on fees is a basis point added back to your compounding rate, every single year, for as long as you're invested. The cheapest funds you can find are the most powerful wealth-compounding tools available to the ordinary investor.</p>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>Compound interest is the mechanism by which ordinary people build extraordinary wealth over ordinary investing careers. The math is not complicated: returns earn returns, which earn more returns, accelerating exponentially over time.</p>
+          <p>The most important implication is that starting early matters more than investing well, and time in the market matters more than the amount you invest. Your most valuable asset as an investor isn't capital — it's decades.</p>
+          <p>Every year you delay costs you far more than you realize. The best time to start was yesterday. The second best time is right now.</p>
+        </div>
+
+        <!-- related-posts:start -->
+        <section class="related-posts" aria-label="Related posts">
+          <h2>Keep reading</h2>
+          <div class="related-grid">
+      <a href="./buy-hold-chill.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">Buy. Hold. Chill.</div>
+        <p class="related-blurb">Why three boring habits beat almost every active strategy ever invented.</p>
+      </a>
+      <a href="./the-market-always-goes-up.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">The Market Always Goes Up (Eventually)</div>
+        <p class="related-blurb">Every drawdown in history, plotted against the long-run trend.</p>
+      </a>
+      <a href="./index-funds-beat-fund-managers.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">Why Index Funds Beat 90% of Pros</div>
+        <p class="related-blurb">The SPIVA data is brutal — and it explains why simple wins.</p>
+      </a>
+          </div>
+        </section>
+        <!-- related-posts:end -->
+
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>

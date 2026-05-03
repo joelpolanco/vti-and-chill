@@ -66,7 +66,7 @@
   <!-- Blog Hub -->
   <url>
     <loc>https://www.vtiandchill.com/pages/blog.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -147,6 +147,27 @@
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vtiandchill.com/pages/blog/dollar-cost-averaging.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vtiandchill.com/pages/blog/compound-interest.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vtiandchill.com/pages/blog/fu-money-financial-independence.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- Community & About -->
