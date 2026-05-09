@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFFQRYJTQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PFFQRYJTQ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We Tried to Build a Buffett Stock Screener (And What We Learned) | VTI & Chill</title>
+<meta name="description" content="Building a Buffett-Munger style stock screener in Google Sheets: what quantitative filters can do, where qualitative judgment breaks the model, Bessembinder's research showing only 4% of U.S. stocks generated all net wealth, and why Buffett's own 90/10 advice still wins for most investors. Free downloadable spreadsheet.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h3 { color: var(--color-primary); margin-bottom: var(--space-2); margin-top: 0; font-weight: 700; font-size: var(--text-lg); }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+  .stat-card.negative .stat-value { color: #e74c3c; }
+  .related-posts { margin: var(--space-10) 0 var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
+  .related-posts h2 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-4); color: var(--color-text); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4); }
+  .related-card { display: block; padding: var(--space-4) var(--space-5); background: var(--color-surface-2, #1c2333); border: 1px solid var(--color-border); border-radius: var(--radius-lg); text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+  .related-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-card .related-eyebrow { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-2); display: block; }
+  .related-card .related-title { font-family: var(--font-display); font-weight: 600; font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-1); line-height: 1.35; }
+  .related-card .related-blurb { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+  .download-cta { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); background: linear-gradient(135deg, rgba(0,212,170,0.15) 0%, rgba(26,26,46,0.4) 100%); border: 1px solid rgba(var(--color-primary-rgb), 0.35); border-radius: var(--radius-lg); padding: var(--space-5) var(--space-6); margin: var(--space-6) 0; flex-wrap: wrap; }
+  .download-cta .download-text { flex: 1; min-width: 240px; }
+  .download-cta .download-text strong { color: var(--color-text); display: block; font-family: var(--font-display); font-size: var(--text-base); margin-bottom: 4px; }
+  .download-cta .download-text span { font-size: var(--text-sm); color: var(--color-text-muted); }
+  .download-cta .download-btn { display: inline-flex; align-items: center; gap: var(--space-2); background: var(--color-primary); color: #1a1a2e; font-weight: 700; padding: 12px 22px; border-radius: var(--radius-md); text-decoration: none !important; white-space: nowrap; transition: transform 0.15s; }
+  .download-cta .download-btn:hover { transform: translateY(-1px); color: #1a1a2e; }
+</style>
+
+  <!-- SEO: Canonical & Keywords -->
+  <link rel="canonical" href="https://www.vtiandchill.com/pages/blog/buffett-screener-experiment.html">
+  <meta name="keywords" content="Warren Buffett, Charlie Munger, Buffett stock screener, Berkshire Hathaway process, Bessembinder research, stock picking, moat investing, 90/10 portfolio, Jack Bogle indexing, VTI and chill">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="VTI & Chill">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="We Tried to Build a Buffett Stock Screener (And What We Learned)">
+  <meta property="og:description" content="We built a Buffett-Munger screener and discovered why owning the index is still the smarter default. Free Google Sheet inside.">
+  <meta property="og:url" content="https://www.vtiandchill.com/pages/blog/buffett-screener-experiment.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="VTI & Chill">
+  <meta property="article:published_time" content="2026-05-09T00:00:00Z">
+  <meta property="article:author" content="VTI & Chill">
+  <meta property="article:section" content="Stock Picking Reality Check">
+  <meta property="article:tag" content="Warren Buffett">
+  <meta property="article:tag" content="Charlie Munger">
+  <meta property="article:tag" content="Buffett stock screener">
+  <meta property="article:tag" content="Berkshire Hathaway process">
+  <meta property="article:tag" content="Bessembinder research">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VTIandChill">
+  <meta name="twitter:title" content="We Tried to Build a Buffett Stock Screener (And What We Learned)">
+  <meta name="twitter:description" content="We built a Buffett-Munger screener and discovered why owning the index is still the smarter default. Free Google Sheet inside.">
+  <meta name="twitter:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "We Tried to Build a Buffett Stock Screener (And What We Learned)",
+  "description": "Building a Buffett-Munger style stock screener in Google Sheets: what quantitative filters can do, where qualitative judgment breaks the model, Bessembinder's research showing only 4% of U.S. stocks generated all net wealth, and why Buffett's own 90/10 advice still wins for most investors. Free downloadable spreadsheet.",
+  "url": "https://www.vtiandchill.com/pages/blog/buffett-screener-experiment.html",
+  "datePublished": "2026-05-09",
+  "dateModified": "2026-05-09",
+  "author": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/buffett-screener-experiment.html"
+  },
+  "keywords": [
+    "Warren Buffett",
+    "Charlie Munger",
+    "Buffett stock screener",
+    "Berkshire Hathaway process",
+    "Bessembinder research",
+    "stock picking",
+    "moat investing",
+    "90/10 portfolio",
+    "Jack Bogle indexing",
+    "VTI and chill"
+  ],
+  "articleSection": "Stock Picking Reality Check",
+  "wordCount": 1500,
+  "about": [
+    {
+      "@type": "Person",
+      "name": "Warren Buffett"
+    },
+    {
+      "@type": "Person",
+      "name": "Charlie Munger"
+    },
+    {
+      "@type": "Person",
+      "name": "John C. Bogle"
+    },
+    {
+      "@type": "Organization",
+      "name": "Berkshire Hathaway"
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: FAQ (JSON-LD) — GEO/AEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can you actually replicate Warren Buffett's stock picking with a screener?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only partly. The quantitative side of Buffett's process \u2014 filtering for high return on equity, consistent earnings history, low debt, and strong free cash flow \u2014 encodes well into a spreadsheet. But the qualitative side, which is most of Berkshire's edge, does not. A screener cannot truly assess moat durability, evaluate management integrity and capital allocation, or judge a company's behavior under pressure. Buffett's compounding has been at least as much about holding businesses for 30+ years as about buying them, and that holding decision is fundamentally a judgment call. A screener can shrink the universe and eliminate obvious junk, but the final selection requires human judgment that doesn't backtest."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Bessembinder 4% rule for stocks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hendrik Bessembinder's research at Arizona State University found that U.S. stock market wealth creation since 1926 is extraordinarily concentrated. Just 86 stocks accounted for half of all net wealth created above one-month Treasury bills, the top ~1,000 stocks (~4%) accounted for all of it, and the remaining 96% of stocks collectively matched the return of T-bills. This is the structural reason individual stock picking is so hard: a successful active strategy must identify the tiny handful of exceptional businesses in advance, while index investors automatically own them. It also helps explain why most actively managed funds underperform: their stock picks are statistically likely to come from the 96% rather than the 4%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Warren Buffett's 90/10 portfolio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In his 2013 Berkshire Hathaway shareholder letter, Buffett described the instructions for his own estate trust: 90% in a very low-cost S&P 500 index fund and 10% in short-term U.S. government bonds. He said this allocation should outperform what most investors achieve through high-fee managers over the long run. The recommendation reveals an important truth: even Buffett, the most successful active investor in history, advises ordinary investors to use index funds rather than try to replicate his approach. The 10% in short-term Treasuries provides stability and dry powder, while the 90% equity allocation captures long-run market growth at near-zero cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I pick individual stocks or just buy VTI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For the vast majority of investors, the simple answer is buy VTI (or another low-cost total market index fund) and chill. The Bessembinder data shows just 4% of stocks generated all net wealth creation above T-bills, SPIVA shows roughly 85% of professional active managers underperform their benchmark over 10+ years, and DALBAR shows the average individual investor underperforms the S&P 500 by 3.6% per year due to behavioral mistakes. If you still want to pick individual names, a reasonable approach is to keep the bulk of your wealth in an index fund and run a small 'satellite' sleeve (5-10%) for individual picks \u2014 using a structured screener to enforce quality, not stories. That way an honest experiment with stock picking can't derail your overall financial plan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I use the Buffett screener spreadsheet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Click 'Copy the screener' above to make a copy in your own Google Drive. The sheet has two tabs: Stage 1 (quantitative filters covering ROE, ROIC, earnings history, debt levels, and free cash flow) and Stage 2 (a qualitative checklist scoring moat durability, business simplicity, technological vulnerability, and management quality). Paste in any ticker list \u2014 your watchlist, the S&P 500, your existing holdings \u2014 and the formulas will flag which names pass the quantitative filters. Then work through the qualitative checklist for the survivors. The screener is most useful for eliminating obvious junk and forcing structured thinking; it is not a buy list."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.vtiandchill.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.vtiandchill.com/pages/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "We Tried to Build a Buffett Stock Screener (And What We Learned)",
+      "item": "https://www.vtiandchill.com/pages/blog/buffett-screener-experiment.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI & <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Stock Picking Reality Check</span>
+          <span>May 9, 2026</span>
+          <span>7 min read</span>
+        </div>
+        <h1>We Tried to Build a Buffett Stock Screener (And What We Learned)</h1>
+        <p class="blog-post-subtitle">Replicating the Buffett-Munger process in a spreadsheet, what a screener can and can't do, and why Bessembinder's 4% rule still favors the index.</p>
+      </div>
+
+      <div class="blog-post-content">
+
+        <p>It mostly convinced us that Buffett's best advice for most people is still the simplest: own the market, keep costs low, and let time do the heavy lifting. Building a Buffett-Munger-style screener was useful, but mainly because it clarified where process ends and judgment begins.</p>
+
+        <p>This post walks through what we tried, what worked, what didn't, and what the exercise actually proved about individual stock picking versus owning the index. The screener spreadsheet is free — copy it below and run it on whatever universe you want.</p>
+
+        <div class="download-cta">
+          <div class="download-text">
+            <strong>Free: The VTI &amp; Chill Buffett-Munger Screener</strong>
+            <span>Two-stage Google Sheet — quantitative filters first, qualitative checklist second. Copy it to your own Drive and run it on any ticker list.</span>
+          </div>
+          <a class="download-btn" href="https://docs.google.com/spreadsheets/d/1NZr1NzCvbBfscDKk5c5xOGl7jkoA7jHg/copy" target="_blank" rel="noopener" aria-label="Copy the Buffett screener Google Sheet to your own Drive">
+            <i data-lucide="copy" style="width:16px;height:16px"></i>
+            Copy the screener
+          </a>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-value">86</div>
+            <div class="stat-label">U.S. stocks responsible for half of all 90-year wealth creation (Bessembinder)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">~4%</div>
+            <div class="stat-label">Of stocks that produced 100% of net market gains</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">96%</div>
+            <div class="stat-label">Of stocks that collectively matched 1-month T-bills</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">90/10</div>
+            <div class="stat-label">Buffett's recommended S&amp;P 500 / short-term Treasuries split for ordinary investors</div>
+          </div>
+        </div>
+
+        <h2>The Idea</h2>
+
+        <p>We set out to replicate Berkshire's process, not just its holdings. Buffett and Munger were never just buying cheap stocks; they were filtering relentlessly for durable businesses, understandable economics, and long-term resilience. "Buy a wonderful company at a fair price" — that's the actual mantra, and it's deceptively hard to operationalize.</p>
+
+        <p>So we built a two-stage stock screener using <a href="https://www.perplexity.ai/computer">Perplexity Computer</a>:</p>
+
+        <ul>
+          <li><strong>Stage 1 — Quantitative filters.</strong> Profitability (ROE, ROIC), returns on capital, operating history (10+ years of positive earnings), balance-sheet strength (low debt-to-equity, healthy interest coverage), and free cash flow consistency.</li>
+          <li><strong>Stage 2 — Qualitative checklist.</strong> A scored approximation of Berkshire-style questions on moat durability, business simplicity, and technological vulnerability ("could a competitor with $10B disrupt this?").</li>
+        </ul>
+
+        <p>The goal wasn't to publish a buy list. The goal was to see how much of Berkshire's process could actually be encoded — and where human judgment had to take over.</p>
+
+        <h2>What a Screener Can Do</h2>
+
+        <p>The quantitative part worked the way a Buffett-inspired process should. Hard filters are very good at saying <strong>no</strong>. They eliminated weak businesses, inconsistent earners, short-history companies, and balance sheets that didn't leave much room for error.</p>
+
+        <p>That matters because Buffett's edge has always started with elimination. His well-known guidance to ordinary investors is not to chase complexity but to own a very low-cost S&amp;P 500 index fund, paired with short-term government bonds for stability — famously a 90/10 mix in the instructions for his own estate trust.</p>
+
+        <blockquote>"Put 10% of the cash in short-term government bonds and 90% in a very low-cost S&amp;P 500 index fund. I believe the trust's long-term results from this policy will be superior to those attained by most investors who employ high-fee managers." — Warren Buffett, 2013 Berkshire Hathaway shareholder letter</blockquote>
+
+        <p>In other words, even Buffett has long recognized that most investors do better by avoiding bad decisions than by trying to pick the next handful of market winners. A good screener can help you avoid bad decisions. It cannot, by itself, find the next handful of winners.</p>
+
+        <h2>Where the Model Breaks</h2>
+
+        <p>The harder part was trying to automate Berkshire's qualitative judgment. A screener can ask whether a company appears to have a moat, but it cannot truly understand whether customers are loyal out of habit, switching costs, brand attachment, regulation, or temporary convenience. A 5/5 "moat score" in a spreadsheet looks identical regardless of which of those is doing the work — even though they have wildly different durabilities.</p>
+
+        <p>It also cannot really judge management the way Buffett and Munger did. Reading numbers is one thing; understanding capital allocation, integrity, restraint, and behavior under pressure is something else entirely. Buffett's compounding edge has been at least as much about <em>holding</em> the right businesses for 30+ years as about buying them — and that holding decision is fundamentally a judgment about people.</p>
+
+        <p>That gap is why a machine can narrow the field but still struggle to identify the rare businesses that compound for decades. The final step is not a filter; it is judgment. And judgment doesn't backtest cleanly.</p>
+
+        <h2>Why Picking Winners Is So Hard</h2>
+
+        <p>There's a structural reason stock picking is harder than it looks — and it's worth sitting with the actual numbers.</p>
+
+        <p>Research by Arizona State University's <strong>Hendrik Bessembinder</strong> found that wealth creation in U.S. stocks is extremely concentrated. Over roughly 90 years of market history (1926 onward):</p>
+
+        <ul>
+          <li>Just <strong>86 stocks</strong> accounted for <strong>half</strong> of all net wealth creation.</li>
+          <li>The top <strong>~1,000 stocks (~4%)</strong> accounted for <strong>all</strong> of the net wealth creation above 1-month T-bills.</li>
+          <li>The remaining <strong>96%</strong> of stocks collectively matched the return of one-month Treasury bills.</li>
+        </ul>
+
+        <!-- SVG Chart: Bessembinder concentration -->
+        <div class="chart-container">
+          <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bessembinder: just 4 percent of U.S. stocks generated all net wealth above T-bills">
+            <text x="350" y="22" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="13" font-weight="600" fill="currentColor">Wealth Creation Is Brutally Concentrated</text>
+            <text x="350" y="38" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">Bessembinder (ASU): U.S. stocks 1926-present, share of net wealth creation above T-bills</text>
+
+            <!-- 100% bar (all stocks) baseline -->
+            <line x1="80" y1="280" x2="670" y2="280" stroke="currentColor" stroke-opacity="0.2"/>
+
+            <!-- Bar 1: 96% of stocks → matched T-bills (0% of net wealth above) -->
+            <rect x="120" y="270" width="120" height="10" rx="2" fill="#e74c3c" opacity="0.85"/>
+            <text x="180" y="260" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="700" fill="#e74c3c">~0%</text>
+            <text x="180" y="298" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="600" fill="currentColor">Bottom 96% of stocks</text>
+            <text x="180" y="313" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.6">Matched 1-month T-bills</text>
+
+            <!-- Bar 2: top 4% (1,000 stocks) → 100% of net wealth -->
+            <rect x="280" y="80" width="120" height="200" rx="2" fill="#00d4aa"/>
+            <text x="340" y="70" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="700" fill="#00d4aa">100%</text>
+            <text x="340" y="298" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="600" fill="currentColor">Top ~1,000 (4%)</text>
+            <text x="340" y="313" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.6">All net wealth created</text>
+
+            <!-- Bar 3: top 86 → 50% -->
+            <rect x="440" y="180" width="120" height="100" rx="2" fill="#00d4aa" opacity="0.85"/>
+            <text x="500" y="170" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="700" fill="#00d4aa">50%</text>
+            <text x="500" y="298" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="600" fill="currentColor">Top 86 stocks</text>
+            <text x="500" y="313" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.6">Half of all wealth created</text>
+          </svg>
+          <p class="chart-caption">A tiny number of exceptional businesses drive the entire market's lifetime gains. Owning the index guarantees you hold them; picking individual stocks means trying to identify them in advance.</p>
+        </div>
+
+        <p>That is the uncomfortable math behind active investing. A small minority of stocks drive the market's lifetime gains, which means a screener isn't just trying to avoid losers — it's trying to identify the tiny set of exceptional businesses that matter most, before the rest of the market fully appreciates them.</p>
+
+        <p>That's also why broad indexing is so powerful. When the winners are so hard to identify in advance, owning the index is a practical way to make sure they are <em>already in the portfolio</em> when they emerge. <a href="./index-funds-beat-fund-managers.html">SPIVA's data on professional fund managers</a> tells the same story from a different angle: most full-time, well-resourced active managers can't beat the index over 15 years. A weekend screener is unlikely to do better.</p>
+
+        <h2>What the Screener Is Actually Useful For</h2>
+
+        <p>None of this means a Buffett-style screener is worthless. It means it's worth less than people pretend, and useful for different reasons than people assume. Here's where ours actually earned its keep:</p>
+
+        <div class="callout-box">
+          <h3>1. Eliminating obvious junk</h3>
+          <p>Negative ROE for 5 years? Debt-to-equity above 3? Operating losses? Out. The screener cleared roughly 80% of its starting universe in seconds — exactly the work Buffett's "circle of competence" rule does in his head.</p>
+        </div>
+
+        <div class="callout-box">
+          <h3>2. Forcing structured thinking</h3>
+          <p>Even if you ignore the final scores, having to score "moat durability" and "technological vulnerability" on every holding is a useful exercise. It surfaces holdings you've never actually defended on the merits.</p>
+        </div>
+
+        <div class="callout-box">
+          <h3>3. Sanity-checking existing holdings</h3>
+          <p>Run your current portfolio through Stage 1. If a stock you already own fails the quantitative filters, that's a prompt to actually re-read the thesis — not a sell signal, but a "do I still believe this?" reminder.</p>
+        </div>
+
+        <div class="callout-box">
+          <h3>4. Sizing satellite positions</h3>
+          <p>For investors who keep most of their portfolio in <a href="./buy-hold-chill.html">VTI and chill</a> but maintain a small "fun money" sleeve for individual picks, a screener helps make sure that sleeve at least starts from quality, not stories.</p>
+        </div>
+
+        <p>What the screener is <em>not</em> useful for: replacing a diversified index portfolio. The minute you start running this kind of process and find yourself thinking "I bet I can identify the next handful of compounders," remember Bessembinder's 4%. That's the prior every individual stock has to overcome.</p>
+
+        <h2>The More Useful Lesson</h2>
+
+        <p>The real value of a Buffett-style screener isn't that it spits out a perfect buy list. Its value is that it helps shrink the universe, remove obvious junk, and force more discipline into the research process — including, often, the discipline to <em>not</em> buy individual names at all.</p>
+
+        <p>That's a balanced takeaway in the VTI &amp; Chill spirit. Learning how Buffett and Munger filtered businesses is genuinely valuable. So is accepting Buffett's own advice that the average investor should keep it simple with 90% in a low-cost S&amp;P 500 index fund and 10% in short-term government bonds.</p>
+
+        <p>There's a reason Buffett has repeatedly highlighted Jack Bogle's wisdom on low-cost indexing — going so far as to say Bogle had done more for the American investor than anyone else. Building better screens can make investors more thoughtful, but Bogle's message still lands the cleanest: <strong>own the market, keep fees low, stay disciplined, and stop pretending every portfolio needs to outsmart the world</strong>.</p>
+
+        <blockquote>"If a statue is ever erected to honor the person who has done the most for American investors, the hands-down choice should be Jack Bogle." — Warren Buffett, 2016 Berkshire Hathaway shareholder letter</blockquote>
+
+        <h2>Try It Yourself</h2>
+
+        <p>If you want to see how the screener filters work — or just steal the structure for your own research — copy the spreadsheet to your Google Drive. It's free, the formulas are open, and you can swap in any ticker universe you want (S&amp;P 500, your watchlist, your existing holdings).</p>
+
+        <div class="download-cta">
+          <div class="download-text">
+            <strong>Buffett-Munger Screener (Google Sheets)</strong>
+            <span>Click to copy the spreadsheet to your own Google Drive. Make it yours and edit freely.</span>
+          </div>
+          <a class="download-btn" href="https://docs.google.com/spreadsheets/d/1NZr1NzCvbBfscDKk5c5xOGl7jkoA7jHg/copy" target="_blank" rel="noopener" aria-label="Make a copy of the Buffett-Munger screener spreadsheet">
+            <i data-lucide="external-link" style="width:16px;height:16px"></i>
+            Make a copy
+          </a>
+        </div>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>A Buffett-Munger-style screener can shrink the universe and force discipline, but it can't replicate the judgment that built Berkshire — and Bessembinder's research shows wealth creation is concentrated in roughly 4% of stocks, which makes "find the next compounder" a structurally hard game.</p>
+          <p>Use a screener to think more clearly, not to outsmart the market. For the bulk of your wealth, take Buffett at his word: a low-cost total market index fund, a small allocation to short-term Treasuries, automatic contributions, and time. The simple path is still the one with the best math.</p>
+        </div>
+
+
+        <!-- related-posts:start -->
+        <section class="related-posts" aria-label="Related posts">
+          <h2>Keep reading</h2>
+          <div class="related-grid">
+      <a href="./index-funds-beat-fund-managers.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">Why Index Funds Beat 90% of Fund Managers</div>
+        <p class="related-blurb">SPIVA, Buffett's $1M bet, and the math behind passive investing's edge.</p>
+      </a>
+      <a href="./wall-street-wants-you-confused.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">Wall Street Wants You Confused (And Broke)</div>
+        <p class="related-blurb">Complexity is the business model. Five questions that defang any sales pitch.</p>
+      </a>
+      <a href="./simple-path-to-wealth-review.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">The Simple Path to Wealth</div>
+        <p class="related-blurb">JL Collins' 13 rules — the philosophical backbone of indexing.</p>
+      </a>
+          </div>
+        </section>
+        <!-- related-posts:end -->
+
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>
