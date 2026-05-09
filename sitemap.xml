@@ -66,7 +66,7 @@
   <!-- Blog Hub -->
   <url>
     <loc>https://www.vtiandchill.com/pages/blog.html</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -166,6 +166,27 @@
   <url>
     <loc>https://www.vtiandchill.com/pages/blog/fu-money-financial-independence.html</loc>
     <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vtiandchill.com/pages/blog/wall-street-wants-you-confused.html</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vtiandchill.com/pages/blog/four-percent-rule.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vtiandchill.com/pages/blog/time-in-market-beats-timing.html</loc>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

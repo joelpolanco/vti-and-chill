@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFFQRYJTQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PFFQRYJTQ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 4% Rule: Your Ticket to Never Running Out of Money | VTI & Chill</title>
+<meta name="description" content="The 4% rule explained: William Bengen and the Trinity Study, why a 4% inflation-adjusted withdrawal rate succeeded in ~95% of historical 30-year periods, the 25× rule for calculating your FI number, sequence of returns risk, and the FIRE movement's mathematical foundation.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h3 { color: var(--color-primary); margin-bottom: var(--space-2); margin-top: 0; font-weight: 700; font-size: var(--text-lg); }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+  .stat-card.negative .stat-value { color: #e74c3c; }
+  .related-posts { margin: var(--space-10) 0 var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
+  .related-posts h2 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-4); color: var(--color-text); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4); }
+  .related-card { display: block; padding: var(--space-4) var(--space-5); background: var(--color-surface-2, #1c2333); border: 1px solid var(--color-border); border-radius: var(--radius-lg); text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+  .related-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-card .related-eyebrow { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-2); display: block; }
+  .related-card .related-title { font-family: var(--font-display); font-weight: 600; font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-1); line-height: 1.35; }
+  .related-card .related-blurb { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+</style>
+
+  <!-- SEO: Canonical & Keywords -->
+  <link rel="canonical" href="https://www.vtiandchill.com/pages/blog/four-percent-rule.html">
+  <meta name="keywords" content="4% rule, Trinity Study, safe withdrawal rate, FI number, 25x rule, sequence of returns risk, William Bengen, FIRE retirement, retirement planning">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="VTI & Chill">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The 4% Rule: Your Ticket to Never Running Out of Money">
+  <meta property="og:description" content="Annual Expenses × 25 = Your FI Number. The Trinity Study's mathematical foundation for retirement and FIRE.">
+  <meta property="og:url" content="https://www.vtiandchill.com/pages/blog/four-percent-rule.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="VTI & Chill">
+  <meta property="article:published_time" content="2026-05-06T00:00:00Z">
+  <meta property="article:author" content="VTI & Chill">
+  <meta property="article:section" content="Financial Independence">
+  <meta property="article:tag" content="4% rule">
+  <meta property="article:tag" content="Trinity Study">
+  <meta property="article:tag" content="safe withdrawal rate">
+  <meta property="article:tag" content="FI number">
+  <meta property="article:tag" content="25x rule">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VTIandChill">
+  <meta name="twitter:title" content="The 4% Rule: Your Ticket to Never Running Out of Money">
+  <meta name="twitter:description" content="Annual Expenses × 25 = Your FI Number. The Trinity Study's mathematical foundation for retirement and FIRE.">
+  <meta name="twitter:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The 4% Rule: Your Ticket to Never Running Out of Money",
+  "description": "The 4% rule explained: William Bengen and the Trinity Study, why a 4% inflation-adjusted withdrawal rate succeeded in ~95% of historical 30-year periods, the 25\u00d7 rule for calculating your FI number, sequence of returns risk, and the FIRE movement's mathematical foundation.",
+  "url": "https://www.vtiandchill.com/pages/blog/four-percent-rule.html",
+  "datePublished": "2026-05-06",
+  "dateModified": "2026-05-06",
+  "author": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/four-percent-rule.html"
+  },
+  "keywords": [
+    "4% rule",
+    "Trinity Study",
+    "safe withdrawal rate",
+    "FI number",
+    "25x rule",
+    "sequence of returns risk",
+    "William Bengen",
+    "FIRE retirement",
+    "retirement planning"
+  ],
+  "articleSection": "Financial Independence",
+  "wordCount": 1340
+}
+  </script>
+
+  <!-- Structured Data: FAQ (JSON-LD) — GEO/AEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the 4% rule in simple terms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 4% rule says you can safely withdraw 4% of your portfolio in your first year of retirement, then adjust that dollar amount upward each year for inflation, and historically the portfolio would have lasted at least 30 years in roughly 95% of cases. It comes from the 1998 Trinity Study, which analyzed every 30-year retirement period in U.S. market history from 1925-1995. The flip side: if 4% per year is what you need, you need 25 times your annual expenses saved."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate my FI number?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiply your annual spending (not income) by 25. If you spend $50,000 a year, your FI number is $1,250,000. Then subtract any guaranteed income \u2014 Social Security, pension, rental income \u2014 from your annual spending before multiplying. So if you spend $60,000 and expect $20,000 in Social Security, your portfolio only needs to cover $40,000 \u00d7 25 = $1,000,000. Cutting expenses double-compounds: it lowers your target and raises your savings rate at the same time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is sequence of returns risk?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sequence of returns risk is the danger that severe market losses happen at the beginning of your retirement, before the portfolio has time to recover. If you retire in year one of a major bear market and keep withdrawing 4%, you're selling shares at low prices to fund living expenses, leaving fewer shares to appreciate when the recovery comes. The same average return can produce vastly different outcomes depending on the order in which the gains and losses arrive. This is why the Trinity Study recommended equity-heavy portfolios for retirees \u2014 and why some early retirees use 3.5% or 3% withdrawal rates as an extra cushion."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the 4% rule still safe today?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It remains the most rigorously back-tested rule of thumb available, but reasonable people disagree at the margins. Critics point to high U.S. equity valuations, low bond yields, and longer life expectancies as reasons for caution. Defenders note that the rule already accounts for the worst 30-year periods in history, including the Great Depression and 1970s stagflation. Practical answer: 4% is a strong baseline. If you want extra safety, use 3.5% or build flexibility into your spending. If you're flexible enough to cut spending in bad market years, the historical evidence suggests 4% is conservative."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.vtiandchill.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.vtiandchill.com/pages/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The 4% Rule: Your Ticket to Never Running Out of Money",
+      "item": "https://www.vtiandchill.com/pages/blog/four-percent-rule.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI & <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Financial Independence</span>
+          <span>May 6, 2026</span>
+          <span>7 min read</span>
+        </div>
+        <h1>The 4% Rule: Your Ticket to Never Running Out of Money</h1>
+        <p class="blog-post-subtitle">Annual Expenses × 25 = Your FI Number. Where that math comes from, why it has worked across 70+ years of market history, and how to use it.</p>
+      </div>
+
+      <div class="blog-post-content">
+
+        <p>The question that haunts every person who has ever thought seriously about retirement is this: how much is enough?</p>
+
+        <p>Not "how much would be nice." Not "how much would make me feel really secure." The practical question: if I stop working, how much money do I need in the bank so that I never, ever run out before I die?</p>
+
+        <p>For decades, this question had no rigorous answer. People guessed. They used round numbers. They asked their financial advisor, who either guessed too or gave them a number suspiciously close to "whatever you have, plus more, so keep working."</p>
+
+        <p>In 1998, three professors at Trinity University in San Antonio ran the numbers. And what they found became the cornerstone of modern retirement planning.</p>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-value">4%</div>
+            <div class="stat-label">Initial inflation-adjusted withdrawal rate</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">25×</div>
+            <div class="stat-label">Annual expenses = your FI number</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">~95%</div>
+            <div class="stat-label">Trinity historical success rate over 30 years</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">50-75%</div>
+            <div class="stat-label">Equity allocation that worked best</div>
+          </div>
+        </div>
+
+        <h2>The Trinity Study: Where the Rule Comes From</h2>
+
+        <p>William Bengen didn't found the 4% rule — he got there first in 1994 — but the Trinity Study, published in the <em>Journal of the American Association of Individual Investors</em> in 1998, is the research that popularized and stress-tested it.</p>
+
+        <p>The authors — Philip Cooley, Carl Hubbard, and Daniel Walz — analyzed historical market data from 1925 to 1995. They asked a specific question: for an investor with a portfolio of stocks and bonds, what annual withdrawal rate would have sustained the portfolio over every 30-year retirement period in that historical record?</p>
+
+        <p><a href="https://en.wikipedia.org/wiki/Trinity_study">Their conclusion</a>: a 4% initial withdrawal rate, adjusted annually for inflation, succeeded in roughly 95-96% of all 30-year historical periods when paired with a portfolio containing 50-75% equities. In almost every scenario history had produced, a 4% withdrawal rate didn't exhaust the portfolio — and in many scenarios, the portfolio actually grew.</p>
+
+        <p>The math is elegant. If 4% of your portfolio per year is what you need, then you need 25 times your annual expenses saved. That's the target. That's your FI number.</p>
+
+        <!-- SVG Chart: FI Number ladder -->
+        <div class="chart-container">
+          <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Annual spending mapped to your FI number">
+            <text x="350" y="22" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="13" font-weight="600" fill="currentColor">Your Annual Spending × 25 = Your FI Number</text>
+            <text x="350" y="38" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">4% safe withdrawal rate, Trinity Study (1998)</text>
+
+            <!-- Bars: max width 480 maps to $2.5M -->
+            <!-- $30K → $750K → 144 -->
+            <rect x="200" y="70" width="144" height="34" rx="4" fill="#00d4aa" opacity="0.85"/>
+            <text x="190" y="92" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="12" font-weight="600" fill="currentColor">$30K/yr</text>
+            <text x="354" y="92" font-family="'Satoshi', sans-serif" font-size="12" font-weight="700" fill="currentColor">$750K</text>
+
+            <!-- $50K → $1.25M → 240 -->
+            <rect x="200" y="120" width="240" height="34" rx="4" fill="#00d4aa" opacity="0.9"/>
+            <text x="190" y="142" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="12" font-weight="600" fill="currentColor">$50K/yr</text>
+            <text x="450" y="142" font-family="'Satoshi', sans-serif" font-size="12" font-weight="700" fill="currentColor">$1.25M</text>
+
+            <!-- $75K → $1.875M → 360 -->
+            <rect x="200" y="170" width="360" height="34" rx="4" fill="#00d4aa" opacity="0.95"/>
+            <text x="190" y="192" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="12" font-weight="600" fill="currentColor">$75K/yr</text>
+            <text x="570" y="192" font-family="'Satoshi', sans-serif" font-size="12" font-weight="700" fill="currentColor">$1.875M</text>
+
+            <!-- $100K → $2.5M → 480 -->
+            <rect x="200" y="220" width="480" height="34" rx="4" fill="#00d4aa"/>
+            <text x="190" y="242" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="12" font-weight="600" fill="currentColor">$100K/yr</text>
+            <text x="690" y="242" text-anchor="end" font-family="'Satoshi', sans-serif" font-size="12" font-weight="700" fill="white">$2.5M</text>
+
+            <!-- Footnote -->
+            <text x="350" y="295" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" fill="currentColor" opacity="0.7">Cut $10K of annual spending → cut $250K from your FI target.</text>
+          </svg>
+          <p class="chart-caption">Every dollar you don't need to spend in retirement is a dollar you don't need to save 25 times of. Reducing expenses double-compounds: it lowers the target and raises your savings rate at the same time.</p>
+        </div>
+
+        <p>These aren't small numbers. But they're <em>specific</em>, which is powerful. You know what you're aiming for. You can calculate how long it will take at your current savings rate. You can see the direct impact of reducing expenses (you need less AND you save faster). The 4% rule transforms a vague anxiety — "I hope I have enough" — into a solvable engineering problem.</p>
+
+        <h2>Why It Works (And What Could Break It)</h2>
+
+        <p>The reason the 4% rule has held across so many historical periods comes down to the fundamental nature of a diversified equity portfolio. Stocks represent ownership stakes in real businesses. Over the long run, those businesses generate profits, those profits grow, and the value of the stocks grows with them. A 10% long-run average annual return for U.S. equities, even adjusted for inflation, leaves enough cushion above a 4% withdrawal rate to sustain and often grow the portfolio.</p>
+
+        <p>The scenario that breaks the 4% rule is called <strong>"sequence of returns risk"</strong> — a situation where severe market losses happen at the <em>beginning</em> of retirement, before the portfolio has had time to recover. If you retire in year one of a major bear market and keep withdrawing at 4%, you're selling shares at low prices to fund living expenses. When the recovery comes, you have fewer shares to appreciate. The sequence matters, not just the average.</p>
+
+        <p>This is why the Trinity Study recommended equity-heavy portfolios rather than bond-heavy ones for retirees — the higher expected return compensates for the volatility. It's also why some FIRE community members use a more conservative 3.5% or 3% withdrawal rate, especially for very early retirements where the portfolio needs to sustain 40+ years rather than 30.</p>
+
+        <p>A few other caveats worth knowing:</p>
+
+        <p><strong>The study used U.S. market data.</strong> The U.S. has had exceptional 20th-century returns by global historical standards. Whether future returns will match historical ones is genuinely uncertain — though the case for long-run equity growth remains strong.</p>
+
+        <p><strong>It doesn't account for flexibility.</strong> Many retirees can reduce spending in bad market years and spend more in good ones. A rigid 4% inflation-adjusted withdrawal is a conservative baseline; a flexible spender can sustain higher withdrawal rates.</p>
+
+        <p><strong>Social Security and other income sources change the calculation.</strong> If you have a pension or will receive Social Security income, that reduces how much your portfolio needs to generate. Your required portfolio withdrawal is (annual expenses minus other income), not total annual expenses.</p>
+
+        <h2>How to Calculate Your Number</h2>
+
+        <p>The practical exercise looks like this:</p>
+
+        <div class="callout-box">
+          <h3>Step 1 — Know your annual spending</h3>
+          <p>Not income — spending. Track expenses for 3-6 months and average them. Include taxes you'll owe in retirement, health insurance (a major variable for early retirees), and realistic estimates for irregular expenses like car replacements and home repairs. Don't forget inflation.</p>
+        </div>
+
+        <div class="callout-box">
+          <h3>Step 2 — Subtract any guaranteed income</h3>
+          <p>Social Security, pension, rental income, or any other recurring income that doesn't come from your investment portfolio. What remains is the portfolio's job.</p>
+        </div>
+
+        <div class="callout-box">
+          <h3>Step 3 — Multiply by 25</h3>
+          <p>That's your target portfolio value. Write it down. It is no longer abstract.</p>
+        </div>
+
+        <div class="callout-box">
+          <h3>Step 4 — Calculate your savings rate path</h3>
+          <p>Plug your current investments, monthly contributions, and expected return into a compound growth calculator. See when you'll hit your number. Adjust contributions or expenses as needed.</p>
+        </div>
+
+        <p>For example: if you spend $60,000 annually and expect $20,000 in Social Security income, your portfolio needs to cover $40,000/year. Your FI number is $40,000 × 25 = $1,000,000. If you have $200,000 invested and add $1,500/month at 7% real return (a conservative estimate), you'd hit $1,000,000 in approximately 15 years.</p>
+
+        <p>That's not a guess. That's a plan.</p>
+
+        <blockquote>"You don't need to be a genius to be a successful investor. You need a plan, the discipline to follow it, and enough time for compounding to do the work." — VTI &amp; Chill</blockquote>
+
+        <h2>The 4% Rule and the FIRE Movement</h2>
+
+        <p>The Trinity Study is, more than any other piece of research, the mathematical foundation of the FIRE (Financial Independence, Retire Early) movement. Before the 4% rule, the idea of retiring at 35 or 45 seemed like fantasy — something only lottery winners and tech founders could access. The Trinity Study made it calculable.</p>
+
+        <p>If you can cover your expenses with a 4% withdrawal, you're done. The portfolio sustains itself. You can work or not work, travel or stay home, pursue passion projects or sleep in — and the math keeps working. This realization has motivated an entire generation to take their savings rate seriously in a way that conventional retirement advice (save 10-15% of income) never could.</p>
+
+        <p>The VTI &amp; Chill approach — <a href="./dollar-cost-averaging.html">consistent investment in low-cost total market index funds</a> — is the engine that gets you to that number. The 4% rule tells you how much you need. <a href="./compound-interest.html">Compound growth in a diversified portfolio</a> is how you get there.</p>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>The 4% rule, derived from the Trinity Study's analysis of seven decades of market data, provides the closest thing investing has to a science-backed answer to "how much do I need to retire?" Your FI number is 25 times your annual expenses — and a well-constructed portfolio of diversified equities and bonds has historically sustained that withdrawal rate over 30-year retirements in the vast majority of scenarios.</p>
+          <p>It's not a guarantee, but it's far better than guessing. Know your number. Build a plan to reach it. Keep investing in low-cost index funds. The math will do the rest.</p>
+        </div>
+
+
+        <!-- related-posts:start -->
+        <section class="related-posts" aria-label="Related posts">
+          <h2>Keep reading</h2>
+          <div class="related-grid">
+      <a href="./fu-money-financial-independence.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">F-You Money: Why Financial Independence Changes Everything</div>
+        <p class="related-blurb">JL Collins' framework for the freedom to say no — and the math that gets you there.</p>
+      </a>
+      <a href="./compound-interest.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">Compound Interest: The Eighth Wonder of the World</div>
+        <p class="related-blurb">How small contributions become $452K — and why time matters more than amount.</p>
+      </a>
+      <a href="./simple-path-to-wealth-review.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">The Simple Path to Wealth</div>
+        <p class="related-blurb">JL Collins' 13-rule blueprint, the foundation behind every FI calculation.</p>
+      </a>
+          </div>
+        </section>
+        <!-- related-posts:end -->
+
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>
