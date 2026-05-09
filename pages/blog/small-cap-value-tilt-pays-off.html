@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFFQRYJTQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PFFQRYJTQ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Small Cap Value Premium: Why Tilting Your Portfolio Pays Off | VTI & Chill</title>
+<meta name="description" content="The complete case for a small-cap value tilt: Fama-French three-factor model, the historical 1.6% small-cap premium (Siegel/Schwartz 1926-2021), Paul Merriman's $53M-vs-$30M Ultimate Buy and Hold result, the risk vs. behavioral explanations for why the premium persists, Vanguard's 1.9% forward forecast, and how to implement with AVUV at 80/20 VTI/AVUV.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content em { font-style: italic; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h3 { color: var(--color-primary); margin-bottom: var(--space-2); margin-top: 0; font-weight: 700; font-size: var(--text-lg); }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+  .related-posts { margin: var(--space-10) 0 var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
+  .related-posts h2 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-4); color: var(--color-text); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4); }
+  .related-card { display: block; padding: var(--space-4) var(--space-5); background: var(--color-surface-2, #1c2333); border: 1px solid var(--color-border); border-radius: var(--radius-lg); text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+  .related-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-card .related-eyebrow { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-2); display: block; }
+  .related-card .related-title { font-family: var(--font-display); font-weight: 600; font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-1); line-height: 1.35; }
+  .related-card .related-blurb { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+</style>
+
+  <!-- SEO: Canonical & Keywords -->
+  <link rel="canonical" href="https://www.vtiandchill.com/pages/blog/small-cap-value-tilt-pays-off.html">
+  <meta name="keywords" content="small cap value premium, Fama-French three-factor model, AVUV Avantis, factor investing, Paul Merriman Ultimate Buy and Hold, small cap premium, value premium, SMB HML factors, Vanguard small cap forecast, VTI and chill">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="VTI & Chill">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Small Cap Value Premium: Why Tilting Your Portfolio Pays Off">
+  <meta property="og:description" content="Two Nobel Prizes, a 1.6% historical premium, and the AVUV implementation that captures it. The honest case for tilting toward small-cap value.">
+  <meta property="og:url" content="https://www.vtiandchill.com/pages/blog/small-cap-value-tilt-pays-off.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="VTI & Chill">
+  <meta property="article:published_time" content="2026-05-15T00:00:00Z">
+  <meta property="article:author" content="VTI & Chill">
+  <meta property="article:section" content="Factor Investing">
+  <meta property="article:tag" content="small cap value premium">
+  <meta property="article:tag" content="Fama-French three-factor model">
+  <meta property="article:tag" content="AVUV Avantis">
+  <meta property="article:tag" content="factor investing">
+  <meta property="article:tag" content="Paul Merriman Ultimate Buy and Hold">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VTIandChill">
+  <meta name="twitter:title" content="The Small Cap Value Premium: Why Tilting Your Portfolio Pays Off">
+  <meta name="twitter:description" content="Two Nobel Prizes, a 1.6% historical premium, and the AVUV implementation that captures it. The honest case for tilting toward small-cap value.">
+  <meta name="twitter:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Small Cap Value Premium: Why Tilting Your Portfolio Pays Off",
+  "description": "The complete case for a small-cap value tilt: Fama-French three-factor model, the historical 1.6% small-cap premium (Siegel/Schwartz 1926-2021), Paul Merriman's $53M-vs-$30M Ultimate Buy and Hold result, the risk vs. behavioral explanations for why the premium persists, Vanguard's 1.9% forward forecast, and how to implement with AVUV at 80/20 VTI/AVUV.",
+  "url": "https://www.vtiandchill.com/pages/blog/small-cap-value-tilt-pays-off.html",
+  "datePublished": "2026-05-15",
+  "dateModified": "2026-05-15",
+  "author": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/small-cap-value-tilt-pays-off.html"
+  },
+  "keywords": [
+    "small cap value premium",
+    "Fama-French three-factor model",
+    "AVUV Avantis",
+    "factor investing",
+    "Paul Merriman Ultimate Buy and Hold",
+    "small cap premium",
+    "value premium",
+    "SMB HML factors",
+    "Vanguard small cap forecast",
+    "VTI and chill"
+  ],
+  "articleSection": "Factor Investing",
+  "wordCount": 1400,
+  "about": [
+    {
+      "@type": "Person",
+      "name": "Eugene Fama"
+    },
+    {
+      "@type": "Person",
+      "name": "Kenneth French"
+    },
+    {
+      "@type": "Person",
+      "name": "Paul Merriman"
+    },
+    {
+      "@type": "Person",
+      "name": "Jeremy Siegel"
+    },
+    {
+      "@type": "Organization",
+      "name": "Avantis Investors"
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: FAQ (JSON-LD) — GEO/AEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the small cap value premium?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The small cap value premium is the long-run historical observation that stocks of small companies trading at low valuations have outperformed the broader market by roughly 1.5-3 percentage points per year over very long periods. It was documented in 1992 by Eugene Fama and Kenneth French in the three-factor model \u2014 the research that helped Fama earn the Nobel Prize in Economics. Their work identified two factors beyond market exposure: SMB (small minus big \u2014 small caps beating large caps) and HML (high minus low \u2014 value beating growth). When you combine both, you get small cap value, the corner of the market where the historical excess return has been the most concentrated."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the small cap value premium dead?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, but it has been weak in stretches. From roughly 2010 to 2020, large-cap growth dominated and small-cap value lagged badly, leading to many premature obituaries. Since then the cycle has shifted. Vanguard's capital markets model currently forecasts small caps to outpace large caps by approximately 1.9 percentage points annualized over the next decade because relative valuations are wide. Siegel and Schwartz's analysis of 1926-2021 data shows small caps still returning 11.99% versus 10.35% for large caps \u2014 a roughly 1.6% premium. The premium is lumpy, not dead, and like all factor premiums it requires patience measured in decades rather than years."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the small cap value premium exist?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There are two competing explanations and both have empirical support. The risk story (favored by Fama and French): small cap value companies are genuinely riskier \u2014 smaller, less liquid, more financially fragile, more sensitive to economic shocks \u2014 so investors demand a premium to hold them. The behavioral story (favored by behavioral economists): investors systematically prefer exciting growth stories over boring, ugly small companies, creating persistent mispricing. Both explanations suggest the premium should persist \u2014 either because risk-aversion is structural or because behavioral biases are hardwired. AVUV's methodology favors profitable small-cap value names, which is the corner where the premium has been most reliable in both stories."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use AVUV or a passive small-cap value index ETF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AVUV (Avantis U.S. Small Cap Value ETF) has become the default choice for most factor-tilt investors, including in Paul Merriman's recommended portfolios. It charges 0.25% \u2014 slightly more than a passive index ETF \u2014 but its methodology specifically screens for profitability in addition to size and value, capturing the Fama-French five-factor model's profitability factor. A passive small-cap value index will hold every small-cap value stock including unprofitable ones, where the premium has historically been weaker. AVUV's 776-stock portfolio, $20B+ AUM, and team of former Dimensional Fund Advisors managers make it the cleanest, most academically grounded vehicle currently available."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much should I allocate to small cap value?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most reasonable factor-tilt portfolios run somewhere between 10% and 25% in U.S. small cap value (AVUV) on top of a broad market core like VTI. Paul Merriman's research suggests even a 10% tilt added meaningful returns over 55 years. A common implementation is 80% VTI / 20% AVUV \u2014 simple, capture the premium, never abandon the broad market. Going much higher than 25-30% in small cap value introduces meaningful tracking error against the S&P 500 \u2014 which is fine if you can stomach watching your portfolio lag for 5+ year stretches, but it's the most common reason factor investors give up on the strategy. Match the tilt size to your behavioral tolerance, not just your spreadsheet's optimization output."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.vtiandchill.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.vtiandchill.com/pages/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The Small Cap Value Premium: Why Tilting Your Portfolio Pays Off",
+      "item": "https://www.vtiandchill.com/pages/blog/small-cap-value-tilt-pays-off.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI & <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Factor Investing</span>
+          <span>May 15, 2026</span>
+          <span>7 min read</span>
+        </div>
+        <h1>The Small Cap Value Premium: Why Tilting Your Portfolio Pays Off</h1>
+        <p class="blog-post-subtitle">Two Nobel Prizes worth of research, a 1.6% historical premium, and the AVUV implementation that captures it without abandoning the market.</p>
+      </div>
+
+      <div class="blog-post-content">
+
+        <p>Imagine you're at a poker table. Most players are playing the same cards the same way. But you've found a slightly better strategy — one that's been proven to work over decades of historical data and two Nobel Prizes worth of academic research. Do you use it?</p>
+
+        <p>That's essentially the small cap value tilt in a nutshell. It's not a hot tip. It's not market timing. It's not stock picking. It's a deliberate, disciplined strategy of overweighting a specific corner of the market — small companies with cheap valuations — because the data, going back to 1926, suggests this corner has historically generated returns above what the overall market delivers.</p>
+
+        <p>It's also not guaranteed. It requires patience measured in decades. And it has failed to work for extended stretches of time. If you're still reading, let's dig in.</p>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-value">~1.6%</div>
+            <div class="stat-label">Historical small-cap premium per year (1926-2021, Siegel/Schwartz)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">$53M</div>
+            <div class="stat-label">$100K invested in 1970 in Merriman's Ultimate Buy &amp; Hold by 2025</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">$30M</div>
+            <div class="stat-label">Same $100K in the S&amp;P 500 alone — same 55-year window</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">+1.9%</div>
+            <div class="stat-label">Vanguard's 10-yr forecast for small caps over large caps</div>
+          </div>
+        </div>
+
+        <h2>The Academic Foundation: Fama-French and the Three-Factor Model</h2>
+
+        <p>In 1992, Eugene Fama and Kenneth French published research that would eventually help Fama earn the Nobel Prize in Economics. They were trying to explain why the Capital Asset Pricing Model (CAPM) — the bedrock of modern finance — wasn't fully explaining why some stocks earned higher returns than others.</p>
+
+        <p>Their answer came in the form of the <a href="https://www.investopedia.com/terms/f/famaandfrenchthreefactormodel.asp" target="_blank" rel="noopener">Fama-French Three-Factor Model</a>. Beyond plain market exposure, two additional factors explained much of the variation in stock returns:</p>
+
+        <ol>
+          <li><strong>SMB (Small Minus Big):</strong> Small-cap stocks have historically outperformed large-cap stocks</li>
+          <li><strong>HML (High Minus Low):</strong> Value stocks (high book-to-market ratio) have historically outperformed growth stocks</li>
+        </ol>
+
+        <p>The research found that these factors could explain over 90% of diversified portfolio returns — far more than market exposure alone. The academic establishment didn't just accept this quietly; it sparked decades of follow-on research that has largely confirmed the original findings, though with important nuances.</p>
+
+        <p>The <a href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/acrobat/Size%20Value%20and%20the%20CAPM_2005_05.pdf" target="_blank" rel="noopener">value premium alone</a> measured from 1926 to 2004 showed a monthly excess return of about 0.40% — nearly 3.43 standard errors from zero, which in statistics means it's extremely unlikely to be a random fluke. When you combine the size effect with the value effect, you get <strong>small cap value</strong> — the corner of the market that has historically been the most potent.</p>
+
+        <h2>What the Data Actually Shows</h2>
+
+        <p>Let's talk numbers, because this is where the rubber meets the road.</p>
+
+        <p><a href="https://www.paulmerriman.com/ultimate-buy-and-hold" target="_blank" rel="noopener">According to data from Morningstar and historical research</a>, the long-term annualized return picture looks something like this:</p>
+
+        <ul>
+          <li>S&amp;P 500 (large cap blend): ~10-11% annually over very long periods</li>
+          <li>Small cap stocks: ~12% annually (about 1.5-2 percentage points more)</li>
+          <li>Small cap <em>value</em> stocks: historically even higher, around 13-14% annually in the broadest long-term datasets</li>
+        </ul>
+
+        <p>Paul Merriman's landmark research on the Ultimate Buy and Hold Portfolio <a href="https://www.paulmerriman.com/ultimate-buy-and-hold-2026" target="_blank" rel="noopener">shows</a> that a $100,000 investment in 1970 growing at S&amp;P 500 rates reached nearly $30 million by 2025. The same investment in a diversified portfolio with meaningful small cap value exposure grew to over $53 million. That's not a typo. That's the compounding power of 1-3 percentage points of annual outperformance over 55 years.</p>
+
+        <p>From 1926 to 2021, <a href="https://awealthofcommonsense.com/2024/06/is-the-small-cap-premium-dead/" target="_blank" rel="noopener">data analyzed by Jeremy Siegel and Jeremy Schwartz</a> shows small caps returning 11.99% versus large caps at 10.35%. When you narrow the lens to specifically small cap <em>value</em> stocks, the premium historically gets even larger.</p>
+
+        <div class="callout-box">
+          <h3>The honest caveat</h3>
+          <p>The small cap premium has been volatile, lumpy, and concentrated in specific time periods. A large chunk of the historical small cap outperformance came from a single nine-year window (1975-1983) when small caps were up over 1,400%. Outside of outlier periods, the premium narrows significantly. This doesn't eliminate the case for the tilt, but it does demand intellectual honesty about what you're actually adding to your portfolio.</p>
+        </div>
+
+        <h2>Why Does the Premium Exist? And Is It Still There?</h2>
+
+        <p>The "why" behind factor premiums matters, because if the reason for outperformance has been arbitraged away, you shouldn't expect it to persist.</p>
+
+        <p>There are two competing explanations for why small cap value has historically outperformed:</p>
+
+        <p><strong>The Risk Story:</strong> Small cap value companies are genuinely riskier. They're smaller, less liquid, more financially fragile, and more sensitive to economic downturns. The higher returns are compensation for bearing that additional risk. This is the "rational" explanation favored by Fama and French themselves.</p>
+
+        <p><strong>The Behavioral Story:</strong> Investors systematically neglect boring, ugly, small companies in favor of exciting growth stocks. This mispricing creates opportunity. As the mispricing eventually corrects, small cap value investors get paid. This is the explanation behavioral economists prefer.</p>
+
+        <p>Both explanations have evidence supporting them. Both suggest the premium should persist — either because investors will keep demanding compensation for the additional risk, or because the behavioral biases driving mispricing are hardwired into human psychology.</p>
+
+        <p><a href="https://corporate.vanguard.com/content/corporatesite/us/en/corp/vemo/fading-small-cap-premium-softer-us-labor-market.html" target="_blank" rel="noopener">Vanguard's research</a> adds a nuance: valuations matter. Valuations for small caps versus large caps are currently wide enough that their capital markets model projects small caps to outpace large caps by approximately 1.9 percentage points annualized over the next decade. This isn't a guarantee, but it suggests the premium hasn't been fully priced away.</p>
+
+        <p>The <strong>quality caveat</strong> is important: not all small cap value is equal. A significant portion of the Russell 2000 (the standard small cap index) consists of low-quality, money-losing companies. The premium is most reliably found in <em>profitable</em> small cap value companies — which is exactly where AVUV, Avantis's flagship small cap value ETF, focuses its methodology.</p>
+
+        <h2>How to Actually Implement a Small Cap Value Tilt</h2>
+
+        <p>If the research convinces you, the implementation is straightforward. The key is using the right tools.</p>
+
+        <p><strong>AVUV (Avantis US Small Cap Value ETF)</strong> is the gold standard for US small cap value exposure. Its 0.25% expense ratio is reasonable for what it delivers, its holdings (around 776 companies) are screened for both value characteristics <em>and</em> profitability, and it's managed by Avantis — a team founded by former Dimensional Fund Advisors (DFA) managers who literally wrote the rulebook on factor investing. AVUV has <a href="https://res.avantisinvestors.com/docs/avantis-us-small-cap-value-avuv-etf-fact-sheet.pdf" target="_blank" rel="noopener">$20 billion in assets under management</a>, validating its institutional credibility.</p>
+
+        <p>A simple implementation of a small cap value tilt might look like:</p>
+
+        <table>
+          <thead><tr><th>Allocation</th><th>Ticker</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td>80%</td><td>VTI</td><td>Broad market core</td></tr>
+            <tr><td>20%</td><td>AVUV</td><td>Small-cap value tilt</td></tr>
+          </tbody>
+        </table>
+
+        <p>This keeps things simple while giving your portfolio meaningful exposure to the factor. You're not abandoning the market — you're adding a proven, academically grounded overweight to a corner of it that has historically rewarded patient investors.</p>
+
+        <p>The critical word is <em>patient</em>. When the S&amp;P 500 is up 30% in a year and AVUV is up 12%, you will feel stupid. When AVUV is up 40% and the S&amp;P 500 is up 10%, you will feel like a genius. Neither feeling should change your long-term allocation. The whole point is that you're playing a 20-30 year game, not a quarterly one.</p>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>The small cap value premium is real, academically validated, and has historically added meaningful returns over very long periods. Fama and French's three-factor model, Paul Merriman's portfolio research, and decades of data all point in the same direction: small, cheap companies have tended to outperform the broad market.</p>
+          <p>AVUV is the best tool available today to capture this premium in a low-cost, liquid ETF structure. Adding even a 10-20% tilt to your VTI portfolio costs you almost nothing in complexity, introduces an academically grounded return boost, and requires exactly one thing: the patience to hold through periods when it doesn't work.</p>
+          <p>The premium doesn't come free. It comes with tracking error, underperformance cycles, and the psychological burden of watching a "different" portfolio than everyone else. If you can handle that, the small cap value tilt is one of the most well-supported enhancements in all of personal finance.</p>
+        </div>
+
+
+        <!-- related-posts:start -->
+        <section class="related-posts" aria-label="Related posts">
+          <h2>Keep reading</h2>
+          <div class="related-grid">
+      <a href="./good-better-best-portfolios.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">Good, Better, Best: Which Tier Fits You?</div>
+        <p class="related-blurb">How a small-cap value tilt fits into the Better and Best portfolios.</p>
+      </a>
+      <a href="./small-cap-value-premium.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">The Small-Cap Value Premium: Real or Dead?</div>
+        <p class="related-blurb">An earlier deep-dive on whether the premium has been arbitraged away.</p>
+      </a>
+      <a href="./merriman-2025-best-in-class-etfs.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">Merriman's Best-in-Class ETFs</div>
+        <p class="related-blurb">The full Avantis lineup behind the small-cap value tilt.</p>
+      </a>
+          </div>
+        </section>
+        <!-- related-posts:end -->
+
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>

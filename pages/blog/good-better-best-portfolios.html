@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFFQRYJTQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PFFQRYJTQ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good, Better, Best: Which Portfolio Tier Is Right for You? | VTI & Chill</title>
+<meta name="description" content="VTI & Chill's three-tier portfolio framework: Good (100% VTI), Better (VTI + AVUV + AVLV factor tilts), and Best (Merriman-inspired global Avantis suite with AVUS, AVUV, AVLV, AVDV, AVDS, AVES, AVEE). Pros, cons, and who each tier is built for, with the actual allocation tables and Fama-French research backing the factor tilts.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content em { font-style: italic; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h3 { color: var(--color-primary); margin-bottom: var(--space-2); margin-top: 0; font-weight: 700; font-size: var(--text-lg); }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+  .related-posts { margin: var(--space-10) 0 var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
+  .related-posts h2 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-4); color: var(--color-text); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4); }
+  .related-card { display: block; padding: var(--space-4) var(--space-5); background: var(--color-surface-2, #1c2333); border: 1px solid var(--color-border); border-radius: var(--radius-lg); text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+  .related-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-card .related-eyebrow { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-2); display: block; }
+  .related-card .related-title { font-family: var(--font-display); font-weight: 600; font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-1); line-height: 1.35; }
+  .related-card .related-blurb { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+</style>
+
+  <!-- SEO: Canonical & Keywords -->
+  <link rel="canonical" href="https://www.vtiandchill.com/pages/blog/good-better-best-portfolios.html">
+  <meta name="keywords" content="Good Better Best portfolio, Avantis ETFs, AVUV AVLV AVDV, Paul Merriman Ultimate Buy and Hold, Fama-French factor investing, small cap value tilt, Merriman portfolio, factor investing tiers, global diversification, VTI and chill">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="VTI & Chill">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Good, Better, Best: Which Portfolio Tier Is Right for You?">
+  <meta property="og:description" content="Three legitimate portfolio tiers — from one fund to seven. The right one is the one you'll actually hold through the next bear market.">
+  <meta property="og:url" content="https://www.vtiandchill.com/pages/blog/good-better-best-portfolios.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="VTI & Chill">
+  <meta property="article:published_time" content="2026-05-13T00:00:00Z">
+  <meta property="article:author" content="VTI & Chill">
+  <meta property="article:section" content="Portfolio Construction">
+  <meta property="article:tag" content="Good Better Best portfolio">
+  <meta property="article:tag" content="Avantis ETFs">
+  <meta property="article:tag" content="AVUV AVLV AVDV">
+  <meta property="article:tag" content="Paul Merriman Ultimate Buy and Hold">
+  <meta property="article:tag" content="Fama-French factor investing">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VTIandChill">
+  <meta name="twitter:title" content="Good, Better, Best: Which Portfolio Tier Is Right for You?">
+  <meta name="twitter:description" content="Three legitimate portfolio tiers — from one fund to seven. The right one is the one you'll actually hold through the next bear market.">
+  <meta name="twitter:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Good, Better, Best: Which Portfolio Tier Is Right for You?",
+  "description": "VTI & Chill's three-tier portfolio framework: Good (100% VTI), Better (VTI + AVUV + AVLV factor tilts), and Best (Merriman-inspired global Avantis suite with AVUS, AVUV, AVLV, AVDV, AVDS, AVES, AVEE). Pros, cons, and who each tier is built for, with the actual allocation tables and Fama-French research backing the factor tilts.",
+  "url": "https://www.vtiandchill.com/pages/blog/good-better-best-portfolios.html",
+  "datePublished": "2026-05-13",
+  "dateModified": "2026-05-13",
+  "author": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/good-better-best-portfolios.html"
+  },
+  "keywords": [
+    "Good Better Best portfolio",
+    "Avantis ETFs",
+    "AVUV AVLV AVDV",
+    "Paul Merriman Ultimate Buy and Hold",
+    "Fama-French factor investing",
+    "small cap value tilt",
+    "Merriman portfolio",
+    "factor investing tiers",
+    "global diversification",
+    "VTI and chill"
+  ],
+  "articleSection": "Portfolio Construction",
+  "wordCount": 1350,
+  "about": [
+    {
+      "@type": "Person",
+      "name": "Paul Merriman"
+    },
+    {
+      "@type": "Person",
+      "name": "Eugene Fama"
+    },
+    {
+      "@type": "Person",
+      "name": "Kenneth French"
+    },
+    {
+      "@type": "Organization",
+      "name": "Avantis Investors"
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: FAQ (JSON-LD) — GEO/AEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What's the difference between the Good, Better, and Best portfolios?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Good is 100% VTI \u2014 one ticker, the entire U.S. stock market, 0.03% expense ratio, no rebalancing required. Better adds U.S. factor tilts: roughly 60% VTI, 20% AVUV (Avantis U.S. small-cap value), 10% AVLV (large-cap value), and 10% bonds. Best is the Merriman-inspired global Avantis suite \u2014 about 40% AVUS, 15% AVUV, 10% AVLV, 10% AVDV (international small-cap value), 10% AVDS (international small-cap), 10% AVES (emerging markets value), 5% AVEE (EM small cap). All three are legitimate. The right one for you is whichever you can hold through a 30%+ drawdown without abandoning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do factor-tilted portfolios actually outperform a simple total market index?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Historically, yes \u2014 but the premium is lumpy and demands patience. Paul Merriman's Ultimate Buy and Hold research shows a $100,000 investment in 1970 grew to over $53 million by 2025 in a globally diversified factor-tilted portfolio, versus roughly $30 million in the S&P 500 alone. Fama and French's three-factor model \u2014 which earned Fama the Nobel Prize \u2014 documents that small-size (SMB) and value (HML) factors have historically driven excess returns. The catch: small-cap value underperformed large growth substantially from 2010-2020. Investors who can hold through 5-10 year underperformance windows have been rewarded; those who bail when the tilt isn't working would have been better off in a Good (VTI-only) portfolio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is AVUV and why is it the standard small-cap value ETF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AVUV is the Avantis U.S. Small Cap Value ETF, run by a team of former Dimensional Fund Advisors managers. Its 0.25% expense ratio is reasonable, it holds approximately 776 stocks screened for both value characteristics and profitability (capturing the Fama-French five-factor model's profitability factor), and it has roughly $20 billion in assets under management. Unlike a passive small-cap value index that holds every small-cap value stock including unprofitable ones, AVUV's methodology specifically targets the corner of the market where the historical premium has been most reliable: profitable small-cap value companies."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I add bonds to my portfolio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on your age, time horizon, and risk tolerance. Younger investors with 30+ years until retirement can reasonably run 100% equities (Good or Better with no bond sleeve) \u2014 historically equities have been the highest-returning asset class, and a long horizon gives you time to ride out drawdowns. As you approach retirement, adding bonds (BND, AVIG, or short-term Treasuries) reduces sequence-of-returns risk \u2014 the danger of a market crash early in retirement that forces you to sell at lows. A common rule of thumb is 'age in bonds' (40 years old = 40% bonds), but many indexers use a more aggressive glide path. Buffett's own estate-trust instructions are 90% S&P 500 and 10% short-term Treasuries."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often should I rebalance a Better or Best portfolio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Once per year is plenty for most investors, and twice per year is the upper end of what's reasonable. The goal of rebalancing is to keep your allocation aligned with your target \u2014 selling some of what's gone up and buying some of what's gone down. Rebalancing more often (quarterly or monthly) introduces unnecessary trading, taxes in non-qualified accounts, and behavioral risk (you start thinking like a trader). For tax-advantaged accounts, annual rebalancing on a fixed date \u2014 your birthday, year-end, or a tax-filing milestone \u2014 is a clean rule. For taxable accounts, prefer rebalancing through new contributions rather than selling."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.vtiandchill.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.vtiandchill.com/pages/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Good, Better, Best: Which Portfolio Tier Is Right for You?",
+      "item": "https://www.vtiandchill.com/pages/blog/good-better-best-portfolios.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI & <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Portfolio Construction</span>
+          <span>May 13, 2026</span>
+          <span>7 min read</span>
+        </div>
+        <h1>Good, Better, Best: Which Portfolio Tier Is Right for You?</h1>
+        <p class="blog-post-subtitle">Three legitimate portfolio strategies — from one fund to globally diversified factor tilts. The right tier is the one you'll actually hold.</p>
+      </div>
+
+      <div class="blog-post-content">
+
+        <p>Here's a question that sends most personal finance content into a tailspin: <em>How complicated should my portfolio actually be?</em></p>
+
+        <p>Some people will tell you that one fund is all you need. Others will send you a 47-slide deck about factor loadings, international small cap premiums, and the Fama-French five-factor model. Both camps have merit. Neither camp is wrong, exactly — but the answer almost certainly lives somewhere in between, and it depends on you.</p>
+
+        <p>That's why VTI &amp; Chill organizes its portfolio guidance into three tiers: <strong>Good, Better, and Best</strong>. Not because some investors are smarter than others, but because different strategies fit different personalities, time commitments, and appetites for complexity. Let's break down each tier, who it's built for, and what you can realistically expect from it.</p>
+
+        <div class="chart-container">
+          <svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three portfolio tiers: Good, Better, Best">
+            <text x="350" y="22" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="13" font-weight="600" fill="currentColor">Three Tiers, One Goal: Build Wealth and Stay Sane</text>
+            <text x="350" y="38" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="10" fill="currentColor" opacity="0.5">All three work if you actually hold them through cycles</text>
+
+            <!-- GOOD column -->
+            <rect x="60" y="60" width="180" height="180" rx="10" fill="#00d4aa" opacity="0.12" stroke="#00d4aa" stroke-width="1.5"/>
+            <text x="150" y="90" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="14" font-weight="700" fill="#00d4aa">GOOD</text>
+            <text x="150" y="115" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="600" fill="currentColor">100% VTI</text>
+            <text x="150" y="138" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.7">1 ticker</text>
+            <text x="150" y="158" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.7">~10-11% historical</text>
+            <text x="150" y="178" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.7">Set &amp; forget</text>
+            <text x="150" y="206" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-style="italic" fill="currentColor" opacity="0.55">For: anyone who wants to</text>
+            <text x="150" y="220" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-style="italic" fill="currentColor" opacity="0.55">invest and get on with life</text>
+
+            <!-- BETTER column -->
+            <rect x="260" y="60" width="180" height="180" rx="10" fill="#00d4aa" opacity="0.18" stroke="#00d4aa" stroke-width="1.5"/>
+            <text x="350" y="90" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="14" font-weight="700" fill="#00d4aa">BETTER</text>
+            <text x="350" y="115" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="600" fill="currentColor">VTI + AVUV/AVLV</text>
+            <text x="350" y="138" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.7">3-4 tickers</text>
+            <text x="350" y="158" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.7">+ U.S. factor tilts</text>
+            <text x="350" y="178" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.7">Annual rebalance</text>
+            <text x="350" y="206" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-style="italic" fill="currentColor" opacity="0.55">For: investors who can</text>
+            <text x="350" y="220" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-style="italic" fill="currentColor" opacity="0.55">hold through underperformance</text>
+
+            <!-- BEST column -->
+            <rect x="460" y="60" width="180" height="180" rx="10" fill="#00d4aa" opacity="0.25" stroke="#00d4aa" stroke-width="1.5"/>
+            <text x="550" y="90" text-anchor="middle" font-family="'General Sans', sans-serif" font-size="14" font-weight="700" fill="#00d4aa">BEST</text>
+            <text x="550" y="115" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="11" font-weight="600" fill="currentColor">Global Avantis suite</text>
+            <text x="550" y="138" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.7">7 tickers (AVUS+AVUV+AVLV</text>
+            <text x="550" y="153" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.7">+AVDV+AVDS+AVES+AVEE)</text>
+            <text x="550" y="178" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" fill="currentColor" opacity="0.7">Merriman-style</text>
+            <text x="550" y="206" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-style="italic" fill="currentColor" opacity="0.55">For: portfolio nerds with</text>
+            <text x="550" y="220" text-anchor="middle" font-family="'Satoshi', sans-serif" font-size="9" font-style="italic" fill="currentColor" opacity="0.55">decade-plus patience</text>
+          </svg>
+          <p class="chart-caption">Three legitimate tiers. The right one is the one you'll actually hold through the next bear market.</p>
+        </div>
+
+        <h2>Tier 1: Good — The VTI-Only Portfolio</h2>
+
+        <p><strong>What it is:</strong> 100% VTI (or close to it, perhaps with a bond allocation as you near retirement).</p>
+
+        <p><strong>Who it's for:</strong> Anyone who wants to invest, stay sane, and get on with their life.</p>
+
+        <p>The Good portfolio is not a consolation prize. As we covered in <a href="./one-fund-vti-case.html">the previous post</a>, VTI's 0.03% expense ratio and full US market exposure make it one of the most powerful wealth-building tools ever created. The CRSP US Total Market Index that VTI tracks has delivered roughly 10-11% annualized returns historically. You capture nearly all of that for three dollars per $10,000 invested per year.</p>
+
+        <p>The Good portfolio works because it removes every possible reason to make a bad decision. There's nothing to rebalance. No asset class to fret about. No factor that's underperforming and making you question your strategy. You own America. You keep buying. You wait.</p>
+
+        <p>The main limitations of the Good portfolio are:</p>
+        <ul>
+          <li><strong>US-only exposure</strong> — no international diversification</li>
+          <li><strong>No factor tilts</strong> — you won't capture potential premiums from small cap value</li>
+          <li><strong>Cap-weighting bias</strong> — you're heavily concentrated in mega-cap tech companies</li>
+        </ul>
+
+        <p>Are these real limitations? Yes. Are they deal-breakers? Absolutely not. The vast majority of investors would build more wealth over their lifetimes with the Good portfolio plus consistent contributions than with any complicated alternative they'd tinker with constantly.</p>
+
+        <p>If the thought of tracking multiple funds, understanding factor investing, or explaining your "tilt toward international small cap value" to your spouse makes you want to set your laptop on fire — the Good portfolio is your answer.</p>
+
+        <h2>Tier 2: Better — VTI Plus Factor Tilts</h2>
+
+        <p><strong>What it is:</strong> A core VTI position (50-70%) supplemented with factor-tilted ETFs, primarily small cap value.</p>
+
+        <p><strong>Who it's for:</strong> Investors who've done some reading, believe in the academic research behind factor premiums, and can handle watching part of their portfolio underperform for years without bailing.</p>
+
+        <p>The academic case for this tier comes from Nobel Prize-winning research by Eugene Fama and Kenneth French. Their <a href="https://www.investopedia.com/terms/f/famaandfrenchthreefactormodel.asp" target="_blank" rel="noopener">three-factor model</a> showed that two factors beyond market exposure — small size (small minus big, or SMB) and value (high minus low, or HML) — have historically driven excess returns over long periods. In plain English: small cap value stocks have beaten the broad market over very long horizons.</p>
+
+        <p>A Better portfolio might look something like this:</p>
+
+        <table>
+          <thead><tr><th>Allocation</th><th>Ticker</th><th>Expense Ratio</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td>60%</td><td>VTI</td><td>0.03%</td><td>Total US market core</td></tr>
+            <tr><td>20%</td><td>AVUV</td><td>0.25%</td><td>U.S. small-cap value tilt</td></tr>
+            <tr><td>10%</td><td>AVLV</td><td>0.15%</td><td>U.S. large-cap value tilt</td></tr>
+            <tr><td>10%</td><td>BND or AVIG</td><td>~0.03-0.15%</td><td>Bonds (optional, age-based)</td></tr>
+          </tbody>
+        </table>
+
+        <p>AVUV is a particularly smart addition. It doesn't just passively hold all small cap value stocks — it uses a refined, academically grounded methodology to emphasize companies with both small size <em>and</em> high profitability, which the <a href="https://corporatefinanceinstitute.com/resources/valuation/fama-french-three-factor-model/" target="_blank" rel="noopener">Fama-French five-factor model</a> identified as especially potent. AVUV holds approximately 776 stocks and has a weighted average book-to-market ratio that meaningfully differentiates it from the broad market.</p>
+
+        <p>Paul Merriman's research <a href="https://www.paulmerriman.com/ultimate-buy-and-hold" target="_blank" rel="noopener">demonstrates compellingly</a> that adding just 10% small cap value exposure to an S&amp;P 500 portfolio increased returns by approximately $2.2 million over 55 years on a $100,000 investment — without adding significant volatility. That's the premium you're hunting.</p>
+
+        <div class="callout-box">
+          <h3>The catch with Better</h3>
+          <p>You have to believe in the premium, and you have to hold when it's not working. Factor premiums are not guaranteed or consistent. Small cap value underperformed large growth significantly from roughly 2010 to 2020. Investors who added this tilt during that period watched their "enhancement" drag their portfolio relative to simple VTI. Many bailed. Those who stayed have been rewarded as the cycle turns.</p>
+        </div>
+
+        <p>If you can look at an underperforming allocation for 5 years and shrug because you're playing a 30-year game, Better is worth pursuing.</p>
+
+        <h2>Tier 3: Best — The Globally Diversified, Merriman-Inspired Portfolio</h2>
+
+        <p><strong>What it is:</strong> A globally diversified portfolio across US and international factor-tilted ETFs, inspired by Paul Merriman's Ultimate Buy and Hold research.</p>
+
+        <p><strong>Who it's for:</strong> Investors who are genuinely interested in portfolio construction, have read Merriman and Fama-French, can rebalance annually without emotion, and want maximum long-term diversification.</p>
+
+        <p>The Best portfolio takes everything from Better and adds international exposure, specifically targeting factor premiums globally. Using Avantis ETFs, it might look something like:</p>
+
+        <table>
+          <thead><tr><th>Allocation</th><th>Ticker</th><th>Expense Ratio</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td>40%</td><td>AVUS</td><td>0.15%</td><td>U.S. core (broad market, subtle tilt)</td></tr>
+            <tr><td>15%</td><td>AVUV</td><td>0.25%</td><td>U.S. small-cap value</td></tr>
+            <tr><td>10%</td><td>AVLV</td><td>0.15%</td><td>U.S. large-cap value</td></tr>
+            <tr><td>10%</td><td>AVDV</td><td>0.36%</td><td>International small-cap value</td></tr>
+            <tr><td>10%</td><td>AVDS</td><td>0.30%</td><td>International small-cap equity</td></tr>
+            <tr><td>10%</td><td>AVES</td><td>0.36%</td><td>Emerging markets value</td></tr>
+            <tr><td>5%</td><td>AVEE</td><td>0.42%</td><td>Emerging markets small cap</td></tr>
+          </tbody>
+        </table>
+
+        <p>This lineup is heavily influenced by <a href="https://www.paulmerriman.com/ultimate-buy-and-hold-2026" target="_blank" rel="noopener">Merriman's finding</a> that a $100,000 investment in the Ultimate Buy and Hold Portfolio grew to over $53 million by 2025 — versus roughly $30 million for the S&amp;P 500 alone over the same period. Diversifying across multiple factor-tilted asset classes, both domestic and international, has historically delivered materially better returns.</p>
+
+        <p>The Best portfolio isn't for everyone, and that's okay. It requires:</p>
+        <ul>
+          <li>Genuine conviction in factor investing</li>
+          <li>Willingness to hold international positions that may lag US for extended periods</li>
+          <li>Annual rebalancing discipline</li>
+          <li>A stomach for tracking error vs. the S&amp;P 500</li>
+        </ul>
+
+        <p>If you check all those boxes, the Best portfolio is a serious, academically grounded strategy that gives you the widest diversification across the factors that have historically driven returns.</p>
+
+        <h2>Which Tier Should You Choose?</h2>
+
+        <p>Here's the most honest answer we can give you: <strong>all three tiers work</strong>. The question isn't which one is optimal in theory — it's which one you'll actually stick with.</p>
+
+        <p>A perfectly constructed Best portfolio that you abandon during a bear market is infinitely worse than a "suboptimal" VTI portfolio you hold for 40 years. <a href="./psychology-of-staying-the-course.html">Behavioral consistency beats theoretical return optimization</a> every single time.</p>
+
+        <p>Start with the tier that feels right for your knowledge level and temperament. If the Good portfolio gives you peace of mind, that peace of mind has real financial value — it keeps you in the market when everything is screaming at you to sell. If you're drawn to factor investing and the academic research excites you rather than confuses you, explore the Better or Best tiers with eyes open about the required patience.</p>
+
+        <p>The best portfolio is the one you can hold, maintain, and not panic-sell during the next crash.</p>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p><strong>Good</strong> is VTI — simple, powerful, and enough for most people to build serious wealth over a lifetime. <strong>Better</strong> adds U.S. factor tilts via AVUV and AVLV to potentially capture the small cap value premium, at the cost of more complexity. <strong>Best</strong> goes globally diversified across Avantis ETFs in a Merriman-inspired structure that gives you maximum factor exposure worldwide.</p>
+          <p>Pick your tier. Commit to it. Buy consistently. The rest is just noise.</p>
+        </div>
+
+
+        <!-- related-posts:start -->
+        <section class="related-posts" aria-label="Related posts">
+          <h2>Keep reading</h2>
+          <div class="related-grid">
+      <a href="./one-fund-vti-case.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">One Fund to Rule Them All</div>
+        <p class="related-blurb">Why VTI alone is enough for most investors — and the case for keeping it that simple.</p>
+      </a>
+      <a href="./merriman-2025-best-in-class-etfs.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">Merriman's Best-in-Class ETFs</div>
+        <p class="related-blurb">The Avantis lineup that powers the Best portfolio, explained.</p>
+      </a>
+      <a href="./small-cap-value-premium.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">The Small-Cap Value Premium: Real or Dead?</div>
+        <p class="related-blurb">What the data actually says about the factor that powers the Better and Best tiers.</p>
+      </a>
+          </div>
+        </section>
+        <!-- related-posts:end -->
+
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>
