@@ -74,6 +74,7 @@ VTI & Chill covers and recommends specific ETFs from two providers:
 
 ## Blog Articles
 
+- **One Fund to Rule Them All: The Case for VTI**: https://www.vtiandchill.com/pages/blog/one-fund-vti-case.html — Why a single fund — Vanguard’s Total Stock Market ETF (VTI) — is enough for most investors: 3,600+ companies, 0.03% expense ratio, self-cleansing cap weighting that automatically reduces failing companies, ~14.3% 10-year annualized return through 2025 (Morningstar), and SPIVA showing roughly 90% of active managers underperform over 15 years
 - [VTI vs VOO: Which Is Actually Better?](https://www.vtiandchill.com/pages/blog/vti-vs-voo.html) — Total market vs S&P 500 comparison with data
 - [Buy. Hold. Chill.](https://www.vtiandchill.com/pages/blog/buy-hold-chill.html) — The case for passive investing: why 79% of active managers underperform
 - [Paul Merriman's 2025 Best-in-Class ETFs Explained](https://www.vtiandchill.com/pages/blog/merriman-2025-best-in-class-etfs.html) — Why Avantis dominates Merriman's latest recommendations
