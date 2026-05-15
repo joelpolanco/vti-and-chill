@@ -343,19 +343,63 @@
     <div class="email-capture">
       <h2>Read What Wall Street Hopes You Don&rsquo;t</h2>
       <p>One short email a week with the index-fund math, research, and behavioral reminders the financial industry would rather you forget. Free, no pitches, unsubscribe whenever. Your inbox is sacred &mdash; we treat it that way.</p>
+      <!-- Brevo Newsletter Signup -->
       <style>
-        #gumroad-follow-form-embed { display:flex; gap:var(--space-3); max-width:480px; margin:0 auto; }
-        #gumroad-follow-form-embed-input { display:block; width:100%; flex:1 1 0%; border-radius:var(--radius-md); border:1px solid var(--color-border); background:var(--color-surface-2); color:var(--color-text); font-family:var(--font-body); font-size:var(--text-base); padding:var(--space-3) var(--space-4); outline:none; }
-        #gumroad-follow-form-embed-input:focus { border-color:var(--color-primary); box-shadow:0 0 0 2px rgba(var(--color-primary-rgb),0.25); }
-        #gumroad-follow-form-embed-input::placeholder { color:var(--color-text-faint); }
-        #gumroad-follow-form-embed-button { display:inline-flex; cursor:pointer; align-items:center; justify-content:center; gap:var(--space-2); border-radius:var(--radius-md); border:none; background:var(--color-primary); color:var(--color-navy); font-family:var(--font-body); font-weight:600; font-size:var(--text-base); padding:var(--space-3) var(--space-6); transition:background 0.2s; }
-        #gumroad-follow-form-embed-button:hover { background:var(--color-primary-hover); }
+        .brevo-form { max-width:520px; margin:0 auto; }
+        .brevo-form-row { display:flex; gap:var(--space-3); }
+        .brevo-form-input { display:block; width:100%; flex:1 1 0%; border-radius:var(--radius-md); border:1px solid var(--color-border); background:var(--color-surface-2); color:var(--color-text); font-family:var(--font-body); font-size:var(--text-base); padding:var(--space-3) var(--space-4); outline:none; }
+        .brevo-form-input:focus { border-color:var(--color-primary); box-shadow:0 0 0 2px rgba(var(--color-primary-rgb),0.25); }
+        .brevo-form-input::placeholder { color:var(--color-text-faint); }
+        .brevo-form-button { display:inline-flex; cursor:pointer; align-items:center; justify-content:center; gap:var(--space-2); border-radius:var(--radius-md); border:none; background:var(--color-primary); color:var(--color-navy); font-family:var(--font-body); font-weight:600; font-size:var(--text-base); padding:var(--space-3) var(--space-6); transition:background 0.2s; white-space:nowrap; }
+        .brevo-form-button:hover { background:var(--color-primary-hover); }
+        .brevo-captcha { margin-top:var(--space-4); display:flex; justify-content:center; }
+        .brevo-msg { display:none; max-width:520px; margin:0 auto var(--space-3); padding:var(--space-3) var(--space-4); border-radius:var(--radius-md); font-size:var(--text-sm); text-align:left; }
+        .brevo-msg--error { color:#ffd7d7; background:rgba(255,73,73,0.12); border:1px solid rgba(255,73,73,0.45); }
+        .brevo-msg--success { color:#bff5d6; background:rgba(0,212,170,0.10); border:1px solid rgba(0,212,170,0.45); }
+        .input--hidden { position:absolute; left:-9999px; }
+        @media (max-width:520px) { .brevo-form-row { flex-direction:column; } }
       </style>
-      <form action="https://gumroad.com/follow_from_embed_form" method="post" id="gumroad-follow-form-embed">
-        <input type="hidden" name="seller_id" value="1252580072725"/>
-        <input id="gumroad-follow-form-embed-input" type="email" placeholder="Your email address" name="email" value=""/>
-        <button type="submit" id="gumroad-follow-form-embed-button">Subscribe</button>
-      </form>
+      <div class="sib-form brevo-form">
+        <div id="sib-form-container" class="sib-form-container">
+          <div id="error-message" class="sib-form-message-panel brevo-msg brevo-msg--error">
+            <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+              <span class="sib-form-message-panel__inner-text">Your subscription could not be saved. Please try again.</span>
+            </div>
+          </div>
+          <div id="success-message" class="sib-form-message-panel brevo-msg brevo-msg--success">
+            <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+              <span class="sib-form-message-panel__inner-text">You&rsquo;re in. Check your inbox to confirm.</span>
+            </div>
+          </div>
+          <div id="sib-container" class="sib-container--large sib-container--vertical">
+            <form id="sib-form" method="POST" action="https://4f541e8e.sibforms.com/serve/MUIFAKH-ls_YRWPL8uSJhvi6p0yHRylG2XeYSaY1fuD3tHLbVl94xeBL6vFiSmK07sI6ew4fCv1DndtZ960n8CoUl6kjZ0sSL8q2k1kxg-y4SXPu_ICAE_GnVuor2bTf4xW2hlvU2YIJ0n5aotfqaoZNuEapzbqihC41DmkqAwgI-5Bk4lfvfjZPWVsIGrws1zTk-8Ehs8poNlJO8A==" data-type="subscription">
+              <div class="sib-input sib-form-block">
+                <div class="form__entry entry_block">
+                  <div class="form__label-row">
+                    <label class="entry__label" for="EMAIL" style="position:absolute;left:-9999px;">Email address</label>
+                    <div class="entry__field brevo-form-row">
+                      <input class="input brevo-form-input" type="email" id="EMAIL" name="EMAIL" autocomplete="email" placeholder="Your email address" data-required="true" required />
+                      <button class="sib-form-block__button sib-form-block__button-with-loader brevo-form-button" form="sib-form" type="submit">Subscribe</button>
+                    </div>
+                  </div>
+                  <label class="entry__error entry__error--primary"></label>
+                </div>
+              </div>
+              <div class="sib-captcha sib-form-block">
+                <div class="form__entry entry_block">
+                  <div class="form__label-row">
+                    <div class="g-recaptcha sib-visible-recaptcha brevo-captcha" id="sib-captcha" data-sitekey="6LfnmOssAAAAANXtH3oNGOa8mBtuCUqwTyI7tOj8" data-callback="handleCaptchaResponse"></div>
+                  </div>
+                  <label class="entry__error entry__error--primary"></label>
+                </div>
+              </div>
+              <input type="text" name="email_address_check" value="" class="input--hidden" tabindex="-1" autocomplete="off"/>
+              <input type="hidden" name="locale" value="en"/>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- End Brevo Newsletter Signup -->
     </div>
   </div>
 </section>
@@ -406,5 +450,22 @@
 
 <script src="./app.js"></script>
 <script src="./webmcp.js"></script>
+
+<!-- Brevo form runtime -->
+<script>
+  function handleCaptchaResponse(){ var e=new Event('captchaChange'); document.getElementById('sib-captcha').dispatchEvent(e); }
+  window.REQUIRED_CODE_ERROR_MESSAGE='Please choose a country code';
+  window.LOCALE='en';
+  window.EMAIL_INVALID_MESSAGE=window.SMS_INVALID_MESSAGE='The information provided is invalid. Please review the field format and try again.';
+  window.REQUIRED_ERROR_MESSAGE='This field cannot be left blank. ';
+  window.GENERIC_INVALID_MESSAGE='The information provided is invalid. Please review the field format and try again.';
+  window.INVALID_NUMBER='The information provided is invalid. Please review the field format and try again.';
+  window.INVALID_DATE='Please enter a valid date';
+  window.REQUIRED_MULTISELECT_MESSAGE='Please select at least 1 option';
+  window.translation={common:{selectedList:'{quantity} list selected',selectedLists:'{quantity} lists selected',selectedOption:'{quantity} selected',selectedOptions:'{quantity} selected'}};
+  var AUTOHIDE=Boolean(0);
+</script>
+<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?hl=en" async defer></script>
 </body>
 </html>
