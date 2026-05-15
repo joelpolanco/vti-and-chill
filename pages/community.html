@@ -143,6 +143,9 @@
           .vti-brevo #error-message, .vti-brevo #success-message { display:none; max-width:520px !important; margin:0 auto var(--space-3) !important; padding:var(--space-3) var(--space-4) !important; border-radius:var(--radius-md) !important; font-family:var(--font-body) !important; font-size:var(--text-sm) !important; text-align:left !important; }
           .vti-brevo #error-message { color:#ffd7d7 !important; background:rgba(255,73,73,0.12) !important; border:1px solid rgba(255,73,73,0.45) !important; }
           .vti-brevo #success-message { color:#bff5d6 !important; background:rgba(0,212,170,0.10) !important; border:1px solid rgba(0,212,170,0.45) !important; }
+          /* Reveal panels when Brevo's main.js adds the --active class */
+          .vti-brevo #error-message.sib-form-message-panel--active,
+          .vti-brevo #success-message.sib-form-message-panel--active { display:block !important; }
           .vti-brevo .sib-notification__icon path { fill:currentColor; }
         </style>
         <div class="vti-brevo">
