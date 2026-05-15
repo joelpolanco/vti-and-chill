@@ -385,14 +385,7 @@
                   <label class="entry__error entry__error--primary"></label>
                 </div>
               </div>
-              <div class="sib-captcha sib-form-block">
-                <div class="form__entry entry_block">
-                  <div class="form__label-row">
-                    <div class="g-recaptcha sib-visible-recaptcha brevo-captcha" id="sib-captcha" data-sitekey="6LfnmOssAAAAANXtH3oNGOa8mBtuCUqwTyI7tOj8" data-callback="handleCaptchaResponse"></div>
-                  </div>
-                  <label class="entry__error entry__error--primary"></label>
-                </div>
-              </div>
+              <div class="g-recaptcha-v3" data-sitekey="6LfnmOssAAAAANXtH3oNGOa8mBtuCUqwTyI7tOj8" style="display:none"></div>
               <input type="text" name="email_address_check" value="" class="input--hidden" tabindex="-1" autocomplete="off"/>
               <input type="hidden" name="locale" value="en"/>
             </form>
@@ -451,9 +444,8 @@
 <script src="./app.js"></script>
 <script src="./webmcp.js"></script>
 
-<!-- Brevo form runtime -->
+<!-- Brevo form runtime (reCAPTCHA v3 invisible) -->
 <script>
-  function handleCaptchaResponse(){ var e=new Event('captchaChange'); document.getElementById('sib-captcha').dispatchEvent(e); }
   window.REQUIRED_CODE_ERROR_MESSAGE='Please choose a country code';
   window.LOCALE='en';
   window.EMAIL_INVALID_MESSAGE=window.SMS_INVALID_MESSAGE='The information provided is invalid. Please review the field format and try again.';
@@ -466,6 +458,6 @@
   var AUTOHIDE=Boolean(0);
 </script>
 <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
-<script src="https://www.google.com/recaptcha/api.js?hl=en" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LfnmOssAAAAANXtH3oNGOa8mBtuCUqwTyI7tOj8&hl=en" async defer></script>
 </body>
 </html>
