@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFFQRYJTQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PFFQRYJTQ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Lazy Portfolio: How 3 Funds Can Beat Most Hedge Funds | VTI &amp; Chill</title>
+<meta name="description" content="The three-fund portfolio (VTI + VXUS + BND) has delivered 8.14% annualized over 30 years while beating nearly every actively managed fund. Taylor Larimore, Boglehead philosophy, the cognitive load argument for simplicity, and why the hedge fund with 12 PhD analysts probably loses to you.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content em { font-style: italic; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h3 { color: var(--color-primary); margin-bottom: var(--space-2); margin-top: 0; font-weight: 700; font-size: var(--text-lg); }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+  .related-posts { margin: var(--space-10) 0 var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
+  .related-posts h2 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-4); color: var(--color-text); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4); }
+  .related-card { display: block; padding: var(--space-4) var(--space-5); background: var(--color-surface-2, #1c2333); border: 1px solid var(--color-border); border-radius: var(--radius-lg); text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+  .related-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-card .related-eyebrow { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-2); display: block; }
+  .related-card .related-title { font-family: var(--font-display); font-weight: 600; font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-1); line-height: 1.35; }
+  .related-card .related-blurb { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+</style>
+
+  <!-- SEO: Canonical & Keywords -->
+  <link rel="canonical" href="https://www.vtiandchill.com/pages/blog/lazy-portfolio-three-funds.html">
+  <meta name="keywords" content="three fund portfolio, lazy portfolio, Boglehead investing, VTI VXUS BND, Taylor Larimore, three fund strategy, index fund portfolio, Bogleheads guide, passive investing, VTI and chill">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="VTI & Chill">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Lazy Portfolio: How 3 Funds Can Beat Most Hedge Funds">
+  <meta property="og:description" content="8.14% annualized over 30 years. Three funds. Zero Bloomberg terminals. The three-fund portfolio isn't a beginner strategy — it's the final destination serious investors arrive at after trying everything else.">
+  <meta property="og:url" content="https://www.vtiandchill.com/pages/blog/lazy-portfolio-three-funds.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="VTI & Chill">
+  <meta property="article:published_time" content="2026-05-25T00:00:00Z">
+  <meta property="article:author" content="VTI & Chill">
+  <meta property="article:section" content="Portfolio Construction">
+  <meta property="article:tag" content="three fund portfolio">
+  <meta property="article:tag" content="Boglehead investing">
+  <meta property="article:tag" content="lazy portfolio">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VTIandChill">
+  <meta name="twitter:title" content="The Lazy Portfolio: How 3 Funds Can Beat Most Hedge Funds">
+  <meta name="twitter:description" content="8.14% annualized over 30 years. Three funds. Zero Bloomberg terminals. The three-fund portfolio isn't a beginner strategy — it's the final destination serious investors arrive at after trying everything else.">
+  <meta name="twitter:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Lazy Portfolio: How 3 Funds Can Beat Most Hedge Funds",
+  "description": "The three-fund portfolio (VTI + VXUS + BND) has delivered 8.14% annualized over 30 years while beating nearly every actively managed fund. Taylor Larimore, Boglehead philosophy, and why lazy wins.",
+  "url": "https://www.vtiandchill.com/pages/blog/lazy-portfolio-three-funds.html",
+  "datePublished": "2026-05-25",
+  "dateModified": "2026-05-25",
+  "author": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/lazy-portfolio-three-funds.html"
+  },
+  "keywords": [
+    "three fund portfolio",
+    "lazy portfolio",
+    "Boglehead investing",
+    "VTI VXUS BND",
+    "Taylor Larimore",
+    "Jack Bogle",
+    "SPIVA active vs passive",
+    "index fund portfolio",
+    "passive investing",
+    "Bogleheads guide"
+  ],
+  "articleSection": "Portfolio Construction",
+  "wordCount": 1100,
+  "about": [
+    {
+      "@type": "Person",
+      "name": "John Bogle"
+    },
+    {
+      "@type": "Person",
+      "name": "Taylor Larimore"
+    },
+    {
+      "@type": "Organization",
+      "name": "Vanguard"
+    },
+    {
+      "@type": "Organization",
+      "name": "Bogleheads"
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: FAQ (JSON-LD) — GEO/AEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the three-fund portfolio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The three-fund portfolio is a simple investing strategy using just three index funds to cover essentially all investable assets: a US total stock market fund (VTI or VTSAX), an international total market fund (VXUS or VTIAX), and a US bond market fund (BND or VBTLX). The percentages of each fund depend on the investor's age, risk tolerance, and time horizon — with a common framework being your age in bonds (or age minus 10 to 20 for more aggressive allocations). The strategy was popularized by the Bogleheads community and Taylor Larimore, who argued in The Bogleheads' Guide to the Three-Fund Portfolio that 99% of investors need nothing more complex."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How has the three-fund portfolio performed historically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Over 30 years through February 2026, the Bogleheads Three-Fund Portfolio delivered an 8.14% compound annual return with a standard deviation of 12.43% and a maximum drawdown of -43.68%. That return, achieved with three funds and zero active management, beats the long-term average of nearly every actively managed fund after fees. SPIVA data consistently shows that roughly 90% of actively managed funds underperform their benchmarks over 15-year periods. The three-fund portfolio outperforms by staying fully invested, minimizing costs, and avoiding the behavioral errors that active trading creates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is the lazy portfolio called 'lazy'?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 'lazy' label refers to the minimal ongoing work required by the strategy, not to the investors who use it. The effort is front-loaded: choosing an asset allocation, opening a brokerage account, setting up automatic contributions. After that, the system runs on autopilot with just an annual rebalancing check. This structural laziness is actually the strategy's greatest strength — it eliminates the constant tinkering that creates opportunities for behavioral errors like buying high, selling low, and chasing performance. John Bogle's famous advice 'don't just do something, stand there' captures this insight. The lazy portfolio makes good behavior — staying invested, not reacting — the path of least resistance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much should a young investor put in bonds in the three-fund portfolio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For investors under 40 with a 30+ year time horizon, the VTI & Chill approach recommends minimal bond allocation — 0-15% depending on individual risk tolerance. The math is clear: over very long periods, equities have always outperformed bonds. Bonds are primarily volatility reducers, not return enhancers. A young investor's greatest asset is time, which turns equity volatility from a risk into an opportunity — you're buying more shares at lower prices during downturns. The classic 'age in bonds' rule (age 30 = 30% bonds) was designed for an era of higher bond yields and shorter lifespans. With people now living to 85-90 routinely, aggressive equity allocation early in life is well-supported by the math."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the factor-tilted version of the three-fund portfolio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The factor-tilted version of the lazy portfolio — what we call the Better tier — adds two Avantis factor ETFs to the three-fund core: 60% VTI (US total market), 20% AVUV (US small cap value), 10% AVDV (international small cap value), and 10% BND (bonds). This four-fund version maintains simplicity while capturing the small cap value and international factor premiums documented in the Fama-French research. Annual rebalancing takes approximately 20 minutes. The total fund count stays low, the philosophy stays simple, and you've added two academically supported return enhancements to the classic Boglehead framework."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.vtiandchill.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.vtiandchill.com/pages/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The Lazy Portfolio: How 3 Funds Can Beat Most Hedge Funds",
+      "item": "https://www.vtiandchill.com/pages/blog/lazy-portfolio-three-funds.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI & <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Portfolio Construction</span>
+          <span>May 25, 2026</span>
+          <span>4 min read</span>
+        </div>
+        <h1>The Lazy Portfolio: How 3 Funds Can Beat Most Hedge Funds</h1>
+        <p class="blog-post-subtitle">The three-fund portfolio isn't a beginner strategy — it's the final destination that sophisticated investors arrive at after trying everything else, and the data backs it up completely.</p>
+      </div>
+
+      <div class="blog-post-content">
+
+        <p>The hedge fund manager walks into the office at 6 AM. She has three Bloomberg terminals, a team of twelve PhD analysts, proprietary machine learning models trained on 50 years of market microstructure data, and access to satellite imagery of retail parking lots to gauge consumer spending in real time.</p>
+
+        <p>You wake up, make coffee, open your brokerage app, and buy three index funds.</p>
+
+        <p>Guess who wins over the next 30 years? There's a 90% chance it's you — and that's not a motivational platitude. That's what SPIVA data consistently shows when comparing actively managed funds to their benchmarks over long periods. The lazy portfolio isn't an apology for not doing more. It's the final destination that sophisticated investors eventually arrive at after trying everything else.</p>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-value">8.14%</div>
+            <div class="stat-label">30-year compound annual return of the Bogleheads Three-Fund Portfolio (through Feb 2026)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">~90%</div>
+            <div class="stat-label">Active managers that underperform their benchmark over 15 years (SPIVA)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">0.03%</div>
+            <div class="stat-label">VTI expense ratio vs. 2% + 20% profits for most hedge funds</div>
+          </div>
+        </div>
+
+        <h2>The Classic Three-Fund Portfolio</h2>
+
+        <p>The three-fund portfolio is so simple it feels wrong. Three funds. That's the whole strategy.</p>
+
+        <ol>
+          <li><strong>US Total Stock Market</strong> (VTI or VTSAX) — Your core US equity exposure</li>
+          <li><strong>International Total Market</strong> (VXUS or VTIAX) — Your global equity diversification</li>
+          <li><strong>US Bond Market</strong> (BND or VBTLX) — Your defensive ballast</li>
+        </ol>
+
+        <p>The percentages are where you exercise your only real variable: how much of each. The classic <a href="https://www.bogleheads.org/wiki/Three-fund_portfolio" target="_blank" rel="noopener">Boglehead framework</a> suggests something like your age in bonds (though many modern investors push this to "age minus 10" or "age minus 20" given longer lifespans and lower bond yields). A 35-year-old might do 65% VTI, 25% VXUS, 10% BND. A 60-year-old might shift to 50% VTI, 20% VXUS, 30% BND.</p>
+
+        <p>The performance data is genuinely impressive. Over 30 years through February 2026, the Bogleheads Three-Fund Portfolio delivered an 8.14% compound annual return — with a standard deviation of 12.43% and a maximum drawdown of -43.68%. That return, achieved with three funds and zero active management, beats the long-term average of nearly every actively managed fund after fees.</p>
+
+        <h2>The History Behind the Three-Fund Idea</h2>
+
+        <p>The three-fund portfolio didn't emerge from a think tank or a hedge fund research paper. It emerged from ordinary investors on the Bogleheads forum — a community of John Bogle devotees who were obsessed with minimizing cost and maximizing simplicity. The forum has been around since the early 2000s, and the three-fund idea has been stress-tested by millions of real investors through the dot-com crash, 9/11, the 2008 financial crisis, the 2020 pandemic crash, and every market wobble in between.</p>
+
+        <p>The key insight the Bogleheads figured out early: there are only two types of investment risk worth caring about. First, equity risk — the chance that stocks fall. Second, inflation risk — the chance that your purchasing power erodes. Stocks protect against inflation and deliver long-term growth. Bonds provide stability when stocks crash. International exposure reduces country concentration risk. Three asset classes. Three funds. Done.</p>
+
+        <p>Taylor Larimore, often called the "King of the Bogleheads," has championed the three-fund portfolio for decades. In his book <em>The Bogleheads' Guide to the Three-Fund Portfolio</em>, he makes the case that 99% of investors need nothing more complex than these three funds. He's not speaking in hyperbole. The math simply doesn't support adding more funds beyond this foundation for most investors — the complexity cost outweighs any theoretical benefit.</p>
+
+        <div class="callout-box">
+          <h3>Why more funds usually means worse results</h3>
+          <p>Every investing decision is an opportunity for behavioral error. The more you tinker, the more chances you have to buy high, sell low, chase performance, or panic. Studies consistently show that actual investor returns lag fund returns because people buy after rallies and sell after crashes. A complex 12-fund portfolio — no matter how well-optimized on paper — gives your emotions twelve different levers to pull at the wrong time. The three-fund portfolio is designed to make good behavior (staying invested, not reacting) the path of least resistance. That's not a compromise. That's the whole strategy.</p>
+        </div>
+
+        <h2>Why "Lazy" Is Actually the Optimal Strategy</h2>
+
+        <p>The word "lazy" in this context is slightly misleading. The lazy portfolio isn't lazy because its investors aren't trying — it's lazy because the strategy itself requires minimal ongoing work. The "effort" was front-loaded: choosing an asset allocation, opening a brokerage account, setting up automatic contributions. After that, the system runs on autopilot.</p>
+
+        <p>This matters more than most people appreciate. John Bogle, founder of Vanguard, understood this intuitively. His core message — often paraphrased as "don't just do something, stand there" — was backed by decades of data showing that investor behavior destroys returns. The three-fund portfolio, with its simple structure and automatic rebalancing mechanics, is designed to make good behavior the path of least resistance.</p>
+
+        <p>There's also a cognitive load argument. Managing a complex portfolio requires constant attention, periodic reassessment, and ongoing education. The three-fund portfolio frees up mental bandwidth for literally everything else in your life. You can spend your intellectual energy on your career, your relationships, your hobbies — and your money can grow on autopilot.</p>
+
+        <h2>The VTI &amp; Chill Versions: Simple to Factor-Tilted</h2>
+
+        <p>The classic three-fund portfolio is excellent. We offer a spectrum of versions to match your situation:</p>
+
+        <table>
+          <thead><tr><th>Version</th><th>Allocation</th><th>Who it's for</th></tr></thead>
+          <tbody>
+            <tr><td>Two-Fund Simple</td><td>90% VTI / 10% BND</td><td>Young investors, maximum simplicity</td></tr>
+            <tr><td>Classic Three-Fund</td><td>65% VTI / 25% VXUS / 10% BND</td><td>Most investors, the Boglehead default</td></tr>
+            <tr><td>Factor-Tilted (Better Tier)</td><td>60% VTI / 20% AVUV / 10% AVDV / 10% BND</td><td>Factor-aware investors adding SCV tilt</td></tr>
+          </tbody>
+        </table>
+
+        <p>None of these portfolios will make for exciting dinner conversation. You won't have stories about the hot sector you rotated into at just the right time, or the single stock you picked that tripled. What you will have, after 20 or 30 years, is a significantly larger account than the person next to you who was always chasing the next thing.</p>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>The lazy portfolio is one of the most validated strategies in finance. Three funds — US stocks, international stocks, bonds — cover the investable world, require minimal maintenance, and consistently outperform the vast majority of actively managed alternatives over long periods. The Boglehead principle has been battle-tested by millions of real investors through every major market disaster of the past three decades.</p>
+          <p>The hedge fund manager with the PhD team and the satellite imagery? She's charging 2% plus 20% of profits for the privilege of likely trailing your returns. You're paying 0.03% to 0.25% for funds that do exactly what they say on the label.</p>
+          <p>Lazy wins. Not because laziness is a virtue, but because the strategy itself eliminates the behavioral mistakes that destroy returns — and because an 8.14% annualized compound return over 30 years, with zero stock picks and zero market timing, is a genuinely extraordinary outcome that most professional investors fail to match.</p>
+        </div>
+
+
+        <!-- related-posts:start -->
+        <section class="related-posts" aria-label="Related posts">
+          <h2>Keep reading</h2>
+          <div class="related-grid">
+      <a href="./one-fund-vti-case.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">One Fund to Rule Them All: The Case for VTI</div>
+        <p class="related-blurb">If three funds feels like too much, here's why a single fund covers everything most investors ever need.</p>
+      </a>
+      <a href="./good-better-best-portfolios.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">Good, Better, Best: Which Portfolio Tier Is Right for You?</div>
+        <p class="related-blurb">How the three-fund portfolio fits into the broader Good-Better-Best framework and when to upgrade.</p>
+      </a>
+      <a href="./index-funds-beat-fund-managers.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">Why Index Funds Beat Active Fund Managers</div>
+        <p class="related-blurb">The SPIVA data and academic case for why passive beats active over virtually every long time horizon.</p>
+      </a>
+          </div>
+        </section>
+        <!-- related-posts:end -->
+
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>

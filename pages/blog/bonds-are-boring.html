@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFFQRYJTQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PFFQRYJTQ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonds Are Boring (And That's Exactly Why You Need Them) | VTI &amp; Chill</title>
+<meta name="description" content="Bonds don't generate viral posts. But in 2008-2009, they kept investors from panic-selling at the bottom. The behavioral case for BND, the 2022 bond disaster explained through duration risk, Paul Merriman's bond allocation, and the updated age-minus-20 rule for long-lived investors.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content em { font-style: italic; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h3 { color: var(--color-primary); margin-bottom: var(--space-2); margin-top: 0; font-weight: 700; font-size: var(--text-lg); }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+  .related-posts { margin: var(--space-10) 0 var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
+  .related-posts h2 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-4); color: var(--color-text); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4); }
+  .related-card { display: block; padding: var(--space-4) var(--space-5); background: var(--color-surface-2, #1c2333); border: 1px solid var(--color-border); border-radius: var(--radius-lg); text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+  .related-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-card .related-eyebrow { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-2); display: block; }
+  .related-card .related-title { font-family: var(--font-display); font-weight: 600; font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-1); line-height: 1.35; }
+  .related-card .related-blurb { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+</style>
+
+  <!-- SEO: Canonical & Keywords -->
+  <link rel="canonical" href="https://www.vtiandchill.com/pages/blog/bonds-are-boring.html">
+  <meta name="keywords" content="bonds portfolio, BND Vanguard bond ETF, 60 40 portfolio, bond allocation age, bond duration risk 2022, TIPS inflation protection, AVIG Avantis bond ETF, age minus 20 rule, Paul Merriman bonds, behavioral finance bonds">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="VTI & Chill">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bonds Are Boring (And That's Exactly Why You Need Them)">
+  <meta property="og:description" content="Bonds don't go viral. But in 2008-2009, they kept investors from panic-selling at the market bottom. The behavioral case for BND, the 2022 duration disaster, and how much you actually need.">
+  <meta property="og:url" content="https://www.vtiandchill.com/pages/blog/bonds-are-boring.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="VTI & Chill">
+  <meta property="article:published_time" content="2026-05-29T00:00:00Z">
+  <meta property="article:author" content="VTI & Chill">
+  <meta property="article:section" content="Asset Allocation">
+  <meta property="article:tag" content="bonds portfolio">
+  <meta property="article:tag" content="BND ETF">
+  <meta property="article:tag" content="60 40 portfolio">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VTIandChill">
+  <meta name="twitter:title" content="Bonds Are Boring (And That's Exactly Why You Need Them)">
+  <meta name="twitter:description" content="Bonds don't go viral. But in 2008-2009, they kept investors from panic-selling at the market bottom. The behavioral case for BND, the 2022 duration disaster, and how much you actually need.">
+  <meta name="twitter:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Bonds Are Boring (And That's Exactly Why You Need Them)",
+  "description": "The behavioral case for bonds: why BND keeps investors from panic-selling, the 2022 duration disaster, and the updated age-minus-20 allocation rule for long-lived investors.",
+  "url": "https://www.vtiandchill.com/pages/blog/bonds-are-boring.html",
+  "datePublished": "2026-05-29",
+  "dateModified": "2026-05-29",
+  "author": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/bonds-are-boring.html"
+  },
+  "keywords": [
+    "bonds portfolio",
+    "BND Vanguard bond ETF",
+    "60 40 portfolio",
+    "bond allocation age",
+    "bond duration risk 2022",
+    "TIPS inflation protection",
+    "AVIG Avantis bond ETF",
+    "100 minus age rule",
+    "Paul Merriman bonds",
+    "behavioral finance bonds"
+  ],
+  "articleSection": "Asset Allocation",
+  "wordCount": 1200,
+  "about": [
+    {
+      "@type": "Person",
+      "name": "Paul Merriman"
+    },
+    {
+      "@type": "Organization",
+      "name": "Vanguard"
+    },
+    {
+      "@type": "Organization",
+      "name": "Federal Reserve"
+    },
+    {
+      "@type": "Organization",
+      "name": "Avantis Investors"
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: FAQ (JSON-LD) — GEO/AEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What do bonds actually do in a portfolio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bonds serve one primary purpose in a portfolio: keeping you from panic-selling your stocks during market crashes. They're not primarily about generating returns. When the stock market drops 40%, a portfolio with 20% bonds drops significantly less than a 100% equity portfolio. That smaller drop makes it psychologically easier to stay invested — and staying invested through the recovery is where most of the long-term wealth is made. Bonds are portfolio insurance against your own worst behavioral instincts. They also provide stability during bear markets and serve as a rebalancing source: when stocks crash, you sell bonds to buy more stocks at lower prices, automatically forcing disciplined buy-low behavior."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much should I hold in bonds based on my age?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The classic rule is '100 minus your age' in stocks (the rest in bonds): age 30 = 70% stocks, 30% bonds; age 50 = 50/50. But this rule is outdated for people with normal life expectancies of 85-90. Modern financial planning has updated to '110 minus your age' or even '120 minus your age' to account for longer retirements. The VTI & Chill recommendation: if you're under 40, you probably need minimal bond allocation (0-15%). Your time horizon is long enough that equity volatility is your friend. As you approach 50 and beyond, gradually increasing to 20-30% in bonds provides meaningful psychological stability. At retirement, a 50/50 or 40/60 stock/bond split better matches a 20-30 year spending horizon."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why did bonds lose money in 2022?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bonds lost money in 2022 because the Federal Reserve raised interest rates at the fastest pace in decades to combat inflation. When interest rates rise, bond prices fall — this is an iron law of bond math. Long-duration bonds (those with longer maturities) fall the most: a 30-year Treasury might lose 25-30% in a rapid rate-hiking environment, while a short-term bond might lose only 3-5%. The Bloomberg US Aggregate Bond Index (which BND tracks) dropped roughly 13% in 2022 — its worst year since the index's inception. This isn't a sign that bonds are 'broken' — it's an argument for keeping bond durations moderate and considering short-term bonds or TIPS if inflation and rate risk are concerns."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best bond ETF for an index investor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BND (Vanguard Total Bond Market ETF, 0.03% expense ratio) is the most straightforward choice — the bond equivalent of VTI. It holds the entire investment-grade US bond market: government bonds, corporate bonds, and mortgage-backed securities, with an average duration of around 6 years. For investors using Avantis equity ETFs throughout their portfolio, AVIG (Avantis Core Fixed Income ETF, 0.15%) applies the same factor methodology to bonds, tilting toward higher-yield, shorter-duration bonds for potentially better risk-adjusted returns. For inflation protection specifically, VTIP (Vanguard Short-Term TIPS ETF) adjusts principal with inflation, making it a genuine inflation hedge that nominal bonds can't provide."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Paul Merriman's recommended bond allocation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Paul Merriman's bond recommendation for the fixed income portion of a portfolio skews shorter-duration than a plain total bond market fund to reduce interest rate risk: approximately 50% intermediate-term Treasuries, 30% short-term Treasuries, and 20% short-term TIPS (Treasury Inflation-Protected Securities). This approach specifically avoids the long-duration bond exposure that burned investors holding long-term Treasury funds during the 2022 rate-hiking cycle, while maintaining inflation protection through the TIPS allocation. For most individual investors building the Better or Best portfolio, this level of bond-portfolio sophistication is optional — BND handles the basics well — but it's the gold standard for those willing to manage three bond positions."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.vtiandchill.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.vtiandchill.com/pages/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Bonds Are Boring (And That's Exactly Why You Need Them)",
+      "item": "https://www.vtiandchill.com/pages/blog/bonds-are-boring.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI & <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Asset Allocation</span>
+          <span>May 29, 2026</span>
+          <span>5 min read</span>
+        </div>
+        <h1>Bonds Are Boring (And That's Exactly Why You Need Them)</h1>
+        <p class="blog-post-subtitle">Nobody posts about their bond allocation going up 2%. But in 2008-2009, bonds were the single thing standing between disciplined investors and the worst financial decision of their lives.</p>
+      </div>
+
+      <div class="blog-post-content">
+
+        <p>Nobody has ever gone to a party and said, "You'll never guess what happened with my bond allocation this year." Bonds don't go viral. Bonds don't have Reddit communities with rocket emojis and diamond-hand memes. Bonds don't make you feel like a financial genius at Thanksgiving dinner.</p>
+
+        <p>Bonds are the un-sexy, slightly-too-sensible friend who never does anything interesting — until the world falls apart, and suddenly that friend is the most important person you know.</p>
+
+        <p>That's bonds. Boring by design. Essential by function. Misunderstood by almost everyone.</p>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-value">-13%</div>
+            <div class="stat-label">Bloomberg US Aggregate Bond Index return in 2022 — worst year since inception</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">-30%</div>
+            <div class="stat-label">Long-term Treasury bond loss in 2022 during Fed rate hikes</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">60/40</div>
+            <div class="stat-label">Classic stock/bond split that empirically keeps investors from panic-selling</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">0.03%</div>
+            <div class="stat-label">BND expense ratio — total bond market access for nearly free</div>
+          </div>
+        </div>
+
+        <h2>What Bonds Actually Do (It's Not What You Think)</h2>
+
+        <p>Most people think of bonds as the "safe" part of a portfolio — the low-return alternative for people who are too scared of stocks. That framing is wrong in two ways.</p>
+
+        <p>First, bonds aren't perfectly safe. <a href="https://www.kiplinger.com/investing/100-minus-your-age-rule-easiest-asset-allocation-strategy" target="_blank" rel="noopener">Long-term Treasury bonds lost roughly 30% of their value in 2022</a> as interest rates surged — a worse decline than many stock bear markets. Short-term bonds fared much better. Bond volatility is real.</p>
+
+        <p>Second, bonds aren't primarily about generating returns. They're about managing the behavioral risk of a pure equity portfolio. Here's the real job description of bonds in your portfolio:</p>
+
+        <blockquote>To keep you from panic-selling your stocks.</blockquote>
+
+        <p>That sounds almost insultingly simple. But it's the core function, and it's enormously valuable. When the market drops 40%, a portfolio with 20% bonds drops significantly less than a 100% equity portfolio. That smaller drop means you're less likely to look at your account balance, feel sick, and hit the sell button. And as we've covered elsewhere on this blog, panic-selling is the single most expensive mistake you can make as an investor.</p>
+
+        <p>The classic 60/40 portfolio (60% stocks, 40% bonds) exists precisely because empirical research shows that most investors cannot emotionally handle a pure equity portfolio through major bear markets. The bonds aren't there to maximize returns — they're there to keep you in the game when your lizard brain is screaming at you to get out.</p>
+
+        <h2>The Age-Based Allocation Question</h2>
+
+        <p>How much should you hold in bonds? The most famous rule of thumb is <a href="https://www.kiplinger.com/investing/100-minus-your-age-rule-easiest-asset-allocation-strategy" target="_blank" rel="noopener">the "100 minus your age" formula</a>: subtract your age from 100 to get your stock allocation percentage, with the remainder in bonds.</p>
+
+        <ul>
+          <li>Age 25: 75% stocks, 25% bonds</li>
+          <li>Age 50: 50% stocks, 50% bonds</li>
+          <li>Age 70: 30% stocks, 70% bonds</li>
+        </ul>
+
+        <p>This rule has the virtue of being simple and automatically shifting you toward more conservative allocations as you age — which is logical, since you have less time to recover from a major market downturn.</p>
+
+        <p>But the rule is showing its age. It was developed in an era of higher bond yields and shorter life expectancies. With people living to 85-90 routinely, a 70-year-old retiree might have a 20+ year time horizon. Putting 70% in bonds at 70 may leave you too conservative for that timeline.</p>
+
+        <p>Modern financial planning has updated the formula to "110 minus your age" or even "120 minus your age" for healthier, longer-lived investors:</p>
+
+        <table>
+          <thead><tr><th>Rule</th><th>Age 30</th><th>Age 55</th><th>Age 70</th></tr></thead>
+          <tbody>
+            <tr><td>100 minus age (classic)</td><td>70% stocks / 30% bonds</td><td>45% stocks / 55% bonds</td><td>30% stocks / 70% bonds</td></tr>
+            <tr><td>110 minus age (updated)</td><td>80% stocks / 20% bonds</td><td>55% stocks / 45% bonds</td><td>40% stocks / 60% bonds</td></tr>
+            <tr><td>120 minus age (aggressive)</td><td>90% stocks / 10% bonds</td><td>65% stocks / 35% bonds</td><td>50% stocks / 50% bonds</td></tr>
+          </tbody>
+        </table>
+
+        <p>The VTI &amp; Chill philosophy: <strong>if you're under 40, you probably need minimal bond allocation (0-15%)</strong>. Your time horizon is long enough that equity volatility is your friend — you're buying more shares at lower prices during downturns. As you approach 50 and beyond, gradually increasing your bond allocation to 20-30% provides a psychological cushion and actual portfolio stability when you can't afford major drawdowns.</p>
+
+        <h2>Which Bonds? A Quick Tour</h2>
+
+        <p>Not all bonds are created equal. The main options for index investors:</p>
+
+        <p><strong>BND (Vanguard Total Bond Market ETF)</strong> — 0.03% expense ratio. The bond equivalent of VTI: holds essentially the entire investment-grade US bond market. A mix of government bonds, corporate bonds, and mortgage-backed securities. This is the bond fund most Bogleheads reach for first, and for good reason — it's extremely cheap, highly diversified, and liquid. Average duration of around 6 years.</p>
+
+        <p><strong>AVIG (Avantis Core Fixed Income ETF)</strong> — 0.15% expense ratio. Avantis's bond offering uses their factor methodology to tilt toward bonds with characteristics associated with higher expected returns (higher yield, shorter duration). For investors who are already using Avantis equity ETFs and want a consistent philosophy throughout their portfolio.</p>
+
+        <p><strong>Treasury Inflation-Protected Securities (TIPS)</strong>: TIPS adjust their principal value with inflation, making them genuine inflation hedges in a way that nominal bonds are not. Available through VTIP (Vanguard Short-Term TIPS ETF, 0.04%) or similar funds.</p>
+
+        <p><a href="https://www.paulmerriman.com/ultimate-buy-and-hold-2026" target="_blank" rel="noopener">Paul Merriman's bond recommendation</a> for the fixed income portion skews shorter-duration than BND: approximately 50% intermediate-term Treasuries, 30% short-term Treasuries, 20% short-term TIPS. This specifically avoids the duration risk that burned long-bond holders in 2022.</p>
+
+        <h2>The 2022 Bond Disaster: A Lesson in Duration Risk</h2>
+
+        <p>Let's address the elephant in the room: bonds were brutal in 2022.</p>
+
+        <p>As the Federal Reserve raised interest rates at the fastest pace in decades to fight inflation, bond prices fell sharply — and long-duration bonds fell the most. The Bloomberg US Aggregate Bond Index dropped roughly 13% in 2022, its worst year since the index's inception. Long-term Treasury funds lost 30% or more.</p>
+
+        <p>The lesson isn't that bonds are bad. It's that <strong>bond duration matters enormously</strong>. When interest rates rise, the prices of long-term bonds fall much more than short-term bonds. A short-term bond might drop 3-5% in a rate spike; a 30-year Treasury might drop 25-30%.</p>
+
+        <div class="callout-box">
+          <h3>Duration risk: the concept every bond investor needs</h3>
+          <p>Duration measures a bond's sensitivity to interest rate changes. A bond with a duration of 5 years will lose approximately 5% of its value for every 1 percentage point rise in interest rates. BND has an average duration of around 6 years — manageable. A long-term Treasury ETF might have a duration of 20+ years, meaning a 2-percentage-point rate hike (which happened in 2022) could cause a 40%+ loss. For individual investors, this argues for keeping bond durations moderate. If you're particularly concerned about inflation and rate risk, short-term bond funds or TIPS provide more stability than a total bond market fund.</p>
+        </div>
+
+        <h2>The Behavioral Case: One More Time</h2>
+
+        <p>We keep returning to the behavioral argument because it matters more than the return math.</p>
+
+        <p>A Vanguard study of investors during the 2008-2009 financial crisis found that those who held a traditional balanced portfolio (with bonds) were far less likely to panic-sell than those with all-equity portfolios. The smaller drawdown wasn't just about losing less money in the moment — it was about staying invested through the recovery.</p>
+
+        <p>The S&amp;P 500 bottomed in March 2009 and went on to deliver one of the greatest bull markets in history. Investors who bailed at or near the bottom missed most of that recovery. Their bonds — boring, returns-dampening bonds — were the thing that kept them from making the worst financial decision of their lives.</p>
+
+        <p>A 100% equity portfolio theoretically maximizes your expected return. A portfolio you panic-sell at the worst moment delivers zero expected return on the portion you sold. Bonds are portfolio insurance against your own worst instincts.</p>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>Bonds are boring. That's not a bug — it's the product description. They exist to dampen volatility, reduce drawdowns, and keep you emotionally invested in your portfolio when markets get terrifying. The best thing bonds do is prevent you from doing something stupid with your stocks.</p>
+          <p>Your bond allocation should grow as you age: minimal in your 20s and 30s, moderate in your 40s and 50s, meaningful (though probably not dominant) in retirement. BND is the simplest vehicle at 0.03% expense ratio. AVIG works well if you're an Avantis investor throughout. Keep durations moderate — the 2022 rate cycle showed exactly what long-duration bond exposure can cost.</p>
+          <p>The service bonds provide — keeping you in the game through panics — is worth whatever return you give up by holding them. That's not a small thing. That's the entire game.</p>
+        </div>
+
+
+        <!-- related-posts:start -->
+        <section class="related-posts" aria-label="Related posts">
+          <h2>Keep reading</h2>
+          <div class="related-grid">
+      <a href="./lazy-portfolio-three-funds.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">The Lazy Portfolio: How 3 Funds Can Beat Most Hedge Funds</div>
+        <p class="related-blurb">BND is the third fund in the classic three-fund portfolio — here's the full framework.</p>
+      </a>
+      <a href="./psychology-of-staying-the-course.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">The Psychology of Staying the Course</div>
+        <p class="related-blurb">Why bonds work: the behavioral research on panic-selling and what keeps investors in the game.</p>
+      </a>
+      <a href="./dollar-cost-averaging.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">Dollar-Cost Averaging: The Boring Strategy That Wins</div>
+        <p class="related-blurb">Consistent automatic investing — combined with a bond cushion — is how ordinary investors build wealth.</p>
+      </a>
+          </div>
+        </section>
+        <!-- related-posts:end -->
+
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>

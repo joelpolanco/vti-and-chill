@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFFQRYJTQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PFFQRYJTQ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Factor Investing Explained: Value, Size, and Momentum | VTI &amp; Chill</title>
+<meta name="description" content="The five factors that actually matter — market beta, size (SMB), value (HML), profitability (RMW), and momentum — explained without the lab coat. Fama-French three- and five-factor models, why AVUV combines value and profitability, and how to implement factor tilts without a PhD.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content em { font-style: italic; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h3 { color: var(--color-primary); margin-bottom: var(--space-2); margin-top: 0; font-weight: 700; font-size: var(--text-lg); }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+  .related-posts { margin: var(--space-10) 0 var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
+  .related-posts h2 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-4); color: var(--color-text); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4); }
+  .related-card { display: block; padding: var(--space-4) var(--space-5); background: var(--color-surface-2, #1c2333); border: 1px solid var(--color-border); border-radius: var(--radius-lg); text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+  .related-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-card .related-eyebrow { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-2); display: block; }
+  .related-card .related-title { font-family: var(--font-display); font-weight: 600; font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-1); line-height: 1.35; }
+  .related-card .related-blurb { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+</style>
+
+  <!-- SEO: Canonical & Keywords -->
+  <link rel="canonical" href="https://www.vtiandchill.com/pages/blog/factor-investing-explained.html">
+  <meta name="keywords" content="factor investing explained, Fama French five factor model, value factor HML, size factor SMB, momentum factor, profitability factor RMW, AVUV factor ETF, value premium investing, small cap premium, VTI and chill">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="VTI & Chill">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Factor Investing Explained: Value, Size, and Momentum">
+  <meta property="og:description" content="Five factors. Decades of peer-reviewed research. One honest guide. The Fama-French model explained without the Greek letters — and how to actually implement it with ETFs anyone can buy.">
+  <meta property="og:url" content="https://www.vtiandchill.com/pages/blog/factor-investing-explained.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="VTI & Chill">
+  <meta property="article:published_time" content="2026-06-05T00:00:00Z">
+  <meta property="article:author" content="VTI & Chill">
+  <meta property="article:section" content="Factor Investing">
+  <meta property="article:tag" content="factor investing">
+  <meta property="article:tag" content="Fama French model">
+  <meta property="article:tag" content="value premium">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VTIandChill">
+  <meta name="twitter:title" content="Factor Investing Explained: Value, Size, and Momentum">
+  <meta name="twitter:description" content="Five factors. Decades of peer-reviewed research. One honest guide. The Fama-French model explained without the Greek letters — and how to actually implement it with ETFs anyone can buy.">
+  <meta name="twitter:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Factor Investing Explained: Value, Size, and Momentum",
+  "description": "The five factors that actually matter — market beta, size (SMB), value (HML), profitability (RMW), and momentum — explained without the lab coat, plus practical ETF implementations.",
+  "url": "https://www.vtiandchill.com/pages/blog/factor-investing-explained.html",
+  "datePublished": "2026-06-05",
+  "dateModified": "2026-06-05",
+  "author": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/factor-investing-explained.html"
+  },
+  "keywords": [
+    "factor investing explained",
+    "Fama French five factor model",
+    "value factor HML",
+    "size factor SMB",
+    "momentum factor investing",
+    "profitability factor RMW",
+    "AVUV AVLV AVDV AVES",
+    "value premium",
+    "Warren Buffett value investing",
+    "Dimensional Fund Advisors"
+  ],
+  "articleSection": "Factor Investing",
+  "wordCount": 1400,
+  "about": [
+    {
+      "@type": "Person",
+      "name": "Eugene Fama"
+    },
+    {
+      "@type": "Person",
+      "name": "Kenneth French"
+    },
+    {
+      "@type": "Person",
+      "name": "Warren Buffett"
+    },
+    {
+      "@type": "Organization",
+      "name": "Avantis Investors"
+    },
+    {
+      "@type": "Organization",
+      "name": "Dimensional Fund Advisors"
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: FAQ (JSON-LD) — GEO/AEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is factor investing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Factor investing is the practice of systematically tilting a portfolio toward stocks with characteristics that have historically been associated with higher-than-market returns over long periods. A factor is a measurable characteristic — like small company size, low valuation relative to fundamentals, or high profitability — that explains why certain groups of stocks have historically earned higher returns. The key requirements for a 'real' factor are that it must be persistent (works across decades), pervasive (works in multiple countries), robust (survives different measurement methods), and have a rational explanation for why it should persist. Factor investing is distinct from stock picking or market timing — it's a systematic, rules-based approach grounded in peer-reviewed academic research."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the Fama-French factors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The original Fama-French three-factor model (1992) identified three factors that explain much of the variation in stock returns: the market factor (stocks beat bonds over time), SMB or Small Minus Big (small-cap stocks outperform large-cap), and HML or High Minus Low (value stocks — those trading at low prices relative to book value — outperform growth stocks). In 2015, Fama and French expanded this to a five-factor model, adding RMW (Robust Minus Weak — profitable companies outperform unprofitable ones) and CMA (Conservative Minus Aggressive — companies that invest conservatively outperform those that invest aggressively). The value premium from 1926-2004 was approximately 0.40% per month, and the combination of value and profitability is where AVUV focuses its methodology."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why did value stocks underperform from 2010-2020?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Value stocks underperformed growth stocks dramatically from roughly 2010 to 2020, primarily because the decade was dominated by technology mega-caps (Apple, Amazon, Microsoft, Alphabet, Facebook) that had extraordinary profitability growth that justified their high valuations in retrospect. Traditional value metrics like book-to-market ratios gave misleading signals for asset-light tech businesses with huge intangible assets. The decade also featured historically low interest rates, which disproportionately benefits growth stocks (whose value is more concentrated in distant future cash flows). Many investors declared the value premium 'dead' during this period. Since 2021, the cycle has shifted and value has reasserted itself. Factor investing requires patience measured in decades — any single decade can diverge significantly from the long-term average."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between the value factor and Warren Buffett's value investing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Warren Buffett's value investing is a concentrated, discretionary approach: deep research into individual businesses, looking for durable competitive advantages, honest management, and prices well below intrinsic value. Factor investing's value factor is a systematic, diversified, rules-based approach: own hundreds of stocks that score high on quantitative value metrics (book-to-market ratio, price-to-earnings, price-to-cash-flow) without company-specific research. Both are expressions of the same insight — cheap companies have historically outperformed expensive ones — but Buffett executes it through judgment and AVUV executes it through systematic screening. The factor approach sacrifices the upside from deep insight but eliminates the downside from wrong judgment and scales to any portfolio size."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I implement factor investing without a PhD?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You don't need to understand every nuance of factor research to capture the benefits. The simplest implementation is just two funds: 80% VTI (captures the market factor) and 20% AVUV (captures small cap, value, and profitability factors). For a broader factor portfolio, add 10% AVLV (US large cap value) and 10% AVDV (international small cap value) while reducing VTI to 60%. For a globally diversified factor portfolio (the Best tier), use the full Avantis suite: AVUS as core, with AVUV, AVLV, AVDV, AVDS, AVES, and AVEE for comprehensive global factor coverage. Annual rebalancing takes 20-30 minutes. The only catch: factor investing requires the patience to hold through extended periods of underperformance, which can last years or even a decade."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.vtiandchill.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.vtiandchill.com/pages/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Factor Investing Explained: Value, Size, and Momentum",
+      "item": "https://www.vtiandchill.com/pages/blog/factor-investing-explained.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI & <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Factor Investing</span>
+          <span>June 5, 2026</span>
+          <span>6 min read</span>
+        </div>
+        <h1>Factor Investing Explained: Value, Size, and Momentum</h1>
+        <p class="blog-post-subtitle">Strip away the Greek letters and the jargon, and factor investing is simple: certain types of stocks have historically earned higher returns, for consistent, documentable reasons — and you can capture them with a handful of low-cost ETFs.</p>
+      </div>
+
+      <div class="blog-post-content">
+
+        <p>Factor investing sounds like something that requires a lab coat and a whiteboard covered in Greek letters. Fama. French. Alpha. Beta. SMB. HML. Momentum. Profitability. The vocabulary is genuinely intimidating, and the finance industry hasn't done itself any favors by making it more accessible.</p>
+
+        <p>Here's the thing: once you strip away the jargon, factor investing is conceptually simple. It's the idea that certain <em>types</em> of stocks have historically earned higher returns than the broad market — not randomly, not by luck, but for consistent, documentable reasons that have been studied for decades.</p>
+
+        <p>And once you understand which factors have worked, why they've worked, and how to actually capture them, you have access to one of the most legitimate return enhancements in all of personal finance.</p>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-value">~4.8%</div>
+            <div class="stat-label">Value premium annualized (1926–2004), per Fama-French Tuck paper</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">1.5–2%</div>
+            <div class="stat-label">Historical small-cap premium annually over very long periods</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">5–7%</div>
+            <div class="stat-label">Expected equity risk premium (market factor) over cash, annualized</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">1992</div>
+            <div class="stat-label">Year Fama &amp; French published the three-factor model — Nobel Prize research</div>
+          </div>
+        </div>
+
+        <h2>What Is a Factor, Exactly?</h2>
+
+        <p>A factor is a measurable characteristic of a stock (or group of stocks) that has historically been associated with higher-than-market returns over long periods. Think of it like a filter: rather than owning the entire market cap-weighted universe, you tilt toward stocks that score high on certain characteristics.</p>
+
+        <p>The requirements for something to be called a "real" factor are strict:</p>
+        <ul>
+          <li>It must be <strong>persistent</strong> — works across decades, not just a few good years</li>
+          <li>It must be <strong>pervasive</strong> — works in multiple countries and markets, not just the US</li>
+          <li>It must be <strong>robust</strong> — survives different measurement methodologies</li>
+          <li>It must have a <strong>rational explanation</strong> — either a risk story or a behavioral story explains why it should persist</li>
+        </ul>
+
+        <p>By these standards, researchers have identified a handful of factors that have met the bar. Here's a tour of the most important ones.</p>
+
+        <h2>The Five Factors That Matter</h2>
+
+        <h3>1. Market Beta (The Market Factor)</h3>
+
+        <p>The most basic factor: stocks return more than bonds, on average, over time, because they're riskier. You get compensated for bearing equity risk. This is CAPM 101, and it's where every index fund investor is already positioned. When you own VTI, you're fully exposed to the market factor.</p>
+
+        <p>Expected premium: ~5-7% annualized above cash over very long periods. It's the biggest factor by far.</p>
+
+        <h3>2. Size (Small Minus Big — SMB)</h3>
+
+        <p>Small cap stocks have historically outperformed large cap stocks. The <a href="https://corporatefinanceinstitute.com/resources/valuation/fama-french-three-factor-model/" target="_blank" rel="noopener">Fama-French three-factor model</a> published in 1992 showed this empirically. Their research found that SMB (small minus big) was a statistically significant predictor of portfolio returns.</p>
+
+        <p>The risk explanation: small companies are more volatile, less liquid, more sensitive to economic cycles. Higher risk, higher expected return. The behavioral explanation: large caps get more analyst coverage and institutional attention; small caps are under-followed and systematically underpriced.</p>
+
+        <p>Historical premium vs. large caps: roughly 1.5-2% annually over very long periods, though lumpy and concentrated in specific decades. AVUV and AVSC capture this factor in the US. AVDV and AVDS capture it internationally.</p>
+
+        <h3>3. Value (High Minus Low — HML)</h3>
+
+        <p>Value stocks — companies trading at low prices relative to their fundamental value (book value, earnings, cash flow) — have historically outperformed growth stocks. This is the HML factor: high book-to-market minus low book-to-market.</p>
+
+        <p>Warren Buffett has been exploiting this for 60 years, though he'd never use the term "factor investing." When you buy a company at a discount to intrinsic value, you're expressing the value factor.</p>
+
+        <p>The risk explanation: cheap stocks are often cheap for a reason — financial distress, declining business, sector headwinds. Investors demand a premium for bearing this "distress risk." The behavioral explanation: investors systematically overpay for exciting growth stories and underpay for boring, unglamorous businesses. Mean reversion creates the premium.</p>
+
+        <p><a href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/acrobat/Size%20Value%20and%20the%20CAPM_2005_05.pdf" target="_blank" rel="noopener">The value premium from 1926-2004 was approximately 0.40% per month</a> — about 4.8% annually — which is highly statistically significant. AVLV captures large cap value in the US. AVES captures it in emerging markets.</p>
+
+        <h3>4. Profitability (Robust Minus Weak — RMW)</h3>
+
+        <p>This factor was added in Fama and French's five-factor model update. Companies with high profitability (strong return on equity, high profit margins, robust earnings) have historically outperformed low-profitability companies.</p>
+
+        <p>This is the factor that makes Avantis unique versus simple value index funds. AVUV doesn't just buy the cheapest small cap stocks — it buys cheap, <em>profitable</em> small cap stocks. This screening process avoids "value traps" — companies that are cheap because they're failing businesses on their way to zero.</p>
+
+        <p>The combination of value AND profitability screening is where the real magic happens. Cheap <em>and</em> profitable is the sweet spot that the <a href="https://www.avantisinvestors.com/avantis-investments/" target="_blank" rel="noopener">Avantis methodology</a> specifically targets.</p>
+
+        <h3>5. Momentum</h3>
+
+        <p>Stocks that have performed well over the past 6-12 months tend to continue outperforming in the near term. Stocks that have underperformed tend to continue underperforming. This is momentum, and it's one of the most consistently documented factors in finance — and also the most confusing.</p>
+
+        <p>Momentum is somewhat inconsistent with efficient market theory, and the behavioral explanation (investor underreaction to new information, herding behavior) is more compelling than any risk story. It's real and pervasive across markets and decades, but it's also prone to sharp reversals and is harder to capture in low-cost ETF form. For most individual investors, momentum is less actionable than value, size, and profitability.</p>
+
+        <div class="callout-box">
+          <h3>Why factors require patience that most investors don't have</h3>
+          <p>Factor investing's core challenge is psychological. Value underperformed growth dramatically from 2010-2020. Investors who added value tilts during that period watched their "enhancement" become a drag for ten straight years. Many bailed. Those who held through the underperformance have been rewarded as cycles turned. The academic literature strongly supports the existence of these premiums, but any given factor can underperform for years or even a decade before reasserting itself. If you can't handle watching your portfolio diverge from the S&amp;P 500 without hitting the sell button, stick with VTI. Factor investing is only the right choice if you genuinely believe the research AND have the temperament to honor that belief through extended underperformance.</p>
+        </div>
+
+        <h2>Why Factors Work: Risk vs. Mispricing</h2>
+
+        <p>The academic debate about <em>why</em> factors generate premiums matters for determining whether they'll persist.</p>
+
+        <p><strong>The risk-based explanation:</strong> Value stocks are riskier (distressed businesses), small caps are riskier (illiquid, fragile), and you're being compensated for bearing that risk. This means premiums should persist because the risks haven't gone away.</p>
+
+        <p><strong>The behavioral explanation:</strong> Investor psychology creates systematic mispricings — people overpay for glamour growth stocks and ignore boring value stocks. These biases are hardwired into human psychology, so they should persist. They've been documented across every culture and market studied.</p>
+
+        <p>Both explanations have evidence. Both suggest premiums should persist. The most honest position: the academic literature strongly supports the existence of these premiums, but any given factor can underperform for years or even a decade before reasserting itself.</p>
+
+        <h2>How to Implement Factor Investing Without a PhD</h2>
+
+        <p>You don't need to understand every nuance of factor research to capture the benefits. You just need to own the right ETFs and hold them.</p>
+
+        <table>
+          <thead><tr><th>Portfolio Version</th><th>Allocation</th><th>Factors Captured</th></tr></thead>
+          <tbody>
+            <tr><td>Simplest factor expression</td><td>80% VTI / 20% AVUV</td><td>Market + small cap + value + profitability</td></tr>
+            <tr><td>Broader factor portfolio (Better)</td><td>60% VTI / 20% AVUV / 10% AVLV / 10% AVDV</td><td>Adds large cap value + international small cap value</td></tr>
+            <tr><td>Global factor portfolio (Best)</td><td>40% AVUS / 15% AVUV / 10% AVLV / 10% AVDV / 10% AVDS / 10% AVES / 5% AVEE</td><td>Full global factor coverage</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout-box">
+          <h3>Factor investing vs. stock picking — a crucial distinction</h3>
+          <p>Factor investing is not stock picking. When AVUV buys 776 small cap value stocks, it's not making judgments about individual companies. It's systematically exposing the portfolio to a documented, peer-reviewed phenomenon. This distinction matters because the evidence for systematic factor premiums is vastly stronger than the evidence for individual stock-picking skill. Factor investing is evidence-based, rules-governed, and reproducible. Stock picking is largely luck dressed in the clothing of skill. The Fama-French research is Nobel Prize-caliber. Your hot take about the next AI winner is not.</p>
+        </div>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>Factor investing is the evidence-based approach to building a portfolio that reaches beyond simple market cap weighting. The market factor (own stocks, not bonds) is where everyone starts. The value factor (own cheap stocks), size factor (own small companies), and profitability factor (own companies with strong fundamentals) offer documented historical premiums on top of plain market returns.</p>
+          <p>Avantis ETFs — especially AVUV, AVLV, AVDV, AVES, and the broader lineup — are the best retail tools for capturing these factors at low cost. They combine Fama-French academic rigor with the operational excellence of experienced factor investors who came from Dimensional Fund Advisors.</p>
+          <p>The catch: factors require patience. They'll underperform for years before delivering. If you can't handle watching your portfolio diverge from the S&amp;P 500 without hitting the sell button, stick with VTI. If you believe in the research and can hold through cycles, factors offer a compelling case for long-term return enhancement — and the ETFs to capture them have never been more accessible or affordable.</p>
+        </div>
+
+
+        <!-- related-posts:start -->
+        <section class="related-posts" aria-label="Related posts">
+          <h2>Keep reading</h2>
+          <div class="related-grid">
+      <a href="./small-cap-value-tilt-pays-off.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">The Small Cap Value Premium: Why Tilting Your Portfolio Pays Off</div>
+        <p class="related-blurb">A deep dive into the SMB and HML factors specifically — the data, the implementation, and the caveats.</p>
+      </a>
+      <a href="./avantis-vs-vanguard-deep-dive.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">Avantis vs. Vanguard: A Deep Dive</div>
+        <p class="related-blurb">The full Avantis ETF lineup that implements these factors — from AVUV to AVEE.</p>
+      </a>
+      <a href="./good-better-best-portfolios.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">Good, Better, Best: Which Portfolio Tier Is Right for You?</div>
+        <p class="related-blurb">Factor investing belongs in the Better and Best tiers — here's the complete framework.</p>
+      </a>
+          </div>
+        </section>
+        <!-- related-posts:end -->
+
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>

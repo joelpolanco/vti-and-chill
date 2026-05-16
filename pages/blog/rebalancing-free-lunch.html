@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFFQRYJTQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PFFQRYJTQ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rebalancing: The Free Lunch of Investing | VTI &amp; Chill</title>
+<meta name="description" content="Rebalancing mechanically forces buy-low-sell-high behavior, takes 30 minutes per year, and is mathematically proven to improve risk-adjusted returns. Morningstar's research, Vanguard's drift data (60/40 drifting to 80/20 by 2021), tax-smart rebalancing, and the Merriman case for annual rebalancing in factor portfolios.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content em { font-style: italic; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h3 { color: var(--color-primary); margin-bottom: var(--space-2); margin-top: 0; font-weight: 700; font-size: var(--text-lg); }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+  .related-posts { margin: var(--space-10) 0 var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
+  .related-posts h2 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-4); color: var(--color-text); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4); }
+  .related-card { display: block; padding: var(--space-4) var(--space-5); background: var(--color-surface-2, #1c2333); border: 1px solid var(--color-border); border-radius: var(--radius-lg); text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+  .related-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-card .related-eyebrow { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-2); display: block; }
+  .related-card .related-title { font-family: var(--font-display); font-weight: 600; font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-1); line-height: 1.35; }
+  .related-card .related-blurb { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+</style>
+
+  <!-- SEO: Canonical & Keywords -->
+  <link rel="canonical" href="https://www.vtiandchill.com/pages/blog/rebalancing-free-lunch.html">
+  <meta name="keywords" content="portfolio rebalancing, rebalancing strategy, annual rebalancing, tax-smart rebalancing, threshold rebalancing, rebalancing multi-factor portfolio, Paul Merriman rebalancing, Morningstar rebalancing research, Vanguard portfolio drift, VTI and chill">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="VTI & Chill">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Rebalancing: The Free Lunch of Investing">
+  <meta property="og:description" content="30 minutes per year. Mechanically forces you to buy low and sell high. Proven to improve risk-adjusted returns. And almost nobody talks about it enough. Here's the complete rebalancing guide.">
+  <meta property="og:url" content="https://www.vtiandchill.com/pages/blog/rebalancing-free-lunch.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="VTI & Chill">
+  <meta property="article:published_time" content="2026-06-08T00:00:00Z">
+  <meta property="article:author" content="VTI & Chill">
+  <meta property="article:section" content="Portfolio Management">
+  <meta property="article:tag" content="rebalancing">
+  <meta property="article:tag" content="portfolio management">
+  <meta property="article:tag" content="asset allocation">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VTIandChill">
+  <meta name="twitter:title" content="Rebalancing: The Free Lunch of Investing">
+  <meta name="twitter:description" content="30 minutes per year. Mechanically forces you to buy low and sell high. Proven to improve risk-adjusted returns. And almost nobody talks about it enough. Here's the complete rebalancing guide.">
+  <meta name="twitter:image" content="https://www.vtiandchill.com/assets/og/og-blog.png">
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Rebalancing: The Free Lunch of Investing",
+  "description": "Rebalancing mechanically forces buy-low-sell-high behavior, takes 30 minutes per year, and is mathematically proven to improve risk-adjusted returns. The complete guide including tax-smart strategies and multi-factor portfolio applications.",
+  "url": "https://www.vtiandchill.com/pages/blog/rebalancing-free-lunch.html",
+  "datePublished": "2026-06-08",
+  "dateModified": "2026-06-08",
+  "author": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/rebalancing-free-lunch.html"
+  },
+  "keywords": [
+    "portfolio rebalancing",
+    "rebalancing strategy",
+    "annual rebalancing",
+    "tax-smart rebalancing",
+    "threshold rebalancing",
+    "Morningstar rebalancing research",
+    "Vanguard portfolio drift",
+    "Paul Merriman rebalancing",
+    "buy low sell high",
+    "behavioral finance rebalancing"
+  ],
+  "articleSection": "Portfolio Management",
+  "wordCount": 1350,
+  "about": [
+    {
+      "@type": "Person",
+      "name": "Paul Merriman"
+    },
+    {
+      "@type": "Organization",
+      "name": "Morningstar"
+    },
+    {
+      "@type": "Organization",
+      "name": "Vanguard"
+    },
+    {
+      "@type": "Organization",
+      "name": "Morgan Stanley"
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: FAQ (JSON-LD) — GEO/AEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is portfolio rebalancing and why does it matter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Portfolio rebalancing is the act of selling assets that have grown above their target allocation and buying assets that have fallen below their target, to restore your original intended percentages. If you target 70% stocks and 30% bonds and stocks surge, your portfolio might drift to 85% stocks — a riskier portfolio than you intended. Rebalancing restores your intended risk profile. The deeper value of rebalancing is behavioral: it mechanically forces you to sell high (trim overweight winners) and buy low (add to underweight losers) without requiring any prediction of the future. This enforced discipline is enormously valuable because it's exactly opposite to what human psychology naturally wants to do — buy what's going up and avoid what's going down."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often should I rebalance my portfolio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most individual investors, the answer is once per year. More frequent rebalancing (monthly or quarterly) generates higher transaction costs and, in taxable accounts, more capital gains events. The return benefit of rebalancing more frequently than annually is minimal for most portfolios. Annual rebalancing aligns well with natural calendar checkpoints — the new year, tax season — making it easy to remember and execute consistently. A hybrid approach is optimal: check once per year and rebalance if you've drifted more than 5% from targets. This avoids unnecessary trading while ensuring you don't let a bull or bear market completely change your allocation. Morgan Stanley's analysis found that combining annual rebalancing with 10-20% tolerance bands modestly improved risk-adjusted returns versus either approach alone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is rebalancing really a 'free lunch' in investing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Morningstar's research establishes a key mathematical principle: if two assets have the same long-term total return, rebalancing always produces higher returns than a buy-and-hold no-rebalancing approach. This is a mathematical certainty. The intuition: if two assets end at the same place but take different paths to get there, systematically buying the laggard and trimming the leader captures the volatility of the journey as profit. Higher volatility between assets means more rebalancing benefit. The 'free lunch' framing is apt because it requires no prediction, no market timing, and no special insight — just mechanical rule-following. The main costs are transaction fees (minimal) and capital gains taxes in taxable accounts (manageable with tax-smart strategies like rebalancing via new contributions or inside tax-advantaged accounts)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I rebalance without triggering capital gains taxes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There are four main tax-smart rebalancing strategies. First, use new contributions: instead of selling anything, direct new money into whatever asset is underweight. If stocks are overweight, your next contributions go to bonds. Second, rebalance inside tax-advantaged accounts (IRA, 401k) where there are no capital gains taxes — keep your taxable account as static as possible and do all rebalancing trading inside retirement accounts. Third, use dividend reinvestment: direct dividends to underweight assets rather than back into the fund that paid them. Fourth, tax-loss harvesting: when an asset is down, sell it (realizing a loss for tax purposes), immediately buy a similar fund, and use the tax loss to offset gains elsewhere. This technique can turn rebalancing into a net tax benefit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is rebalancing especially important in a multi-factor portfolio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In a multi-factor portfolio like 60% VTI / 20% AVUV / 20% AVDV, rebalancing serves two purposes. First, it maintains your risk profile — preventing the portfolio from drifting toward a higher equity concentration than intended. Second, and uniquely important: it maintains your factor exposure. If US stocks surge and VTI grows to 75% of the portfolio while AVUV and AVDV shrink, your factor tilts — the whole reason you added those funds — have diminished. Rebalancing restores your intended factor exposure and incidentally forces you to buy the underperforming factor ETFs at lower relative prices. Paul Merriman's Ultimate Buy and Hold strategy explicitly recommends annual rebalancing specifically because the multi-asset-class structure only delivers its diversification and factor benefits if allocations are actively maintained."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.vtiandchill.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.vtiandchill.com/pages/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Rebalancing: The Free Lunch of Investing",
+      "item": "https://www.vtiandchill.com/pages/blog/rebalancing-free-lunch.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI & <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Portfolio Management</span>
+          <span>June 8, 2026</span>
+          <span>5 min read</span>
+        </div>
+        <h1>Rebalancing: The Free Lunch of Investing</h1>
+        <p class="blog-post-subtitle">30 minutes per year, no predictions required, mathematically proven to improve risk-adjusted returns — rebalancing is the most underappreciated discipline in all of personal finance.</p>
+      </div>
+
+      <div class="blog-post-content">
+
+        <p>In the investing world, people are constantly searching for the edge. The secret strategy. The alpha-generating insight that separates the winners from everyone else. Billions of dollars are spent annually on research, analysis, trading systems, and advisory fees — all in pursuit of better returns.</p>
+
+        <p>Meanwhile, there's a simple, systematic behavior that is available to every investor for free, takes about 20-30 minutes per year, forces you to buy low and sell high automatically, and has been documented to improve risk-adjusted returns in most scenarios.</p>
+
+        <p>It's called rebalancing, and almost nobody talks about it with the enthusiasm it deserves.</p>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-value">30 min</div>
+            <div class="stat-label">Time required per year to rebalance most portfolios</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">80%→60%</div>
+            <div class="stat-label">How a 60/40 portfolio drifted to ~80% stocks by 2021 without rebalancing (Vanguard)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">5%</div>
+            <div class="stat-label">Threshold drift that triggers rebalancing in the hybrid annual + threshold approach</div>
+          </div>
+        </div>
+
+        <h2>What Rebalancing Actually Is</h2>
+
+        <p>If you own a portfolio with target allocations — say, 70% stocks and 30% bonds — those percentages will drift over time as different assets perform differently. After a strong stock market year, your portfolio might be 85% stocks and 15% bonds. After a crash, it might be 55% stocks and 45% bonds.</p>
+
+        <p>Rebalancing is the act of selling the overweight assets and buying the underweight assets to return to your target allocation.</p>
+
+        <p>That's it. No prediction required. No market timing. No fundamental analysis. You're just mechanically restoring the ratios you decided on in advance.</p>
+
+        <p>The magic is in what this simple act requires you to do: <strong>buy low and sell high, automatically, without having to feel good about it</strong>.</p>
+
+        <p>When stocks have crashed, bonds are your overweight asset. Rebalancing requires you to sell bonds and buy stocks (after they've fallen). Your emotions are screaming "don't buy more stocks, the market is collapsing!" Your rebalancing rules force you to do the right thing anyway. That enforced discipline is enormously valuable.</p>
+
+        <p>When stocks have surged, rebalancing requires you to trim equities and add to bonds. Again, your emotions are saying "let the winners run!" The rules override the emotion.</p>
+
+        <h2>The Math Behind Rebalancing Returns</h2>
+
+        <p><a href="https://www.morningstar.com/columns/rekenthaler-report/when-rebalancing-creates-higher-returnsand-when-it-doesnt" target="_blank" rel="noopener">Morningstar's research on rebalancing</a> establishes a key mathematical principle: if two assets have the same long-term total return, rebalancing <em>always</em> produces higher returns than a buy-and-hold no-rebalancing approach. This is a mathematical certainty, not a hypothesis.</p>
+
+        <p>The intuition: if two assets end at the same place but take different paths to get there, systematically buying the laggard and trimming the leader captures the volatility of the journey as profit. Higher volatility between assets means more rebalancing benefit.</p>
+
+        <p>Vanguard's research found that a 60/40 equity/bond portfolio left untouched from 1989 would have drifted to approximately 80% equities by 2021. That's not the portfolio you intended to own. The risk profile changed dramatically from what you originally chose — and you probably didn't even notice.</p>
+
+        <p>Morgan Stanley's analysis found that combining annual rebalancing with 10-20% tolerance bands modestly improved risk-adjusted returns across investment strategies. The combination of time-based and threshold-based rebalancing appears to be more effective than either approach alone.</p>
+
+        <h2>How Often Should You Rebalance?</h2>
+
+        <p>The answer for most individual investors is <strong>once per year</strong>.</p>
+
+        <p>More frequent rebalancing (monthly or quarterly) generates higher transaction costs and, in taxable accounts, more capital gains events. The return benefit of rebalancing more frequently than annually is minimal for most portfolios.</p>
+
+        <p>Annual rebalancing aligns well with natural calendar checkpoints — the new year, your birthday, tax season — making it easy to remember and execute consistently. Set a reminder. Open your accounts. Look at your allocation versus target. Rebalance if materially off. Done.</p>
+
+        <p>The <strong>threshold-based approach</strong> is an alternative: only rebalance when an asset drifts more than 5% or 10% from its target. This might mean rebalancing every 8 months in a volatile market and every 18 months in a calm one.</p>
+
+        <p>For most investors, a hybrid is optimal: check once per year and rebalance if you've drifted more than 5% from targets. This avoids unnecessary trading while ensuring you don't let a bull or bear market completely change your allocation.</p>
+
+        <div class="callout-box">
+          <h3>The drift problem in real numbers</h3>
+          <p>Imagine you start 2020 at 60% VTI / 20% AVUV / 20% AVDV. After two years where VTI surges and AVUV/AVDV lag, your actual allocation might be 75% VTI / 14% AVUV / 11% AVDV. You've passively become a much more VTI-concentrated investor — not because you made a decision, but because you didn't make one. Your factor tilts, the whole reason you added AVUV and AVDV, have been diluted by half. Rebalancing back to targets restores your intended strategy and, in the process, forces you to buy more of the relatively underperforming assets — exactly what the factor investor should be doing.</p>
+        </div>
+
+        <h2>The Tax-Smart Way to Rebalance</h2>
+
+        <p>For taxable accounts, selling winners to rebalance triggers capital gains taxes. This is a real cost that shouldn't be dismissed. Here's how to minimize it:</p>
+
+        <ul>
+          <li><strong>Use new contributions first.</strong> Instead of selling anything, direct new money into whatever asset is underweight. If your stocks are at target and your bonds are 5% underweight, your next three months of contributions go to bonds. This rebalances without selling.</li>
+          <li><strong>Rebalance inside tax-advantaged accounts.</strong> Your 401k and IRA are the right place to do any selling for rebalancing purposes. No capital gains taxes inside these accounts.</li>
+          <li><strong>Use dividends.</strong> Many brokerages allow you to automatically reinvest dividends in any fund. Directing dividend reinvestment to underweight assets is a painless rebalancing mechanism.</li>
+          <li><strong>Tax-loss harvesting.</strong> If an asset is down, you can sell it (realizing a loss for tax purposes), immediately buy a similar-but-not-identical fund, and use the tax loss to offset gains elsewhere.</li>
+        </ul>
+
+        <h2>Rebalancing in a Multi-Factor Portfolio</h2>
+
+        <p>For VTI &amp; Chill investors in the Better or Best tiers, rebalancing serves an additional function: it maintains your factor exposure.</p>
+
+        <p>Imagine your portfolio is 60% VTI, 20% AVUV, and 20% AVDV. After a year where US stocks crush everything, VTI might be 75% of your portfolio while AVUV and AVDV have shrunk. Your factor tilts — the whole reason you added those funds — have diminished. Rebalancing restores your intended factor exposure and, incidentally, forces you to buy the underperforming international and small cap value ETFs at lower relative prices.</p>
+
+        <p>This is why <a href="https://www.paulmerriman.com/ultimate-buy-and-hold-2026" target="_blank" rel="noopener">Merriman's Ultimate Buy and Hold strategy</a> explicitly recommends annual rebalancing. The multi-asset-class structure only delivers its diversification and factor benefits if you actually maintain the allocations. Drift, left uncorrected, turns a carefully constructed factor portfolio into something much closer to a plain S&amp;P 500 fund.</p>
+
+        <div class="callout-box">
+          <h3>Rebalancing as pre-commitment to rational behavior</h3>
+          <p>Think of rebalancing as a contract you make with yourself when you're calm, clear-headed, and thinking long-term — and then enforcing it when your emotions are at their most irrational. Market crashes feel catastrophic. Your rebalancing rules require you to buy. Market bubbles feel euphoric. Your rules require you to trim. You're essentially outsourcing your investment decisions to your past rational self, preventing future emotional self from making the most expensive mistakes in investing. This is the real "free lunch" — not just better returns, but protection from your own worst instincts, automatically, every year.</p>
+        </div>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>Rebalancing is the closest thing to a free lunch that exists in investing. It mechanically forces buy-low-sell-high behavior. It maintains your intended risk profile as markets move. It reinforces factor exposure in diversified portfolios. It provides a psychological anchor against the most expensive emotional mistakes.</p>
+          <p>Do it annually. Use new contributions to rebalance before selling anything. Do the selling inside tax-advantaged accounts. Keep it simple and mechanical. For a multi-factor portfolio, rebalancing is especially critical — it's the mechanism that keeps your factor tilts working as intended instead of drifting back toward plain VTI.</p>
+          <p>For a strategy that takes 30 minutes per year, rebalancing punches well above its weight class. Not because it's complicated — but because it keeps you doing the things that matter (maintaining allocation, buying dips) when your emotions are pushing you in exactly the wrong direction.</p>
+        </div>
+
+
+        <!-- related-posts:start -->
+        <section class="related-posts" aria-label="Related posts">
+          <h2>Keep reading</h2>
+          <div class="related-grid">
+      <a href="./good-better-best-portfolios.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">Good, Better, Best: Which Portfolio Tier Is Right for You?</div>
+        <p class="related-blurb">The portfolios that most need disciplined annual rebalancing — and what happens if you skip it.</p>
+      </a>
+      <a href="./power-of-doing-nothing.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">The Power of Doing Nothing</div>
+        <p class="related-blurb">Rebalancing is the one productive thing to do each year — the rest of the time, inaction is the strategy.</p>
+      </a>
+      <a href="./psychology-of-staying-the-course.html" class="related-card">
+        <span class="related-eyebrow">Continue reading</span>
+        <div class="related-title">The Psychology of Staying the Course</div>
+        <p class="related-blurb">Why the behavioral discipline behind rebalancing is worth more than any stock-picking edge.</p>
+      </a>
+          </div>
+        </section>
+        <!-- related-posts:end -->
+
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>
