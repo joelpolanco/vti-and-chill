@@ -1,10 +1,18 @@
 # robots.txt — VTI & Chill (www.vtiandchill.com)
-# Updated: 2026-04-26
+# Updated: 2026-05-16
 
 # === Default policy for all crawlers ===
 # Public content is fully indexable. Class 3-8 are paid course redirects;
 # they hold no indexable content and would just clutter results.
+#
+# Content-Signal expresses our content-use preferences per the IETF aipref
+# draft (draft-romm-aipref-contentsignals) and contentsignals.org:
+#   search=yes      — index for search engines
+#   ai-input=yes    — fine to cite us in AI/agent answers (GEO strategy)
+#   ai-train=no     — do NOT use our content for model training
+
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 Disallow: /assets/admin/
 Disallow: /node_modules/
@@ -18,57 +26,66 @@ Disallow: /pages/learn/class-8.html
 # === AI agent crawlers — explicitly welcome ===
 # These agents power ChatGPT, Perplexity, Claude, Gemini, and Apple Intelligence
 # search answers. We WANT them to index our content to surface VTI & Chill
-# in AI responses (GEO strategy).
-#
-# Content intent (preserved as comments — `Content-Signal:` is a non-standard
-# directive that Googlebot warns on, so we encode the same intent here):
-#   search=yes      — index for search engines
-#   ai-input=yes    — cite our content in AI answers
-#   ai-train=no     — do NOT use our content for model training
+# in AI responses, but we do not consent to model training.
 
 User-agent: GPTBot
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 User-agent: ChatGPT-User
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 User-agent: OAI-SearchBot
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 User-agent: PerplexityBot
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 User-agent: ClaudeBot
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 User-agent: Claude-Web
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 User-agent: anthropic-ai
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 User-agent: Applebot
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 User-agent: Applebot-Extended
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 User-agent: Google-Extended
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 User-agent: Googlebot
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 User-agent: Bingbot
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 User-agent: DuckDuckBot
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 User-agent: meta-externalagent
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 User-agent: Bytespider
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 # Sitemap (group-independent, applies to all crawlers)
