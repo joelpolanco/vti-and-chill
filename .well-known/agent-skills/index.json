@@ -6,7 +6,7 @@
       "type": "skill-md",
       "description": "Navigate VTI & Chill's pages, discover machine-readable resources (llms.txt, sitemap, API catalog), and understand the site structure",
       "url": "https://www.vtiandchill.com/.well-known/agent-skills/site-navigation/SKILL.md",
-      "digest": "sha256:04aa9efefd049f6e47adf67d006d01f661eb7254075a3faaded82664502c723c"
+      "digest": "sha256:82b52a6ab786d3c1455e71520b1b5ff7d3a50a1285f8ad8973019d1655d45f27"
     },
     {
       "name": "financial-education",
