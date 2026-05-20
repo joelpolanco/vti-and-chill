@@ -211,6 +211,22 @@ POSTS = {
         "skill_md_entry": "**The WallStreetBets Hall of Shame: What YOLO Trading Really Costs**: https://www.vtiandchill.com/pages/blog/wallstreetbets-hall-of-shame.html \u2014 Behavioral finance autopsy of WSB's greatest disasters: 1RONYMAN, analfarmer2, GUH guy, GME diamond hands; Kahneman/Tversky biases in action; Barber-Odean and DALBAR data; VTI as the boring alternative that wins",
         "webmcp_entry": "{ title: 'The WallStreetBets Hall of Shame: What YOLO Trading Really Costs', url: '/pages/blog/wallstreetbets-hall-of-shame.html', tags: ['wallstreetbets hall of shame', 'options trading disasters', 'analfarmer2 story', '1RONYMAN box spread', 'GME diamond hands', 'overconfidence bias', 'DALBAR investor behavior', 'Barber Odean trading study', 'behavioral finance', 'VTI vs options trading'], description: 'A 19-year-old with $600K, a man who invented a debt machine, and $10M in GME losses. Not stupid people \u2014 human people. A behavioral finance autopsy of WSB\'s greatest disasters.' },",
     },
+    # =========================================================================
+    "earnings-revisions-matter-more-than-earnings": {
+        "date_iso": "2026-05-20",
+        "date_human": "May 20, 2026",
+        "section": "Market Commentary",
+        "read_time": "6 min read",
+        "title_short": "Why Earnings Revisions Matter More Than Earnings",
+        "card_title": "Why Earnings Revisions Matter More Than Earnings",
+        "card_blurb": "A 14.6-point Q1 2026 revision \u2014 2x the 10-year norm \u2014 explains the entire gap between the AI Class\u2019s 39.9x trailing and 21.9x forward P/E. The bear case has shifted from \u2018multiples look high\u2019 to \u2018revisions have to reverse.\u2019",
+        "card_gradient": "linear-gradient(135deg, #1a1a2e 0%, #00d4aa 100%)",
+        "card_emoji": "\U0001F4C8",
+        "sitemap_priority": "0.85",
+        "llms_entry": "**Why Earnings Revisions Matter More Than Earnings**: https://www.vtiandchill.com/pages/blog/earnings-revisions-matter-more-than-earnings.html \u2014 Post explains how earnings revisions, not absolute earnings, drive forward P/E and multiple compression; uses Q1 2026 FactSet data showing 14.6-point quarter-end-to-season-end EPS growth-rate revision vs. 5.8-point 10-year average; bottom-up S&P 500 EPS estimate jumped $72 to $80.29 in 14 days; companies beating by 18.2% vs. 7.3% 5-year norm; contrasts AI Class basket at 39.9x trailing / 21.9x forward with dot-com peak of 152x trailing on Evercore ISI darlings; cites FactSet May 8 update, Barron\u2019s, multpl.com; three revision regimes (normal, deteriorating, accelerating); argues bear case has shifted from \u2018trailing P/E too high\u2019 to \u2018revisions must reverse\u2019",
+        "skill_md_entry": "**Why Earnings Revisions Matter More Than Earnings**: https://www.vtiandchill.com/pages/blog/earnings-revisions-matter-more-than-earnings.html \u2014 Q1 2026 FactSet data showing 14.6-point earnings revision (2x 10-yr norm) drives the AI Class\u2019s 39.9x trailing / 21.9x forward P/E gap; why revisions matter more than beats; dot-com comparison; practical framework for long-term VTI investors",
+        "webmcp_entry": "{ title: 'Why Earnings Revisions Matter More Than Earnings', url: '/pages/blog/earnings-revisions-matter-more-than-earnings.html', tags: ['earnings revisions', 'forward P/E', 'AI Class basket', 'FactSet', 'S&P 500', 'EPS', 'multiple compression', 'dot-com bubble', 'valuation', 'market commentary'], description: 'A 14.6-point Q1 2026 earnings revision running 2x the 10-year norm explains the entire gap between the AI Class\u2019s 39.9x trailing and 21.9x forward P/E \u2014 and shifts the bear case from multiples to revisions.' },",
+    },
 }
 
 
