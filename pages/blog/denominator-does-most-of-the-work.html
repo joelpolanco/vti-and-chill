@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFFQRYJTQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PFFQRYJTQ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Denominator Does Most of the Work: Why a 42x Trailing P/E Doesn't Mean What You Think | VTI &amp; Chill</title>
+<meta name="description" content="The AI Class sits at 42.2x trailing P/E and 21.8x forward P/E on the same day. That 20-turn gap isn't a quirk — it's the entire valuation story. Here's what the denominator is doing.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content em { font-style: italic; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h3 { color: var(--color-primary); margin-bottom: var(--space-2); margin-top: 0; font-weight: 700; font-size: var(--text-lg); }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+  .related-posts { margin: var(--space-10) 0 var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
+  .related-posts h2 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-4); color: var(--color-text); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4); }
+  .related-card { display: block; padding: var(--space-4) var(--space-5); background: var(--color-surface-2, #1c2333); border: 1px solid var(--color-border); border-radius: var(--radius-lg); text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+  .related-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-card .related-eyebrow { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-2); display: block; }
+  .related-card .related-title { font-family: var(--font-display); font-weight: 600; font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-1); line-height: 1.35; }
+  .related-card .related-blurb { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+  .btn-primary { background: var(--color-primary); color: var(--color-navy, #1a1a2e); font-weight: 600; padding: var(--space-2) var(--space-5); border-radius: var(--radius-full); text-decoration: none; font-size: var(--text-sm); transition: background 0.2s; }
+  .btn-primary:hover { background: var(--color-primary-hover); text-decoration: none; }
+</style>
+
+  <!-- SEO: Canonical & Keywords -->
+  <link rel="canonical" href="https://www.vtiandchill.com/pages/blog/denominator-does-most-of-the-work.html">
+  <meta name="keywords" content="trailing P/E, forward P/E, AI Class, FactSet, dot-com bubble, earnings revisions, valuation, index investing, S&amp;P 500, hyperscaler capex">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="VTI &amp; Chill">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Denominator Does Most of the Work: Why a 42x Trailing P/E Doesn't Mean What You Think">
+  <meta property="og:description" content="The AI Class sits at 42.2x trailing P/E and 21.8x forward P/E on the same day. That 20-turn gap isn't a quirk — it's the entire valuation story. Here's what the denominator is doing.">
+  <meta property="og:url" content="https://www.vtiandchill.com/pages/blog/denominator-does-most-of-the-work.html">
+  <meta property="og:image" content="https://www.vtiandchill.com/blog-posts/images/23-denominator-trailing-pe.jpg">
+  <meta property="og:image:width" content="1122">
+  <meta property="og:image:height" content="884">
+  <meta property="og:site_name" content="VTI &amp; Chill">
+  <meta property="article:published_time" content="2026-05-27T00:00:00Z">
+  <meta property="article:author" content="Joel Polanco / VTI &amp; Chill">
+  <meta property="article:section" content="Market Commentary">
+  <meta property="article:tag" content="trailing P/E">
+  <meta property="article:tag" content="forward P/E">
+  <meta property="article:tag" content="AI Class basket">
+  <meta property="article:tag" content="FactSet">
+  <meta property="article:tag" content="dot-com bubble">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VTIandChill">
+  <meta name="twitter:title" content="The Denominator Does Most of the Work: Why a 42x Trailing P/E Doesn't Mean What You Think">
+  <meta name="twitter:description" content="The AI Class sits at 42.2x trailing P/E and 21.8x forward P/E on the same day. That 20-turn gap isn't a quirk — it's the entire valuation story. Here's what the denominator is doing.">
+  <meta name="twitter:image" content="https://www.vtiandchill.com/blog-posts/images/23-denominator-trailing-pe.jpg">
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Denominator Does Most of the Work: Why a 42x Trailing P/E Doesn't Mean What You Think",
+  "description": "The AI Class sits at 42.2x trailing P/E and 21.8x forward P/E on the same day. That nearly 20-turn gap is not a quirk — it is the entire valuation story. This post explains the mechanics behind the spread, why it diverges most sharply during fast-earnings-growth regimes, and what investors should actually track.",
+  "url": "https://www.vtiandchill.com/pages/blog/denominator-does-most-of-the-work.html",
+  "datePublished": "2026-05-27",
+  "dateModified": "2026-05-27",
+  "author": {
+    "@type": "Person",
+    "name": "Joel Polanco",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/denominator-does-most-of-the-work.html"
+  },
+  "image": "https://www.vtiandchill.com/blog-posts/images/23-denominator-trailing-pe.jpg",
+  "wordCount": 1700,
+  "articleSection": "Market Commentary",
+  "keywords": [
+    "trailing P/E",
+    "forward P/E",
+    "AI Class",
+    "FactSet",
+    "dot-com bubble",
+    "earnings revisions",
+    "valuation",
+    "index investing",
+    "S&P 500",
+    "hyperscaler capex"
+  ],
+  "about": [
+    {
+      "@type": "Organization",
+      "name": "FactSet"
+    },
+    {
+      "@type": "Thing",
+      "name": "S&P 500"
+    },
+    {
+      "@type": "Thing",
+      "name": "AI Class basket"
+    },
+    {
+      "@type": "Event",
+      "name": "dot-com bubble"
+    },
+    {
+      "@type": "Thing",
+      "name": "hyperscaler capex"
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: FAQ (JSON-LD) — GEO/AEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between trailing P/E and forward P/E?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A price-to-earnings ratio is just price divided by earnings per share. The difference between trailing and forward P/E comes entirely from which earnings figure sits in the denominator. Trailing P/E uses the most recent four reported quarters — what companies actually earned in the past. Forward P/E uses the next four quarters of analyst consensus estimates — what the market expects companies to earn in the future. For a slow-growing utility, the two numbers are nearly identical. For a company growing earnings at 30% year over year, the forward P/E can be a third lower than the trailing number without the stock moving at all. The gap between them is not noise — it is information about how fast earnings are expected to grow. When earnings are accelerating, trailing P/E systematically overstates how expensive a stock or basket actually is relative to next year's earning power."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is the AI Class trading at 42x trailing but only 21.8x forward P/E?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The AI Class basket — a 35-name group of companies most exposed to AI infrastructure, hardware, and software — shows a 42.2x trailing P/E based on what these companies reported over the last four quarters. The 21.8x forward P/E reflects what analysts now forecast for the next twelve months. The implied earnings growth baked into that spread is roughly 93% over twelve months for the median name in the basket. That seems aggressive, but it is broadly what consensus expects given current hyperscaler capex flow-through. According to FactSet's May 1 update, information technology net profit margins hit 29.1% in Q1 2026, up from 25.4% a year earlier — the highest level since FactSet began tracking the metric in 2009. Eighty-four percent of S&P 500 names beat consensus EPS estimates by an average of 12.3%, versus a five-year average beat of 7.3%. Analysts were too low, companies cleared the bar by a wide margin, and forward estimates are still catching up. That catch-up is the entire mechanism driving the gap."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does today's AI Class compare to dot-com era valuations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The comparison requires precision. Evercore ISI's observation that the dot-com darlings basket hit a median trailing P/E of 152x in March 2000 is the most-cited data point, and today's AI Class at 42.2x trailing sits roughly 3.6x below that peak. But the multiple itself is the less important difference. In March 2000, 74% of the 207 internet companies tracked in Barron's 'Burning Up' report had negative cash flow, with 51 likely to run out of cash within twelve months. The denominators were small, fragile, or nonexistent. Today, the five largest constituents of the AI Class — NVDA, GOOGL, MSFT, AMZN, TSM — account for 64.8% of the basket's market cap and generate hundreds of billions in annual net income. Tech sector net margins are at all-time highs. A 42x multiple on a real, growing denominator and a 152x multiple on a vanishing denominator are mathematically different bets with different outcomes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I actually watch to know if AI stocks are getting expensive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three things move the forward P/E that actually matters. First, earnings revisions: when analysts mark estimates higher, the denominator grows and forward P/E falls without the stock moving. When they mark estimates lower, the inverse happens — and stocks often fall on top of it, double-counting the move. Second, capex flow-through: hyperscaler capital expenditures are projected at roughly $700 billion in 2026 across Microsoft, Alphabet, Meta, and Amazon combined. That spend lands as revenue on the books of NVDA, AVGO, MRVL, ASML, TSM, and the rest of the semiconductor and infrastructure chain. Third, concentration: the top five names in the AI Class represent 64.8% of total basket market cap. If those five beat consensus, basket earnings grow faster than the median name does. If they miss, the opposite happens. Tracking these three inputs gives you a more honest picture than any single trailing multiple."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this analysis mean AI stocks are cheap right now?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The AI Class at 21.8x forward P/E is not cheap — it is roughly in line with the S&P 500 forward P/E of 20.9x per FactSet's May 1, 2026 data, which is itself above long-term historical averages. The point of this analysis is not that AI stocks are a bargain. It is that the trailing P/E — which is what most media commentary uses — is a systematically incomplete input during fast-earnings-growth environments. The forward P/E, paired with the direction of earnings revisions, is the more honest signal. If forward estimates are rising, the spread does the work. If they stop rising or reverse, multiples re-expand through selling. The data today argues that estimates are still moving in the right direction. That does not make the basket cheap, and it does not make future estimate cuts impossible. You have to track both the number and the direction, not just the headline figure."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.vtiandchill.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.vtiandchill.com/pages/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The Denominator Does Most of the Work: Why a 42x Trailing P/E Doesn't Mean What You Think",
+      "item": "https://www.vtiandchill.com/pages/blog/denominator-does-most-of-the-work.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI &amp; <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Market Commentary</span>
+          <span>May 27, 2026</span>
+          <span>7 min read</span>
+        </div>
+        <h1>The Denominator Does Most of the Work: Why a 42x Trailing P/E Doesn't Mean What You Think</h1>
+        <p class="blog-post-subtitle">Trailing P/E describes last year's earnings. Forward P/E describes next year's. When earnings grow fast, the gap between them is the entire story.</p>
+      </div>
+
+      <figure>
+        <img src="../../blog-posts/images/23-denominator-trailing-pe.jpg"
+             alt="VTI and Chill AI Class P/E Monitor for the Week of May 27, 2026: 42.2x median trailing P/E, 21.8x median forward P/E, 77 percent of 35-name basket has positive forward EPS coverage, top 5 concentration 64.8 percent (NVDA, GOOGL, MSFT, AMZN, TSM). Half-circle gauge shows the basket sitting in the Overvalued band well below the 152x dot-com peak. Forward-P/E scatter strip shows AVGO clustered in undervalued, MDB in overvalued, CRWD in bubble band."
+             loading="lazy" width="1074" height="912"
+             style="width:100%; height:auto; border-radius: var(--radius-md); margin: var(--space-4) 0;">
+        <figcaption style="font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); font-style: italic;">AI Class P/E Monitor — Week of May 27, 2026. Median trailing P/E 42.2x. Median forward P/E 21.8x. The 20-turn gap between those two numbers is what this post is about. Education, not advice.</figcaption>
+      </figure>
+
+      <div class="blog-post-content">
+
+        <p>Every week, somebody on financial television holds up a chart of the AI sector's trailing price-to-earnings ratio and says some version of the same thing. The number is high. The number is higher than the S&amp;P 500. The number is heading in the wrong direction. Therefore, the market is dangerous.</p>
+
+        <p>This commentary feels rigorous. It feels like the speaker has done the math. It feels like a serious warning from a serious person.</p>
+
+        <p>It is also, in most cases, a deeply incomplete view of what a P/E ratio actually tells you. The trailing number describes what an investor paid for the last twelve months of earnings. The forward number describes what an investor is paying for the next twelve months. Those are wildly different questions, and the answers diverge most sharply during exactly the kind of fast-earnings-growth environment the AI Class is in right now.</p>
+
+        <p>This week's AI Class P/E Monitor sits at a 42.2x trailing P/E and a 21.8x forward P/E. The gap between those two numbers — almost 20 full turns — is not a quirk. It is the entire story.</p>
+
+        <p>If you want to understand whether AI stocks are expensive, you have to understand which year of earnings sits in the bottom of the fraction.</p>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-value">42.2x</div>
+            <div class="stat-label">Trailing P/E (this week's AI Class)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">21.8x</div>
+            <div class="stat-label">Forward P/E (same basket, same day)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">152x</div>
+            <div class="stat-label">Dot-com darlings peak (Mar 2000, Evercore ISI)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">20.9x</div>
+            <div class="stat-label">S&amp;P 500 forward P/E (FactSet May 1, 2026)</div>
+          </div>
+        </div>
+
+        <h2>What a P/E Ratio Actually Measures</h2>
+
+        <p>Strip away the jargon and a price-to-earnings ratio is one equation: P/E = Price per share / Earnings per share.</p>
+
+        <p>The numerator — price — moves every second the market is open. It reflects expectations, sentiment, flows, and the marginal trade. The denominator — earnings — moves four times a year when a company reports.</p>
+
+        <p>That asymmetry creates two completely different P/E ratios for the same company at the same moment in time. The trailing P/E uses the most recent four quarters of reported earnings as its denominator. The forward P/E uses the next four quarters of expected earnings, drawn from analyst consensus estimates.</p>
+
+        <p>For a slow-growing utility, the two numbers are nearly identical. For a company growing earnings 30% year over year, the forward number can be a third lower than the trailing one — without anything changing about the price.</p>
+
+        <p>According to the most recent <a href="https://insight.factset.com/sp-500-earnings-season-update-may-1-2026" target="_blank" rel="noopener">FactSet Earnings Insight</a>, the S&amp;P 500 forward 12-month P/E is 20.9x, against a trailing P/E that sits closer to 31x. That gap, mechanically, tells you analysts expect the index's earnings to climb roughly 21% over the next year. The trailing number is the bill for last year. The forward number is the bill for next year.</p>
+
+        <p>This week's AI Class basket has the same gap, only bigger: 42.2x trailing to 21.8x forward. The implied earnings growth baked into that ratio is roughly 93% over twelve months for the median name in the basket. That seems aggressive. It is also, broadly, what consensus expects given current capex flow-through.</p>
+
+        <h2>Why the Gap Is Wider for AI Right Now</h2>
+
+        <p>Earnings revisions across the AI complex have been running well above historical norms. <a href="https://insight.factset.com/sp-500-earnings-season-update-may-1-2026" target="_blank" rel="noopener">FactSet's May 1 update</a> shows information technology net profit margins at 29.1% in Q1 2026, up from 25.4% a year earlier — the highest level since the firm began tracking the metric in 2009. Eighty-four percent of S&amp;P 500 names beat consensus EPS estimates by an average magnitude of 12.3%, against a five-year average beat of 7.3%.</p>
+
+        <p>Translation: analysts were too low going into the quarter, the companies cleared the bar by a wide margin, and the forward estimates are still catching up.</p>
+
+        <p>When the denominator is moving up faster than the numerator, the forward P/E falls without the stock falling. This is the mechanism that confuses most casual observers of the AI trade. The chart of the trailing multiple keeps drifting higher. The forward multiple keeps drifting lower. Both are true. They are measuring different things.</p>
+
+        <p>The behavior is mathematical, not narrative. If a stock trades at $100 and earned $2 last year, the trailing P/E is 50x. If consensus expects $5 next year, the forward P/E is 20x. Nothing about that arithmetic depends on whether anyone is "bullish" or "bearish." It depends entirely on whether the $5 estimate shows up as actual reported earnings.</p>
+
+        <h2>What Gets Missed When People Compare 42x to 152x</h2>
+
+        <p>The dot-com peak comparison gets thrown around constantly. The number most often cited is <a href="https://www.barrons.com/articles/sp-500-pe-stocks-bubble-burst-economy-7c79bcd9" target="_blank" rel="noopener">Evercore ISI's observation</a> that the dot-com "darlings" basket hit a median trailing P/E of 152x in March 2000. The AI Class today sits at 42.2x trailing — roughly 3.6x below that peak.</p>
+
+        <p>But the more important difference is what was in the denominator.</p>
+
+        <p>In March 2000, 74% of the 207 internet companies tracked in Barron's now-famous <a href="https://www.indmoney.com/blog/us-stocks/is-ai-the-next-dot-com-bubble-ai-vs-dot-com-crash-analysis" target="_blank" rel="noopener">"Burning Up" report</a> had negative cash flow, with 51 likely to run out of cash within twelve months. Cisco at the peak traded around 196x earnings with $2.67 billion in net income. The denominators were small, fragile, or in many cases nonexistent.</p>
+
+        <p>Today, the five largest constituents of the AI Class basket — NVDA, GOOGL, MSFT, AMZN, TSM — account for 64.8% of the basket's combined market cap and generate hundreds of billions of dollars in annual net income between them. Tech sector net profit margins are at all-time highs. Eighty percent of the 35-name basket reports positive trailing earnings, and 77% have positive forward consensus EPS.</p>
+
+        <p>This does not make AI cheap. It makes the denominator real. A 42x multiple on a denominator that is itself growing in the low-to-mid teens compounds to something much closer to fair value within two or three years. A 152x multiple on a denominator that is shrinking to zero compounds to permanent capital impairment.</p>
+
+        <div class="callout-box">
+          <h3>Same multiple, different denominator</h3>
+          <p>A 42x multiple on a growing denominator and a 152x multiple on a vanishing denominator are mathematically different bets — the first compounds toward fair value as earnings catch up to price, the second compounds toward zero as the earnings base collapses beneath it. The multiple alone tells you almost nothing. What sits underneath it is the entire story.</p>
+        </div>
+
+        <h2>What Investors Should Actually Watch</h2>
+
+        <p>If forward P/E does most of the valuation work, then the things that move forward P/E matter more than the things that move trailing P/E. Trailing earnings are already in the books. Forward earnings are still being negotiated by analysts, companies, and capex commitments.</p>
+
+        <p>The three things worth tracking, in order of how much they move forward P/E:</p>
+
+        <ol>
+          <li><strong>Earnings revisions.</strong> When analysts mark estimates higher, the denominator grows and forward P/E falls without the stock moving. When they mark estimates lower, the inverse happens — and stocks often fall on top of it, double-counting the move.</li>
+          <li><strong>Capex flow-through.</strong> Hyperscaler capital expenditures are now projected at roughly <a href="https://www.indmoney.com/blog/us-stocks/is-ai-the-next-dot-com-bubble-ai-vs-dot-com-crash-analysis" target="_blank" rel="noopener">$700 billion in 2026</a> across Microsoft, Alphabet, Meta, and Amazon combined. That spend lands as revenue on the books of NVDA, AVGO, MRVL, ASML, TSM, VRT, GEV, ETN, and the rest of the semi and infrastructure chain. The forward P/E for those names already prices a healthy share of that flow-through.</li>
+          <li><strong>Concentration.</strong> The top five names in the basket represent 64.8% of total market cap. If those five names beat consensus, the basket's earnings grow faster than the median name does. If they miss, the opposite happens. Median P/E hides what is going on at the cap-weighted level.</li>
+        </ol>
+
+        <h2>The Practical Takeaway</h2>
+
+        <ol>
+          <li><strong>Always look at trailing and forward P/E together.</strong> Never one alone. The gap between them is information.</li>
+          <li><strong>Compare like to like.</strong> The S&amp;P 500 forward P/E is 20.9x. The AI Class forward P/E is 21.8x. That is a far narrower premium than the trailing comparison suggests.</li>
+          <li><strong>Watch the earnings revisions trend.</strong> A rising forward number with a falling trailing number means analysts are catching up to actuals. A rising trailing number with a flat or falling forward number means the price is getting ahead of the estimates.</li>
+          <li><strong>Treat any single-stock P/E above ~100x with extra skepticism,</strong> especially when it is being justified by "the forward number." Forward estimates can be wrong, and they are most often wrong on the highest-multiple names.</li>
+          <li><strong>Do not let one number make the decision.</strong> The headline trailing P/E is the laziest possible read on whether a basket is expensive. The full picture lives in the spread.</li>
+        </ol>
+
+        <div class="callout-box">
+          <h3>Get the spreadsheet</h3>
+          <p>Want to track this yourself? We built a copy-and-go AI Class P/E Monitor spreadsheet. Make your own copy in Google Sheets and update the inputs each week — same methodology, same band thresholds. <a href="https://docs.google.com/spreadsheets/d/17oBU3IRNlHuhIbeTvid1jQqrt9T1ZDE3/copy" target="_blank" rel="noopener" class="btn-primary" style="margin-top:var(--space-3); display:inline-block;">Copy the spreadsheet</a></p>
+        </div>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>A 42x trailing P/E on the AI Class is not the same as a 152x trailing P/E on the dot-com class, and a 42x trailing is not the same as a 21.8x forward on the exact same basket reported on the exact same day. The trailing number tells you what last year's earnings cost. The forward number tells you what next year's are priced at. When earnings are growing fast — and right now, in this basket, they are — the gap between those two numbers is doing most of the work that observers attribute to the price. You do not have to believe analyst estimates to recognize that the spread itself is information. You just have to read the whole fraction, not only the top half of it.</p>
+        </div>
+
+
+        <!-- related-posts:start -->
+        <section class="related-posts" aria-label="Related posts">
+          <h2>Keep reading</h2>
+          <div class="related-grid">
+        <a href="./earnings-revisions-matter-more-than-earnings.html" class="related-card">
+          <span class="related-eyebrow">Continue reading</span>
+          <div class="related-title">Why Earnings Revisions Matter More Than Earnings</div>
+          <p class="related-blurb">A 14.6-point Q1 2026 revision running 2x the 10-year norm explains the gap between the AI Class's trailing and forward P/E — and shifts the bear case from multiples to revisions.</p>
+        </a>
+        <a href="./wall-street-wants-you-confused.html" class="related-card">
+          <span class="related-eyebrow">Continue reading</span>
+          <div class="related-title">Wall Street Wants You Confused</div>
+          <p class="related-blurb">The complexity premium is a feature, not a bug — and it's designed to keep you paying fees instead of buying index funds.</p>
+        </a>
+        <a href="./time-in-market-beats-timing.html" class="related-card">
+          <span class="related-eyebrow">Continue reading</span>
+          <div class="related-title">Time in Market Beats Timing the Market</div>
+          <p class="related-blurb">Missing the 10 best days costs you more than you think. The math behind staying fully invested through every earnings cycle.</p>
+        </a>
+          </div>
+        </section>
+        <!-- related-posts:end -->
+
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>

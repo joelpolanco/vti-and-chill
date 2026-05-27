@@ -212,6 +212,22 @@ POSTS = {
         "webmcp_entry": "{ title: 'The WallStreetBets Hall of Shame: What YOLO Trading Really Costs', url: '/pages/blog/wallstreetbets-hall-of-shame.html', tags: ['wallstreetbets hall of shame', 'options trading disasters', 'analfarmer2 story', '1RONYMAN box spread', 'GME diamond hands', 'overconfidence bias', 'DALBAR investor behavior', 'Barber Odean trading study', 'behavioral finance', 'VTI vs options trading'], description: 'A 19-year-old with $600K, a man who invented a debt machine, and $10M in GME losses. Not stupid people \u2014 human people. A behavioral finance autopsy of WSB\'s greatest disasters.' },",
     },
     # =========================================================================
+    "denominator-does-most-of-the-work": {
+        "date_iso": "2026-05-27",
+        "date_human": "May 27, 2026",
+        "section": "Market Commentary",
+        "read_time": "7 min read",
+        "title_short": "The Denominator Does Most of the Work",
+        "card_title": "The Denominator Does Most of the Work",
+        "card_blurb": "The AI Class sits at 42.2x trailing P/E and 21.8x forward P/E on the same day. That 20-turn spread isn\u2019t a quirk \u2014 the denominator is doing all the valuation work.",
+        "card_gradient": "linear-gradient(135deg, #1a1a2e 0%, #00d4aa 100%)",
+        "card_emoji": "\U0001F4CA",
+        "sitemap_priority": "0.85",
+        "llms_entry": "**The Denominator Does Most of the Work**: https://www.vtiandchill.com/pages/blog/denominator-does-most-of-the-work.html \u2014 Explains the mechanics of trailing vs. forward P/E and why the gap between them is the most important valuation signal during fast-earnings-growth regimes; AI Class basket at 42.2x trailing and 21.8x forward P/E (same basket, same day), implying ~93% earnings growth in the median name; S&P 500 forward P/E at 20.9x per FactSet May 1 2026 data; IT net margins at 29.1% in Q1 2026 (highest since 2009) and 84% of S&P 500 names beating by 12.3% vs. 5-year avg of 7.3%; dot-com peak of 152x trailing on Evercore ISI darlings basket (March 2000) vs. today\u2019s 42.2x \u2014 key difference is the quality of the denominator (74% of dot-com names had negative cash flow; today\u2019s top-5 AI Class names NVDA/GOOGL/MSFT/AMZN/TSM generate hundreds of billions in net income and represent 64.8% of basket market cap); $700B 2026 hyperscaler capex flowing through to NVDA, AVGO, MRVL, ASML, TSM, VRT, GEV, ETN; three things to track: earnings revisions, capex flow-through, top-5 concentration; includes link to copy-and-go Google Sheets AI Class P/E Monitor",
+        "skill_md_entry": "**The Denominator Does Most of the Work**: https://www.vtiandchill.com/pages/blog/denominator-does-most-of-the-work.html \u2014 Trailing vs. forward P/E mechanics explained via the AI Class basket (42.2x trailing / 21.8x forward); dot-com 152x comparison; three inputs that move forward P/E: earnings revisions, hyperscaler capex flow-through, top-5 concentration at 64.8%",
+        "webmcp_entry": "{ title: 'The Denominator Does Most of the Work', url: '/pages/blog/denominator-does-most-of-the-work.html', tags: ['P/E', 'valuation', 'AI', 'forward P/E', 'market commentary'], description: 'The AI Class sits at 42.2x trailing and 21.8x forward P/E on the same day \u2014 the 20-turn gap is the entire valuation story, driven by the denominator.' },",
+    },
+    # =========================================================================
     "earnings-revisions-matter-more-than-earnings": {
         "date_iso": "2026-05-20",
         "date_human": "May 20, 2026",
