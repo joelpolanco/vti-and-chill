@@ -228,6 +228,22 @@ POSTS = {
         "webmcp_entry": "{ title: 'The Denominator Does Most of the Work', url: '/pages/blog/denominator-does-most-of-the-work.html', tags: ['P/E', 'valuation', 'AI', 'forward P/E', 'market commentary'], description: 'The AI Class sits at 42.2x trailing and 21.8x forward P/E on the same day \u2014 the 20-turn gap is the entire valuation story, driven by the denominator.' },",
     },
     # =========================================================================
+    "how-1999-actually-looked": {
+        "date_iso": "2026-06-03",
+        "date_human": "June 3, 2026",
+        "section": "Market Commentary",
+        "read_time": "7 min read",
+        "title_short": "How 1999 Actually Looked",
+        "card_title": "How 1999 Actually Looked",
+        "card_blurb": "The AI Class trailing P/E jumped 9 turns in a week to 51.3x \u2014 a new monitor high. The 1999 chart overlays look compelling until you check what was in the denominator.",
+        "card_gradient": "linear-gradient(135deg, #1a1a2e 0%, #00d4aa 100%)",
+        "card_emoji": "\U0001F4C9",
+        "sitemap_priority": "0.85",
+        "llms_entry": "**How 1999 Actually Looked**: https://www.vtiandchill.com/pages/blog/how-1999-actually-looked.html \u2014 AI Class median trailing P/E hit 51.3x this week (highest monitor reading, up 9 turns in 7 days) with forward at 23.6x; contrasts with 1999 dot-com darlings 152x peak; key difference is denominator \u2014 1999 darlings had shrinking earnings while 2026 IT sector posted 29.1% Q1 net profit margin per FactSet, highest since 2009; 77% of 35-name basket has positive forward EPS; references JPMorgan Cembalest COVIDIA analysis on NVIDIA data-center capex at 15% of all market capex (only IBM 1969 and Cisco/Lucent/Nortel 2000 prior parallels), Sequoia's $600B capex vs $100B revenue gap; concludes capex digestion is the real risk, not multiple compression to 1999 levels; includes copy-and-go Google Sheets P/E monitor link",
+        "skill_md_entry": "**How 1999 Actually Looked**: https://www.vtiandchill.com/pages/blog/how-1999-actually-looked.html \u2014 AI Class trailing P/E hit 51.3x (new high, up 9 turns in a week) vs. 1999 dot-com darlings 152x peak; denominator is the key difference \u2014 IT sector at 29.1% margins (FactSet all-time high) vs. collapsing 1999 earnings; Cembalest COVIDIA capex concentration analysis; 77% basket positive forward EPS",
+        "webmcp_entry": "{ title: 'How 1999 Actually Looked', url: '/pages/blog/how-1999-actually-looked.html', tags: ['AI bubble', '1999 dot-com', 'valuation', 'forward P/E', 'market commentary', 'capex'], description: 'AI Class trailing P/E hit a monitor high of 51.3x \u2014 here is how the 1999 dot-com darlings actually compared on earnings, margins, and capex, and why the chart overlays are getting the wrong lesson.' },",
+    },
+    # =========================================================================
     "earnings-revisions-matter-more-than-earnings": {
         "date_iso": "2026-05-20",
         "date_human": "May 20, 2026",
