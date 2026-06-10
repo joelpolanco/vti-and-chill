@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFFQRYJTQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PFFQRYJTQ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When the Multiple Flinched: A 6.6-Turn AI P/E Drop in One Week | VTI &amp; Chill</title>
+<meta name="description" content="Median trailing P/E for the AI basket dropped 6.6 turns in a week — but breadth and earnings revisions held. Here's what that pattern means.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content em { font-style: italic; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h3 { color: var(--color-primary); margin-bottom: var(--space-2); margin-top: 0; font-weight: 700; font-size: var(--text-lg); }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+  .related-posts { margin: var(--space-10) 0 var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
+  .related-posts h2 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-4); color: var(--color-text); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4); }
+  .related-card { display: block; padding: var(--space-4) var(--space-5); background: var(--color-surface-2, #1c2333); border: 1px solid var(--color-border); border-radius: var(--radius-lg); text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+  .related-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-card .related-eyebrow { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-2); display: block; }
+  .related-card .related-title { font-family: var(--font-display); font-weight: 600; font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-1); line-height: 1.35; }
+  .related-card .related-blurb { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+  .btn-primary { background: var(--color-primary); color: var(--color-navy, #1a1a2e); font-weight: 600; padding: var(--space-2) var(--space-5); border-radius: var(--radius-full); text-decoration: none; font-size: var(--text-sm); transition: background 0.2s; }
+  .btn-primary:hover { background: var(--color-primary-hover); text-decoration: none; }
+</style>
+
+  <!-- SEO: Canonical & Keywords -->
+  <link rel="canonical" href="https://www.vtiandchill.com/pages/blog/when-the-multiple-flinched.html">
+  <meta name="keywords" content="AI P/E monitor, trailing P/E, forward P/E, AI Class, P/E compression, AI valuation, NVDA, GOOGL, MSFT, AMZN, TSM, concentration risk, DCA, rebalancing">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="VTI &amp; Chill">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="When the Multiple Flinched: A 6.6-Turn AI P/E Drop in One Week">
+  <meta property="og:description" content="Median trailing P/E for the AI basket dropped 6.6 turns in a week — but breadth and earnings revisions held. Here's what that pattern means.">
+  <meta property="og:url" content="https://www.vtiandchill.com/pages/blog/when-the-multiple-flinched.html">
+  <meta property="og:image" content="https://www.vtiandchill.com/blog-posts/images/25-when-the-multiple-flinched.jpg">
+  <meta property="og:image:width" content="1652">
+  <meta property="og:image:height" content="1548">
+  <meta property="og:site_name" content="VTI &amp; Chill">
+  <meta property="article:published_time" content="2026-06-10T00:00:00Z">
+  <meta property="article:author" content="Joel Polanco / VTI &amp; Chill">
+  <meta property="article:section" content="Market Commentary">
+  <meta property="article:tag" content="AI P/E monitor">
+  <meta property="article:tag" content="trailing P/E">
+  <meta property="article:tag" content="forward P/E">
+  <meta property="article:tag" content="P/E compression">
+  <meta property="article:tag" content="AI Class basket">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VTIandChill">
+  <meta name="twitter:title" content="When the Multiple Flinched: A 6.6-Turn AI P/E Drop in One Week">
+  <meta name="twitter:description" content="Median trailing P/E for the AI basket dropped 6.6 turns in a week — but breadth and earnings revisions held. Here's what that pattern means.">
+  <meta name="twitter:image" content="https://www.vtiandchill.com/blog-posts/images/25-when-the-multiple-flinched.jpg">
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "When the Multiple Flinched: A 6.6-Turn AI P/E Drop in One Week",
+  "description": "Median trailing P/E for the AI Class basket dropped 6.6 turns in a single week — from 51.3x to 44.7x. Forward P/E compressed from 23.6x to 21.3x. Breadth held at 77%. Concentration ticked up to 64.0%. We are now sitting on the 39x AI Class benchmark line. Here's what that pattern means and why it is not a bubble signal.",
+  "url": "https://www.vtiandchill.com/pages/blog/when-the-multiple-flinched.html",
+  "datePublished": "2026-06-10",
+  "dateModified": "2026-06-10",
+  "author": {
+    "@type": "Person",
+    "name": "Joel Polanco",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/when-the-multiple-flinched.html"
+  },
+  "image": "https://www.vtiandchill.com/blog-posts/images/25-when-the-multiple-flinched.jpg",
+  "wordCount": 1600,
+  "articleSection": "Market Commentary",
+  "keywords": [
+    "AI P/E monitor",
+    "trailing P/E",
+    "forward P/E",
+    "P/E compression",
+    "AI Class basket",
+    "NVDA",
+    "GOOGL",
+    "MSFT",
+    "AMZN",
+    "TSM",
+    "concentration risk",
+    "DCA",
+    "rebalancing"
+  ],
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "AI Class basket"
+    },
+    {
+      "@type": "Thing",
+      "name": "P/E ratio compression"
+    },
+    {
+      "@type": "Organization",
+      "name": "NVIDIA"
+    },
+    {
+      "@type": "Organization",
+      "name": "Alphabet"
+    },
+    {
+      "@type": "Organization",
+      "name": "Microsoft"
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: FAQ (JSON-LD) — GEO/AEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why did the AI Class trailing P/E drop 6.6 turns in one week?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 6.6-turn compression in the AI Class median trailing P/E — from 51.3x to 44.7x — reflects a combination of price softening and earnings re-rating across the basket. This is exactly the kind of move that does not show up in broad market headlines: an index can drift sideways while individual multiples compress through earnings beats, estimate revisions, or modest price pullbacks. A 6.6-turn drop in a single week is large by historical standards for this monitor, but it is also how healthy multiple compression is supposed to work — through the denominator catching up, not through prices collapsing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Did the AI breadth (earnings coverage) hold during the P/E compression?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Positive FY1 EPS coverage held at 77% — 27 of 35 names — unchanged from the prior week. The compression came from price and EPS re-rating, not from coverage breaking. This is an important distinction. In the 1999 dot-com setup, breadth narrowed first — the share of names with positive or stable forward earnings began deteriorating before the price peak. The fact that breadth held at 77% during a week of significant multiple compression is a structural signal that the denominator is still doing its job."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why did top-5 concentration increase even as the P/E dropped?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The top-5 concentration (NVDA, GOOGL, MSFT, AMZN, TSM) ticked up from 61.8% to 64.0% even as the median P/E compressed. This is the counterintuitive part of a narrowing rally: when the multiple cools but the top-5 share rises, investors are getting more of their AI exposure concentrated in five names. It means the compression is not evenly distributed — the smaller and mid-tier names in the basket gave back more ground relative to their weight. Concentration rising during a cooling period is worth watching more closely than the P/E level itself."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should investors do now that the AI Class is sitting on the 39x benchmark line?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 39x AI Class of 2026 benchmark line is the inflection point between the overvalued band above and the fair-value band below. Sitting on the line is not a sell signal — it is a rebalancing signal. The boring playbook applies: keep dollar-cost averaging the broad index (VTI or equivalent), use the 5/25 rebalancing rule to trim concentrated AI names that have drifted above your target allocation, and do not chase the top-5 names at elevated prices. The biggest mistake at an inflection point is to treat a cooling multiple as a buying invitation for the names that drove concentration to 64%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is a 44.7x AI Class P/E not the same as 1999?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 1999 dot-com darlings basket, as reconstructed by Evercore ISI, hit a median trailing P/E of roughly 152x at the March 2000 peak — more than 3x the current AI Class reading. More importantly, the 1999 setup involved P/E expansion alongside stalling and then negative earnings revisions. Today, 77% of the AI Class basket has positive forward EPS, the forward P/E stands at 21.3x (only modestly above the broad S&amp;P 500), and breadth has held steady through multiple compression. The bubble pattern requires both ingredients: P/E expanding AND EPS revisions stalling. The current monitor shows neither."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.vtiandchill.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.vtiandchill.com/pages/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "When the Multiple Flinched: A 6.6-Turn AI P/E Drop in One Week",
+      "item": "https://www.vtiandchill.com/pages/blog/when-the-multiple-flinched.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI &amp; <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Market Commentary</span>
+          <span>June 10, 2026</span>
+          <span>6 min read</span>
+        </div>
+        <h1>When the Multiple Flinched: A 6.6-Turn AI P/E Drop in One Week</h1>
+        <p class="blog-post-subtitle">Median trailing P/E for the AI basket dropped 6.6 turns in a week — but breadth and earnings revisions held. Here's what that pattern means.</p>
+      </div>
+
+      <figure>
+        <img src="../../blog-posts/images/25-when-the-multiple-flinched.jpg"
+             alt="VTI and Chill AI Class P/E Monitor for the Week of June 10, 2026: 44.7x median trailing P/E (down 6.6 turns from last week's 51.3x), 21.3x median forward P/E (down from 23.6x), 77 percent of 35-name basket has positive forward EPS coverage (27 of 35 names), top-5 concentration 64.0 percent (NVDA, GOOGL, MSFT, AMZN, TSM). Half-circle gauge shows basket sitting on the 39x AI Class of 2026 benchmark line. Forward P/E scatter strip shows MU in undervalued band, AVGO in U band, MDB in overvalued band, CRWD in bubble band. 31 of 35 names plotted with positive FY1 EPS."
+             loading="lazy" width="1652" height="1548"
+             style="width:100%; height:auto; border-radius: var(--radius-md); margin: var(--space-4) 0;">
+        <figcaption style="font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); font-style: italic;">AI Class P/E Monitor — Week of June 10, 2026. Trailing 44.7x (down 6.6 turns), forward 21.3x, sitting on the 39x benchmark line. Education, not advice.</figcaption>
+      </figure>
+
+      <div class="blog-post-content">
+
+        <!-- TL;DR Practical Takeaway -->
+        <div class="callout-box">
+          <h3>Practical Takeaway TL;DR</h3>
+          <p>If you only have 30 seconds, here is the whole argument. The rest of the post is the receipts.</p>
+          <ul>
+            <li><strong>The multiple gave back 6.6 turns in one week.</strong> Trailing P/E fell from 51.3x to 44.7x; forward P/E fell from 23.6x to 21.3x. That is healthy compression — not a crash, not a bubble pop, just the denominator doing its job.</li>
+            <li><strong>Breadth held at 77%.</strong> Twenty-seven of 35 names still have positive forward EPS — unchanged from last week. The compression came from price and EPS re-rating, not from coverage breaking. That is the key structural tell.</li>
+            <li><strong>Concentration ticked UP to 64.0%.</strong> The top-5 (NVDA, GOOGL, MSFT, AMZN, TSM) now account for 64 cents of every dollar in the basket, up from 61.8%. When the multiple cools but concentration rises, you are getting more AI exposure from fewer names — that is a portfolio risk, not a valuation one.</li>
+            <li><strong>We are now sitting on the 39x AI Class benchmark line.</strong> Above it is the overvalued band. Below it is fair value. This is the inflection point — not a buy signal, not a sell signal, but a rebalancing checkpoint.</li>
+            <li><strong>Action: keep DCAing, do not chase, rebalance the bands.</strong> Dollar-cost average the broad index. Trim any individual AI name that has drifted more than 5 percentage points or 25% above your target allocation. Do not rotate into the top-5 at 64% concentration just because the headline number got smaller.</li>
+          </ul>
+        </div>
+
+        <p>Last week, the AI Class monitor logged its highest-ever trailing P/E reading: 51.3x. The inbox filled with 1999 comparisons. The finance influencers found their moment. And then — quietly, without any particular headline driving it — the basket gave back 6.6 turns in a single week.</p>
+
+        <p>That is not how bubbles end. Bubbles end with breadth breaking, revisions collapsing, and the forward multiple following the trailing one into the dirt. What happened this week is more mundane and more instructive: the denominator kept growing, prices softened modestly, and the forward P/E compressed from 23.6x to 21.3x alongside it.</p>
+
+        <p>There are now four things worth tracking in this week's monitor, and only one of them is good news about valuation. The others deserve just as much attention.</p>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-value">44.7x</div>
+            <div class="stat-label">Median trailing P/E (down 6.6 turns from 51.3x)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">21.3x</div>
+            <div class="stat-label">Median forward P/E (down from 23.6x)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">77%</div>
+            <div class="stat-label">Positive FY1 EPS coverage (27 of 35 — unchanged)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">64.0%</div>
+            <div class="stat-label">Top-5 concentration (UP from 61.8%)</div>
+          </div>
+        </div>
+
+        <h2>The Flinch: What 6.6 Turns in One Week Actually Means</h2>
+
+        <p>A 6.6-turn drop in median trailing P/E is a large single-week move. To put it in context: the monitor jumped 9 turns the prior week going up. Giving back two-thirds of that in one week, without a corresponding collapse in earnings coverage, is the mechanical definition of healthy compression.</p>
+
+        <p>The mechanism matters. There are two ways a P/E can fall. The first is the bad way: prices drop and the denominator doesn't move, or prices hold and earnings get revised down — either way you're watching the multiple compress through deterioration. The second is the good way: earnings grow into the price, or prices soften modestly while forward estimates hold. This week's data points to the second mechanism. Forward P/E fell from 23.6x to 21.3x in parallel, which means both the numerator and denominator moved — not a one-sided crack.</p>
+
+        <p>This is exactly the kind of cooling that does not show up in the broad index headlines. The S&amp;P 500 can drift sideways or mildly negative while the AI basket's multiple compresses 6.6 turns through a combination of modest price softening and continued earnings beats rolling through. The weekly P/E monitor exists to catch precisely these moves, which are invisible to anyone watching only the price tape.</p>
+
+        <h2>Breadth Held: Why That Is the Structural Tell</h2>
+
+        <p>Seventy-seven percent of names in the basket — 27 of 35 — still carry positive forward EPS. That number did not move from last week. The eight names without a positive FY1 EPS figure (AI, SOUN, BBAI, TSM, ASML, SMCI, ETN) represent the same coverage gap as the prior week. The compression did not eat into breadth.</p>
+
+        <p>This distinction matters enormously for the 1999 comparison that keeps circulating. In the dot-com setup, breadth narrowed first. The share of names carrying positive and stable forward earnings began deteriorating months before the price peak — estimates got cut, the denominator shrank, and the trailing P/E expanded mechanically as the forward number stopped making sense. The trouble showed up in breadth before it showed up in price.</p>
+
+        <p>At 77%, this basket has the same breadth it has carried for the past several weeks. A multiple that compresses while breadth holds is a very different signal than a multiple that expands while breadth erodes. The first is an asset class getting cheaper on a stable earnings base. The second is what happened in 1999.</p>
+
+        <h2>Concentration Ticked Up: The Part Worth Watching More Than the P/E</h2>
+
+        <p>Here is the uncomfortable number in this week's monitor: top-5 concentration went from 61.8% to 64.0%. NVDA, GOOGL, MSFT, AMZN, and TSM now account for 64 cents of every dollar of weight in the AI Class basket — even as the headline multiple compressed.</p>
+
+        <p>This is the counterintuitive part of a narrowing rally. When the multiple cools but the top-5 share rises, it means the compression is not evenly distributed across the basket. The smaller and mid-tier names gave back more ground, their weight shrank, and the large-cap names absorbed a larger share of the total. You now have a basket that is cheaper on the headline P/E but more dependent on five names than it was last week.</p>
+
+        <p>There is nothing automatically wrong with that. NVDA, GOOGL, MSFT, AMZN, and TSM are, by any reasonable measure, the companies most directly exposed to the AI infrastructure buildout with actual earnings to show for it. But concentration at 64% means your AI basket is not giving you the basket diversification the name implies. It is giving you a five-name bet with smaller satellites attached.</p>
+
+        <p>If you are using the basket as a diversified AI exposure vehicle, this reading is worth pausing on. The 5/25 rebalancing rule — trim when a position grows more than 5 percentage points or 25% above your target — was designed exactly for this scenario.</p>
+
+        <div class="callout-box">
+          <h3>"AI isn't 1999 if earnings keep rising — but it starts rhyming when P/E expands while EPS revisions stall."</h3>
+          <p>That is the headline from this week's monitor chart, and it is worth taking literally. The bubble pattern has two required ingredients, not one. P/E alone is not the signal — the signal is P/E expanding <em>while</em> earnings revisions stall or turn negative. We have neither condition right now. Forward P/E fell this week. Breadth held. The denominator is still growing. The rhyme with 1999 requires both ingredients to show up together, and they haven't.</p>
+        </div>
+
+        <h2>The 39x Line: We Just Touched the Benchmark</h2>
+
+        <p>The AI Class of 2026 benchmark sits at 39x trailing P/E. Above it is the overvalued band; below it is the fair-value band. At 44.7x, we are 5.7 turns above the line — but we are the closest we have been to it since the monitor started logging readings above 40x.</p>
+
+        <p>Sitting on or near the 39x line is not a buy signal. It is a rebalancing checkpoint. The 152x dot-com peak, as reconstructed by <a href="https://www.barrons.com/articles/sp-500-pe-stocks-bubble-burst-economy-7c79bcd9" target="_blank" rel="noopener">Evercore ISI's analysis of the 1999–2000 darlings basket</a>, is still more than three times away. We are not approaching 1999 territory. But we are in the range where a moderate further compression — another 5–7 turns — would flip the monitor from "overvalued" to "fair value" on this metric.</p>
+
+        <p>What would drive that? Another week or two of earnings beats where the denominator catches up further, modest price softening in the top-5, or some combination. None of that requires a crisis. It requires the market to keep doing what it did this week: letting the multiple breathe.</p>
+
+        <h2>What a Real Bubble Would Do</h2>
+
+        <p>The bubble pattern that preceded 2000 had a specific shape. Prices ran ahead of any plausible forward earnings number. Estimates got revised down even as prices held or rose. The forward P/E became disconnected from the trailing one — not because earnings were growing, but because analysts kept issuing optimistic forward numbers that the trailing earnings never validated. Eventually the trailing number exploded as earnings collapsed and the price didn't follow fast enough on the way down.</p>
+
+        <p>The 2026 monitor shows the opposite structure. Forward P/E fell to 21.3x this week — only modestly above the <a href="https://insight.factset.com/sp-500-earnings-season-update-may-1-2026" target="_blank" rel="noopener">broad S&amp;P 500's forward multiple</a>. The trailing-to-forward gap is 23.4 turns (44.7x trailing minus 21.3x forward). When that gap closes through earnings growth rather than price collapse, you have a working thesis, not a bubble.</p>
+
+        <p>The names in the monitor that remain without positive FY1 EPS coverage — AI, SOUN, BBAI, and others — are the ones where the 1999 pattern could apply locally. Small model-layer names with no current earnings, priced on narrative. Those are worth watching individually. They are not the basket.</p>
+
+        <!-- CTA Callout -->
+        <div class="callout-box">
+          <h3>Get this week's spreadsheet</h3>
+          <p>Track the AI Class P/E Monitor yourself. We update every Tuesday after close — trailing P/E, forward P/E, breadth, concentration, and individual ticker bands. Make your own copy and follow along in real time.</p>
+          <a href="https://docs.google.com/spreadsheets/d/1QfqUheZs0W6kK_rRVmcvrABiw3p8pNNd/copy" target="_blank" rel="noopener" class="btn-primary" style="margin-top:var(--space-3); display:inline-block;">Download the AI P/E Monitor (Google Sheets)</a>
+        </div>
+
+        <h2>The Ticker Band Read: Where Individual Names Sit</h2>
+
+        <p>The forward P/E scatter strip in this week's monitor plots 31 of the 35 names. The four without a positive FY1 EPS (AI, SOUN, BBAI, and one other) don't generate a clean forward multiple, so they are excluded from the strip but still count toward breadth coverage.</p>
+
+        <p>The band read this week:</p>
+        <ul>
+          <li><strong>MU (Micron):</strong> Undervalued band. Forward earnings are being revised up on memory cycle tailwinds. This is the name that looks cheapest on a pure forward P/E basis in the basket.</li>
+          <li><strong>AVGO (Broadcom):</strong> U band (lower end of fair value). Custom AI silicon and networking revenue have earned it a mid-range forward multiple.</li>
+          <li><strong>MDB (MongoDB):</strong> Overvalued band. Developer-layer infrastructure at a premium to the basket. Not a bubble, but priced for continued execution.</li>
+          <li><strong>CRWD (CrowdStrike):</strong> Bubble band. Cybersecurity-AI convergence at multiples that embed many years of compound growth. Not impossible, but the margin for error is thin.</li>
+        </ul>
+
+        <p>The spread from undervalued (MU) to bubble band (CRWD) is exactly why a basket median P/E is a useful summary stat but a dangerous single decision variable. At 44.7x median, you are averaging across a genuine bargain and a high-conviction growth bet in the same number.</p>
+
+        <h2>The Boring Playbook (Still the Right One)</h2>
+
+        <p>Nothing in this week's data changes the mechanical playbook. The multiple gave back 6.6 turns — that is mildly encouraging. Breadth held — that is the structural anchor. Concentration ticked up — that is the one to watch. The 39x line is close but not crossed.</p>
+
+        <p>The action items remain what they always have been:</p>
+        <ol>
+          <li><strong>Keep dollar-cost averaging the broad index.</strong> VTI, VXUS, the whole market. The AI Class basket is inside that; you are already long these names at market weight. The monitor is for awareness, not for tactical rotation.</li>
+          <li><strong>Use the rebalance bands.</strong> If any individual AI name has grown to more than 5 percentage points above your target allocation, or grown more than 25% above that target, trim. That rule exists precisely for weeks when concentration rises even as the headline P/E falls.</li>
+          <li><strong>Do not chase the top-5 because the number got smaller.</strong> NVDA, GOOGL, MSFT, AMZN, and TSM at 64% concentration are not cheaper because the basket median compressed. They are more concentrated. Cheaper median P/E with higher concentration is not an invitation to buy more of the names driving concentration.</li>
+          <li><strong>Watch revisions, not levels.</strong> The 1999 signal showed up in revision direction before it showed up in prices. If forward EPS for the AI basket starts getting cut while prices hold, the gap between trailing and forward widens for the wrong reason. That is the tell. It is not happening yet.</li>
+        </ol>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>The AI Class basket gave back 6.6 trailing P/E turns in one week — from 51.3x to 44.7x. Forward P/E fell to 21.3x. Breadth held at 77%. Concentration rose to 64.0%. We are now sitting on the 39x AI Class benchmark line — the closest we have been to fair-value territory in recent weeks. None of this is a bubble signal. The bubble pattern requires P/E expanding while EPS revisions stall; we have compression and stable breadth instead. The honest read: the basket is getting cheaper on a stable earnings base, but the top-5 concentration is rising, which means your effective AI exposure is narrowing even as the headline number improves. Keep DCAing the broad index. Use the rebalancing bands. Do not treat a smaller P/E number as a green light to load up on the names that just drove concentration to 64%.</p>
+        </div>
+
+
+        <!-- related-posts:start -->
+        <section class="related-posts" aria-label="Related posts">
+          <h2>Keep reading</h2>
+          <div class="related-grid">
+        <a href="./how-1999-actually-looked.html" class="related-card">
+          <span class="related-eyebrow">Continue reading</span>
+          <div class="related-title">How 1999 Actually Looked: And Why a 51x AI Class Doesn't Automatically Mean It</div>
+          <p class="related-blurb">The AI Class jumped to 51.3x last week. The 1999 dot-com darlings hit 152x on shrinking earnings. Here's what the denominator, margins, and capex actually tell you.</p>
+        </a>
+        <a href="./denominator-does-most-of-the-work.html" class="related-card">
+          <span class="related-eyebrow">Continue reading</span>
+          <div class="related-title">The Denominator Does Most of the Work</div>
+          <p class="related-blurb">The AI Class sits at 42.2x trailing and 21.8x forward P/E on the same day. The 20-turn gap is the entire valuation story — here's the mechanism behind it.</p>
+        </a>
+        <a href="./earnings-revisions-matter-more-than-earnings.html" class="related-card">
+          <span class="related-eyebrow">Continue reading</span>
+          <div class="related-title">Why Earnings Revisions Matter More Than Earnings</div>
+          <p class="related-blurb">A 14.6-point Q1 2026 revision running 2x the 10-year norm explains the gap between the AI Class's trailing and forward P/E — and shifts the bear case from multiples to revisions.</p>
+        </a>
+          </div>
+        </section>
+        <!-- related-posts:end -->
+
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>

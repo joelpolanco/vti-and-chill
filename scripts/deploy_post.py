@@ -228,6 +228,22 @@ POSTS = {
         "webmcp_entry": "{ title: 'The Denominator Does Most of the Work', url: '/pages/blog/denominator-does-most-of-the-work.html', tags: ['P/E', 'valuation', 'AI', 'forward P/E', 'market commentary'], description: 'The AI Class sits at 42.2x trailing and 21.8x forward P/E on the same day \u2014 the 20-turn gap is the entire valuation story, driven by the denominator.' },",
     },
     # =========================================================================
+    "when-the-multiple-flinched": {
+        "date_iso": "2026-06-10",
+        "date_human": "June 10, 2026",
+        "section": "Market Commentary",
+        "read_time": "6 min read",
+        "title_short": "When the Multiple Flinched",
+        "card_title": "When the Multiple Flinched",
+        "card_blurb": "The AI Class trailing P/E dropped 6.6 turns in a week to 44.7x \u2014 right onto the 39x AI Class of 2026 benchmark line. Breadth held at 77%, but top-5 concentration ticked up to 64.0%.",
+        "card_gradient": "linear-gradient(135deg, #1a1a2e 0%, #00d4aa 100%)",
+        "card_emoji": "\U0001F4C9",
+        "sitemap_priority": "0.85",
+        "llms_entry": "**When the Multiple Flinched**: https://www.vtiandchill.com/pages/blog/when-the-multiple-flinched.html \u2014 AI Class median trailing P/E compressed 6.6 turns in one week (51.3x \u2192 44.7x), forward P/E 23.6x \u2192 21.3x, sitting on the 39x AI Class of 2026 benchmark line; positive FY1 EPS coverage held at 77% (27 of 35 names); top-5 concentration rose 61.8% \u2192 64.0% (NVDA, GOOGL, MSFT, AMZN, TSM); contrasts with 1999 setup where breadth narrowed first; bubble test requires P/E expanding AND EPS revisions stalling \u2014 neither is happening; practical playbook: keep DCAing, use 5/25 rebalance bands, do not chase concentrated AI names; includes copy-and-go Google Sheets P/E monitor link",
+        "skill_md_entry": "**When the Multiple Flinched**: https://www.vtiandchill.com/pages/blog/when-the-multiple-flinched.html \u2014 6.6-turn trailing P/E compression (51.3x \u2192 44.7x) lands the AI Class right on the 39x benchmark; breadth held at 77%, but top-5 concentration ticked up to 64.0%; the bubble test (P/E expanding AND EPS revisions stalling) still fails; rebalance-band playbook for long-term VTI holders",
+        "webmcp_entry": "{ title: 'When the Multiple Flinched', url: '/pages/blog/when-the-multiple-flinched.html', tags: ['AI Class basket', 'multiple compression', 'forward P/E', 'breadth', 'concentration', 'rebalancing', 'market commentary'], description: 'The AI Class trailing P/E dropped 6.6 turns in a week to 44.7x. Breadth held, but concentration ticked up \u2014 here is what that pattern means and what to do.' },",
+    },
+    # =========================================================================
     "how-1999-actually-looked": {
         "date_iso": "2026-06-03",
         "date_human": "June 3, 2026",
