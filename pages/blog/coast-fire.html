@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFFQRYJTQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PFFQRYJTQ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Coast FIRE Calculator: How Much Do You Really Need to Save? | VTI &amp; Chill</title>
+<meta name="description" content="Coast FIRE is the number where compounding takes over and you stop saving. Here is how it works, the formula, and the trade-offs nobody mentions.">
+<meta name="keywords" content="coast fire, financial independence, retire early, compounding, savings rate, retirement calculator, fire movement, vti">
+<meta name="author" content="VTI &amp; Chill">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://www.vtiandchill.com/pages/blog/coast-fire.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Coast FIRE Calculator: How Much Do You Really Need to Save?">
+<meta property="og:description" content="Coast FIRE is the number where compounding takes over and you stop saving. Here is how it works, the formula, and the trade-offs nobody mentions.">
+<meta property="og:url" content="https://www.vtiandchill.com/pages/blog/coast-fire.html">
+<meta property="og:image" content="https://www.vtiandchill.com/og/og-blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="VTI &amp; Chill">
+<meta property="article:published_time" content="2026-07-24T00:00:00Z">
+<meta property="article:author" content="VTI &amp; Chill">
+<meta property="article:section" content="Retirement Planning">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@VTIandChill">
+<meta name="twitter:title" content="The Coast FIRE Calculator: How Much Do You Really Need to Save?">
+<meta name="twitter:description" content="Coast FIRE is the number where compounding takes over and you stop saving. Here is how it works, the formula, and the trade-offs nobody mentions.">
+<meta name="twitter:image" content="https://www.vtiandchill.com/og/og-blog.png">
+
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<meta name="theme-color" content="#1a1a2e">
+
+<!-- Fontshare preconnects -->
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content em { font-style: italic; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h3 { color: var(--color-primary); margin-bottom: var(--space-2); margin-top: 0; font-weight: 700; font-size: var(--text-lg); }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .chart-container svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); padding-bottom: var(--space-2); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; border: 1px solid var(--color-border); }
+  .stat-card .stat-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+  .stat-card .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+  .related-posts { margin: var(--space-10) 0 var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
+  .related-posts h2 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-4); color: var(--color-text); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4); }
+  .related-card { display: block; padding: var(--space-4) var(--space-5); background: var(--color-surface-2, #1c2333); border: 1px solid var(--color-border); border-radius: var(--radius-lg); text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+  .related-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-card .related-eyebrow { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-2); display: block; }
+  .related-card .related-title { font-family: var(--font-display); font-weight: 600; font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-1); line-height: 1.35; }
+  .related-card .related-blurb { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+  .formula-block { background: var(--color-surface-2); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5) var(--space-6); margin: var(--space-4) 0; font-family: var(--font-mono, monospace); font-size: var(--text-sm); color: var(--color-text); line-height: 1.9; }
+  .formula-block strong { color: var(--color-primary); }
+</style>
+
+  <!-- Structured Data: Article (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Coast FIRE Calculator: How Much Do You Really Need to Save?",
+  "description": "Coast FIRE is the number where compounding takes over and you stop saving. Here is how it works, the formula, and the trade-offs nobody mentions.",
+  "image": "https://www.vtiandchill.com/og/og-blog.png",
+  "url": "https://www.vtiandchill.com/pages/blog/coast-fire.html",
+  "datePublished": "2026-07-24",
+  "dateModified": "2026-07-24",
+  "author": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VTI & Chill",
+    "url": "https://www.vtiandchill.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.vtiandchill.com/og/og-blog.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.vtiandchill.com/pages/blog/coast-fire.html"
+  },
+  "articleSection": "Retirement Planning",
+  "keywords": [
+    "coast fire",
+    "financial independence",
+    "retire early",
+    "compounding",
+    "savings rate",
+    "retirement calculator",
+    "fire movement",
+    "vti"
+  ],
+  "wordCount": 1698
+}
+  </script>
+
+  <!-- Structured Data: FAQPage (JSON-LD) — GEO/AEO Optimization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Coast FIRE and how does it work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Coast FIRE is the point where your existing retirement savings, left alone to grow at a historical market rate, will compound to your target retirement number by your target retirement age — without you ever adding another dollar. Once you hit your Coast FIRE number, you've completed your retirement saving job. You can take a lower-paying job you love, cut your hours, or simply stop stressing about maxing every account. The metaphor is a bicycle: you've pedaled hard up a steep hill, and once you reach the top you can stop pedaling and coast all the way down. The key insight is that you don't need to save all the money you'll retire on — you only need to save enough that compound growth finishes the job."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you calculate your Coast FIRE number?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Coast FIRE formula is: Coast FIRE Number = FIRE Number ÷ (1 + r)^n. First, calculate your FIRE number by multiplying your expected annual retirement spending by 25 (based on the 4% safe withdrawal rate). Then divide that by (1 + your expected annual real return) raised to the power of years until retirement. For example: if you plan to spend $60,000 per year in retirement, your FIRE number is $1,500,000. If you're 35 and want to retire at 65 (n = 30) with a 7% real return, your Coast FIRE number is $1,500,000 ÷ (1.07)^30 = roughly $197,105. If you have that amount invested today, you never need to add another retirement contribution — compounding does the rest."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do you still need to pay for after reaching Coast FIRE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reaching Coast FIRE means you're off the hook for retirement contributions, but you still need to cover current living expenses from ongoing income. You still need to fund: current monthly expenses (housing, food, transportation, utilities, insurance), health insurance if your new lower-stress job doesn't provide it, and any non-retirement savings goals like a home purchase or college savings. What you no longer need to do: contribute to retirement accounts, maximize every tax-advantaged space, or take high-earning, high-stress jobs purely for income. Many Coast FIRE adherents use this milestone as permission to change careers, go part-time, move abroad, or pursue creative work that wouldn't otherwise pay enough."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the biggest risks with Coast FIRE planning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The main risks in Coast FIRE planning are: (1) Return assumption risk — a 7% real return is reasonable based on long-term US stock market history, but not guaranteed. If you assume 7% and average only 5%, $197,105 grows to roughly $826,000 by age 65, well short of a $1,500,000 target. Conservative planners use 5–6% to build in margin. (2) Inflation — make sure you're using real (inflation-adjusted) returns consistently, not mixing nominal and real figures. (3) Sequence of returns risk — how the market performs in your early retirement years matters enormously even if average returns pan out. (4) Life changes — you might not retire at 65, healthcare costs may be higher than expected, or lifestyle spending may increase. The solution: be conservative with assumptions and build a margin of safety above your calculated number."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Coast FIRE differ from regular FIRE or Barista FIRE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Regular FIRE (Financial Independence, Retire Early) means accumulating enough savings to cover all living expenses indefinitely — typically 25x annual spending. You stop working entirely. Coast FIRE is an earlier, smaller milestone: you've saved enough that compounding will carry you to a full FIRE number by retirement age, but you still work to cover current expenses — just without retirement savings pressure. Barista FIRE overlaps in practice: you've hit your Coast number, so you take a lower-stress, lower-income job (the 'barista' job) that covers bills without requiring maximum retirement contributions. The key distinction is that Coast FIRE is a savings milestone, while Barista FIRE describes the lifestyle choice that often follows it. Both offer freedom well before traditional FIRE is achievable."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.vtiandchill.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.vtiandchill.com/pages/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The Coast FIRE Calculator: How Much Do You Really Need to Save?",
+      "item": "https://www.vtiandchill.com/pages/blog/coast-fire.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo-link">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="VTI &amp; Chill logo"><rect width="36" height="36" rx="8" fill="#1a1a2e"/><path d="M6 24 L12 14 L17 20 L22 10 L30 18" stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="18" r="2" fill="#00d4aa"/></svg>
+        <span>VTI &amp; <span style="color: var(--color-primary)">Chill</span></span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html" class="active">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode"><i data-lucide="moon" style="width:18px;height:18px"></i></button>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i data-lucide="menu" style="width:20px;height:20px"></i></button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="../../index.html">Home</a><a href="../philosophy.html">Philosophy</a><a href="../portfolios.html">Portfolios</a><a href="../tools.html">Tools</a><a href="../learn/">Learn</a><a href="../blog.html">Blog</a><a href="../community.html">Community</a><a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Retirement Planning</span>
+          <span>July 24, 2026</span>
+          <span>6 min read</span>
+        </div>
+        <h1>The Coast FIRE Calculator: How Much Do You Really Need to Save?</h1>
+        <p class="blog-post-subtitle">Coast FIRE is the number where compounding takes over and you stop saving. Here is how it works, the formula, and the trade-offs nobody mentions.</p>
+      </div>
+
+      <div class="blog-post-content">
+
+        <!-- TL;DR Practical Takeaway -->
+        <div class="callout-box">
+          <h3>The 30-Second Version</h3>
+          <p>If you only have 30 seconds, here is the whole argument. The rest of the post is the receipts.</p>
+          <ul>
+            <li><strong>Coast FIRE is a specific, calculable number.</strong> It's the amount you need invested today so that compounding alone — no new contributions — carries you to your retirement target.</li>
+            <li><strong>The formula is simple.</strong> Coast FIRE Number = (Annual Spending × 25) ÷ (1.07)^years to retirement. At 35 aiming for $60K/year in retirement, that's roughly $197,000.</li>
+            <li><strong>Once you hit it, you stop saving for retirement.</strong> You still need income for daily life, but the retirement anxiety dissolves. Take the lower-stress job, cut your hours, pivot to the passion project.</li>
+            <li><strong>The biggest risk is optimistic return assumptions.</strong> Use 5–6% real returns to build a margin of safety, not the maximum historical average.</li>
+            <li><strong>The earlier you start, the smaller the number.</strong> At 25, a $1.5M retirement target requires only about $100K invested today. Time is the engine — you just need to load the fuel.</li>
+          </ul>
+        </div>
+
+        <p>Most retirement conversations go like this: "Save as much as you can, for as long as you can, and retire when you have enough." It's not bad advice, but it's a bit like saying "drive as fast as you safely can until you get there." Technically correct, practically exhausting.</p>
+
+        <p>What if there was a point — a specific, calculable dollar amount — at which you could stop saving for retirement entirely and just let compounding carry you the rest of the way?</p>
+
+        <p>That's Coast FIRE. And the number might be smaller than you think.</p>
+
+        <h2>What Coast FIRE Actually Means</h2>
+
+        <p>Coast FIRE is the point where your existing retirement savings, left alone to grow at a historical market rate, will compound to your target retirement number by your target retirement age — without you ever adding another dollar.</p>
+
+        <p>Once you hit your Coast FIRE number, you've done your retirement saving job. You don't need to save anymore (for retirement — you might still save for other goals). You can take a lower-paying job you love, cut your hours, pivot to a passion project, or simply stop stressing about maxing every account. Your future self's retirement is already on autopilot.</p>
+
+        <p>The metaphor is a bicycle. You've pedaled hard up a steep hill. Once you reach the top, you can stop pedaling and coast all the way down. The momentum does the work.</p>
+
+        <div class="callout-box">
+          <h3>The critical insight</h3>
+          <p><strong>You don't need to save all the money you'll retire on.</strong> You only need to save enough that compound growth finishes the job. This reframes the entire retirement savings conversation from "save forever" to "reach one number, then redirect your energy."</p>
+        </div>
+
+        <h2>The Formula (It's Simpler Than It Looks)</h2>
+
+        <p>Coast FIRE uses basic time-value-of-money math.</p>
+
+        <p><strong>Step 1: Calculate your FIRE number (your retirement target)</strong></p>
+
+        <div class="formula-block">
+          FIRE Number = Annual Retirement Expenses × 25
+        </div>
+
+        <p>This is based on the 4% safe withdrawal rate from the Trinity Study, which found that withdrawing 4% annually from a diversified portfolio has historically lasted 30+ years in nearly all scenarios. If you plan to spend $60,000 per year in retirement, your FIRE number is $1,500,000.</p>
+
+        <p><strong>Step 2: Calculate your Coast FIRE number</strong></p>
+
+        <div class="formula-block">
+          Coast FIRE Number = FIRE Number ÷ (1 + r)^n<br><br>
+          Where:<br>
+          <strong>r</strong> = expected annual real return (typically 6–7% after inflation)<br>
+          <strong>n</strong> = number of years until your target retirement age
+        </div>
+
+        <p><strong>A worked example:</strong></p>
+        <ul>
+          <li>Target annual retirement spending: $60,000</li>
+          <li>FIRE number: $60,000 × 25 = <strong>$1,500,000</strong></li>
+          <li>Current age: 35, target retirement age: 65 → n = 30 years</li>
+          <li>Expected annual return: 7%</li>
+        </ul>
+
+        <p>Coast FIRE Number = $1,500,000 ÷ (1.07)^30 = $1,500,000 ÷ 7.61 = <strong>$197,105</strong></p>
+
+        <p>If you have $197,105 invested today at 35, and you never add another penny, that money will grow to $1,500,000 by age 65 at a 7% average annual return. That's your coasting point. Everything you contribute after that just accelerates the timeline.</p>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-value">$197K</div>
+            <div class="stat-label">Coast FIRE at 35 for $60K/yr retirement spend (7% return, 30 yrs)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">~$100K</div>
+            <div class="stat-label">Coast FIRE at 25 for the same $1.5M target — 40 years of compounding</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">7.61×</div>
+            <div class="stat-label">Growth multiplier at 7% over 30 years — compounding does the heavy lifting</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">4%</div>
+            <div class="stat-label">Safe withdrawal rate (Trinity Study) — the foundation of the FIRE number</div>
+          </div>
+        </div>
+
+        <p><strong>Adjusting for different variables:</strong></p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Annual spending</th>
+              <th>FIRE number</th>
+              <th>Coast at 35 (30 yrs, 7%)</th>
+              <th>Coast at 40 (25 yrs, 7%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$40,000</td>
+              <td>$1,000,000</td>
+              <td>$131,367</td>
+              <td>$184,249</td>
+            </tr>
+            <tr>
+              <td>$60,000</td>
+              <td>$1,500,000</td>
+              <td>$197,105</td>
+              <td>$276,374</td>
+            </tr>
+            <tr>
+              <td>$80,000</td>
+              <td>$2,000,000</td>
+              <td>$262,807</td>
+              <td>$368,499</td>
+            </tr>
+            <tr>
+              <td>$100,000</td>
+              <td>$2,500,000</td>
+              <td>$328,509</td>
+              <td>$460,624</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>The numbers drop dramatically when you're younger. At age 25 with 40 years to retirement (still at 7%), a $1,500,000 FIRE number requires only about $100,000 in current savings to Coast. Start early and the compounding engine does the heavy lifting.</p>
+
+        <h2>What You Still Need After Reaching Coast</h2>
+
+        <p>Hitting your Coast FIRE number doesn't mean you're done working or that money stops mattering. It means you're off the hook for <em>retirement</em> savings. You still need to cover current living expenses.</p>
+
+        <p>This is where "Barista FIRE" and "Coast FIRE" intersect in popular discussion: you've saved enough for retirement, so now you can take a lower-stress, lower-income job — something that covers your bills without requiring max retirement contributions. The pressure is off.</p>
+
+        <p><strong>What you still need to fund from ongoing income:</strong></p>
+        <ul>
+          <li>Current monthly expenses (housing, food, transportation, utilities, insurance)</li>
+          <li>Health insurance (if your new, lower-stress job doesn't provide it — this is a significant consideration)</li>
+          <li>Any non-retirement savings goals (kids' college, home purchase, etc.)</li>
+        </ul>
+
+        <p><strong>What you no longer need to do:</strong></p>
+        <ul>
+          <li>Contribute to retirement accounts (though you certainly can)</li>
+          <li>Maximize every tax-advantaged space</li>
+          <li>Take high-earning, high-stress jobs purely for income</li>
+        </ul>
+
+        <p>Some Coast FIRE adherents use this milestone as permission to take a sabbatical, change careers, move abroad cheaply, or pursue creative or entrepreneurial work that wouldn't otherwise pay enough. The freedom isn't financial independence in the traditional sense — you still need income for daily life. But the retirement anxiety dissolves.</p>
+
+        <h2>The Risks and Reality Checks</h2>
+
+        <p>Coast FIRE math is powerful but makes assumptions that deserve scrutiny.</p>
+
+        <p><strong>Return assumption risk:</strong> A 7% real return is reasonable based on long-term US stock market history, but is not guaranteed. If you assume 7% and average 5%, your $197,105 only grows to about $826,000 by 65 — well short of your $1,500,000 target. Conservative planners use 5–6% to build in margin.</p>
+
+        <p><strong>Inflation:</strong> The example above uses a 7% real return, meaning after inflation. If you're using nominal returns (say, 10% historical average for the S&amp;P 500), you need to also grow your spending estimate with inflation to get an apples-to-apples comparison. Most Coast FIRE calculators handle this automatically; just be clear about whether the rate is real or nominal.</p>
+
+        <p><strong>Sequence of returns at retirement:</strong> Even if your Coast number works out on average, how the market performs in your early retirement years matters enormously. The short version: the average return matters less than the <em>order</em> of returns when you're withdrawing. A bad first decade in retirement is exponentially more damaging than the same decade later.</p>
+
+        <p><strong>Life changes:</strong> You might not retire at 65. You might need more money for healthcare. Your lifestyle spending might increase. Coast FIRE gives you a framework, not a guarantee.</p>
+
+        <div class="callout-box">
+          <h3>Build in a margin of safety</h3>
+          <p>The solution to most of these risks: <strong>be conservative with your assumptions</strong> and don't stop at the exact Coast number. If your calculation comes out to $200,000, you might feel better not truly coasting until you hit $250,000. No rule says you have to stop contributing at the exact Coast number — you're just no longer obligated to. That extra cushion protects against a stretch of bad market returns right before or after you retire.</p>
+        </div>
+
+        <h2>How to Calculate Your Own Coast FIRE Number</h2>
+
+        <p>Here's the process:</p>
+
+        <ol>
+          <li><strong>Estimate your annual retirement spending.</strong> Be realistic. Many people use their current spending minus mortgage (paid off) and work costs (commuting, professional clothing). Don't forget healthcare.</li>
+          <li><strong>Multiply by 25</strong> to get your FIRE number.</li>
+          <li><strong>Decide your target retirement age</strong> — your current age subtracted from this is <strong>n</strong>.</li>
+          <li><strong>Choose your return assumption</strong> — 6% is conservative, 7% is moderate. Plug into the formula:<br>Coast FIRE = FIRE Number ÷ (1 + r)^n</li>
+          <li><strong>Compare to your current retirement savings.</strong> If you're above your Coast number — congratulations, you're already coasting. If not — you know exactly how much you need to save before you can ease up.</li>
+        </ol>
+
+        <p>Free Coast FIRE calculators are widely available online. Plug in your numbers on multiple sites and see where you land. The math is simple enough to do in a spreadsheet, and cross-checking two or three calculators with conservative inputs takes about five minutes.</p>
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>Coast FIRE is one of the most liberating concepts in personal finance. It transforms "save forever" into a concrete, achievable milestone. Once you know your number, every dollar you invest either moves you toward it or confirms you've already crossed it.</p>
+          <p>You don't need $2 million in the bank by next Tuesday. You just need enough for compounding to carry you the rest of the way. And depending on your age and expenses, that might be a lot closer than you think. At 25 with $100K invested, the market does the rest. At 35 with $197K, same deal. The numbers feel achievable because they are — the hard part is getting started early enough for time to work in your favor.</p>
+          <p>Pedal hard early. Then coast.</p>
+        </div>
+
+
+        <!-- related-posts:start -->
+        <section class="related-posts" aria-label="Related posts">
+          <h2>Keep reading</h2>
+          <div class="related-grid">
+        <a href="./four-percent-rule.html" class="related-card">
+          <span class="related-eyebrow">Continue reading</span>
+          <div class="related-title">The 4% Rule: What It Really Means for Your Retirement</div>
+          <p class="related-blurb">The Trinity Study result that underpins Coast FIRE — and the nuances that matter when you actually start withdrawing.</p>
+        </a>
+        <a href="./fu-money-financial-independence.html" class="related-card">
+          <span class="related-eyebrow">Continue reading</span>
+          <div class="related-title">FU Money and Financial Independence</div>
+          <p class="related-blurb">The first milestone before FIRE or Coast — the savings buffer that gives you real options without full retirement.</p>
+        </a>
+        <a href="./compound-interest.html" class="related-card">
+          <span class="related-eyebrow">Continue reading</span>
+          <div class="related-title">Compound Interest: The Eighth Wonder of the World</div>
+          <p class="related-blurb">The math behind why Coast FIRE works — and why starting early is the single biggest lever you have.</p>
+        </a>
+          </div>
+        </section>
+        <!-- related-posts:end -->
+
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>
