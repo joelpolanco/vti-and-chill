@@ -692,6 +692,22 @@ POSTS = {
         "webmcp_entry": "{ title: 'When the Multiple Flinched', url: '/pages/blog/when-the-multiple-flinched.html', tags: ['AI Class basket', 'multiple compression', 'forward P/E', 'breadth', 'concentration', 'rebalancing', 'market commentary'], description: 'The AI Class trailing P/E dropped 6.6 turns in a week to 44.7x. Breadth held, but concentration ticked up \u2014 here is what that pattern means and what to do.' },",
     },
     # =========================================================================
+    "ai-pe-monitor-2026-06-17": {
+        "date_iso": "2026-06-17",
+        "date_human": "June 17, 2026",
+        "section": "Market Commentary",
+        "read_time": "7 min read",
+        "title_short": "The AI Class Trades At Four Different Prices",
+        "card_title": "The AI Class Trades At Four Different Prices. Pick The One You Mean.",
+        "card_blurb": "The headline AI Class median P/E sits at 44.9x trailing and 21.2x forward this week. The interesting story is segment dispersion: Hyperscalers at 14x forward, Software/Data at 63x \u2014 a 4.4x gap inside one theme.",
+        "card_gradient": "linear-gradient(135deg, #1a1a2e 0%, #00d4aa 100%)",
+        "card_emoji": "\U0001F4CA",
+        "sitemap_priority": "0.85",
+        "llms_entry": "**The AI Class Trades At Four Different Prices**: https://www.vtiandchill.com/pages/blog/ai-pe-monitor-2026-06-17.html \u2014 AI Class P/E Monitor for week of June 17 2026: median trailing P/E 44.9x (+0.2 turns WoW), forward 21.2x (-0.1 WoW), positive FY1-EPS coverage 77.1% (flat), top-5 concentration 62.7% (-1.3 pp); segment dispersion is the story \u2014 Hyperscalers/Cloud 14.2x forward, Software/Data 62.6x forward, a 4.4x gap inside one thematic basket; ARM forward P/E expanded +39 turns (130x \u2192 169.5x) on a +30% price rally with no estimate revision \u2014 textbook multiple expansion without earnings catch-up; references S&P 500 forward ~22.5x per FactSet, Dimensional research on valuation premium unwind on 3-5 year horizons, 152x dot-com peak via Evercore ISI; concentration eased as smaller names rallied harder \u2014 healthier breadth than prior week's flight-to-mega-cap; chill takeaway: stop arguing about whether 'AI is expensive' and pick the segment",
+        "skill_md_entry": "**The AI Class Trades At Four Different Prices**: https://www.vtiandchill.com/pages/blog/ai-pe-monitor-2026-06-17.html \u2014 Week of June 17 2026 monitor: 44.9x trailing / 21.2x forward median masks segment dispersion (Hyperscalers 14.2x to Software/Data 62.6x forward); ARM +39 turn multiple expansion in 5 days as a teaching moment; top-5 concentration eased to 62.7%; the 'AI is overvalued' debate is broken by segment-level numbers",
+        "webmcp_entry": "{ title: 'The AI Class Trades At Four Different Prices', url: '/pages/blog/ai-pe-monitor-2026-06-17.html', tags: ['AI Class basket', 'segment rotation', 'forward P/E', 'ARM multiple expansion', 'concentration', 'Hyperscalers vs Software', 'market commentary'], description: 'The AI Class median P/E hides a 4.4x dispersion between Hyperscalers (14x forward) and Software/Data (63x forward). The headline number lies \u2014 the segment numbers tell the real story.' },"
+    },
+    # =========================================================================
     "how-1999-actually-looked": {
         "date_iso": "2026-06-03",
         "date_human": "June 3, 2026",
