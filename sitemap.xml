@@ -66,7 +66,7 @@
   <!-- Blog Hub -->
   <url>
     <loc>https://www.vtiandchill.com/pages/blog.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -315,6 +315,13 @@
     <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vtiandchill.com/pages/blog/gamestop-cautionary-tale.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- Community & About -->
