@@ -884,8 +884,8 @@ def git_commit_push(slug, m):
     subprocess.run(["git", "add", "-A"], cwd=REPO, check=True)
     subprocess.run([
         "git",
-        "-c", "user.name=Joel Polanco",
-        "-c", "user.email=jpole1@gmail.com",
+        "-c", "user.name=joelpolanco",
+        "-c", "user.email=12463767+joelpolanco@users.noreply.github.com",
         "commit", "-m", msg,
     ], cwd=REPO, check=True)
     subprocess.run(["git", "push", "origin", "main"], cwd=REPO, check=True)
