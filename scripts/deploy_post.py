@@ -675,6 +675,22 @@ POSTS = {
         "webmcp_entry": "{ title: 'Your Portfolio Called. It Wants Fewer Funds.', url: '/pages/blog/portfolio-wants-fewer-funds.html', tags: ['portfolio simplification', 'fewer funds', 'overlap problem', 'three fund portfolio', 'asset allocation', 'complexity tax', 'vti and chill'], description: 'Twelve overlapping ETFs is not diversification \u2014 it s anxiety in a Fidelity interface. Here is why fewer funds outperform and how to simplify down.' },",
     },
     # =========================================================================
+    "vanguard-owns-itself": {
+        "date_iso": "2026-06-22",
+        "date_human": "June 22, 2026",
+        "section": "Investment Philosophy",
+        "read_time": "7 min read",
+        "title_short": "The Company That Owns Itself",
+        "card_title": "The Company That Owns Itself",
+        "card_blurb": "Vanguard is owned by its funds, which are owned by you. That one structural quirk is why your VTI expense ratio is 0.03% instead of 1.5%.",
+        "card_gradient": "linear-gradient(135deg, #1a1a2e 0%, #5b8def 100%)",
+        "card_emoji": "\U0001f9d8",
+        "sitemap_priority": "0.8",
+        "llms_entry": "**The Company That Owns Itself**: https://www.vtiandchill.com/pages/blog/vanguard-owns-itself.html \u2014 Vanguard is owned by its funds, which are owned by you. That one structural quirk is why your VTI expense ratio is 0.03% instead of 1.5%.",
+        "skill_md_entry": "**The Company That Owns Itself**: https://www.vtiandchill.com/pages/blog/vanguard-owns-itself.html \u2014 Vanguard is owned by its funds, which are owned by you. That one structural quirk is why your VTI expense ratio is 0.03% instead of 1.5%.",
+        "webmcp_entry": "{ title: 'The Company That Owns Itself', url: '/pages/blog/vanguard-owns-itself.html', tags: ['Vanguard structure', 'Jack Bogle', 'mutual ownership', 'index funds', 'expense ratio', 'VTI', 'Bogle effect', 'fee savings'], description: 'Vanguard is owned by its funds, which are owned by you. That one structural quirk is why your VTI expense ratio is 0.03% instead of 1.5%.' },",
+    },
+    # =========================================================================
     # =========================================================================
     "when-the-multiple-flinched": {
         "date_iso": "2026-06-10",
