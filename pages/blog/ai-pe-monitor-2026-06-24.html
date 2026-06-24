@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PFFQRYJTQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PFFQRYJTQ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Class Just Got 4 Turns Cheaper. Mean Reversion Math. | VTI &amp; Chill</title>
+<meta name="description" content="The AI basket compressed 4.4 turns of trailing P/E this week to 40.5x. ARM, PLTR and MRVL lost the most multiple. Here is what mean reversion math actually looks like.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="../../base.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .blog-post { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  .blog-post-header { margin-bottom: var(--space-8); }
+  .blog-post-meta { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .blog-post-tag { background: rgba(var(--color-primary-rgb), 0.15); color: var(--color-primary); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; }
+  .blog-post h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-4); }
+  .blog-post-subtitle { font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.5; }
+  .blog-post-content h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text); }
+  .blog-post-content h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  .blog-post-content p { margin-bottom: var(--space-4); line-height: 1.8; color: var(--color-text); max-width: none; }
+  .blog-post-content ul, .blog-post-content ol { margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .blog-post-content li { margin-bottom: var(--space-2); line-height: 1.7; max-width: none; }
+  .blog-post-content blockquote { border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; }
+  .blog-post-content strong { color: var(--color-text); font-weight: 600; }
+  .blog-post-content em { font-style: italic; }
+  .blog-post-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .blog-post-content a:hover { color: var(--color-primary-hover); }
+  .blog-post-content table { margin: var(--space-6) 0; border-radius: var(--radius-md); overflow: hidden; width: 100%; }
+  .blog-post-content th { background: var(--color-navy); color: white; padding: var(--space-3) var(--space-4); text-align: left; font-weight: 600; font-size: var(--text-sm); }
+  .blog-post-content td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+  .blog-post-content tr:last-child td { border-bottom: none; }
+  .callout-box { background: rgba(var(--color-primary-rgb), 0.08); border: 1px solid rgba(var(--color-primary-rgb), 0.2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .callout-box h3 { color: var(--color-primary); margin-bottom: var(--space-2); margin-top: 0; font-weight: 700; font-size: var(--text-lg); }
+  .bottom-line { background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; border-left: 4px solid var(--color-primary); }
+  .bottom-line h2 { margin-top: 0 !important; }
+  .disclaimer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-faint); font-style: italic; line-height: 1.6; }
+  .back-link { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 500; text-decoration: none; margin-bottom: var(--space-6); font-size: var(--text-sm); }
+  .back-link:hover { color: var(--color-primary-hover); }
+  .chart-container { margin: var(--space-6) 0; background: var(--color-surface-2); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-4) var(--space-2); overflow-x: auto; }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+  .stat-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-4); text-align: center; }
+  .stat-value { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; color: var(--color-primary); }
+  .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+</style>
+</head>
+<body>
+
+<main class="section-padding">
+  <div class="container">
+    <article class="blog-post">
+      <a href="../blog.html" class="back-link"><i data-lucide="arrow-left" style="width:16px;height:16px"></i> Back to Blog</a>
+
+      <div class="blog-post-header">
+        <div class="blog-post-meta">
+          <span class="blog-post-tag">Market Commentary</span>
+          <span>June 24, 2026</span>
+          <span>7 min read</span>
+        </div>
+        <h1>The AI Class Just Got 4 Turns Cheaper. Here's What Mean Reversion Actually Looks Like.</h1>
+        <p class="blog-post-subtitle">Median trailing P/E compressed from 44.9x to 40.5x in one week. ARM, Palantir, and Marvell led the move down. The math is older than AI itself: extreme single-name multiples mean-revert first, and the broader basket follows with a lag.</p>
+      </div>
+
+      <figure>
+        <img src="../../blog-posts/images/ai-pe-monitor-2026-06-24.jpg"
+             alt="VTI and Chill AI Class P/E Monitor for the Week of June 24, 2026: 40.5x median trailing P/E (down 4.4 turns WoW), 20.5x median forward P/E (down 0.7 WoW), 77 percent positive forward EPS coverage, top-5 concentration 63.1 percent (NVDA, GOOGL, MSFT, AMZN, TSM). Half-circle gauge needle near the boundary of Fair Value and Overvalued bands. ARM forward P/E compressed -15.8 percent, PLTR -13.8 percent, MRVL -7.2 percent."
+             loading="lazy" width="1652" height="1548"
+             style="width:100%; height:auto; border-radius: var(--radius-md); margin: var(--space-4) 0;">
+        <figcaption style="font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2); font-style: italic;">AI Class P/E Monitor — Week of June 24, 2026. Trailing 40.5x (-4.4 turns), forward 20.5x (-0.7). ARM, PLTR, MRVL led compression. Education, not advice.</figcaption>
+      </figure>
+
+      <div class="blog-post-content">
+
+        <div class="bottom-line">
+          <h2>The Bottom Line</h2>
+          <p>The 35-name AI basket compressed 4.4 turns of trailing P/E in a single week. Median TTM fell from 44.9x to 40.5x. Forward dropped 0.7 turns to 20.5x. The three richest names led the move down: ARM lost 15.8% of its forward multiple, Palantir lost 13.8%, Marvell lost 7.2%. Power and infrastructure names (GEV, VRT, DELL) ground modestly higher. This is not a crash, a top, or a vindication. It is mean reversion math doing what mean reversion math does after large dispersions. The lesson is older than AI itself: extreme P/E moves at the single-name level get unwound first, and the broad basket follows with a lag. If you own VTI, you already own the bigger names at index weights. If you own concentrated AI bets, this week is the mechanical reminder that the wider the move up, the harder the snap back.</p>
+        </div>
+
+        <h2>Key Metrics This Week</h2>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-value">40.5x</div>
+            <div class="stat-label">Median trailing P/E (-4.4 turns WoW)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">20.5x</div>
+            <div class="stat-label">Median forward P/E (-0.7 WoW)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">77%</div>
+            <div class="stat-label">Positive FY1 EPS coverage (27 of 35 — flat)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">63.1%</div>
+            <div class="stat-label">Top-5 concentration (+0.4 pp WoW)</div>
+          </div>
+        </div>
+
+        <ul>
+          <li><strong>Median trailing P/E 40.5x</strong> — cooled 4.4 turns in one week, the largest compression since the monitor began.</li>
+          <li><strong>Median forward P/E 20.5x</strong> — also down, but only 0.7 turns; the denominator (E) is doing more of the work than the numerator (P) collapsing.</li>
+          <li><strong>Positive FY1-EPS coverage 77%</strong> — flat WoW; same 8 names without positive forward EPS (NVDA, SMCI, AI, SOUN, BBAI, TSM, ASML, ETN).</li>
+          <li><strong>Top-5 concentration 63.1%</strong> — up 0.4 pp, still narrower than late-1990s tech.</li>
+          <li><strong>Biggest WoW compressors</strong> — ARM -15.8% forward P/E, PLTR -13.8%, MRVL -7.2%. The richest names took the hit.</li>
+          <li><strong>Biggest expanders</strong> — GEV +4.4%, DELL +4.5%, VRT +2.4%. Quiet infrastructure plays.</li>
+        </ul>
+
+        <div class="callout-box">
+          <h3>Get the full data set</h3>
+          <p>The complete spreadsheet behind this week's monitor — 35 names, 6 segments, all the raw quotes and estimates with forward P/E formulas. Open it and trace the math for any number on the chart.</p>
+          <a id="drive-cta-link" href="https://docs.google.com/spreadsheets/d/1Dz_u5LFlTtc5i4hFLMWSF3fDmwBehIxQ/copy" target="_blank" rel="noopener" style="display:inline-block;background:var(--color-primary);color:white;padding:var(--space-3) var(--space-5);border-radius:var(--radius-md);text-decoration:none;font-weight:600;margin-top:var(--space-2);">Open the spreadsheet →</a>
+        </div>
+
+        <h2>What This Means For You</h2>
+
+        <ol>
+          <li><strong>Resist the urge to recalibrate your strategy on a single weekly move.</strong> A 4-turn TTM compression is meaningful at the basket level and noise at the asset-class level. The trend you actually care about is the trajectory of earnings revisions, not weekly P/E wiggles.</li>
+          <li><strong>Audit your concentration.</strong> If you own VTI or VOO, the top 5 AI names are already in your portfolio at their natural index weight. Adding a concentrated AI sleeve doubles your exposure to the same five companies.</li>
+          <li><strong>Read forward P/E and trailing P/E together.</strong> Forward fell 0.7 turns. Trailing fell 4.4 turns. The gap means E is growing faster than P is falling. That is the healthy version of the picture.</li>
+          <li><strong>Don't time the next move.</strong> Mean reversion is real over decades and unpredictable over weeks. Stay broadly diversified, keep costs low, keep contributing.</li>
+          <li><strong>Educate yourself, don't tip yourself.</strong> A research weekly is not a buy or sell signal. The number is for context.</li>
+        </ol>
+
+        <hr style="border:none;border-top:1px solid var(--color-border);margin:var(--space-8) 0;">
+
+        <h2>Mean Reversion Is Not A Forecast. It's A Gravitational Pull.</h2>
+
+        <p>The phrase "mean reversion" gets tossed around like it predicts when something will fall. It doesn't. It describes a statistical tendency: extreme readings, on average, get pulled back toward a long-run average over time. The keyword is "on average," and the timeframe is "over time." Neither tells you what happens next Wednesday.</p>
+
+        <p>What mean reversion does tell you is where the gravitational center sits. For US large-cap trailing P/E, that long-run average is somewhere around 16x to 17x depending on whose dataset and which century you start in (<a href="https://www.multpl.com/s-p-500-pe-ratio" target="_blank" rel="noopener">Multpl.com</a>). The S&amp;P 500 today trades around 31x trailing — roughly double its long-run average. The AI Class of 2026 trades at 40.5x trailing. Compared to the long-run S&amp;P average it's 2.4x rich. Compared to the dot-com 1999 peak of 152x trailing, it's a fraction of that euphoria (Evercore ISI via <a href="https://www.reuters.com/markets/wealth/wall-streets-ai-stocks-arent-bubble-yet-2025-08-21/" target="_blank" rel="noopener">Reuters</a>).</p>
+
+        <p>The math behind reversion is simple and the timeline is brutal. Research from Dimensional Fund Advisors going back to the 1920s shows that periods of above-average valuations are associated with below-average future returns over the following decade, but the relationship is noisy enough at one-year and three-year horizons to be unforecastable (<a href="https://www.dimensional.com/us-en/insights" target="_blank" rel="noopener">Dimensional Insights</a>). Translation: high P/E today probably means lower returns over the next ten years than the historical average. It does not mean a crash tomorrow.</p>
+
+        <p>That matters this week because the names that compressed most — ARM, PLTR, MRVL — were the most stretched names in the basket. ARM's forward P/E was 170x last week. Trees do not grow to the sky and forward multiples north of 100x almost never grow to 200x. The unwind started somewhere. This week, it started with the names where the unwind had the most slack to take up.</p>
+
+        <h2>The Single-Name Move Versus The Basket Move</h2>
+
+        <p>Here's a math principle that retail investors learn slowly and the hard way: an individual stock is not a basket. A 15% forward P/E compression on ARM doesn't translate to a 15% compression on your VTI. ARM is roughly 0.1% of VTI. A blowup in ARM costs your VTI position a rounding error. A 15% compression on the median basket member costs the basket about 15% of forward P/E.</p>
+
+        <p>The whole point of holding a broad index fund is to opt out of single-name volatility while staying long the asset class. The whole point of holding a concentrated AI ETF or a hand-picked sleeve of single AI names is to express a view that the basket-average outcome won't be enough. Both can be reasonable choices. They are not the same risk.</p>
+
+        <p>This week made the difference concrete. The S&amp;P 500 was up modestly. VTI was up modestly. The AI basket compressed 4 turns. ARM compressed 16% of forward P/E. Five different outcomes, five different position sizings, five different risk profiles. Pick one and own it. Don't pick three and pretend they're additive.</p>
+
+        <h2>What The 1990s Mean-Reversion Cycle Actually Looked Like</h2>
+
+        <p>The dot-com analogy gets misused. People remember 152x as the peak and then a 78% drawdown over three years. What they forget is that the median S&amp;P 500 P/E in 1995 was 16x (<a href="https://www.multpl.com/s-p-500-pe-ratio" target="_blank" rel="noopener">Multpl.com</a>). The bubble inflated from 16x to 152x over five years before it deflated. The compression happened in stages. There were three meaningful drawdowns and recoveries in tech from 1995 to 1999 before the final peak (<a href="https://www.hartfordfunds.com/insights/market-perspectives.html" target="_blank" rel="noopener">Hartford Funds</a>).</p>
+
+        <p>Each interim drawdown looked like a 4-turn weekly compression in the median multiple. People sold. Some bought back in higher. The investors who did best were the ones who bought a Vanguard index fund in 1995, ignored CNBC for five years, and kept contributing.</p>
+
+        <p>The reason that strategy worked is structural. Index investing harvests the basket average. The basket average includes the companies that survive the unwind and the companies that became Cisco. Cisco peaked at $80 in March 2000. As of June 2026, Cisco is around $122 — twenty-six years later. An index fund holder who kept buying through that period beat the Cisco holder by orders of magnitude. The difference wasn't stock-picking skill. It was diversification doing what diversification does.</p>
+
+        <div class="callout-box">
+          <h3>"AI isn't 1999 if earnings keep rising — but it starts rhyming when P/E expands while EPS revisions stall."</h3>
+          <p>That is the standing punchline of the monitor, and it applies this week with a twist. P/E didn't expand — it compressed 4 turns. EPS revisions are still rising at the basket level. This is the version of the cycle the punchline is rooting for. Forward multiples falling because the denominator is growing. That is not a top. That is not a bubble. That is, for now, the boring middle.</p>
+        </div>
+
+        <h2>Sources &amp; Methodology</h2>
+
+        <ul>
+          <li>AI Class P/E Monitor data — internal weekly run by VTI &amp; Chill, 35 names across 6 AI segments, NTM rule = first fiscal year ending at least 6 months out from the run date. Visit <a href="https://www.vtiandchill.com" target="_blank" rel="noopener">vtiandchill.com</a> for the full archive.</li>
+          <li>S&amp;P 500 historical and trailing P/E — <a href="https://www.multpl.com/s-p-500-pe-ratio" target="_blank" rel="noopener">Multpl S&amp;P 500 P/E</a>.</li>
+          <li>Dot-com 1999 peak reference (152x) — Evercore ISI via <a href="https://www.reuters.com/markets/wealth/wall-streets-ai-stocks-arent-bubble-yet-2025-08-21/" target="_blank" rel="noopener">Reuters</a>.</li>
+          <li>Valuation and forward-return research — <a href="https://www.dimensional.com/us-en/insights" target="_blank" rel="noopener">Dimensional Fund Advisors Insights</a>.</li>
+          <li>Historical bubble cycle reference — <a href="https://www.hartfordfunds.com/insights/market-perspectives.html" target="_blank" rel="noopener">Hartford Funds Market Perspectives</a>.</li>
+          <li>Mega-cap concentration framework — <a href="https://corporate.vanguard.com/content/corporatesite/us/en/corp/articles/are-mega-cap-tech-companies-distorting-the-market.html" target="_blank" rel="noopener">Vanguard Corporate Insights</a>.</li>
+        </ul>
+
+        <p>Methodology note: 35-name AI basket; Core Profit Basket = names with positive FY1 consensus EPS. NTM rule applies the first fiscal year whose period end is at least 6 months after the run date. Forward P/E = price / next-twelve-month consensus EPS. Trailing P/E = price / TTM EPS. Median is the headline because the basket is right-skewed by a handful of very-high-multiple names.</p>
+
+        <!-- related-posts:start -->
+        <section class="related-posts" aria-label="Related posts">
+          <h2>Keep reading</h2>
+          <div class="related-grid">
+        <a href="./ai-pe-monitor-2026-06-17.html" class="related-card">
+          <span class="related-eyebrow">Continue reading</span>
+          <div class="related-title">The AI Class Trades At Four Different Prices</div>
+          <p class="related-blurb">Hyperscalers at 14x forward, Software/Data at 63x — same basket, same week. The headline median lies to you.</p>
+        </a>
+        <a href="./when-the-multiple-flinched.html" class="related-card">
+          <span class="related-eyebrow">Continue reading</span>
+          <div class="related-title">When the Multiple Flinched</div>
+          <p class="related-blurb">The AI Class trailing P/E dropped 6.6 turns in a week to 44.7x. Breadth held, but concentration ticked up — here's what that pattern means.</p>
+        </a>
+        <a href="./how-1999-actually-looked.html" class="related-card">
+          <span class="related-eyebrow">Continue reading</span>
+          <div class="related-title">How 1999 Actually Looked</div>
+          <p class="related-blurb">The AI Class jumped to 51.3x in a single week. The 1999 dot-com darlings hit 152x on shrinking earnings. Here's what the denominator, margins, and capex actually tell you.</p>
+        </a>
+          </div>
+        </section>
+        <!-- related-posts:end -->
+
+
+        <div class="disclaimer">
+          <p>Disclaimer: VTI &amp; Chill provides financial EDUCATION, not personalized financial ADVICE. We are not licensed financial advisors. All content is for informational and educational purposes only. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial professional before making investment decisions. All investing involves risk, including the possible loss of principal.</p>
+        </div>
+
+      </div>
+
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTI &amp; Chill. Financial education, not advice.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../app.js"></script>
+<script src="../../webmcp.js"></script>
+</body>
+</html>

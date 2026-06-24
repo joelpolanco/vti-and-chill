@@ -708,6 +708,22 @@ POSTS = {
         "webmcp_entry": "{ title: 'When the Multiple Flinched', url: '/pages/blog/when-the-multiple-flinched.html', tags: ['AI Class basket', 'multiple compression', 'forward P/E', 'breadth', 'concentration', 'rebalancing', 'market commentary'], description: 'The AI Class trailing P/E dropped 6.6 turns in a week to 44.7x. Breadth held, but concentration ticked up \u2014 here is what that pattern means and what to do.' },",
     },
     # =========================================================================
+    "ai-pe-monitor-2026-06-24": {
+        "date_iso": "2026-06-24",
+        "date_human": "June 24, 2026",
+        "section": "Market Commentary",
+        "read_time": "7 min read",
+        "title_short": "The AI Class Just Got 4 Turns Cheaper",
+        "card_title": "The AI Class Just Got 4 Turns Cheaper. Here's What Mean Reversion Looks Like.",
+        "card_blurb": "The 35-name AI basket compressed 4.4 turns of trailing P/E this week to 40.5x. ARM, PLTR and MRVL led the move down. Mean reversion math: the wider the move up, the harder the snap back.",
+        "card_gradient": "linear-gradient(135deg, #1a1a2e 0%, #00d4aa 100%)",
+        "card_emoji": "\U0001F4C9",
+        "sitemap_priority": "0.85",
+        "llms_entry": "**The AI Class Just Got 4 Turns Cheaper**: https://www.vtiandchill.com/pages/blog/ai-pe-monitor-2026-06-24.html \u2014 AI Class P/E Monitor for week of June 24 2026: median trailing P/E compressed 4.4 turns WoW from 44.9x to 40.5x \u2014 the largest one-week compression in monitor history; median forward P/E down 0.7 turns to 20.5x; positive FY1-EPS coverage flat at 77.1%; top-5 concentration 63.1% (+0.4 pp); ARM forward P/E -15.8% WoW, PLTR -13.8%, MRVL -7.2% led compression as the most stretched names unwound first; mean reversion math explainer; references S&P 500 31x trailing today vs ~16-17x long-run average per Multpl, 152x dot-com 1999 peak via Evercore ISI/Reuters, Dimensional research on valuation premiums unwinding on 3-5 year horizons; the gap between TTM (-4.4 turns) and forward (-0.7 turns) compression means E is growing faster than P is falling \u2014 the healthy version of cooling; single-name vs basket sizing reminder \u2014 ARM is ~0.1% of VTI; Cisco 1999 case study",
+        "skill_md_entry": "**The AI Class Just Got 4 Turns Cheaper**: https://www.vtiandchill.com/pages/blog/ai-pe-monitor-2026-06-24.html \u2014 Week of June 24 2026 monitor: 40.5x trailing (-4.4 turns WoW) / 20.5x forward (-0.7 WoW); ARM/PLTR/MRVL led forward P/E compression as the richest names unwound first; mean reversion math primer using S&P long-run 16-17x average, dot-com 152x peak, and Dimensional valuation-premium research; single-name vs basket sizing lesson with Cisco 1999 case",
+        "webmcp_entry": "{ title: 'The AI Class Just Got 4 Turns Cheaper', url: '/pages/blog/ai-pe-monitor-2026-06-24.html', tags: ['AI Class basket', 'mean reversion', 'P/E compression', 'ARM PLTR MRVL', 'forward P/E', 'dot-com comparison', 'concentration risk', 'market commentary'], description: 'The 35-name AI basket compressed 4.4 turns of trailing P/E in one week to 40.5x. The richest names led the unwind. Mean reversion math explained.' },"
+    },
+    # =========================================================================
     "ai-pe-monitor-2026-06-17": {
         "date_iso": "2026-06-17",
         "date_human": "June 17, 2026",
