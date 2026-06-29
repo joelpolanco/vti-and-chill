@@ -66,7 +66,7 @@
   <!-- Blog Hub -->
   <url>
     <loc>https://www.vtiandchill.com/pages/blog.html</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -348,6 +348,13 @@
   <url>
     <loc>https://www.vtiandchill.com/pages/blog/brain-worst-advisor.html</loc>
     <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vtiandchill.com/pages/blog/dunning-kruger-investing.html</loc>
+    <lastmod>2026-06-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
