@@ -708,6 +708,22 @@ POSTS = {
         "webmcp_entry": "{ title: 'When the Multiple Flinched', url: '/pages/blog/when-the-multiple-flinched.html', tags: ['AI Class basket', 'multiple compression', 'forward P/E', 'breadth', 'concentration', 'rebalancing', 'market commentary'], description: 'The AI Class trailing P/E dropped 6.6 turns in a week to 44.7x. Breadth held, but concentration ticked up \u2014 here is what that pattern means and what to do.' },",
     },
     # =========================================================================
+    "ai-pe-monitor-2026-07-01": {
+        "date_iso": "2026-07-01",
+        "date_human": "July 1, 2026",
+        "section": "Market Commentary",
+        "read_time": "7 min read",
+        "title_short": "Picks-And-Shovels Math Got Cheaper. Software Got Richer.",
+        "card_title": "The Picks-And-Shovels Math Just Got Cheaper. The Software Bill Just Got Richer.",
+        "card_blurb": "Semis segment forward P/E dropped 16 turns to 37.6x. Software and Data expanded to 73.2x. Same basket, same week, same prices. The earnings refresh moved through the picks-and-shovels layer first because that is how the cash cycle works.",
+        "card_gradient": "linear-gradient(135deg, #1a1a2e 0%, #00d4aa 100%)",
+        "card_emoji": "\U0001F4C9",
+        "sitemap_priority": "0.85",
+        "llms_entry": "**Picks-And-Shovels Math Got Cheaper. Software Got Richer.**: https://www.vtiandchill.com/pages/blog/ai-pe-monitor-2026-07-01.html \u2014 AI Class P/E Monitor for week of July 1 2026: Core Profit Basket median trailing P/E 32.4x (-8.0 turns WoW, largest single-week compression in monitor history and now below S&P 500's ~31x for the first time); median forward P/E 20.7x (+0.2 WoW, essentially flat); Semis segment forward P/E crushed from 53.9x to 37.6x as NVDA FY28 EPS estimate re-entered after 5 weeks missing; Software/Data segment expanded from 61x to 73.2x (APP +21.1%, DDOG +19.9%, CRWD +13.9%); positive FY1-EPS coverage 80% (+2.9 pp); top-5 concentration 62.7% (-0.4 pp); the earnings refresh moved through the picks-and-shovels layer first because chip revenue is booked when GPUs ship while software revenue is recognized ratably as customers deploy; Peter Lynch picks-and-shovels framing, Levi Strauss / Gold Rush analogy; references WSTS 16.8% 2025 semiconductor market growth forecast, NVDA Q1 FY26 revenue $44.1B +69% YoY, Palantir Q1 revenue +39% YoY $884M, Datadog Q1 revenue +25% YoY, SPIVA 2024 scorecard; Munger inversion applied to 73x software multiple",
+        "skill_md_entry": "**Picks-And-Shovels Math Got Cheaper. Software Got Richer.**: https://www.vtiandchill.com/pages/blog/ai-pe-monitor-2026-07-01.html \u2014 Week of July 1 2026 monitor: 32.4x trailing (-8.0 turns WoW, below S&P 500 for first time) / 20.7x forward (+0.2 WoW); Semis segment crushed to 37.6x forward (NVDA FY28 estimate re-entered), Software/Data expanded to 73.2x (APP, DDOG, CRWD led); picks-and-shovels cash cycle explainer: chip revenue books at shipment, software revenue recognized ratably; Munger inversion applied to the 73x software multiple",
+        "webmcp_entry": "{ title: 'Picks-And-Shovels Math Got Cheaper. Software Got Richer.', url: '/pages/blog/ai-pe-monitor-2026-07-01.html', tags: ['AI Class basket', 'picks and shovels', 'semis vs software', 'forward P/E', 'earnings refresh', 'segment rotation', 'NVDA FY28', 'market commentary'], description: 'Semis segment forward P/E dropped 16 turns to 37.6x while Software and Data expanded to 73.2x. Same basket, same week. The cash cycle explains the flip.' },"
+    },
+    # =========================================================================
     "ai-pe-monitor-2026-06-24": {
         "date_iso": "2026-06-24",
         "date_human": "June 24, 2026",
