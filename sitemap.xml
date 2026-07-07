@@ -373,14 +373,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Community & About -->
-  <url>
-    <loc>https://www.vtiandchill.com/pages/community.html</loc>
-    <lastmod>2026-04-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
+  <!-- About -->
   <url>
     <loc>https://www.vtiandchill.com/pages/about.html</loc>
     <lastmod>2026-04-06</lastmod>

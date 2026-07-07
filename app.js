@@ -275,26 +275,54 @@ function renderPie(canvasId, data) {
 document.addEventListener('DOMContentLoaded', initPortfolioBuilder);
 
 // ========== COMPOUND INTEREST CALCULATOR ==========
+function flashResult(el) {
+  if (!el) return;
+  el.style.transition = 'color 0.15s ease';
+  const original = el.style.color;
+  el.style.color = '#00d4aa';
+  setTimeout(() => { el.style.color = original; }, 200);
+}
+
 function initCompoundCalc() {
   const form = document.getElementById('compoundForm');
   if (!form) return;
 
   const inputs = form.querySelectorAll('input, select');
-  inputs.forEach(input => input.addEventListener('input', calculateCompound));
+  inputs.forEach(input => {
+    input.addEventListener('input', calculateCompound);
+    input.addEventListener('change', calculateCompound);
+  });
   calculateCompound();
 }
 
+function readNum(id, fallback) {
+  const raw = document.getElementById(id)?.value;
+  const n = parseFloat(raw);
+  return Number.isFinite(n) ? n : fallback;
+}
+function readInt(id, fallback) {
+  const raw = document.getElementById(id)?.value;
+  const n = parseInt(raw, 10);
+  return Number.isFinite(n) ? n : fallback;
+}
+
 function calculateCompound() {
-  const initial = parseFloat(document.getElementById('calcInitial')?.value) || 0;
-  const monthly = parseFloat(document.getElementById('calcMonthly')?.value) || 0;
-  const rate = (parseFloat(document.getElementById('calcRate')?.value) || 10) / 100;
-  const years = parseInt(document.getElementById('calcYears')?.value) || 30;
+  const initial = Math.max(0, readNum('calcInitial', 0));
+  const monthly = Math.max(0, readNum('calcMonthly', 0));
+  const rate = Math.max(0, readNum('calcRate', 10) / 100);
+  const years = Math.max(1, readInt('calcYears', 30));
 
   const monthlyRate = rate / 12;
   const months = years * 12;
 
-  let total = initial * Math.pow(1 + monthlyRate, months);
-  total += monthly * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+  let total;
+  if (monthlyRate === 0) {
+    // No growth: just initial + all contributions
+    total = initial + monthly * months;
+  } else {
+    total = initial * Math.pow(1 + monthlyRate, months);
+    total += monthly * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+  }
 
   const contributed = initial + (monthly * months);
   const growth = total - contributed;
@@ -303,7 +331,7 @@ function calculateCompound() {
   const contribEl = document.getElementById('compoundContributed');
   const growthEl = document.getElementById('compoundGrowth');
 
-  if (resultEl) resultEl.textContent = '$' + Math.round(total).toLocaleString();
+  if (resultEl) { resultEl.textContent = '$' + Math.round(total).toLocaleString(); flashResult(resultEl); }
   if (contribEl) contribEl.textContent = '$' + Math.round(contributed).toLocaleString();
   if (growthEl) growthEl.textContent = '$' + Math.round(growth).toLocaleString();
 
@@ -404,31 +432,45 @@ function initCoastCalc() {
   if (!form) return;
 
   const inputs = form.querySelectorAll('input');
-  inputs.forEach(input => input.addEventListener('input', calculateCoast));
+  inputs.forEach(input => {
+    input.addEventListener('input', calculateCoast);
+    input.addEventListener('change', calculateCoast);
+  });
   calculateCoast();
 }
 
 function calculateCoast() {
-  const currentAge = parseInt(document.getElementById('coastAge')?.value) || 30;
-  const currentSavings = parseFloat(document.getElementById('coastSavings')?.value) || 50000;
-  const retireAge = parseInt(document.getElementById('coastRetireAge')?.value) || 65;
-  const fireNumber = parseFloat(document.getElementById('coastTarget')?.value) || 1500000;
+  const currentAge = readInt('coastAge', 30);
+  const currentSavings = Math.max(0, readNum('coastSavings', 0));
+  const retireAge = readInt('coastRetireAge', 65);
+  const fireNumber = Math.max(0, readNum('coastTarget', 0));
   const growthRate = 0.10; // 10% historical
-
-  const yearsToRetire = retireAge - currentAge;
-  const coastNumber = fireNumber / Math.pow(1 + growthRate, yearsToRetire);
 
   const resultEl = document.getElementById('coastResult');
   const statusEl = document.getElementById('coastStatus');
 
-  if (resultEl) resultEl.textContent = '$' + Math.round(coastNumber).toLocaleString();
+  const yearsToRetire = retireAge - currentAge;
+
+  if (yearsToRetire <= 0) {
+    if (resultEl) { resultEl.textContent = '$' + Math.round(fireNumber).toLocaleString(); flashResult(resultEl); }
+    if (statusEl) {
+      statusEl.textContent = 'Your retirement age must be greater than your current age. When you\'re already at (or past) your target date, your Coast number equals your full FIRE number.';
+      statusEl.style.color = '';
+    }
+    return;
+  }
+
+  const coastNumber = fireNumber / Math.pow(1 + growthRate, yearsToRetire);
+
+  if (resultEl) { resultEl.textContent = '$' + Math.round(coastNumber).toLocaleString(); flashResult(resultEl); }
   if (statusEl) {
     if (currentSavings >= coastNumber) {
-      statusEl.textContent = 'You\'ve already hit Coast FIRE! Your current savings will grow to your target without additional contributions.';
+      const surplus = currentSavings - coastNumber;
+      statusEl.textContent = 'You\'ve hit Coast FIRE with $' + Math.round(surplus).toLocaleString() + ' to spare. Your invested savings should compound to your FIRE number by age ' + retireAge + ' without another dollar contributed.';
       statusEl.style.color = '#00d4aa';
     } else {
       const gap = coastNumber - currentSavings;
-      statusEl.textContent = 'You need $' + Math.round(gap).toLocaleString() + ' more to reach Coast FIRE.';
+      statusEl.textContent = 'You need $' + Math.round(gap).toLocaleString() + ' more invested to hit Coast FIRE. Once you cross that line, compounding alone gets you to $' + Math.round(fireNumber).toLocaleString() + ' by age ' + retireAge + '.';
       statusEl.style.color = '';
     }
   }
@@ -442,24 +484,44 @@ function initRetireCalc() {
   if (!form) return;
 
   const inputs = form.querySelectorAll('input');
-  inputs.forEach(input => input.addEventListener('input', calculateRetire));
+  inputs.forEach(input => {
+    input.addEventListener('input', calculateRetire);
+    input.addEventListener('change', calculateRetire);
+  });
   calculateRetire();
 }
 
 function calculateRetire() {
-  const currentAge = parseInt(document.getElementById('retireAge')?.value) || 30;
-  const savings = parseFloat(document.getElementById('retireSavings')?.value) || 100000;
-  const monthlyContrib = parseFloat(document.getElementById('retireMonthly')?.value) || 2000;
-  const annualExpenses = parseFloat(document.getElementById('retireExpenses')?.value) || 50000;
+  const currentAge = readInt('retireAge', 30);
+  const savings = Math.max(0, readNum('retireSavings', 0));
+  const monthlyContrib = Math.max(0, readNum('retireMonthly', 0));
+  const annualExpenses = Math.max(1, readNum('retireExpenses', 50000));
   const rate = 0.10;
   const swr = 0.04; // 4% safe withdrawal
 
   const fireNumber = annualExpenses / swr;
   const monthlyRate = rate / 12;
 
+  const resultEl = document.getElementById('retireResult');
+  const detailEl = document.getElementById('retireDetail');
+
+  // Handle case where already retired
+  if (savings >= fireNumber) {
+    if (resultEl) { resultEl.textContent = '0 years'; flashResult(resultEl); }
+    if (detailEl) detailEl.textContent = 'You can already retire. Your savings of $' + Math.round(savings).toLocaleString() + ' exceed your FIRE number of $' + Math.round(fireNumber).toLocaleString() + '.';
+    return;
+  }
+
   let balance = savings;
   let months = 0;
-  const maxMonths = 600; // 50 years max
+  const maxMonths = 720; // 60 years max
+
+  // If no growth AND no contribution, will never hit target
+  if (monthlyContrib === 0 && monthlyRate === 0) {
+    if (resultEl) { resultEl.textContent = 'Never'; flashResult(resultEl); }
+    if (detailEl) detailEl.textContent = 'With zero contributions and zero growth, savings will never reach $' + Math.round(fireNumber).toLocaleString() + '.';
+    return;
+  }
 
   while (balance < fireNumber && months < maxMonths) {
     balance = balance * (1 + monthlyRate) + monthlyContrib;
@@ -469,21 +531,19 @@ function calculateRetire() {
   const yearsToFire = months / 12;
   const fireAge = currentAge + yearsToFire;
 
-  const resultEl = document.getElementById('retireResult');
-  const detailEl = document.getElementById('retireDetail');
-
   if (resultEl) {
     if (months >= maxMonths) {
-      resultEl.textContent = '50+ years';
+      resultEl.textContent = '60+ years';
     } else {
       resultEl.textContent = yearsToFire.toFixed(1) + ' years';
     }
+    flashResult(resultEl);
   }
   if (detailEl) {
-    if (savings >= fireNumber) {
-      detailEl.textContent = 'You can already retire! Your savings exceed your FIRE number of $' + Math.round(fireNumber).toLocaleString();
+    if (months >= maxMonths) {
+      detailEl.textContent = 'At this savings rate, you won\'t hit $' + Math.round(fireNumber).toLocaleString() + ' in 60 years. Increase monthly contributions or lower target expenses.';
     } else {
-      detailEl.textContent = 'FIRE number: $' + Math.round(fireNumber).toLocaleString() + ' (at age ' + Math.round(fireAge) + ')';
+      detailEl.textContent = 'FIRE number: $' + Math.round(fireNumber).toLocaleString() + ' (reached at age ' + Math.round(fireAge) + ')';
     }
   }
 }

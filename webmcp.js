@@ -37,7 +37,6 @@
           tools: BASE + '/pages/tools.html',
           learn: BASE + '/pages/learn/',
           blog: BASE + '/pages/blog.html',
-          community: BASE + '/pages/community.html',
           about: BASE + '/pages/about.html'
         },
         machineResources: {
