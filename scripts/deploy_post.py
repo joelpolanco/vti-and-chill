@@ -724,6 +724,22 @@ POSTS = {
         "webmcp_entry": "{ title: 'Picks-And-Shovels Math Got Cheaper. Software Got Richer.', url: '/pages/blog/ai-pe-monitor-2026-07-01.html', tags: ['AI Class basket', 'picks and shovels', 'semis vs software', 'forward P/E', 'earnings refresh', 'segment rotation', 'NVDA FY28', 'market commentary'], description: 'Semis segment forward P/E dropped 16 turns to 37.6x while Software and Data expanded to 73.2x. Same basket, same week. The cash cycle explains the flip.' },"
     },
     # =========================================================================
+    "ai-pe-monitor-2026-07-08": {
+        "date_iso": "2026-07-08",
+        "date_human": "July 8, 2026",
+        "section": "Market Commentary",
+        "read_time": "8 min read",
+        "title_short": "The AI Class Just Got Cheaper Than The S&P 500",
+        "card_title": "The AI Class Just Got Cheaper Than The S&P 500. Nobody Sold A Share.",
+        "card_blurb": "Forward P/E on the AI Core Profit Basket fell from 20.7x to 18.9x in one week, dropping below the S&P 500's ~24x forward for the first time. AMD FY26 EPS +108% WoW, GEV +64%, APP +52%. The denominator did the work.",
+        "card_gradient": "linear-gradient(135deg, #1a1a2e 0%, #00d4aa 100%)",
+        "card_emoji": "\U0001F4C9",
+        "sitemap_priority": "0.85",
+        "llms_entry": "**The AI Class Just Got Cheaper Than The S&P 500**: https://www.vtiandchill.com/pages/blog/ai-pe-monitor-2026-07-08.html \u2014 AI Class P/E Monitor for week of July 8 2026: Core Profit Basket median trailing P/E 32.4x (-0.1 turns WoW, essentially flat and roughly at S&P 500's ~31x); median forward P/E 18.9x (-1.8 turns WoW, largest single-week forward compression in monitor history and now below S&P 500's ~24x forward for first time); positive FY1-EPS coverage 80% (unchanged); top-5 concentration 63.5% (+0.8 pp, NVDA GOOGL MSFT AMZN TSM); biggest forward P/E compressions AMD -44.3%, GEV -39.3%, APP -34.1% (all driven by FY26 EPS estimate refresh: AMD NTM $9.51 to $15.68 = +108%, GEV $19.42 to $30.42 = +64%, APP $15.21 to $23.15 = +52%); biggest expansions AVGO +4.6%, HPE +1.1%, NVDA +1.0% (price-driven); segment reversal: Semis 37.6x to 25.1x forward, Software/Data 73.2x to 52.2x, Model/App 22.4x to 16.6x; core lesson: forward P/E is a bet not a fact \u2014 trailing P/E is audited arithmetic, forward P/E is a consensus estimate that carries analyst optimism bias per Duke/Fuqua research; the 32.4x/18.9x trailing-to-forward gap implies ~70% aggregate EPS growth expected next fiscal year; three reference frames: long-run S&P median ~16x trailing, current S&P ~31x/~24x, dot-com peak 152x per Evercore ISI; when EPS estimates get revised up, forward multiples compress mechanically without prices moving; VTI ownership captures both outcomes (revisions land or stall) without needing to guess",
+        "skill_md_entry": "**The AI Class Just Got Cheaper Than The S&P 500**: https://www.vtiandchill.com/pages/blog/ai-pe-monitor-2026-07-08.html \u2014 Week of July 8 2026 monitor: 32.4x trailing (-0.1 WoW, flat) / 18.9x forward (-1.8 turns WoW, monitor record and now below S&P 500's ~24x forward); AMD FY26 EPS estimate +108% WoW, GEV +64%, APP +52% drove pure denominator refresh compressions of -44.3%, -39.3%, -34.1% in forward P/E; segment reversal Semis 37.6x to 25.1x, Software/Data 73.2x to 52.2x; core teaching: forward P/E is a bet built on analyst consensus that carries optimism bias, trailing P/E is audited arithmetic \u2014 the 70% implied EPS growth premium is the actual thesis being priced",
+        "webmcp_entry": "{ title: 'The AI Class Just Got Cheaper Than The S&P 500. Nobody Sold A Share.', url: '/pages/blog/ai-pe-monitor-2026-07-08.html', tags: ['AI Class basket', 'forward P/E', 'EPS revisions', 'denominator refresh', 'AMD GEV APP', 'S&P 500 comparison', 'segment rotation', 'market commentary'], description: 'AI Core Profit Basket forward P/E fell 1.8 turns to 18.9x, dropping below the S&P 500 for the first time. AMD FY26 EPS +108% WoW drove the compression. The denominator moved, not the price.' },"
+    },
+    # =========================================================================
     "ai-pe-monitor-2026-06-24": {
         "date_iso": "2026-06-24",
         "date_human": "June 24, 2026",
@@ -794,6 +810,9 @@ def update_blog_hub(slug, m):
     """Insert the blog hub card at the top of .blog-grid and bump hub lastmod in sitemap."""
     hub_path = REPO / "pages" / "blog.html"
     hub = hub_path.read_text()
+    if f'./blog/{slug}.html' in hub:
+        print(f"  hub: card already present for {slug}, skipping")
+        return
     card = f"""
       <a href="./blog/{slug}.html" class="blog-card" style="text-decoration:none;color:inherit;">
         <div class="blog-card-image" style="background: {m['card_gradient']}; display:flex;align-items:center;justify-content:center;">
@@ -834,24 +853,24 @@ def update_sitemap(slug, m):
     )
 
     # Insert new <url> entry before </urlset>
-    new_entry = f"""  <url>
+    url_only = f"""  <url>
     <loc>https://www.vtiandchill.com/pages/blog/{slug}.html</loc>
     <lastmod>{m['date_iso']}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>{m['sitemap_priority']}</priority>
   </url>
-
-  <!-- Community & About -->"""
-    if new_entry.split("<!--")[0] in sm:
+"""
+    if url_only in sm:
         raise RuntimeError(f"sitemap already contains entry for {slug}")
-    sm, n = re.subn(
-        r'  <!-- Community & About -->',
-        new_entry,
-        sm,
-        count=1,
-    )
+    # Try Community marker first, then About marker (Community nav was removed)
+    n = 0
+    for marker in ('  <!-- Community & About -->', '  <!-- About -->'):
+        if marker in sm:
+            sm = sm.replace(marker, url_only + "\n" + marker, 1)
+            n = 1
+            break
     if n != 1:
-        raise RuntimeError("sitemap Community marker not found")
+        raise RuntimeError("sitemap Community/About marker not found")
     sm_path.write_text(sm)
     print(f"  sitemap: added {slug}")
 
